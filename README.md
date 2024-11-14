@@ -1,2 +1,4 @@
 # level-of-trust-framework
-This repository contains the design and development of Level of Trust Assessment Function and Intent-based Trust Management solutions
+This repository contains the design and development of the Level of Trust Assessment Function and Intent-based Trust Management solutions.
+
+![Framework](https://github.com/CyberDataLab/level-of-trust-framework/blob/main/LoT_architecture.png)
