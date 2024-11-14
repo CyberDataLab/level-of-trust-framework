@@ -1,0 +1,70 @@
+Concept, Attribute, Description, Value type expected, Max cardinality, Unit of measure (if applicable), Timezone, Related standard
+Person, givenName, First name of a person, String, 1, - , - , -
+Person, lastName, Family name of a person, String, 1, - , - , -
+User, identifier, ID associated with the Person in the system, String, 1, - , - , -
+User, request, Trust requirement that is going to be checked, String, 1, - , - , -
+Intent, identifier, ID associated with the current intent request in the system, String, 1, - , - , -
+Intent, type, Expresses if the intent is related to trustworthiness-location-performance-etc., String, 1, - , - , -
+Intent, target, TO BE CHECKED, String, 1, - , - , -
+NetworkService, identifier, ID associated with the Network Service in the system, String, 1, - , - , -
+NetworkService, scope, Network segment where resources need to be allocated, String, 1, - , - , -
+NetworkService, lot, Level of Trust computed for a whole Network Service, Double, 1, - , - , -
+NetworkStatus, identifier, ID associated with the Network Service in the system, String, 1, - , - , -
+NetworkStatus, connectionStatus, TO BE CHECKED HEXA, String, 1, - , - , -
+NetworkStatus, qos, TO BE CHECKED HEXA, String, 1, - , - , -
+Cloud, description, Generic information about an asset, String, 1, - , - , -
+Cloud, properties, Technical information about an asset, String, 1, - , - , -
+Edge, description, Generic information about an asset, String, 1, - , - , -
+Edge, properties, Technical information about an asset, String, 1, - , - , -
+FarEdge, description, Generic information an asset, String, 1, - , - , -
+FarEdge, properties, Technical information about an asset, String, 1, - , - , -
+CloudContinuum, description, Generic information about an asset, String, 1, - , - , -
+CloudContinuum, properties, Technical information about an asset, String, 1, - , - , -
+CloudEdgeContinuum, description, Generic information about an asset, String, 1, - , - , -
+CloudEdgeContinuum, properties, Technical information about an asset, String, 1, - , - , -
+LevelOfTrust, identifier, ID associated with a specific E2E relationship, String, 1, - , - , -
+LevelOfTrust, trustor, Identifier of the Network Service Consumer, String, 1, - , - , -
+LevelOfTrust, trustee, Identifier of the Network Service Provider, String, 1, -, -, -
+LevelOfTrust, lot, Value for the current asset evaluated, Float, 1, - , - , -
+LevelOfTrust, tlaID, Identifier of the current TLA associated with the LoT, String, 1, -, -, -
+LevelOfTrust, startime, Timestamp associated with the beginning of the relationship, Date, 1, -, -, -
+LevelOfTrust, stoptime, Timestamp associated with the ending of the relationship, Date, 1, -, -, -
+ObjectiveIndicators, stability, Ability of a system to perform consistently and remain operational without experiencing crashes or significant issues over time, Float, 1, - , - , -
+ObjectiveIndicators, reliability, Dependability of a system to function correctly under predefined conditions for a specified period, Float, 1, - , - , -
+ObjectiveIndicators, scalability, System’s capacity to handle increased loads or expand its performance capabilities without compromising functionality, Float, 1, - , - , -
+ObjectiveIndicators, availability, Degree to which a system is operational and accessible when required for use, Float, 1, - , - , -
+SubjectiveIndicators, credibility, Believability of a source-individual or system, Float, 1, - , - , -
+SubjectiveIndicators, feedback, Positive or negative responses provided regarding a product/service or performance, Float, 1, - , - , -
+Reward, identifier, Identifier of the current reward associated with the LoT, String, 1, -, -, -
+Reward, value, Amount of reward to be applied over the LoT, Float, 1, -, -, -
+Reward, actions, Description of actions needed to receive a reward once a relationship is set, String, 1, -, -, -
+Punishment, identifier, Identifier of the current punishment associated with the LoT, String, 1, -, -, -
+Punishment, value, Amount of punishment to be applied over the LoT, Float, 1, -, -, -
+Punishment, actions, Description of actions needed to receive a punishment once a relationship is set, String, 1, -, -, -
+Punishment, countermeasure, Countermeasures to be applied if punishment is notorious, String, 1, -, -, -
+TrustLevelAgreement, identifier, ID associated with a specific TLA, String, 1, - , - , -
+TrustLevelAgreement, consumerID, Identifier of the Network Service Consumer, String, 1, - , - , -
+TrustLevelAgreement, providerID, Identifier of the Network Service Provider, String, 1, -, -, -
+TrustLevelAgreement, requirements, User's requirements related with trustworthiness, String, 1, - , - , -
+TrustLevelAgreement, violationDescription, Information about actions to carry out in case of finishing the TLA, String, 1, - , - , -
+TrustLevelAgreement, penalties, Actions to be applied if violationDescription is triggered at business level, String, 1, - , - , -
+Asset, identifier, ID associated with a specific asset of the system, String, 1, -, -, -
+Asset, type, Expresses if the asset is related to trustworthiness-location-performance-etc., String, 1, -, -, -
+Resource, capacity, Performance-Computational-Storage capabilities of the resource linked TMForum, String, 1, - , - , -
+Resource, endpoint, Address in which the resource is available, String, 1, - , - , -
+Service, capacity, Performance-Computational-Storage capabilities of the service linked TMForum, String, 1, - , - , -
+Service, endpoint, Address in which the service is available, String, 1, - , - , -
+Subservice, identifier, ID associated with a specific subservice of a service of the system, String, 1, -, -, -
+Subservice, parameters, List of parameters that specify the instace to be assured (i.e. deviceId-interfaceID...), String, 1, -, -, -
+Subservice, metrics, List of information retrieved from the Subservice, String, 1, -, -, -
+Subservice, operations, List of operations to apply to the metrics in order to infer a health status, String, 1, -, -, -
+AccessRule, identifier, ID associated to a specific access rule of the system, String, 1, -, -, -
+AccessRule, condition, Specific requirement to be met by the user affected by this access rule, String, 1, -, -, -
+Permission, identifier, ID associated to a permision of the system, String, 1, -, -, -
+Permission, expiration, Expiration date in which the permission will be revoked, date, 1, -, -, -
+Symptom, identifier, ID associated to a specific symptom that has a system asset, String, 1, -, -, -
+Symptom, description, Generic information about a symptom, String, 1, -, -, -
+HealthStatus, currentStatus, Description of the status of the Service/Subservice, String, 1, -, -, -
+HealthStatus, identifier, ID associated to a Health Status that has a Service or Subservice of the system, String, 1, -, -, -
+HealthStatus, connectionStatus, Status of the connection that has a Service or Subservice of the system, String, 1, -, -, -
+HealthScore, value, An integer ranging from 0 to 100 that indicates the health of a Service/Subservice. A score of 0 means that is broken. A score of 100 means that is operating as expected. A special value -1 can be used to specify that no value could be computed., Integer, 1, -, -, -

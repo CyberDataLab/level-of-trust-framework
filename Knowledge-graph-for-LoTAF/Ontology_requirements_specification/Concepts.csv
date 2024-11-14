@@ -1,0 +1,34 @@
+Concept, Other names, Description
+Role, n/a, Principal function of a user in the system
+Membership, n/a, Relationship in terms of affiliation or activity to something
+Organization, n/a, Company to which a user belongs
+Person, n/a, Class to identity a tangible or non-tangible stuff
+User, n/a, Person in charge of requesting or addressing trust requirements
+NetworkAdministrator, n/a, Person in charge of monitoring its network and services as a whole. 
+CapabilityOperator, n/a, Person in charge of managing the access to the network service assets.
+Intent, n/a, Particular capabilities to be requested to a system
+NetworkService, n/a, Offer registered in the system to cover on-demand users' requests
+NetworkStatus, n/a, Current status of a Network Service
+Cloud, n/a, Service or resource capabilities related to processing-computation-storage-infrastructure-among others- deployed at Cloud domain
+Edge, n/a, Service or resource capabilities related to processing-computation-storage-infrastructure-among others- deployed at Edge domain
+FarEdge, n/a, Service or resource capabilities related to processing-computation-storage-infrastructure-among others- deployed at FarEdge domain
+CloudContinuum, n/a, Service or resource capabilities related to processing-computation-storage-infrastructure-among others- deployed at Cloud Continuum domain
+CloudEdgeContinuum, n/a, Service or resource capabilities related to processing-computation-storage-infrastructure-among others- deployed at Cloud-Edge Continuum domain
+Asset, n/a, Hardware or software component/functionality deployed at a given domain
+AssetServer, n/a,  Entity hosting the protected asset
+LevelOfTrust, n/a, Score leveraged to measure trustworthiness
+Indicators, n/a, Type of metrics to be monitored during an E2E relationship
+ObjectiveIndicators, n/a, Quantitative parameters measured to compute a Level of Trust
+SubjectiveIndicators, n/a, Qualitative parameters measured to compute a Level of Trust
+Reward, n/a, Increase over the trust value if the supplier performs well within the agreed terms
+Punishment, n/a, Decrease over the trust value if the supplier does not performs well within the agreed terms.
+TrustLevelAgreement, n/a, Legal conditions in terms of trust-related performance metrics to be fulfilled
+Infrastructure, n/a, Set of Network Services
+HealthStatus, n/a, The score and  symptoms indicating wheter a service instance or a subservice is healthy
+HealthScore, n/a, An integer that indicates the health of a subservice
+Subservice, n/a, A part or functionality of the network system that can be independently assured as a single entity in an assurance graph
+AccessRule, n/a, A set of conditions for a user to meet in order to access an asset.
+Permission, n/a, Token given to a user that grants access to an specific asset.
+Symptom, n/a, Reason explaining why a service or a subservice is not completely healthy.
+Resource, n/a, Physical or virtual capability of a network service
+Service, n/a, Software application hosted inside a network service

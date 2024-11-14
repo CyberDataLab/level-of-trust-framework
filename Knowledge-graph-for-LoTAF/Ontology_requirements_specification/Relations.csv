@@ -1,0 +1,43 @@
+AssetConcept, Relation, Description, Target Object, Max Cardinality, Standards
+Membership, role, Affiliation is usually linked to a role, Role, *, -
+Membership, member, Business Association with an organization, Person, *, -
+Membership, organization, Linked with a enterprise, Organization, 1, -
+User, subTypeOf, Sub-classe of Person, Person, 1, -
+User, manages, Person in charge of writing or addressing an intent, Intent, *, -
+Intent, hasAgreement, An intent must fulfill specific condition, TrustLevelAgreement, 1, -
+Intent, hasService, An intent is composed by a network service(s), NetworkService, 1, -
+NetworkService, hasStatus, It may have different network status at different points in time, NetworkStatus, 1, -
+NetworkService, hasLoT, An Network Service has a level of trust depending on its behavior, LevelOfTrust, 1, -
+Cloud, offer, Cloud network segment may support different resource and services, Asset, *, -
+Cloud, subTypeOf, Sub-classe of Network Service, NetworkService, 1, -
+Edge, offer, Cloud network segment may support different resource and services, Asset, *, -
+Edge, subTypeOf, Sub-classe of Network Service, NetworkService, 1, -
+FarEdge, offer, Cloud network segment may support different resource and services, Asset, *, -
+FarEdge, subTypeOf, Sub-classe of Network Service, NetworkService, 1, -
+CloudContinuum, offer, Cloud network segment may support different resource and services, Asset, *, -
+CloudContinuum, subTypeOf, Sub-classe of Network Service, NetworkService, 1, -
+CloudEdgeContinuum, offer, Cloud network segment may support different resource and services, Asset, *, -
+CloudEdgeContinuum, subTypeOf, Sub-classe of Network Service, NetworkService, 1, -
+LevelOfTrust, punishment, Mechanism to decrease an initial LoT in real time, Punishment, *, -
+LevelOfTrust, rewards, Mechanism to enhance an initial LoT in real time, Reward, *, -
+LevelOfTrust, gathers, Parameters to be monitored during whole relationship, Indicators, *, -
+ObjectiveIndicators, subTypeOf, Sub-classe of Indicators, Indicators, 1, -
+SubjectiveIndicators, subTypeOf, Sub-classe of Indicators, Indicators, 1, -
+TrustLevelAgreement, issue, Deviation in the TLA may entail punishments, Punishment, *, -
+TrustLevelAgreement, hasLoT, TLAs has a level of trust to check the signed requirements, LevelOfTrust, 1, -
+CapabilityOperator, defines, The capability operator manages the access to its own assets defining access rules to them, AccessRule, *, -
+NetworkAdministrator, subTypeOf, Sub-classe of User, User, 1, -
+NetworkAdministrator, monitors/owns, Network administrators must be connected to the network service they monitor/own, NetworkService, *, -
+AccessRule, grants, An access rule gives or not the permission to perform a CRUD operation to an asset, Permission, 1, -
+Permission, access, With the given permission you have access to a certain asset, Asset, 1, -
+Asset, contains, It has a level of trust based on its performance, LevelOfTrust, 1, -
+Asset, has, Asset has a list of Symptomthat determine its health status, Symptom, *, -
+AssetServer, subTypeOf, Sub-classe of Asset, Asset, 1, -
+HealthStatus, has, Depending on the symptoms a health status has its value determined, Symptom, *, -
+Resource, subTypeOf, Sub-classe of Asset, Asset, 1, -
+Service, subTypeOf, Sub-classe of Asset, Asset, 1, -
+Service, contains, A service is divided into different subservices, Subservice, *, -
+Service, has, Services have a Health Status indicating if they are healthy, HealthStatus, 1, -
+Infrastructure, subTypeOf, Sub-classe of Resource, Resource, 1, -
+Subservice, has, Subservices have a Health Status indicating if they are healthy, HealthStatus, 1, -
+HealthStatus, hasHS, Health Status has a score that determine how healthy it is (its actual status value), HealthScore, 1, -
