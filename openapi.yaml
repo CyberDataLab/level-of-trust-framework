@@ -11,7 +11,7 @@ paths:
   /trust_management_LoTAF:
     get:
       tags:
-        - monitoring
+        - Intent Assruance
       summary: Get trust scores
       description: Retrieve trust scores from the available computation nodes
       operationId: get_trust_scores_trust_management_LoTAF_get
