@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 import uvicorn
 from neo4j import GraphDatabase
 import os
@@ -56,55 +57,66 @@ driver = GraphDatabase.driver(NEO4J_URI, auth=(USERNAME, PASSWORD))
 
 @app.get("/delete_config")
 def delete_config():
-    with driver.session() as session:
-        query = """
-                    DROP CONSTRAINT n10s_unique_uri IF EXISTS
-                """
-        session.execute_write(lambda tx: tx.run(query))
+    try:
+        with driver.session() as session:
+            query = """
+                        DROP CONSTRAINT n10s_unique_uri IF EXISTS
+                    """
+            session.execute_write(lambda tx: tx.run(query))
+        
+        with driver.session() as session:
+            query = """
+                        MATCH (config:_GraphConfig) DETACH DELETE config
+                    """
+            session.execute_write(lambda tx: tx.run(query))
+
+        with driver.session() as session:
+            query = """
+                        MATCH (n:_NsPrefDef) DETACH DELETE n
+                    """
+            session.execute_write(lambda tx: tx.run(query))
+        return JSONResponse(content={"message": "Configuration deleted successfully"}, status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"message": f"An error occurred: {str(e)}"}, status_code=500)
     
-    with driver.session() as session:
-        query = """
-                    MATCH (config:_GraphConfig) DETACH DELETE config
-                """
-        session.execute_write(lambda tx: tx.run(query))
 
-    with driver.session() as session:
-        query = """
-                    MATCH (n:_NsPrefDef) DETACH DELETE n
-                """
-        session.execute_write(lambda tx: tx.run(query))
-
-@app.get("/remove_graph")    
 def remove_graph():
-    with driver.session() as session:
-        query = """
-                    MATCH (n) DETACH DELETE n
-                """
-        session.execute_write(lambda tx: tx.run(query))
+    try:
+        with driver.session() as session:
+            query = """
+                        MATCH (n) DETACH DELETE n
+                    """
+            session.execute_write(lambda tx: tx.run(query))
+
+        return JSONResponse(content={"message": "Graph removed successfully."}, status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"message": f"An error occurred: {str(e)}"}, status_code=500)
 
 @app.get("/start_config")        
 def start_config():
-    with driver.session() as session:
-        # Create a unique constraint on URI
-        query = """
-                CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource) REQUIRE r.uri IS UNIQUE
-                """
-        session.execute_write(lambda tx: tx.run(query))
-    
-    with driver.session() as session:
-        # Initialize Neosemantics configuration
-        query_1 = """
-        CALL n10s.graphconfig.init({handleVocabUris: "SHORTEN", handleMultival: "OVERWRITE", handleRDFTypes:"LABELS_AND_NODES"})
-        """
-        session.execute_write(lambda tx: tx.run(query_1))
-
-    #with driver.session() as session:
+    try:
+        with driver.session() as session:
+            # Create a unique constraint on URI
+            query = """
+                    CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource) REQUIRE r.uri IS UNIQUE
+                    """
+            session.execute_write(lambda tx: tx.run(query))
+        
+        with driver.session() as session:
+            # Initialize Neosemantics configuration
+            query_1 = """
+            CALL n10s.graphconfig.init({handleVocabUris: "SHORTEN", handleMultival: "OVERWRITE", handleRDFTypes:"LABELS_AND_NODES"})
+            """
+            session.execute_write(lambda tx: tx.run(query_1))
+        #with driver.session() as session:
         # Add namespace prefix
     #    query_2 = """
     #   CALL n10s.nsprefixes.add('lotaf', 'http://www.owl-ontologies.com/lotaf#')
     #   """
     #   session.execute_write(lambda tx: tx.run(query_2))
-    print("Neo4j configuration completed.")
+        return JSONResponse(content={"message": "Neo4j configuration completed successfully."}, status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"message": f"An error occurred: {str(e)}"}, status_code=500)
 
 @app.get("/load_triplets")
 def load_triplets(file_path: str):
@@ -112,17 +124,19 @@ def load_triplets(file_path: str):
     if os.path.exists(file_path):
         file_path = file_path.replace("\\", "/")
 
-
-        with driver.session() as session:
-            # Import RDF data with neosemantics
-            query = f"""
-                    CALL n10s.rdf.import.fetch("file:///{file_path}", 'RDF/XML')
-                    """
-            # Execute command
-            session.execute_write(lambda tx: tx.run(query))
-            print("Carga de tripletas RDF completada.")
+        try:
+            with driver.session() as session:
+                # Import RDF data with neosemantics
+                query = f"""
+                        CALL n10s.rdf.import.fetch("file:///{file_path}", 'RDF/XML')
+                        """
+                # Execute command
+                session.execute_write(lambda tx: tx.run(query))
+            return JSONResponse(content={"message": "RDF triplets loaded successfully."}, status_code=200)
+        except Exception as e:
+            return JSONResponse(content={"message": f"An error occurred while loading RDF triplets into Neo4j: {str(e)}"}, status_code=500)
     else:
-        print("No existe el fichero")
+        return JSONResponse(content={"message": "File not found at the specified path."}, status_code=404)
 
 switch_commands = {
     1: remove_graph,
