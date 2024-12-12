@@ -115,8 +115,8 @@
             "starTime": "CAMBIALOENELDIAGRAMA",
             "stopTime": "2020-01-01T00:00:00Z",
             "gathers": "i1-i2",
-            "receivesReward": "rw1",
-            "receivesPunish": "pn1"
+            "reward": "rw1",
+            "punishment": "pn1"
         }
     },
     {
@@ -202,18 +202,21 @@
     {
         "Asset": {
             "identifier": "a1",
-            "hasLoT": "lt1",
+            "type": "BORRAR-EN-EL-DIAGRAMA",
+            "contains": "lt1",
             "has": "hs1"
         }
     },
     {
         "AssetServer": {
-            "identifier": "as1"
+            "identifier": "as1",
+            "type": "BORRAR-EN-EL-DIAGRAMA"
         }
     },
     {
         "Resource": {
             "identifier": "rs1",
+            "type": "BORRAR-EN-EL-DIAGRAMA",
             "capacity": "empty",
             "endpoint": "http://localhost:8080"
         }
@@ -221,6 +224,7 @@
     {
         "Infrastructure": {
             "identifier": "is1",
+            "type": "BORRAR-EN-EL-DIAGRAMA",
             "capacity": "empty",
             "endpoint": "http://localhost:8080"
         }
@@ -228,6 +232,7 @@
     {
         "Service": {
             "identifier": "s1",
+            "type": "BORRAR-EN-EL-DIAGRAMA",
             "capacity": "empty",
             "endpoint": "http://localhost:8080",
             "contains": "ss1-ss2",
@@ -254,7 +259,7 @@
             "identifier": "hs1",
             "currentStatus": "good",
             "connectionStatus": "active",
-            "healthScore": 5
+            "healthScore": 0.5
         }
     }
 ]
