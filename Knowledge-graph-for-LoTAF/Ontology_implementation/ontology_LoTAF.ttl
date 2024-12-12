@@ -1,8 +1,10 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix lotaf: <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#> .
+@prefix icm: <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/> .
+@prefix lotaf: <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
 @prefix mod: <https://w3id.org/mod#> .
+@prefix odrl: <http://www.owl-ontologies.com/odrl#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -16,23 +18,39 @@ dc:creator a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
 
+dct:description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    rdfs:domain lotaf:AdministrativeDomain,
+        lotaf:NetworkService,
+        lotaf:Symptom .
+
 dct:identifier a owl:DatatypeProperty ;
     rdfs:label "identifier" ;
-    rdfs:domain org:Organization,
-        lotaf:Cloud,
-        lotaf:CloudContinuum,
-        lotaf:CloudEdeContinuum,
-        lotaf:Edge,
-        lotaf:FarEdge,
-        lotaf:Intent,
-        lotaf:LevelOfTrust,
+    rdfs:domain icm:Intent,
+        odrl:Asset,
+        org:Organization,
+        lotaf:AdministrativeDomain,
         lotaf:NetworkService,
-        lotaf:NetworkStatus,
-        lotaf:Punishment,
-        lotaf:ResourceService,
-        lotaf:Reward,
         lotaf:TrustLevelAgreement,
         lotaf:User .
+
+icm:reportGenerated a owl:DatatypeProperty ;
+    rdfs:label "report generated" ;
+    rdfs:domain icm:IntentReport .
+
+icm:reportNumber a owl:DatatypeProperty ;
+    rdfs:label "report number" ;
+    rdfs:domain icm:IntentReport .
+
+odrl:duty a owl:ObjectProperty ;
+    rdfs:label "duty" ;
+    rdfs:domain odrl:Policy ;
+    rdfs:range odrl:Rule .
+
+odrl:target a owl:ObjectProperty ;
+    rdfs:label "target" ;
+    rdfs:domain odrl:Rule ;
+    rdfs:range odrl:Asset .
 
 owl:versionInfo a owl:AnnotationProperty .
 
@@ -66,182 +84,288 @@ lotaf: a owl:Ontology ;
     dc:created "2024-07-11"^^xsd:date ;
     dc:creator "Jose Maria Jorquera Valero" ;
     dc:title "Level of Trust Assessment Ontology for Continuum Computing" ;
-    owl:versionInfo "0.0.1" ;
+    owl:versionInfo "0.0.2" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
 
-<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#Class> a owl:Class ;
-    rdfs:label "Class" .
+lotaf:AllocatingNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
 
-<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#Data> a owl:DatatypeProperty ;
-    rdfs:label "data" .
+lotaf:Availability a owl:NamedIndividual,
+        lotaf:ObjectiveIndicator .
 
-<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#Individual> a owl:NamedIndividual .
+lotaf:CPU a owl:NamedIndividual,
+        lotaf:SymptomType .
 
-<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#LoTAF> a owl:Class ;
-    rdfs:label "Lo T A F" .
+lotaf:Cloud a owl:NamedIndividual,
+        lotaf:NetworkServiceType .
 
-<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#ObjectProperty> a owl:ObjectProperty ;
-    rdfs:label "object property" .
+lotaf:CloudContinuum a owl:NamedIndividual,
+        lotaf:NetworkServiceType .
 
-<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#ReusedClass> a owl:Class ;
-    rdfs:label "Reused Class" .
+lotaf:CloudEdgeContinuum a owl:NamedIndividual,
+        lotaf:NetworkServiceType .
 
-<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II#subClassOf> a owl:ObjectProperty ;
-    rdfs:label "sub class of" .
+lotaf:Credibility a owl:NamedIndividual,
+        lotaf:SubjectiveIndicator .
 
-lotaf:actions a owl:DatatypeProperty ;
-    rdfs:label "actions" ;
-    rdfs:domain lotaf:Punishment,
-        lotaf:Reward .
+lotaf:CustomerNotificationAction a owl:NamedIndividual,
+        lotaf:PunishmentAction .
 
-lotaf:availability a owl:DatatypeProperty ;
-    rdfs:label "availability" ;
-    rdfs:domain lotaf:ObjetiveIndicators .
+lotaf:DeployingNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:DigitalServiceCustomer a owl:NamedIndividual,
+        lotaf:DigitalServiceEntity .
+
+lotaf:DigitalServiceProvider a owl:NamedIndividual,
+        lotaf:DigitalServiceEntity .
+
+lotaf:Edge a owl:NamedIndividual,
+        lotaf:NetworkServiceType .
+
+lotaf:EndingTrustAgreementAction a owl:NamedIndividual,
+        lotaf:PunishmentAction .
+
+lotaf:EvaluatingOtherAssesstsAction a owl:NamedIndividual,
+        lotaf:PunishmentAction .
+
+lotaf:FarEdge a owl:NamedIndividual,
+        lotaf:NetworkServiceType .
+
+lotaf:Feedback a owl:NamedIndividual,
+        lotaf:SubjectiveIndicator .
+
+lotaf:FinishedNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:HealthyNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:InactiveNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:Infrastructure a owl:NamedIndividual,
+        lotaf:AssetType .
+
+lotaf:InitializingNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:MaintainingNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:Memory a owl:NamedIndividual,
+        lotaf:SymptomType .
+
+lotaf:MigratingNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:Networking a owl:NamedIndividual,
+        lotaf:SymptomType .
+
+lotaf:OverloadNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:PausedNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:Processes a owl:NamedIndividual,
+        lotaf:SymptomType .
+
+lotaf:ProviderNotificationAction a owl:NamedIndividual,
+        lotaf:PunishmentAction .
+
+lotaf:Reliability a owl:NamedIndividual,
+        lotaf:ObjectiveIndicator .
+
+lotaf:Resource a owl:NamedIndividual,
+        lotaf:AssetType .
+
+lotaf:RunningNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:Scalability a owl:NamedIndividual,
+        lotaf:ObjectiveIndicator .
+
+lotaf:ScalingNetworkService a owl:NamedIndividual,
+        lotaf:NetworkServiceStatus .
+
+lotaf:Service a owl:NamedIndividual,
+        lotaf:AssetType .
+
+lotaf:Stability a owl:NamedIndividual,
+        lotaf:ObjectiveIndicator .
+
+lotaf:Subservice a owl:NamedIndividual,
+        lotaf:AssetType .
+
+lotaf:VPP a owl:NamedIndividual,
+        lotaf:SymptomType .
+
+lotaf:VirtualMachines a owl:NamedIndividual,
+        lotaf:SymptomType .
+
+lotaf:applies a owl:ObjectProperty ;
+    rdfs:label "applies" ;
+    rdfs:domain lotaf:LevelOfTrust ;
+    rdfs:range lotaf:Reward .
+
+lotaf:assetType a owl:ObjectProperty ;
+    rdfs:label "asset type" ;
+    rdfs:domain odrl:Asset ;
+    rdfs:range lotaf:AssetType .
+
+lotaf:belongsTo a owl:ObjectProperty ;
+    rdfs:label "belongs to" ;
+    rdfs:domain lotaf:Symptom,
+        lotaf:User ;
+    rdfs:range lotaf:AdministrativeDomain,
+        lotaf:ObjectiveIndicator .
 
 lotaf:capacity a owl:DatatypeProperty ;
     rdfs:label "capacity" ;
-    rdfs:domain lotaf:ResourceService .
+    rdfs:domain odrl:Asset .
+
+lotaf:characteristics a owl:DatatypeProperty ;
+    rdfs:label "characteristics" ;
+    rdfs:domain lotaf:NetworkService .
+
+lotaf:composedBy a owl:ObjectProperty ;
+    rdfs:label "composed by" ;
+    rdfs:domain lotaf:NetworkService ;
+    rdfs:range odrl:Asset .
 
 lotaf:connectionStatus a owl:DatatypeProperty ;
     rdfs:label "connection status" ;
-    rdfs:domain lotaf:NetworkStatus .
+    rdfs:domain lotaf:Health .
 
-lotaf:consumerID a owl:DatatypeProperty ;
-    rdfs:label "consumer i d" ;
-    rdfs:domain lotaf:TrustLevelAgreement .
+lotaf:constraint a owl:DatatypeProperty ;
+    rdfs:label "constraint" ;
+    rdfs:domain odrl:Rule .
 
 lotaf:contains a owl:ObjectProperty ;
     rdfs:label "contains" ;
-    rdfs:domain lotaf:ResourceService ;
+    rdfs:domain icm:Intent,
+        lotaf:TrustLevelAgreement ;
+    rdfs:range icm:IntentReport,
+        lotaf:LevelOfTrust .
+
+lotaf:customerID a owl:DatatypeProperty ;
+    rdfs:label "customer i d" ;
+    rdfs:domain lotaf:TrustLevelAgreement .
+
+lotaf:delivers a owl:ObjectProperty ;
+    rdfs:label "delivers" ;
+    rdfs:domain lotaf:NetworkService ;
     rdfs:range lotaf:LevelOfTrust .
 
-lotaf:countermeasures a owl:DatatypeProperty ;
-    rdfs:label "countermeasures" ;
-    rdfs:domain lotaf:Punishment .
-
-lotaf:credibility a owl:DatatypeProperty ;
-    rdfs:label "credibility" ;
-    rdfs:domain lotaf:SubjectiveIndicator .
-
-lotaf:description a owl:DatatypeProperty ;
-    rdfs:label "description" ;
-    rdfs:domain lotaf:Cloud,
-        lotaf:CloudContinuum,
-        lotaf:CloudEdeContinuum,
-        lotaf:Edge,
-        lotaf:FarEdge .
+lotaf:deploys a owl:ObjectProperty ;
+    rdfs:label "deploys" ;
+    rdfs:domain icm:Intent ;
+    rdfs:range lotaf:NetworkService .
 
 lotaf:endpoint a owl:DatatypeProperty ;
     rdfs:label "endpoint" ;
-    rdfs:domain lotaf:ResourceService .
+    rdfs:domain odrl:Asset .
 
-lotaf:feedback a owl:DatatypeProperty ;
-    rdfs:label "feedback" ;
-    rdfs:domain lotaf:SubjectiveIndicator .
+lotaf:enforces a owl:ObjectProperty ;
+    rdfs:label "enforces" ;
+    rdfs:domain lotaf:LevelOfTrust ;
+    rdfs:range lotaf:Punishment .
+
+lotaf:entityType a owl:ObjectProperty ;
+    rdfs:label "entity type" ;
+    rdfs:domain lotaf:DigitalServiceEntity ;
+    rdfs:range lotaf:User .
+
+lotaf:evaluates a owl:ObjectProperty ;
+    rdfs:label "evaluates" ;
+    rdfs:domain lotaf:Health ;
+    rdfs:range lotaf:Symptom .
+
+lotaf:exposes a owl:ObjectProperty ;
+    rdfs:label "exposes" ;
+    rdfs:domain odrl:Asset ;
+    rdfs:range lotaf:Health .
+
+lotaf:follows a owl:ObjectProperty ;
+    rdfs:label "follows" ;
+    rdfs:domain org:Role ;
+    rdfs:range odrl:Policy .
+
+lotaf:fulfills a owl:ObjectProperty ;
+    rdfs:label "fulfills" ;
+    rdfs:domain odrl:Asset ;
+    rdfs:range lotaf:LevelOfTrust .
 
 lotaf:gathers a owl:ObjectProperty ;
     rdfs:label "gathers" ;
     rdfs:domain lotaf:LevelOfTrust ;
-    rdfs:range lotaf:Indicators .
+    rdfs:range lotaf:Indicator .
 
-lotaf:hasAgreement a owl:ObjectProperty ;
-    rdfs:label "has agreement" ;
-    rdfs:domain lotaf:Intent ;
+lotaf:guaranteedBy a owl:ObjectProperty ;
+    rdfs:label "guaranteed by" ;
+    rdfs:domain icm:Intent ;
     rdfs:range lotaf:TrustLevelAgreement .
 
-lotaf:hasLoT a owl:ObjectProperty ;
-    rdfs:label "has lo t" ;
-    rdfs:domain lotaf:NetworkService,
-        lotaf:TrustLevelAgreement ;
+lotaf:healthScore a owl:DatatypeProperty ;
+    rdfs:label "health score" ;
+    rdfs:domain lotaf:Health .
+
+lotaf:informs a owl:ObjectProperty ;
+    rdfs:label "informs" ;
+    rdfs:domain icm:IntentReport ;
     rdfs:range lotaf:LevelOfTrust .
-
-lotaf:hasService a owl:ObjectProperty ;
-    rdfs:label "has service" ;
-    rdfs:domain lotaf:Intent ;
-    rdfs:range lotaf:NetworkService .
-
-lotaf:hasStatus a owl:ObjectProperty ;
-    rdfs:label "has status" ;
-    rdfs:domain lotaf:NetworkService ;
-    rdfs:range lotaf:NetworkStatus .
-
-lotaf:issue a owl:ObjectProperty ;
-    rdfs:label "issue" ;
-    rdfs:domain lotaf:TrustLevelAgreement ;
-    rdfs:range lotaf:Punishment .
 
 lotaf:lot a owl:DatatypeProperty ;
     rdfs:label "lot" ;
-    rdfs:domain lotaf:LevelOfTrust,
-        lotaf:NetworkService .
+    rdfs:domain lotaf:LevelOfTrust .
 
 lotaf:manages a owl:ObjectProperty ;
     rdfs:label "manages" ;
     rdfs:domain lotaf:User ;
-    rdfs:range lotaf:Intent .
+    rdfs:range icm:Intent .
 
-lotaf:offer a owl:ObjectProperty ;
-    rdfs:label "offer" ;
-    rdfs:domain lotaf:Cloud,
-        lotaf:CloudContinuum,
-        lotaf:CloudEdeContinuum,
-        lotaf:Edge,
-        lotaf:FarEdge ;
-    rdfs:range lotaf:ResourceService .
+lotaf:monitors a owl:ObjectProperty ;
+    rdfs:label "monitors" ;
+    rdfs:domain lotaf:AdministrativeDomain ;
+    rdfs:range lotaf:NetworkService .
 
-lotaf:penalties a owl:DatatypeProperty ;
-    rdfs:label "penalties" ;
-    rdfs:domain lotaf:TrustLevelAgreement .
+lotaf:networServiceType a owl:ObjectProperty ;
+    rdfs:label "networ service type" ;
+    rdfs:domain lotaf:NetworkServiceType ;
+    rdfs:range lotaf:NetworkService .
 
-lotaf:properties a owl:DatatypeProperty ;
-    rdfs:label "properties" ;
-    rdfs:domain lotaf:Cloud,
-        lotaf:CloudContinuum,
-        lotaf:CloudEdeContinuum,
-        lotaf:Edge,
-        lotaf:FarEdge .
+lotaf:networkStatus a owl:ObjectProperty ;
+    rdfs:label "network status" ;
+    rdfs:domain lotaf:NetworkService ;
+    rdfs:range lotaf:NetworkServiceStatus .
+
+lotaf:owner a owl:ObjectProperty ;
+    rdfs:label "owner" ;
+    rdfs:domain lotaf:AdministrativeDomain ;
+    rdfs:range org:Organization .
 
 lotaf:providerID a owl:DatatypeProperty ;
     rdfs:label "provider i d" ;
     rdfs:domain lotaf:TrustLevelAgreement .
 
-lotaf:punishment a owl:ObjectProperty ;
-    rdfs:label "punishment" ;
-    rdfs:domain lotaf:LevelOfTrust ;
-    rdfs:range lotaf:Punishment .
-
-lotaf:qos a owl:DatatypeProperty ;
-    rdfs:label "qos" ;
-    rdfs:domain lotaf:NetworkStatus .
-
-lotaf:reliability a owl:DatatypeProperty ;
-    rdfs:label "reliability" ;
-    rdfs:domain lotaf:ObjetiveIndicators .
+lotaf:punishmentAction a owl:ObjectProperty ;
+    rdfs:label "punishment action" ;
+    rdfs:domain lotaf:Punishment ;
+    rdfs:range lotaf:PunishmentAction .
 
 lotaf:request a owl:DatatypeProperty ;
     rdfs:label "request" ;
-    rdfs:domain lotaf:User .
+    rdfs:domain odrl:Policy,
+        lotaf:User .
 
-lotaf:requirements a owl:DatatypeProperty ;
-    rdfs:label "requirements" ;
+lotaf:requirement a owl:DatatypeProperty ;
+    rdfs:label "requirement" ;
     rdfs:domain lotaf:TrustLevelAgreement .
-
-lotaf:reward a owl:ObjectProperty ;
-    rdfs:label "reward" ;
-    rdfs:domain lotaf:LevelOfTrust ;
-    rdfs:range lotaf:Reward .
-
-lotaf:scalability a owl:DatatypeProperty ;
-    rdfs:label "scalability" ;
-    rdfs:domain lotaf:ObjetiveIndicators .
 
 lotaf:scope a owl:DatatypeProperty ;
     rdfs:label "scope" ;
-    rdfs:domain lotaf:NetworkService .
-
-lotaf:stability a owl:DatatypeProperty ;
-    rdfs:label "stability" ;
-    rdfs:domain lotaf:ObjetiveIndicators .
+    rdfs:domain icm:Intent .
 
 lotaf:starTime a owl:DatatypeProperty ;
     rdfs:label "star time" ;
@@ -251,13 +375,10 @@ lotaf:stopTime a owl:DatatypeProperty ;
     rdfs:label "stop time" ;
     rdfs:domain lotaf:LevelOfTrust .
 
-lotaf:target a owl:DatatypeProperty ;
-    rdfs:label "target" ;
-    rdfs:domain lotaf:Intent .
-
-lotaf:tlaID a owl:DatatypeProperty ;
-    rdfs:label "tla i d" ;
-    rdfs:domain lotaf:LevelOfTrust .
+lotaf:symptomType a owl:ObjectProperty ;
+    rdfs:label "symptom type" ;
+    rdfs:domain lotaf:Symptom ;
+    rdfs:range lotaf:SymptomType .
 
 lotaf:trustee a owl:DatatypeProperty ;
     rdfs:label "trustee" ;
@@ -267,88 +388,101 @@ lotaf:trustor a owl:DatatypeProperty ;
     rdfs:label "trustor" ;
     rdfs:domain lotaf:LevelOfTrust .
 
-lotaf:type a owl:DatatypeProperty ;
-    rdfs:label "type" ;
-    rdfs:domain lotaf:Intent,
-        lotaf:ResourceService .
-
 lotaf:value a owl:DatatypeProperty ;
     rdfs:label "value" ;
-    rdfs:domain lotaf:Punishment,
+    rdfs:domain lotaf:Indicator,
+        lotaf:Punishment,
         lotaf:Reward .
 
 lotaf:violationDescription a owl:DatatypeProperty ;
     rdfs:label "violation description" ;
     rdfs:domain lotaf:TrustLevelAgreement .
 
+lotaf:weightingFactor a owl:DatatypeProperty ;
+    rdfs:label "weighting factor" ;
+    rdfs:domain lotaf:Indicator .
+
 org:Role a owl:Class ;
     rdfs:label "Role" .
 
-org:Organization a owl:Class ;
-    rdfs:label "Organization" .
+lotaf:Reward a owl:Class ;
+    rdfs:label "Reward" .
 
 lotaf:SubjectiveIndicator a owl:Class ;
     rdfs:label "Subjective Indicator" ;
-    rdfs:subClassOf lotaf:Indicators .
+    rdfs:subClassOf lotaf:Indicator .
+
+odrl:Policy a owl:Class ;
+    rdfs:label "Policy" .
+
+odrl:Rule a owl:Class ;
+    rdfs:label "Rule" .
 
 org:Membership a owl:Class ;
     rdfs:label "Membership" .
 
-lotaf:Indicators a owl:Class ;
-    rdfs:label "Indicators" .
+org:Organization a owl:Class ;
+    rdfs:label "Organization" .
+
+lotaf:DigitalServiceEntity a owl:Class ;
+    rdfs:label "Digital Service Entity" .
+
+lotaf:Punishment a owl:Class ;
+    rdfs:label "Punishment" .
+
+icm:IntentReport a owl:Class ;
+    rdfs:label "Intent Report" .
+
+foaf:Person a owl:Class ;
+    rdfs:label "Person" .
+
+lotaf:Health a owl:Class ;
+    rdfs:label "Health" .
+
+lotaf:Symptom a owl:Class ;
+    rdfs:label "Symptom" .
+
+lotaf:AdministrativeDomain a owl:Class ;
+    rdfs:label "Administrative Domain" .
+
+lotaf:AssetType a owl:Class ;
+    rdfs:label "Asset Type" .
+
+lotaf:Indicator a owl:Class ;
+    rdfs:label "Indicator" .
+
+lotaf:ObjectiveIndicator a owl:Class ;
+    rdfs:label "Objective Indicator" ;
+    rdfs:subClassOf lotaf:Indicator .
+
+lotaf:PunishmentAction a owl:Class ;
+    rdfs:label "Punishment Action" .
 
 lotaf:User a owl:Class ;
     rdfs:label "User" ;
     rdfs:subClassOf foaf:Person .
 
-foaf:Person a owl:Class ;
-    rdfs:label "Person" .
-
-lotaf:Cloud a owl:Class ;
-    rdfs:label "Cloud" ;
-    rdfs:subClassOf lotaf:NetworkService .
-
-lotaf:CloudContinuum a owl:Class ;
-    rdfs:label "Cloud Continuum" ;
-    rdfs:subClassOf lotaf:NetworkService .
-
-lotaf:CloudEdeContinuum a owl:Class ;
-    rdfs:label "Cloud Ede Continuum" ;
-    rdfs:subClassOf lotaf:NetworkService .
-
-lotaf:Edge a owl:Class ;
-    rdfs:label "Edge" ;
-    rdfs:subClassOf lotaf:NetworkService .
-
-lotaf:FarEdge a owl:Class ;
-    rdfs:label "Far Edge" ;
-    rdfs:subClassOf lotaf:NetworkService .
-
-lotaf:NetworkStatus a owl:Class ;
-    rdfs:label "Network Status" .
-
-lotaf:ObjetiveIndicators a owl:Class ;
-    rdfs:label "Objetive Indicators" ;
-    rdfs:subClassOf lotaf:Indicators .
-
-lotaf:Reward a owl:Class ;
-    rdfs:label "Reward" .
-
-lotaf:Intent a owl:Class ;
+icm:Intent a owl:Class ;
     rdfs:label "Intent" .
 
-lotaf:Punishment a owl:Class ;
-    rdfs:label "Punishment" .
+lotaf:NetworkServiceType a owl:Class ;
+    rdfs:label "Network Service Type" .
 
-lotaf:ResourceService a owl:Class ;
-    rdfs:label "Resource Service" .
+lotaf:SymptomType a owl:Class ;
+    rdfs:label "Symptom Type" .
 
 lotaf:TrustLevelAgreement a owl:Class ;
     rdfs:label "Trust Level Agreement" .
+
+odrl:Asset a owl:Class ;
+    rdfs:label "Asset" .
 
 lotaf:NetworkService a owl:Class ;
     rdfs:label "Network Service" .
 
 lotaf:LevelOfTrust a owl:Class ;
     rdfs:label "Level Of Trust" .
+
+lotaf:NetworkServiceStatus a owl:Class ;
+    rdfs:label "Network Service Status" .
 
