@@ -216,10 +216,8 @@ lotaf:assetType a owl:ObjectProperty ;
 
 lotaf:belongsTo a owl:ObjectProperty ;
     rdfs:label "belongs to" ;
-    rdfs:domain lotaf:Symptom,
-        lotaf:User ;
-    rdfs:range lotaf:AdministrativeDomain,
-        lotaf:ObjectiveIndicator .
+    rdfs:domain lotaf:User ;
+    rdfs:range lotaf:AdministrativeDomain .
 
 lotaf:capacity a owl:DatatypeProperty ;
     rdfs:label "capacity" ;
@@ -244,10 +242,8 @@ lotaf:constraint a owl:DatatypeProperty ;
 
 lotaf:contains a owl:ObjectProperty ;
     rdfs:label "contains" ;
-    rdfs:domain icm:Intent,
-        lotaf:TrustLevelAgreement ;
-    rdfs:range icm:IntentReport,
-        lotaf:LevelOfTrust .
+    rdfs:domain icm:Intent ;
+    rdfs:range icm:IntentReport .
 
 lotaf:customerID a owl:DatatypeProperty ;
     rdfs:label "customer i d" ;
@@ -311,6 +307,11 @@ lotaf:healthScore a owl:DatatypeProperty ;
     rdfs:label "health score" ;
     rdfs:domain lotaf:Health .
 
+lotaf:includes a owl:ObjectProperty ;
+    rdfs:label "includes" ;
+    rdfs:domain lotaf:TrustLevelAgreement ;
+    rdfs:range lotaf:LevelOfTrust .
+
 lotaf:informs a owl:ObjectProperty ;
     rdfs:label "informs" ;
     rdfs:domain icm:IntentReport ;
@@ -344,6 +345,11 @@ lotaf:owner a owl:ObjectProperty ;
     rdfs:label "owner" ;
     rdfs:domain lotaf:AdministrativeDomain ;
     rdfs:range org:Organization .
+
+lotaf:pertains a owl:ObjectProperty ;
+    rdfs:label "pertains" ;
+    rdfs:domain lotaf:Symptom ;
+    rdfs:range lotaf:ObjectiveIndicator .
 
 lotaf:providerID a owl:DatatypeProperty ;
     rdfs:label "provider i d" ;
@@ -485,4 +491,3 @@ lotaf:LevelOfTrust a owl:Class ;
 
 lotaf:NetworkServiceStatus a owl:Class ;
     rdfs:label "Network Service Status" .
-
