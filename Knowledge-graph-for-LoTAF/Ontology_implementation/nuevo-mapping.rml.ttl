@@ -490,6 +490,10 @@
         rr:class lotaf:Rule
     ] ;
     rr:predicateObjectMap [
+        rr:predicate lotaf:target ;
+        rr:objectMap [ rml:reference "target" ] ;
+    ] .
+    rr:predicateObjectMap [
         rr:predicate dct:constraint ;
         rr:objectMap [ rml:reference "constraint" ] ;
     ] .
