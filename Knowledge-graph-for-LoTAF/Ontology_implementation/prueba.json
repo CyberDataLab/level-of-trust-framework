@@ -19,7 +19,7 @@
     {
         "Role": {
             "identifier": "r1",
-            "follow": "ar1"
+            "follows": "ar1"
         }
     },
     {
@@ -40,7 +40,8 @@
     },
     {
         "Policy": {
-            "request": "req1"
+            "request": "req1",
+            "duty": "rule1"
         }
     },
     {
