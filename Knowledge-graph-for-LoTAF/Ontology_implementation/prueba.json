@@ -19,7 +19,7 @@
     {
         "Role": {
             "identifier": "r1",
-            "follow": "ar1"
+            "follows": "ar1"
         }
     },
     {
@@ -40,12 +40,14 @@
     },
     {
         "Policy": {
-            "request": "req1"
+            "request": "req1",
+            "duty": "rule1"
         }
     },
     {
         "Rule": {
-            "constraint": "const1"
+            "constraint": "const1",
+            "target": "asset1"
         }
     },
     {
