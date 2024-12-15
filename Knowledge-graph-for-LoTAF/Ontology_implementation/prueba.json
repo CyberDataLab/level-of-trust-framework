@@ -45,7 +45,8 @@
     },
     {
         "Rule": {
-            "constraint": "const1"
+            "constraint": "const1",
+            "target": "asset1"
         }
     },
     {
