@@ -97,8 +97,8 @@
         rr:objectMap [ rml:reference "identifier" ] ;
     ] ;
     rr:predicateObjectMap [
-        rr:predicate lotaf:follow ;
-        rr:objectMap [ rml:reference "follow" ] ;
+        rr:predicate lotaf:follows ;
+        rr:objectMap [ rml:reference "follows" ] ;
     ] .
 
 # Mapping for User
@@ -474,6 +474,10 @@
         rr:class lotaf:Policy
     ] ;
     rr:predicateObjectMap [
+        rr:predicate ordl:duty ;
+        rr:objectMap [ rml:reference "duty" ] ;
+    ] ;
+    rr:predicateObjectMap [
         rr:predicate dct:request ;
         rr:objectMap [ rml:reference "request" ] ;
     ] .
@@ -490,7 +494,7 @@
         rr:class lotaf:Rule
     ] ;
     rr:predicateObjectMap [
-        rr:predicate lotaf:target ;
+        rr:predicate ordl:target ;
         rr:objectMap [ rml:reference "target" ] ;
     ] .
     rr:predicateObjectMap [
