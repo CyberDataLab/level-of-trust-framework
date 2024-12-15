@@ -1,0 +1,54 @@
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix lotaf: <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService>
+    rml:logicalSource [
+        rml:source "./map_prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/{identifier}";
+        rr:class lotaf:NetworkService
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:networkServiceType ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/{networkServiceType}"
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:scope ;
+        rr:objectMap [ rml:reference "scope" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:iot ;
+        rr:objectMap [ rml:reference "iot" ] ;
+    ] .
+
+
+# Instances of NetworkServiceType
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/Cloud>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "Cloud" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/Edge>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "Edge" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/FarEdge>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "FarEdge" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/CloudContinuum>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "Cloud Continuum" .
