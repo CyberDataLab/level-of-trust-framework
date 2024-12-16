@@ -9,13 +9,18 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/">
-        <dc:contributor>Alfonso Serrano Gil</dc:contributor>
-        <dc:contributor>Javier Paredes Serrano</dc:contributor>
+        <dc:contributor>Diego R. López</dc:contributor>
+        <dc:contributor>Gregorio Martínez Pérez</dc:contributor>
+        <dc:contributor>Ignacio Dominguez Martinez-Casanueva</dc:contributor>
+        <dc:contributor>Lucía Cabanillas Rodríguez</dc:contributor>
         <dc:contributor>Manuel Gil Pérez</dc:contributor>
-        <dc:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-11</dc:created>
-        <dc:creator>Jose Maria Jorquera Valero</dc:creator>
+        <dc:contributor>Riccardo Nicolicchia</dc:contributor>
+        <dc:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-16</dc:created>
+        <dc:creator>Alfonso Serrano Gil</dc:creator>
+        <dc:creator>Javier Paredes Serrano</dc:creator>
+        <dc:creator>José María Jorquera Valero</dc:creator>
         <dc:title>Level of Trust Assessment Ontology for Continuum Computing</dc:title>
-        <owl:versionInfo>0.0.2</owl:versionInfo>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
         <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
     </owl:Ontology>
     
@@ -187,10 +192,8 @@
 
 
     <owl:ObjectProperty rdf:about="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo">
-        <rdfs:domain rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom"/>
         <rdfs:domain rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User"/>
         <rdfs:range rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain"/>
-        <rdfs:range rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator"/>
         <rdfs:label>belongs to</rdfs:label>
     </owl:ObjectProperty>
     
@@ -212,9 +215,7 @@
 
     <owl:ObjectProperty rdf:about="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains">
         <rdfs:domain rdf:resource="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent"/>
-        <rdfs:domain rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement"/>
         <rdfs:range rdf:resource="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport"/>
-        <rdfs:range rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust"/>
         <rdfs:label>contains</rdfs:label>
     </owl:ObjectProperty>
     
@@ -330,6 +331,17 @@
     
 
 
+    <!-- https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/includes -->
+
+
+    <owl:ObjectProperty rdf:about="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/includes">
+        <rdfs:domain rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement"/>
+        <rdfs:range rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust"/>
+        <rdfs:label>includes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs -->
 
 
@@ -392,6 +404,17 @@
         <rdfs:domain rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/org#Organization"/>
         <rdfs:label>owner</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/pertains -->
+
+
+    <owl:ObjectProperty rdf:about="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/pertains">
+        <rdfs:domain rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom"/>
+        <rdfs:range rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator"/>
+        <rdfs:label>pertains</rdfs:label>
     </owl:ObjectProperty>
     
 

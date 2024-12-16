@@ -204,24 +204,34 @@
   "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://purl.org/dc/elements/1.1/contributor" : [ {
+    "@value" : "Diego R. López"
+  }, {
+    "@value" : "Gregorio Martínez Pérez"
+  }, {
+    "@value" : "Ignacio Dominguez Martinez-Casanueva"
+  }, {
+    "@value" : "Lucía Cabanillas Rodríguez"
+  }, {
+    "@value" : "Manuel Gil Pérez"
+  }, {
+    "@value" : "Riccardo Nicolicchia"
+  } ],
+  "http://purl.org/dc/elements/1.1/created" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2024-12-16"
+  } ],
+  "http://purl.org/dc/elements/1.1/creator" : [ {
     "@value" : "Alfonso Serrano Gil"
   }, {
     "@value" : "Javier Paredes Serrano"
   }, {
-    "@value" : "Manuel Gil Pérez"
-  } ],
-  "http://purl.org/dc/elements/1.1/created" : [ {
-    "@type" : "http://www.w3.org/2001/XMLSchema#date",
-    "@value" : "2024-07-11"
-  } ],
-  "http://purl.org/dc/elements/1.1/creator" : [ {
-    "@value" : "Jose Maria Jorquera Valero"
+    "@value" : "José María Jorquera Valero"
   } ],
   "http://purl.org/dc/elements/1.1/title" : [ {
     "@value" : "Level of Trust Assessment Ontology for Continuum Computing"
   } ],
   "http://www.w3.org/2002/07/owl#versionInfo" : [ {
-    "@value" : "0.0.2"
+    "@value" : "1.0.0"
   } ],
   "https://w3id.org/mod#createdWith" : [ {
     "@id" : "https://chowlk.linkeddata.es/"
@@ -605,8 +615,6 @@
   "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom"
-  }, {
     "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
@@ -614,8 +622,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain"
-  }, {
-    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator"
   } ]
 }, {
   "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/capacity",
@@ -670,16 +676,12 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent"
-  }, {
-    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "contains"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport"
-  }, {
-    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust"
   } ]
 }, {
   "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/customerID",
@@ -829,6 +831,18 @@
     "@value" : "health score"
   } ]
 }, {
+  "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/includes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "includes"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust"
+  } ]
+}, {
   "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
@@ -908,6 +922,18 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/ns/org#Organization"
+  } ]
+}, {
+  "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/pertains",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "pertains"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator"
   } ]
 }, {
   "@id" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/providerID",

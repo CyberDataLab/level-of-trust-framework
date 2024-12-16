@@ -7,13 +7,18 @@
 @base <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
 
 <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> rdf:type owl:Ontology ;
-                                                                                                 <http://purl.org/dc/elements/1.1/contributor> "Alfonso Serrano Gil" ,
-                                                                                                                                               "Javier Paredes Serrano" ,
-                                                                                                                                               "Manuel Gil Pérez" ;
-                                                                                                 <http://purl.org/dc/elements/1.1/created> "2024-07-11"^^xsd:date ;
-                                                                                                 <http://purl.org/dc/elements/1.1/creator> "Jose Maria Jorquera Valero" ;
+                                                                                                 <http://purl.org/dc/elements/1.1/contributor> "Diego R. López" ,
+                                                                                                                                               "Gregorio Martínez Pérez" ,
+                                                                                                                                               "Ignacio Dominguez Martinez-Casanueva" ,
+                                                                                                                                               "Lucía Cabanillas Rodríguez" ,
+                                                                                                                                               "Manuel Gil Pérez" ,
+                                                                                                                                               "Riccardo Nicolicchia" ;
+                                                                                                 <http://purl.org/dc/elements/1.1/created> "2024-12-16"^^xsd:date ;
+                                                                                                 <http://purl.org/dc/elements/1.1/creator> "Alfonso Serrano Gil" ,
+                                                                                                                                           "Javier Paredes Serrano" ,
+                                                                                                                                           "José María Jorquera Valero" ;
                                                                                                  <http://purl.org/dc/elements/1.1/title> "Level of Trust Assessment Ontology for Continuum Computing" ;
-                                                                                                 owl:versionInfo "0.0.2" ;
+                                                                                                 owl:versionInfo "1.0.0" ;
                                                                                                  <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/> .
 
 #################################################################
@@ -107,10 +112,8 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo
 :belongsTo rdf:type owl:ObjectProperty ;
-           rdfs:domain :Symptom ,
-                       :User ;
-           rdfs:range :AdministrativeDomain ,
-                      :ObjectiveIndicator ;
+           rdfs:domain :User ;
+           rdfs:range :AdministrativeDomain ;
            rdfs:label "belongs to" .
 
 
@@ -123,10 +126,8 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains
 :contains rdf:type owl:ObjectProperty ;
-          rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ,
-                      :TrustLevelAgreement ;
-          rdfs:range <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> ,
-                     :LevelOfTrust ;
+          rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ;
+          rdfs:range <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> ;
           rdfs:label "contains" .
 
 
@@ -200,6 +201,13 @@ xsd:date rdf:type rdfs:Datatype .
               rdfs:label "guaranteed by" .
 
 
+###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/includes
+:includes rdf:type owl:ObjectProperty ;
+          rdfs:domain :TrustLevelAgreement ;
+          rdfs:range :LevelOfTrust ;
+          rdfs:label "includes" .
+
+
 ###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs
 :informs rdf:type owl:ObjectProperty ;
          rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> ;
@@ -240,6 +248,13 @@ xsd:date rdf:type rdfs:Datatype .
        rdfs:domain :AdministrativeDomain ;
        rdfs:range <http://www.w3.org/ns/org#Organization> ;
        rdfs:label "owner" .
+
+
+###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/pertains
+:pertains rdf:type owl:ObjectProperty ;
+          rdfs:domain :Symptom ;
+          rdfs:range :ObjectiveIndicator ;
+          rdfs:label "pertains" .
 
 
 ###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction
