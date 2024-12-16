@@ -5,6 +5,6 @@ You can view the latest conceptual model for the Level of Trust Assessment Ontol
 
 In addition, the OWL file that contains our ontology ready to be visualized on ontology editors or knowledge systems can be found [here](https://github.com/CyberDataLab/level-of-trust-framework/blob/main/Knowledge-graph-for-LoTAF/Ontology_implementation/ontology_LoTAF.ttl).
 
-The oficial specification draft of Level of Trust Assessment Ontology for Continuum Computing is available in this [GitHub Page](https://cyberdatalab.github.io/level-of-trust-framework/Knowledge-graph-for-LoTAF/doc/index.html)
+The oficial specification draft of Level of Trust Assessment Ontology for Continuum Computing is available in this [GitHub Page](https://cyberdatalab.github.io/level-of-trust-framework/Knowledge-graph-for-LoTAF/doc/index.html).
 
 ![Ontology](https://github.com/CyberDataLab/level-of-trust-framework/blob/main/Knowledge-graph-for-LoTAF/Ontology_implementation/Images/Ontology_LoTAF.png)
