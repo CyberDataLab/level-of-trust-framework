@@ -1,0 +1,703 @@
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix lotaf: <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix icm: <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/> .
+
+
+
+
+# Mapping for Organization
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Organization"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization/{identifier}";
+        rr:class org:Organization
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] .
+    
+# Mapping for Person
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Person"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person/{givenName}_{lastName}";
+        rr:class foaf:Person
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate foaf:givenName ;
+        rr:objectMap [ rml:reference "givenName" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate foaf:lastName ;
+        rr:objectMap [ rml:reference "lastName" ] ;
+    ] .
+
+# Mapping for Membership
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Membership>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Membership"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Membership/{identifier}";
+        rr:class org:Membership
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate org:member ;
+        rr:objectMap [ rml:reference "member" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate org:role ;
+        rr:objectMap [ rml:reference "role" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate org:organization ;
+        rr:objectMap [ rml:reference "organization" ] ;
+    ] .
+
+
+# Mapping for Role
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Role>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Role"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Role/{identifier}";
+        rr:class org:Role
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:follows ;
+        rr:objectMap [ rml:reference "follows" ] ;
+    ] .
+
+# Mapping for User
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].User"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User/{identifier}";
+        rr:class lotaf:User
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:manages ;
+        rr:objectMap [ rml:reference "manages" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:subClassOf ;
+        rr:objectMap [ rr:constant lotaf:Person ]
+    ] .
+
+
+
+# Mapping for Reward
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Reward"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward/{value}";
+        rr:class lotaf:value
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:value ;
+        rr:objectMap [ rml:reference "value" ] ;
+    ] .
+
+# Instances of PunishmentAction 
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/CustomerNotificationAction>
+    rdf:type lotaf:PunishmentAction ;
+    rdfs:label "CustomerNotificationAction" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/ProviderNotificationAction>
+    rdf:type lotaf:PunishmentAction ;
+    rdfs:label "ProviderNotificationAction" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/EvaluatingOtherAssesstsAction>
+    rdf:type lotaf:PunishmentAction ;
+    rdfs:label "EvaluatingOtherAssesstsAction" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/EndingTrustAgreementAction>
+    rdf:type lotaf:PunishmentAction ;
+    rdfs:label "EndingTrustAgreementAction" .
+
+# Mapping of Punishment
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Punishment"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/{value}";
+        rr:class lotaf:Punishment
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:value ;
+        rr:objectMap [ rml:reference "value" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:punishmentAction ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/{punishmentAction}"
+        ]
+    ] .
+    
+
+
+
+# Mapping LevelOfTrust
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].LevelOfTrust"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/{trustor}_{trustee}";
+        rr:class lotaf:LevelOfTrust
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:trustor ;
+        rr:objectMap [ rml:reference "trustor" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:trustee ;
+        rr:objectMap [ rml:reference "trustee" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:lot ;
+        rr:objectMap [ rml:reference "lot" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:startTime ;
+        rr:objectMap [ rml:reference "startTime" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:stopTime ;
+        rr:objectMap [ rml:reference "stopTime" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:enforces ;
+        rr:objectMap [ rml:reference "enforces" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:applies ;
+        rr:objectMap [ rml:reference "applies" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:gathers ;
+        rr:objectMap [ rml:reference "gathers" ] ;
+    ] .
+
+# Mapping IntentReport
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/IntentReport>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].IntentReport"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/IntentReport/{reportNumber}";
+        rr:class icm:IntentReport
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate icm:reportNumber ;
+        rr:objectMap [ rml:reference "reportNumber" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate icm:reportGenerated ;
+        rr:objectMap [ rml:reference "reportGenerated" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:informs ;
+        rr:objectMap [ rml:reference "informs" ] ;
+    ] .
+
+
+
+# Mapping for Intent
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Intent"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/{identifier}";
+        rr:class icm:Intent
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:scope ;
+        rr:objectMap [ rml:reference "scope" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:contains ;
+        rr:objectMap [ rml:reference "contains" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:deploys ;
+        rr:objectMap [ rml:reference "deploys" ] ;
+    ] .
+
+# Mapping for TrustLevelAgreement
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].TrustLevelAgreement"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/{identifier}";
+        rr:class lotaf:TrustLevelAgreement
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:customerID ;
+        rr:objectMap [ rml:reference "customerID" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:providerID ;
+        rr:objectMap [ rml:reference "providerID" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:requirement ;
+        rr:objectMap [ rml:reference "requirement" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:violationDescription ;
+        rr:objectMap [ rml:reference "violationDescription" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:includes ;
+        rr:objectMap [ rml:reference "includes" ] ;
+    ] .
+
+
+# Mapping for AdministrativeDomain
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].AdministrativeDomain"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain/{identifier}";
+        rr:class lotaf:AdministrativeDomain
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:description ;
+        rr:objectMap [ rml:reference "description" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:owner ;
+        rr:objectMap [ rml:reference "manages" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:monitors ;
+        rr:objectMap [ rml:reference "monitors" ] ;
+    ] .
+
+# Instances of NetworkServiceStatus
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/InitializingNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "InitializingNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/AllocatingNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "AllocatingNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/DeployingNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "DeployingNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/RunningNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "RunningNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/InactiveNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "InactiveNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/PausedNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "PausedNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/FinishedNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "FinishedNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/MaintainingNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "MaintainingNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/ScalingNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "ScalingNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/MigratingNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "MigratingNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/OverloadNetworkService>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "OverloadNetworkService" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/HealthyNetworkStatus>
+    rdf:type lotaf:NetworkServiceStatus ;
+    rdfs:label "HealthyNetworkStatus" .
+
+# Mapping for NetworkService
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].NetworkService"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/{identifier}";
+        rr:class lotaf:NetworkService
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:networServiceType ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/{networServiceType}"
+        ]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate lotaf:networkStatus ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/{networkStatus}"
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:description ;
+        rr:objectMap [ rml:reference "description" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:characteristics ;
+        rr:objectMap [ rml:reference "characteristics" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:delivers ;
+        rr:objectMap [ rml:reference "delivers" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:composedBy ;
+        rr:objectMap [ rml:reference "composedBy" ] ;
+    ] .
+
+# Instances of NetworkServiceType
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/Cloud>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "Cloud" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/Edge>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "Edge" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/FarEdge>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "FarEdge" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/CloudContinuum>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "CloudContinuum" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/CloudEdgeContinuum>
+    rdf:type lotaf:NetworkServiceType ;
+    rdfs:label "CloudEdgeContinuum" .
+
+# Mapping for Policy
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Policy"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy/{request}";
+        rr:class lotaf:Policy
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ordl:duty ;
+        rr:objectMap [ rml:reference "duty" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:request ;
+        rr:objectMap [ rml:reference "request" ] ;
+    ] .
+
+# Mapping for Rule
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Rule"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule/{constraint}";
+        rr:class lotaf:Rule
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ordl:target ;
+        rr:objectMap [ rml:reference "target" ] ;
+    ] .
+    rr:predicateObjectMap [
+        rr:predicate dct:constraint ;
+        rr:objectMap [ rml:reference "constraint" ] ;
+    ] .
+
+# Mapping for Asset
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Asset"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/{identifier}";
+        rr:class lotaf:Asset
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:assetType ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/{assetType}"
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:endpoint ;
+        rr:objectMap [ rml:reference "endpoint" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:capacity ;
+        rr:objectMap [ rml:reference "capacity" ] ;
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate lotaf:fulfills ;
+        rr:objectMap [ rml:reference "fulfills" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:exposes ;
+        rr:objectMap [ rml:reference "exposes" ] ;
+    ] .
+
+# Instances of AssetType
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/Infrastructure>
+    rdf:type lotaf:AssetType ;
+    rdfs:label "Infrastructure" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/Resource>
+    rdf:type lotaf:AssetType ;
+    rdfs:label "Resource" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/Subservice>
+    rdf:type lotaf:AssetType ;
+    rdfs:label "Subservice" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/Service>
+    rdf:type lotaf:AssetType ;
+    rdfs:label "Service" .
+
+# Mapping for Symptom
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Symptom"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom/{description}";
+        rr:class lotaf:Symptom
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:symptomType ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/{symptomType}"
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:description ;
+        rr:objectMap [ rml:reference "description" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:pertains ;
+        rr:objectMap [ rml:reference "pertains" ] ;
+    ] .
+
+# Instances of SymptomType
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/CPU>
+    rdf:type lotaf:SymptomType ;
+    rdfs:label "CPU" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/Memory>
+    rdf:type lotaf:SymptomType ;
+    rdfs:label "Memory" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/Processes>
+    rdf:type lotaf:SymptomType ;
+    rdfs:label "Processes" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/Networking>
+    rdf:type lotaf:SymptomType ;
+    rdfs:label "Networking" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/VirtualMachines>
+    rdf:type lotaf:SymptomType ;
+    rdfs:label "VirtualMachines" .
+
+# Mapping for SubjectiveIndicator
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].SubjectiveIndicator"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator/{weightingFactor}";
+        rr:class lotaf:SubjectiveIndicator
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:weightingFactor ;
+        rr:objectMap [ rml:reference "weightingFactor" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:value ;
+        rr:objectMap [ rml:reference "value" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:subClassOf ;
+        rr:objectMap [ rr:constant lotaf:Indicator ]
+    ] .
+
+# Instances of SubjectiveIndicator
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator/Credibility>
+    rdf:type lotaf:SubjectiveIndicator ;
+    rdfs:label "Credibility" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator/Feedback>
+    rdf:type lotaf:SubjectiveIndicator ;
+    rdfs:label "Feedback" .
+
+# Mapping for ObjectiveIndicator
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].ObjectiveIndicator"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/{weightingFactor}";
+        rr:class lotaf:ObjectiveIndicator
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:weightingFactor ;
+        rr:objectMap [ rml:reference "weightingFactor" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:value ;
+        rr:objectMap [ rml:reference "value" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:subClassOf ;
+        rr:objectMap [ rr:constant lotaf:Indicator ]
+    ] .
+
+# Instances of ObjectiveIndicator
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/Availability>
+    rdf:type lotaf:ObjectiveIndicator ;
+    rdfs:label "Availability" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/Stability>
+    rdf:type lotaf:ObjectiveIndicator ;
+    rdfs:label "Stability" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/Reliability>
+    rdf:type lotaf:ObjectiveIndicator ;
+    rdfs:label "Reliability" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/Scalability>
+    rdf:type lotaf:ObjectiveIndicator ;
+    rdfs:label "Scalability" .
+
+# Mapping for Health
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health>
+    rml:logicalSource [
+        rml:source "./prueba.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[*].Health"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/{healthScore}";
+        rr:class lotaf:Health
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:healthScore ;
+        rr:objectMap [ rml:reference "healthScore" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:connectionStatus ;
+        rr:objectMap [ rml:reference "connectionStatus" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:evaluates ;
+        rr:objectMap [ rml:reference "evaluates" ] ;
+    ] .

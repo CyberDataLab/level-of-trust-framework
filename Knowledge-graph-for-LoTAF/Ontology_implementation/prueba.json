@@ -6,48 +6,9 @@
         }
     },
     {
-        "Person": {
-            "givenName": "Jane",
-            "lastName": "Doe"
-        }
-    },
-    {
         "User": {
             "identifier": "u1",
-            "manages": "i1-i2"
-        }
-    },
-    {
-        "CapabilityOperator": {
-            "identifier": "co1",
-            "defines": "a1-a2"
-        }
-    },
-    {
-        "NetworkAdministrator": {
-            "identifier": "na1",
-            "monitors": "n1-n2"
-        }
-    },
-    {
-        "Indicator": {
-            "identifier": "ind1"
-        }
-    },
-    {
-        "ObjectiveIndicator": {
-            "identifier": "oi1",
-            "stability": 0.5,
-            "reliability": 0.5,
-            "scalability": 0.5,
-            "availability": 0.5
-        }
-    },
-    {
-        "SubjectiveIndicator": {
-            "identifier": "si1",
-            "credibility": 0.5,
-            "feedback": 0.5
+            "manages": "i1"
         }
     },
     {
@@ -58,208 +19,128 @@
     {
         "Role": {
             "identifier": "r1",
-            "follow": "ar1-ar2"
+            "follows": "ar1"
         }
     },
     {
         "Membership": {
             "identifier": "m1",
-            "member": "John",
+            "member": "John_Doe",
             "role": "r1",
             "organization": "AcmeCorporation"
         }
     },
     {
-        "Intent": {
-            "identifier": "i1",
-            "type": "Order",
-            "target": "net1",
-            "hasAgreement": "tla1",
-            "hasService": "ns1"
+        "AdminstrativeDomain": {
+            "identifier": "ad1",
+            "description": "descriptionAD",
+            "owner": "AcmeCorporation",
+            "monitors": "ns1"
+        }
+    },
+    {
+        "Policy": {
+            "request": "req1",
+            "duty": "rule1"
+        }
+    },
+    {
+        "Rule": {
+            "constraint": "const1",
+            "target": "asset1"
         }
     },
     {
         "TrustLevelAgreement": {
             "identifier": "tla1",
-            "consumerID": "c1",
-            "providerID": "p1",
-            "requirements": "req1-req2",
-            "violationDescription": "overload",
-            "penalties": "pl1-pl2",
-            "hasLoT": "lt1",
-            "issue": "pn1"
-        }
-    },
-    {
-        "Punishment": {
-            "identifier": "pn1",
-            "value": 5.0,
-            "actions": "a1-a2",
-            "counterMeasures": "cm1-cm2"
-        }
-    },
-    {
-        "Reward": {
-            "identifier": "rw1",
-            "value": 5.0,
-            "actions": "a1-a2"
-        }
-    },
-    {
-        "LevelOfTrust": {
-            "identifier": "lt1",
-            "trustor": "AcmeCorporation",
-            "trustee": "c1",
-            "iot": 0.5,
-            "tlaID": "tla1",
-            "starTime": "CAMBIALOENELDIAGRAMA",
-            "stopTime": "2020-01-01T00:00:00Z",
-            "gathers": "i1-i2",
-            "reward": "rw1",
-            "punishment": "pn1"
+            "customerID": "cID",
+            "providerID": "pID",
+            "requirement": "req",
+            "violationDescription": "vd"
         }
     },
     {
         "NetworkService": {
-            "identifier": "net1",
-            "scope": "full",
-            "iot": 0.5,
-            "hasStatus": "netstatus1",
-            "hasLoT": "lt1"
+            "identifier": "service1",
+            "description": "desc1",
+            "characteristics": "characteristics1",
+            "networkStatus": "ScalingNetworkService",
+            "networServiceType": "MODIFICAR EN DIAGRAMA",
+            "composedBy": "asset1",
+            "delivers": "trustor_trustee"
         }
     },
     {
-        "NetworkStatus": {
-            "identifier": "netstatus1",
-            "connectionStatus": "active",
-            "qos": "none"
-        }
-    },
-    {
-        "Cloud": {
-            "identifier": "c1",
-            "scope": "full",
-            "iot": 0.5,
-            "description": "CLOUD DESCRIPTION",
-            "properties": "010101001",
-            "offer": "a1-a2"
-        }
-    },
-    {
-        "Edge": {
-            "identifier": "e1",
-            "scope": "full",
-            "iot": 0.5,
-            "description": "EDGE DESCRIPTION",
-            "properties": "010101001",
-            "offer": "a1-a2"
-        }
-    },
-    {
-        "FarEdge": {
-            "identifier": "fe1",
-            "scope": "full",
-            "iot": 0.5,
-            "description": "FAREDGE DESCRIPTION",
-            "properties": "010101001",
-            "offer": "a1-a2"
-        }
-    },
-    {
-        "CloudContinuum": {
-            "identifier": "cc1",
-            "scope": "full",
-            "iot": 0.5,
-            "description": "CLOUD CONTINUUM DESCRIPTION",
-            "properties": "010101001",
-            "offer": "a1-a2"
-        }
-    },
-    {
-        "CloudEdgeContinuum": {
-            "identifier": "cec1",
-            "scope": "full",
-            "iot": 0.5,
-            "description": "CLOUD EDGE CONTINUUM DESCRIPTION",
-            "properties": "010101001",
-            "offer": "a1-a2"
-        }
-    },
-    {
-        "AccessRule": {
-            "identifier": "ar1",
-            "condition": "name == 'John Doe'",
-            "grants": "p1"
-        }
-    },
-    {
-        "Permission": {
-            "identifier": "p1",
-            "expiration": "2020-01-01T00:00:00Z",
-            "access": "a1-a2"
+        "Intent": {
+            "identifier": "i1",
+            "scope": "sc",
+            "contains": "ir",
+            "deploys": "ns1"
         }
     },
     {
         "Asset": {
-            "identifier": "a1",
-            "type": "BORRAR-EN-EL-DIAGRAMA",
-            "contains": "lt1",
-            "has": "hs1"
-        }
-    },
-    {
-        "AssetServer": {
             "identifier": "as1",
-            "type": "BORRAR-EN-EL-DIAGRAMA"
+            "endpoint": "endpoint1",
+            "capacity": "capacity1",
+            "fulfills": "trustor_trustee",
+            "exposes": "health1",
+            "assetType": "Infrastructure"
         }
     },
     {
-        "Resource": {
-            "identifier": "rs1",
-            "type": "BORRAR-EN-EL-DIAGRAMA",
-            "capacity": "empty",
-            "endpoint": "http://localhost:8080"
+        "IntentReport": {
+            "reportNumber": "ir",
+            "reportGenerated": "rg",
+            "informs": "lot"
         }
-    },
+    }, 
     {
-        "Infrastructure": {
-            "identifier": "is1",
-            "type": "BORRAR-EN-EL-DIAGRAMA",
-            "capacity": "empty",
-            "endpoint": "http://localhost:8080"
-        }
-    },
-    {
-        "Service": {
-            "identifier": "s1",
-            "type": "BORRAR-EN-EL-DIAGRAMA",
-            "capacity": "empty",
-            "endpoint": "http://localhost:8080",
-            "contains": "ss1-ss2",
-            "has": "hs1"
-        }
-    },
-    {
-        "Subservice": {
-            "identifier": "ss1",
-            "parameters": "010100",
-            "metrics": "high-low-mid",
-            "operations": "op1-op2",
-            "has": "hs1"
+        "LevelOfTrust": {
+            "trustor": "trustor",
+            "trustee": "trustee",
+            "lot": "10",
+            "startTime": "April",
+            "stopTime": "July",
+            "enforces": "pu",
+            "gathers": "ind"
         }
     },
     {
         "Symptom": {
-            "identifier": "sp1",
-            "description": "Esta malo"
+            "description": "desc1",
+            "symptomType": "VPP",
+            "pertains": "indicator"
         }
     },
     {
-        "HealthStatus": {
-            "identifier": "hs1",
-            "currentStatus": "good",
-            "connectionStatus": "active",
-            "healthScore": 0.5
+        "Punishment": {
+            "value": "20",
+            "punishmentAction": "EndingTrustAgreementAction"
+        }
+    },
+    {
+        "SubjectiveIndicator": {
+            "weightingFactor": "20",
+            "value": "3"
+        }
+    },
+    {
+        "ObjectiveIndicator": {
+            "weightingFactor": "20",
+            "value": "3"
+        }
+    },
+    {
+        "Reward": {
+            "value": "40"
+        }
+    },
+    {
+        "Health": {
+            "healthScore": "20",
+            "connectionStatus": "status",
+            "evaluates": "symptom"
         }
     }
 ]
