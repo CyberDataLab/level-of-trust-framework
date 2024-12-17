@@ -1,0 +1,26 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <> .
+<..\index-en.html> a prov:Entity;
+	 dc:title "Level of Trust Assessment Ontology for Continuum Computing";
+	 prov:wasAttributedTo :agent0;
+	 prov:wasAttributedTo :agent1;
+	 prov:wasAttributedTo :agent2;
+	 prov:wasAttributedTo :agent3;
+	 prov:wasAttributedTo :agent4;
+	 prov:wasAttributedTo :agent5;
+	 prov:wasAttributedTo :agent6;
+	 prov:wasAttributedTo :agent7;
+	 prov:wasAttributedTo :agent8;
+	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+.
+:agent0 a prov:Agent; foaf:name "Alfonso Serrano Gil".
+:agent1 a prov:Agent; foaf:name "Javier Paredes Serrano".
+:agent2 a prov:Agent; foaf:name "José María Jorquera Valero".
+:agent3 a prov:Agent; foaf:name "Diego R. López".
+:agent4 a prov:Agent; foaf:name "Gregorio Martínez Pérez".
+:agent5 a prov:Agent; foaf:name "Ignacio Dominguez Martinez-Casanueva".
+:agent6 a prov:Agent; foaf:name "Lucía Cabanillas Rodríguez".
+:agent7 a prov:Agent; foaf:name "Manuel Gil Pérez".
+:agent8 a prov:Agent; foaf:name "Riccardo Nicolicchia".
