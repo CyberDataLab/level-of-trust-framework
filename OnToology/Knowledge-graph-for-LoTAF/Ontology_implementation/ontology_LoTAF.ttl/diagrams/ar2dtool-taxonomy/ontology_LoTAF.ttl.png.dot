@@ -1,9 +1,0 @@
-digraph ar2dtool_diagram { 
-rankdir=LR;
-size="1000"
-node [shape = rectangle, color="black"]; "base:Indicator" "base:User" "http://xmlns.com/foaf/0.1/Person" "base:ObjectiveIndicator" "base:SubjectiveIndicator" ; /*classes style*/
-	"base:ObjectiveIndicator" -> "base:Indicator" [ label = "rdfs:subClassOf" ];
-	"base:SubjectiveIndicator" -> "base:Indicator" [ label = "rdfs:subClassOf" ];
-	"base:User" -> "http://xmlns.com/foaf/0.1/Person" [ label = "rdfs:subClassOf" ];
-
-}
