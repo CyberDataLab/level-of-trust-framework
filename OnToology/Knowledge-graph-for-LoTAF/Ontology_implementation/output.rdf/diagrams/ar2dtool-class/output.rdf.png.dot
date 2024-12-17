@@ -1,0 +1,10 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1501"
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/service1" -> "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/MODIFICAR%20EN%20DIAGRAMA" [ label = "ns1:networServiceType" ];
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/service1" -> "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/ScalingNetworkService" [ label = "ns1:networkStatus" ];
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/20" -> "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/EndingTrustAgreementAction" [ label = "ns1:punishmentAction" ];
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom/desc1" -> "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/VPP" [ label = "ns1:symptomType" ];
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/as1" -> "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/Infrastructure" [ label = "ns1:assetType" ];
+
+}
