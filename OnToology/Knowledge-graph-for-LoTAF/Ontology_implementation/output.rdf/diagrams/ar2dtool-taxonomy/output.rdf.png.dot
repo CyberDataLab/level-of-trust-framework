@@ -1,0 +1,8 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1000"
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User/u1" -> "ns1:Person" [ label = "rdfs:subClassOf" ];
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/20" -> "ns1:Indicator" [ label = "rdfs:subClassOf" ];
+	"https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator/20" -> "ns1:Indicator" [ label = "rdfs:subClassOf" ];
+
+}
