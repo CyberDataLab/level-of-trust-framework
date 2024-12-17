@@ -2,7 +2,7 @@
 @prefix dct: <http://purl.org/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix icm: <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/> .
-@prefix lotaf: <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
+@prefix lotaf: <https://w3id.org/def/lotaf#> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix odrl: <http://www.owl-ontologies.com/odrl#> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -78,13 +78,18 @@ foaf:lastName a owl:DatatypeProperty ;
     rdfs:domain foaf:Person .
 
 lotaf: a owl:Ontology ;
-    dc:contributor "Alfonso Serrano Gil",
+    dc:contributor "Diego R. López",
+        "Gregorio Martínez Pérez",
+        "Ignacio Dominguez Martinez-Casanueva",
+        "Lucía Cabanillas Rodríguez",
+        "Manuel Gil Pérez",
+        "Riccardo Nicolicchia" ;
+    dc:created "2024-12-16"^^xsd:date ;
+    dc:creator "Alfonso Serrano Gil",
         "Javier Paredes Serrano",
-        "Manuel Gil Pérez" ;
-    dc:created "2024-07-11"^^xsd:date ;
-    dc:creator "Jose Maria Jorquera Valero" ;
-    dc:title "Level of Trust Assessment Ontology for Continuum Computing" ;
-    owl:versionInfo "0.0.2" ;
+        "José María Jorquera Valero" ;
+    dc:title "Level of Trust Assessment Ontology for Computing Continuum" ;
+    owl:versionInfo "1.0.0" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
 
 lotaf:AllocatingNetworkService a owl:NamedIndividual,

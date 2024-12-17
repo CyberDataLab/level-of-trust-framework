@@ -2,32 +2,26 @@
   "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
   "header" : {
     "languages" : [ "undefined" ],
-    "baseIris" : [ "http://purl.org/terms", "http://www.w3.org/ns/org", "http://www.w3.org/2000/01/rdf-schema", "http://www.owl-ontologies.com/odrl", "http://www.w3.org/2001/XMLSchema", "http://xmlns.com/foaf/0.1", "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF", "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel" ],
+    "baseIris" : [ "https://w3id.org/def/lotaf", "http://purl.org/terms", "http://www.w3.org/ns/org", "http://www.w3.org/2000/01/rdf-schema", "http://www.owl-ontologies.com/odrl", "http://www.w3.org/2001/XMLSchema", "http://xmlns.com/foaf/0.1", "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel" ],
     "title" : {
-      "undefined" : "Level of Trust Assessment Ontology for Continuum Computing"
+      "undefined" : "Level of Trust Assessment Ontology for Computing Continuum"
     },
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/",
-    "version" : "0.0.2",
-    "author" : [ "Jose Maria Jorquera Valero" ],
+    "iri" : "https://w3id.org/def/lotaf#",
+    "version" : "1.0.0",
+    "author" : [ "Alfonso Serrano Gil", "José María Jorquera Valero", "Javier Paredes Serrano" ],
     "other" : {
       "creator" : [ {
         "identifier" : "creator",
         "language" : "undefined",
-        "value" : "Jose Maria Jorquera Valero",
+        "value" : "José María Jorquera Valero",
         "type" : "label"
-      } ],
-      "contributor" : [ {
-        "identifier" : "contributor",
+      }, {
+        "identifier" : "creator",
         "language" : "undefined",
         "value" : "Alfonso Serrano Gil",
         "type" : "label"
       }, {
-        "identifier" : "contributor",
-        "language" : "undefined",
-        "value" : "Manuel Gil Pérez",
-        "type" : "label"
-      }, {
-        "identifier" : "contributor",
+        "identifier" : "creator",
         "language" : "undefined",
         "value" : "Javier Paredes Serrano",
         "type" : "label"
@@ -38,99 +32,109 @@
         "value" : "https://chowlk.linkeddata.es/",
         "type" : "iri"
       } ],
+      "contributor" : [ {
+        "identifier" : "contributor",
+        "language" : "undefined",
+        "value" : "Lucía Cabanillas Rodríguez",
+        "type" : "label"
+      }, {
+        "identifier" : "contributor",
+        "language" : "undefined",
+        "value" : "Manuel Gil Pérez",
+        "type" : "label"
+      }, {
+        "identifier" : "contributor",
+        "language" : "undefined",
+        "value" : "Ignacio Dominguez Martinez-Casanueva",
+        "type" : "label"
+      }, {
+        "identifier" : "contributor",
+        "language" : "undefined",
+        "value" : "Riccardo Nicolicchia",
+        "type" : "label"
+      }, {
+        "identifier" : "contributor",
+        "language" : "undefined",
+        "value" : "Gregorio Martínez Pérez",
+        "type" : "label"
+      }, {
+        "identifier" : "contributor",
+        "language" : "undefined",
+        "value" : "Diego R. López",
+        "type" : "label"
+      } ],
       "created" : [ {
         "identifier" : "created",
         "language" : "undefined",
-        "value" : "2024-07-11",
+        "value" : "2024-12-16",
         "type" : "label"
       } ],
       "versionInfo" : [ {
         "identifier" : "versionInfo",
         "language" : "undefined",
-        "value" : "0.0.2",
+        "value" : "1.0.0",
         "type" : "label"
       } ],
       "title" : [ {
         "identifier" : "title",
         "language" : "undefined",
-        "value" : "Level of Trust Assessment Ontology for Continuum Computing",
+        "value" : "Level of Trust Assessment Ontology for Computing Continuum",
         "type" : "label"
       } ]
     }
   },
   "namespace" : [ ],
   "class" : [ {
-    "id" : "0",
+    "id" : "17",
     "type" : "owl:Class"
   }, {
-    "id" : "1",
+    "id" : "20",
     "type" : "owl:Class"
   }, {
-    "id" : "2",
-    "type" : "owl:Class"
-  }, {
-    "id" : "13",
-    "type" : "owl:Class"
-  }, {
-    "id" : "16",
-    "type" : "owl:Class"
-  }, {
-    "id" : "19",
-    "type" : "owl:Class"
-  }, {
-    "id" : "5",
-    "type" : "owl:Class"
-  }, {
-    "id" : "24",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "25",
-    "type" : "owl:Class"
-  }, {
-    "id" : "26",
+    "id" : "15",
     "type" : "owl:Class"
   }, {
     "id" : "28",
     "type" : "rdfs:Literal"
   }, {
     "id" : "29",
-    "type" : "rdfs:Literal"
+    "type" : "owl:Class"
   }, {
     "id" : "30",
+    "type" : "owl:Class"
+  }, {
+    "id" : "32",
     "type" : "rdfs:Literal"
   }, {
-    "id" : "31",
+    "id" : "33",
     "type" : "rdfs:Literal"
   }, {
-    "id" : "45",
+    "id" : "36",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "37",
     "type" : "rdfs:Literal"
   }, {
     "id" : "46",
-    "type" : "rdfs:Literal"
+    "type" : "owl:Class"
   }, {
-    "id" : "51",
-    "type" : "rdfs:Literal"
+    "id" : "5",
+    "type" : "owl:Class"
   }, {
     "id" : "52",
+    "type" : "owl:Class"
+  }, {
+    "id" : "53",
     "type" : "rdfs:Literal"
   }, {
-    "id" : "55",
-    "type" : "rdfs:Literal"
+    "id" : "7",
+    "type" : "owl:Class"
   }, {
-    "id" : "56",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "57",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "58",
+    "id" : "54",
     "type" : "rdfs:Literal"
   }, {
     "id" : "59",
-    "type" : "owl:Class"
-  }, {
-    "id" : "36",
-    "type" : "owl:Class"
+    "type" : "rdfs:Literal"
   }, {
     "id" : "60",
     "type" : "rdfs:Literal"
@@ -138,235 +142,136 @@
     "id" : "63",
     "type" : "rdfs:Literal"
   }, {
-    "id" : "17",
+    "id" : "66",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "67",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "68",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "44",
     "type" : "owl:Class"
   }, {
-    "id" : "62",
+    "id" : "69",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "70",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "24",
     "type" : "owl:Class"
   }, {
-    "id" : "21",
-    "type" : "owl:Class"
-  }, {
-    "id" : "27",
-    "type" : "owl:Class"
-  }, {
-    "id" : "72",
-    "type" : "owl:Class"
-  }, {
-    "id" : "43",
-    "type" : "owl:Class"
-  }, {
-    "id" : "15",
-    "type" : "owl:Class"
-  }, {
-    "id" : "18",
-    "type" : "owl:Class"
-  }, {
-    "id" : "11",
-    "type" : "owl:Class"
-  }, {
-    "id" : "3",
-    "type" : "owl:Class"
-  }, {
-    "id" : "78",
-    "type" : "owl:Class"
-  }, {
-    "id" : "87",
-    "type" : "owl:Class"
-  }, {
-    "id" : "23",
-    "type" : "owl:Class"
-  }, {
-    "id" : "8",
-    "type" : "owl:Class"
-  }, {
-    "id" : "22",
-    "type" : "owl:Class"
-  }, {
-    "id" : "98",
+    "id" : "71",
     "type" : "owl:Class"
   }, {
     "id" : "40",
     "type" : "owl:Class"
   }, {
-    "id" : "20",
+    "id" : "4",
+    "type" : "owl:Class"
+  }, {
+    "id" : "50",
+    "type" : "owl:Class"
+  }, {
+    "id" : "31",
+    "type" : "owl:Class"
+  }, {
+    "id" : "58",
+    "type" : "owl:Class"
+  }, {
+    "id" : "12",
+    "type" : "owl:Class"
+  }, {
+    "id" : "13",
+    "type" : "owl:Class"
+  }, {
+    "id" : "21",
     "type" : "owl:Class"
   }, {
     "id" : "35",
     "type" : "owl:Class"
   }, {
-    "id" : "14",
+    "id" : "27",
     "type" : "owl:Class"
   }, {
-    "id" : "12",
+    "id" : "8",
+    "type" : "owl:Class"
+  }, {
+    "id" : "25",
+    "type" : "owl:Class"
+  }, {
+    "id" : "23",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "owl:Class"
+  }, {
+    "id" : "43",
+    "type" : "owl:Class"
+  }, {
+    "id" : "19",
+    "type" : "owl:Class"
+  }, {
+    "id" : "26",
+    "type" : "owl:Class"
+  }, {
+    "id" : "90",
     "type" : "rdfs:Literal"
   }, {
-    "id" : "33",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "38",
+    "id" : "92",
     "type" : "rdfs:Literal"
   }, {
     "id" : "41",
     "type" : "rdfs:Literal"
   }, {
-    "id" : "48",
+    "id" : "95",
     "type" : "rdfs:Literal"
   }, {
-    "id" : "50",
+    "id" : "56",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "62",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "65",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "97",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "10",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "16",
     "type" : "rdfs:Literal"
   }, {
     "id" : "83",
     "type" : "owl:Class"
   }, {
-    "id" : "54",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "104",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "6",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "9",
-    "type" : "rdfs:Literal"
-  }, {
-    "id" : "91",
-    "type" : "owl:Class"
-  }, {
-    "id" : "85",
-    "type" : "owl:Class"
-  }, {
-    "id" : "94",
+    "id" : "1",
     "type" : "owl:Class"
   } ],
   "classAttribute" : [ {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#LevelOfTrust",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "AdministrativeDomain",
-      "undefined" : "Administrative Domain"
+      "IRI-based" : "LevelOfTrust",
+      "undefined" : "Level Of Trust"
     },
-    "id" : "0"
+    "id" : "17"
   }, {
     "instances" : 0,
-    "union" : [ "0", "2" ],
+    "union" : [ "21", "7", "5" ],
     "attributes" : [ "anonymous", "union" ],
-    "id" : "1"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "ObjectiveIndicator",
-      "undefined" : "Objective Indicator"
-    },
-    "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Scalability",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Scalability"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reliability",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Reliability"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Availability",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Availability"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Stability",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Stability"
-      }
-    } ],
-    "id" : "2",
-    "superClasses" : [ "3" ]
+    "id" : "20"
   }, {
     "instances" : 0,
-    "union" : [ "14", "15", "3" ],
+    "union" : [ "25", "24", "26", "23", "27", "13", "12" ],
     "attributes" : [ "anonymous", "union" ],
-    "id" : "13"
-  }, {
-    "instances" : 0,
-    "union" : [ "17", "18" ],
-    "attributes" : [ "anonymous", "union" ],
-    "id" : "16"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "SymptomType",
-      "undefined" : "Symptom Type"
-    },
-    "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VPP",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "VPP"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VirtualMachines",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "VirtualMachines"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Networking",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Networking"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Processes",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Processes"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CPU",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "CPU"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Memory",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Memory"
-      }
-    } ],
-    "id" : "19"
-  }, {
-    "instances" : 0,
-    "union" : [ "17", "20", "0", "21", "11", "22", "23" ],
-    "attributes" : [ "anonymous", "union" ],
-    "id" : "5"
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "24",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "instances" : 0,
-    "union" : [ "11", "23" ],
-    "attributes" : [ "anonymous", "union" ],
-    "id" : "25"
-  }, {
-    "instances" : 0,
-    "union" : [ "27", "8" ],
-    "attributes" : [ "anonymous", "union" ],
-    "id" : "26"
+    "id" : "15"
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
     "id" : "28",
@@ -375,104 +280,240 @@
       "undefined" : "Literal"
     }
   }, {
+    "instances" : 0,
+    "union" : [ "24", "23", "2" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "29"
+  }, {
+    "instances" : 0,
+    "union" : [ "26", "31" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "30"
+  }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "29",
+    "id" : "32",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "30",
+    "id" : "33",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "31",
+    "id" : "36",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "45",
+    "id" : "37",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "46",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "51",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "52",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "55",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "56",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "57",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "58",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#NetworkServiceStatus",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "DigitalServiceEntity",
-      "undefined" : "Digital Service Entity"
+      "IRI-based" : "NetworkServiceStatus",
+      "undefined" : "Network Service Status"
     },
     "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceProvider",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#HealthyNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "DigitalServiceProvider"
+        "IRI-based" : "HealthyNetworkService"
       }
     }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceCustomer",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#OverloadNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "DigitalServiceCustomer"
+        "IRI-based" : "OverloadNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#ScalingNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "ScalingNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#InactiveNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "InactiveNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#DeployingNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "DeployingNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#MigratingNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "MigratingNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#InitializingNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "InitializingNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#AllocatingNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "AllocatingNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#FinishedNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "FinishedNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#MaintainingNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "MaintainingNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#PausedNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "PausedNetworkService"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#RunningNetworkService",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "RunningNetworkService"
       }
     } ],
-    "id" : "59"
+    "id" : "46"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#Indicator",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Indicator",
+      "undefined" : "Indicator"
+    },
+    "subClasses" : [ "19", "4" ],
+    "id" : "5"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#NetworkServiceType",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NetworkServiceType",
+      "undefined" : "Network Service Type"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/def/lotaf#CloudEdgeContinuum",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "CloudEdgeContinuum"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#CloudContinuum",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "CloudContinuum"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Edge",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Edge"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#FarEdge",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "FarEdge"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Cloud",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Cloud"
+      }
+    } ],
+    "id" : "52"
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "53",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#Punishment",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Punishment",
+      "undefined" : "Punishment"
+    },
+    "id" : "7"
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "54",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "59",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "60",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "63",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "66",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "67",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "68",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
   }, {
     "iri" : "http://xmlns.com/foaf/0.1/Person",
     "baseIri" : "http://xmlns.com/foaf/0.1",
@@ -481,33 +522,32 @@
       "IRI-based" : "Person",
       "undefined" : "Person"
     },
-    "subClasses" : [ "17" ],
+    "subClasses" : [ "26" ],
     "attributes" : [ "external" ],
-    "id" : "36"
+    "id" : "44"
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "60",
+    "id" : "69",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "63",
+    "id" : "70",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#NetworkService",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "User",
-      "undefined" : "User"
+      "IRI-based" : "NetworkService",
+      "undefined" : "Network Service"
     },
-    "id" : "17",
-    "superClasses" : [ "36" ]
+    "id" : "24"
   }, {
     "iri" : "http://www.w3.org/ns/org#Role",
     "baseIri" : "http://www.w3.org/ns/org",
@@ -517,16 +557,7 @@
       "undefined" : "Role"
     },
     "attributes" : [ "external" ],
-    "id" : "62"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "NetworkService",
-      "undefined" : "Network Service"
-    },
-    "id" : "21"
+    "id" : "71"
   }, {
     "iri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport",
     "baseIri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel",
@@ -536,41 +567,30 @@
       "undefined" : "Intent Report"
     },
     "attributes" : [ "external" ],
-    "id" : "27"
+    "id" : "40"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#SubjectiveIndicator",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "AssetType",
-      "undefined" : "Asset Type"
+      "IRI-based" : "SubjectiveIndicator",
+      "undefined" : "Subjective Indicator"
     },
     "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Subservice",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#Credibility",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "Subservice"
+        "IRI-based" : "Credibility"
       }
     }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Resource",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#Feedback",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "Resource"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Service",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Service"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Infrastructure",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Infrastructure"
+        "IRI-based" : "Feedback"
       }
     } ],
-    "id" : "72"
+    "id" : "4",
+    "superClasses" : [ "5" ]
   }, {
     "iri" : "http://www.owl-ontologies.com/odrl#Rule",
     "baseIri" : "http://www.owl-ontologies.com/odrl",
@@ -580,16 +600,7 @@
       "undefined" : "Rule"
     },
     "attributes" : [ "external" ],
-    "id" : "43"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reward",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "Reward",
-      "undefined" : "Reward"
-    },
-    "id" : "15"
+    "id" : "50"
   }, {
     "iri" : "http://www.owl-ontologies.com/odrl#Policy",
     "baseIri" : "http://www.owl-ontologies.com/odrl",
@@ -599,36 +610,29 @@
       "undefined" : "Policy"
     },
     "attributes" : [ "external" ],
-    "id" : "18"
+    "id" : "31"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#DigitalServiceEntity",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "TrustLevelAgreement",
-      "undefined" : "Trust Level Agreement"
+      "IRI-based" : "DigitalServiceEntity",
+      "undefined" : "Digital Service Entity"
     },
-    "id" : "11"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "Indicator",
-      "undefined" : "Indicator"
-    },
-    "subClasses" : [ "85", "2" ],
-    "id" : "3"
-  }, {
-    "instances" : 0,
-    "union" : [ "0", "21", "83" ],
-    "attributes" : [ "anonymous", "union" ],
-    "id" : "78"
-  }, {
-    "instances" : 0,
-    "union" : [ "17", "83" ],
-    "attributes" : [ "anonymous", "union" ],
-    "id" : "87"
+    "individuals" : [ {
+      "iri" : "https://w3id.org/def/lotaf#DigitalServiceProvider",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "DigitalServiceProvider"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#DigitalServiceCustomer",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "DigitalServiceCustomer"
+      }
+    } ],
+    "id" : "58"
   }, {
     "iri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent",
     "baseIri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel",
@@ -638,16 +642,71 @@
       "undefined" : "Intent"
     },
     "attributes" : [ "external" ],
-    "id" : "23"
+    "id" : "12"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#TrustLevelAgreement",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "LevelOfTrust",
-      "undefined" : "Level Of Trust"
+      "IRI-based" : "TrustLevelAgreement",
+      "undefined" : "Trust Level Agreement"
     },
-    "id" : "8"
+    "id" : "13"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#Reward",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Reward",
+      "undefined" : "Reward"
+    },
+    "id" : "21"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#SymptomType",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SymptomType",
+      "undefined" : "Symptom Type"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/def/lotaf#Processes",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Processes"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#VirtualMachines",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "VirtualMachines"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#VPP",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "VPP"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Memory",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Memory"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#CPU",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "CPU"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Networking",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Networking"
+      }
+    } ],
+    "id" : "35"
   }, {
     "iri" : "http://www.owl-ontologies.com/odrl#Asset",
     "baseIri" : "http://www.owl-ontologies.com/odrl",
@@ -657,98 +716,41 @@
       "undefined" : "Asset"
     },
     "attributes" : [ "external" ],
-    "id" : "22"
+    "id" : "27"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#PunishmentAction",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "NetworkServiceStatus",
-      "undefined" : "Network Service Status"
+      "IRI-based" : "PunishmentAction",
+      "undefined" : "Punishment Action"
     },
     "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AllocatingNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "AllocatingNetworkService"
+        "IRI-based" : "EvaluatingOtherAssesstsAction"
       }
     }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FinishedNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#CustomerNotificationAction",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "FinishedNetworkService"
+        "IRI-based" : "CustomerNotificationAction"
       }
     }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MigratingNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#EndingTrustAgreementAction",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "MigratingNetworkService"
+        "IRI-based" : "EndingTrustAgreementAction"
       }
     }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InitializingNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+      "iri" : "https://w3id.org/def/lotaf#ProviderNotificationAction",
+      "baseIri" : "https://w3id.org/def/lotaf",
       "labels" : {
-        "IRI-based" : "InitializingNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ScalingNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "ScalingNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InactiveNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "InactiveNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PausedNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "PausedNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DeployingNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "DeployingNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/RunningNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "RunningNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/OverloadNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "OverloadNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/HealthyNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "HealthyNetworkService"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MaintainingNetworkService",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "MaintainingNetworkService"
+        "IRI-based" : "ProviderNotificationAction"
       }
     } ],
-    "id" : "98"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "Health",
-      "undefined" : "Health"
-    },
-    "id" : "40"
+    "id" : "8"
   }, {
     "iri" : "http://www.w3.org/ns/org#Organization",
     "baseIri" : "http://www.w3.org/ns/org",
@@ -758,7 +760,25 @@
       "undefined" : "Organization"
     },
     "attributes" : [ "external" ],
-    "id" : "20"
+    "id" : "25"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#AdministrativeDomain",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "AdministrativeDomain",
+      "undefined" : "Administrative Domain"
+    },
+    "id" : "23"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#Symptom",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Symptom",
+      "undefined" : "Symptom"
+    },
+    "id" : "2"
   }, {
     "iri" : "http://www.w3.org/ns/org#Membership",
     "baseIri" : "http://www.w3.org/ns/org",
@@ -768,33 +788,62 @@
       "undefined" : "Membership"
     },
     "attributes" : [ "external" ],
-    "id" : "35"
+    "id" : "43"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#ObjectiveIndicator",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "Punishment",
-      "undefined" : "Punishment"
+      "IRI-based" : "ObjectiveIndicator",
+      "undefined" : "Objective Indicator"
     },
-    "id" : "14"
+    "individuals" : [ {
+      "iri" : "https://w3id.org/def/lotaf#Availability",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Availability"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Scalability",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Scalability"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Stability",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Stability"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Reliability",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Reliability"
+      }
+    } ],
+    "id" : "19",
+    "superClasses" : [ "5" ]
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#User",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "User",
+      "undefined" : "User"
+    },
+    "id" : "26",
+    "superClasses" : [ "44" ]
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "12",
+    "id" : "90",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "33",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "38",
+    "id" : "92",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
@@ -808,171 +857,127 @@
     }
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "48",
+    "id" : "95",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "50",
+    "id" : "56",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
     }
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "62",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "65",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "97",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "10",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "16",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#AssetType",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "Symptom",
-      "undefined" : "Symptom"
+      "IRI-based" : "AssetType",
+      "undefined" : "Asset Type"
     },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/def/lotaf#Resource",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Resource"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Subservice",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Subservice"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Infrastructure",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Infrastructure"
+      }
+    }, {
+      "iri" : "https://w3id.org/def/lotaf#Service",
+      "baseIri" : "https://w3id.org/def/lotaf",
+      "labels" : {
+        "IRI-based" : "Service"
+      }
+    } ],
     "id" : "83"
   }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "54",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "104",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "6",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "9",
-    "label" : {
-      "IRI-based" : "Literal",
-      "undefined" : "Literal"
-    }
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "iri" : "https://w3id.org/def/lotaf#Health",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "PunishmentAction",
-      "undefined" : "Punishment Action"
+      "IRI-based" : "Health",
+      "undefined" : "Health"
     },
-    "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CustomerNotificationAction",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "CustomerNotificationAction"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ProviderNotificationAction",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "ProviderNotificationAction"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EvaluatingOtherAssesstsAction",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "EvaluatingOtherAssesstsAction"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EndingTrustAgreementAction",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "EndingTrustAgreementAction"
-      }
-    } ],
-    "id" : "91"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "SubjectiveIndicator",
-      "undefined" : "Subjective Indicator"
-    },
-    "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Feedback",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Feedback"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Credibility",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Credibility"
-      }
-    } ],
-    "id" : "85",
-    "superClasses" : [ "3" ]
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "NetworkServiceType",
-      "undefined" : "Network Service Type"
-    },
-    "individuals" : [ {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FarEdge",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "FarEdge"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Cloud",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Cloud"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudEdgeContinuum",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "CloudEdgeContinuum"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudContinuum",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "CloudContinuum"
-      }
-    }, {
-      "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Edge",
-      "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-      "labels" : {
-        "IRI-based" : "Edge"
-      }
-    } ],
-    "id" : "94"
+    "id" : "1"
   } ],
   "property" : [ {
-    "id" : "4",
+    "id" : "0",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "3",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "6",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "9",
     "type" : "owl:datatypeProperty"
   }, {
-    "id" : "7",
+    "id" : "11",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "14",
     "type" : "owl:datatypeProperty"
   }, {
-    "id" : "10",
-    "type" : "owl:datatypeProperty"
+    "id" : "18",
+    "type" : "rdfs:SubClassOf"
   }, {
-    "id" : "32",
-    "type" : "owl:datatypeProperty"
+    "id" : "22",
+    "type" : "owl:objectProperty"
   }, {
     "id" : "34",
     "type" : "owl:objectProperty"
   }, {
-    "id" : "37",
-    "type" : "owl:datatypeProperty"
+    "id" : "38",
+    "type" : "owl:objectProperty"
   }, {
     "id" : "39",
     "type" : "owl:datatypeProperty"
@@ -980,62 +985,56 @@
     "id" : "42",
     "type" : "owl:objectProperty"
   }, {
-    "id" : "44",
+    "id" : "45",
     "type" : "owl:objectProperty"
   }, {
     "id" : "47",
-    "type" : "owl:datatypeProperty"
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "48",
+    "type" : "owl:objectProperty"
   }, {
     "id" : "49",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "51",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "55",
     "type" : "owl:datatypeProperty"
   }, {
-    "id" : "53",
-    "type" : "owl:datatypeProperty"
+    "id" : "57",
+    "type" : "owl:objectProperty"
   }, {
     "id" : "61",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "64",
     "type" : "owl:datatypeProperty"
   }, {
-    "id" : "65",
+    "id" : "72",
     "type" : "owl:objectProperty"
-  }, {
-    "id" : "66",
-    "type" : "owl:objectProperty"
-  }, {
-    "id" : "67",
-    "type" : "owl:datatypeProperty"
-  }, {
-    "id" : "68",
-    "type" : "owl:objectProperty"
-  }, {
-    "id" : "69",
-    "type" : "owl:datatypeProperty"
-  }, {
-    "id" : "70",
-    "type" : "owl:datatypeProperty"
-  }, {
-    "id" : "71",
-    "type" : "owl:datatypeProperty"
   }, {
     "id" : "73",
     "type" : "owl:datatypeProperty"
   }, {
     "id" : "74",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "75",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "76",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "77",
     "type" : "owl:datatypeProperty"
   }, {
+    "id" : "78",
+    "type" : "owl:datatypeProperty"
+  }, {
     "id" : "79",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "80",
     "type" : "owl:objectProperty"
@@ -1047,40 +1046,43 @@
     "type" : "owl:objectProperty"
   }, {
     "id" : "84",
-    "type" : "rdfs:SubClassOf"
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "85",
+    "type" : "owl:objectProperty"
   }, {
     "id" : "86",
-    "type" : "owl:datatypeProperty"
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "87",
+    "type" : "rdfs:SubClassOf"
   }, {
     "id" : "88",
-    "type" : "rdfs:SubClassOf"
+    "type" : "owl:objectProperty"
   }, {
     "id" : "89",
-    "type" : "rdfs:SubClassOf"
+    "type" : "owl:datatypeProperty"
   }, {
-    "id" : "90",
-    "type" : "owl:objectProperty"
-  }, {
-    "id" : "92",
-    "type" : "owl:objectProperty"
+    "id" : "91",
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "93",
     "type" : "owl:objectProperty"
   }, {
-    "id" : "95",
-    "type" : "owl:objectProperty"
+    "id" : "94",
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "96",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
-    "id" : "97",
+    "id" : "98",
     "type" : "owl:objectProperty"
   }, {
     "id" : "99",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "100",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "101",
     "type" : "owl:objectProperty"
@@ -1089,13 +1091,16 @@
     "type" : "owl:objectProperty"
   }, {
     "id" : "103",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "104",
     "type" : "owl:datatypeProperty"
   }, {
     "id" : "105",
-    "type" : "owl:datatypeProperty"
+    "type" : "owl:objectProperty"
   }, {
     "id" : "106",
-    "type" : "owl:datatypeProperty"
+    "type" : "owl:objectProperty"
   }, {
     "id" : "107",
     "type" : "owl:datatypeProperty"
@@ -1104,7 +1109,7 @@
     "type" : "owl:datatypeProperty"
   }, {
     "id" : "109",
-    "type" : "owl:datatypeProperty"
+    "type" : "owl:objectProperty"
   }, {
     "id" : "110",
     "type" : "owl:datatypeProperty"
@@ -1113,614 +1118,630 @@
     "type" : "owl:objectProperty"
   }, {
     "id" : "112",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "113",
     "type" : "owl:objectProperty"
-  }, {
-    "id" : "114",
-    "type" : "owl:objectProperty"
-  }, {
-    "id" : "115",
-    "type" : "owl:objectProperty"
   } ],
   "propertyAttribute" : [ {
-    "iri" : "http://purl.org/terms/identifier",
-    "baseIri" : "http://purl.org/terms",
-    "range" : "6",
-    "label" : {
-      "IRI-based" : "identifier",
-      "undefined" : "identifier"
-    },
-    "domain" : "5",
-    "attributes" : [ "external", "datatype" ],
-    "id" : "4"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustee",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "9",
-    "label" : {
-      "IRI-based" : "trustee",
-      "undefined" : "trustee"
-    },
-    "domain" : "8",
-    "attributes" : [ "datatype" ],
-    "id" : "7"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/providerID",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "12",
-    "label" : {
-      "IRI-based" : "providerID",
-      "undefined" : "provider i d"
-    },
-    "domain" : "11",
-    "attributes" : [ "datatype" ],
-    "id" : "10"
-  }, {
-    "iri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated",
-    "baseIri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel",
-    "range" : "33",
-    "label" : {
-      "IRI-based" : "reportGenerated",
-      "undefined" : "report generated"
-    },
-    "domain" : "27",
-    "attributes" : [ "external", "datatype" ],
-    "id" : "32"
-  }, {
-    "iri" : "http://www.w3.org/ns/org#member",
-    "baseIri" : "http://www.w3.org/ns/org",
-    "range" : "36",
-    "label" : {
-      "IRI-based" : "member",
-      "undefined" : "member"
-    },
-    "domain" : "35",
-    "attributes" : [ "object", "external" ],
-    "id" : "34"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/characteristics",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "38",
-    "label" : {
-      "IRI-based" : "characteristics",
-      "undefined" : "characteristics"
-    },
-    "domain" : "21",
-    "attributes" : [ "datatype" ],
-    "id" : "37"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/connectionStatus",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "41",
-    "label" : {
-      "IRI-based" : "connectionStatus",
-      "undefined" : "connection status"
-    },
-    "domain" : "40",
-    "attributes" : [ "datatype" ],
-    "id" : "39"
-  }, {
-    "iri" : "http://www.owl-ontologies.com/odrl#duty",
-    "baseIri" : "http://www.owl-ontologies.com/odrl",
-    "range" : "43",
-    "label" : {
-      "IRI-based" : "duty",
-      "undefined" : "duty"
-    },
-    "domain" : "18",
-    "attributes" : [ "object", "external" ],
-    "id" : "42"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/composedBy",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "22",
-    "label" : {
-      "IRI-based" : "composedBy",
-      "undefined" : "composed by"
-    },
-    "domain" : "21",
-    "attributes" : [ "object" ],
-    "id" : "44"
-  }, {
-    "iri" : "http://xmlns.com/foaf/0.1/givenName",
-    "baseIri" : "http://xmlns.com/foaf/0.1",
-    "range" : "48",
-    "label" : {
-      "IRI-based" : "givenName",
-      "undefined" : "given name"
-    },
-    "domain" : "36",
-    "attributes" : [ "external", "datatype" ],
-    "id" : "47"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/stopTime",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "50",
-    "label" : {
-      "IRI-based" : "stopTime",
-      "undefined" : "stop time"
-    },
-    "domain" : "8",
-    "attributes" : [ "datatype" ],
-    "id" : "49"
-  }, {
-    "iri" : "http://xmlns.com/foaf/0.1/lastName",
-    "baseIri" : "http://xmlns.com/foaf/0.1",
-    "range" : "54",
-    "label" : {
-      "IRI-based" : "lastName",
-      "undefined" : "last name"
-    },
-    "domain" : "36",
-    "attributes" : [ "external", "datatype" ],
-    "id" : "53"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/follows",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "18",
-    "label" : {
-      "IRI-based" : "follows",
-      "undefined" : "follows"
-    },
-    "domain" : "62",
-    "attributes" : [ "object" ],
-    "id" : "61"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/capacity",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "60",
-    "label" : {
-      "IRI-based" : "capacity",
-      "undefined" : "capacity"
-    },
-    "domain" : "22",
-    "attributes" : [ "datatype" ],
-    "id" : "64"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/deploys",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "21",
-    "label" : {
-      "IRI-based" : "deploys",
-      "undefined" : "deploys"
-    },
-    "domain" : "23",
-    "attributes" : [ "object" ],
-    "id" : "65"
-  }, {
-    "iri" : "http://www.w3.org/ns/org#organization",
-    "baseIri" : "http://www.w3.org/ns/org",
-    "range" : "20",
-    "label" : {
-      "IRI-based" : "organization",
-      "undefined" : "organization"
-    },
-    "domain" : "35",
-    "attributes" : [ "object", "external" ],
-    "id" : "66"
-  }, {
-    "iri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber",
-    "baseIri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel",
-    "range" : "55",
-    "label" : {
-      "IRI-based" : "reportNumber",
-      "undefined" : "report number"
-    },
-    "domain" : "27",
-    "attributes" : [ "external", "datatype" ],
-    "id" : "67"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "8",
-    "label" : {
-      "IRI-based" : "informs",
-      "undefined" : "informs"
-    },
-    "domain" : "27",
-    "attributes" : [ "object" ],
-    "id" : "68"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/request",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "57",
-    "label" : {
-      "IRI-based" : "request",
-      "undefined" : "request"
-    },
-    "domain" : "16",
-    "attributes" : [ "datatype" ],
-    "id" : "69"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "56",
-    "label" : {
-      "IRI-based" : "value",
-      "undefined" : "value"
-    },
-    "domain" : "13",
-    "attributes" : [ "datatype" ],
-    "id" : "70"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustor",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "46",
-    "label" : {
-      "IRI-based" : "trustor",
-      "undefined" : "trustor"
-    },
-    "domain" : "8",
-    "attributes" : [ "datatype" ],
-    "id" : "71"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/scope",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "51",
-    "label" : {
-      "IRI-based" : "scope",
-      "undefined" : "scope"
-    },
-    "domain" : "23",
-    "attributes" : [ "datatype" ],
-    "id" : "73"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/delivers",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "8",
-    "label" : {
-      "IRI-based" : "delivers",
-      "undefined" : "delivers"
-    },
-    "domain" : "21",
-    "attributes" : [ "object" ],
-    "id" : "74"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/owner",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "20",
-    "label" : {
-      "IRI-based" : "owner",
-      "undefined" : "owner"
-    },
-    "domain" : "0",
-    "attributes" : [ "object" ],
-    "id" : "75"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/fulfills",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "8",
-    "label" : {
-      "IRI-based" : "fulfills",
-      "undefined" : "fulfills"
-    },
-    "domain" : "22",
-    "attributes" : [ "object" ],
-    "id" : "76"
-  }, {
-    "iri" : "http://purl.org/terms/description",
-    "baseIri" : "http://purl.org/terms",
-    "range" : "31",
-    "label" : {
-      "IRI-based" : "description",
-      "undefined" : "description"
-    },
-    "domain" : "78",
-    "attributes" : [ "external", "datatype" ],
-    "id" : "77"
-  }, {
-    "iri" : "http://www.w3.org/ns/org#role",
-    "baseIri" : "http://www.w3.org/ns/org",
-    "range" : "62",
-    "label" : {
-      "IRI-based" : "role",
-      "undefined" : "role"
-    },
-    "domain" : "35",
-    "attributes" : [ "object", "external" ],
-    "id" : "79"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/enforces",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "14",
-    "label" : {
-      "IRI-based" : "enforces",
-      "undefined" : "enforces"
-    },
-    "domain" : "8",
-    "attributes" : [ "object" ],
-    "id" : "80"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/requirement",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "30",
-    "label" : {
-      "IRI-based" : "requirement",
-      "undefined" : "requirement"
-    },
-    "domain" : "11",
-    "attributes" : [ "datatype" ],
-    "id" : "81"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/evaluates",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "83",
+    "iri" : "https://w3id.org/def/lotaf#evaluates",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "2",
     "label" : {
       "IRI-based" : "evaluates",
       "undefined" : "evaluates"
     },
-    "domain" : "40",
+    "domain" : "1",
     "attributes" : [ "object" ],
-    "id" : "82"
+    "id" : "0"
   }, {
-    "range" : "3",
-    "domain" : "2",
-    "attributes" : [ "object", "anonymous" ],
-    "id" : "84"
+    "range" : "5",
+    "domain" : "4",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "3"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/healthScore",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "24",
-    "label" : {
-      "IRI-based" : "healthScore",
-      "undefined" : "health score"
-    },
-    "domain" : "40",
-    "attributes" : [ "datatype" ],
-    "id" : "86"
-  }, {
-    "range" : "3",
-    "domain" : "85",
-    "attributes" : [ "object", "anonymous" ],
-    "id" : "88"
-  }, {
-    "range" : "36",
-    "domain" : "17",
-    "attributes" : [ "object", "anonymous" ],
-    "id" : "89"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "91",
+    "iri" : "https://w3id.org/def/lotaf#punishmentAction",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "8",
     "label" : {
       "IRI-based" : "punishmentAction",
       "undefined" : "punishment action"
     },
-    "domain" : "14",
+    "domain" : "7",
     "attributes" : [ "object" ],
-    "id" : "90"
+    "id" : "6"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/symptomType",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "19",
-    "label" : {
-      "IRI-based" : "symptomType",
-      "undefined" : "symptom type"
-    },
-    "domain" : "83",
-    "attributes" : [ "object" ],
-    "id" : "92"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networServiceType",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "21",
-    "label" : {
-      "IRI-based" : "networServiceType",
-      "undefined" : "networ service type"
-    },
-    "domain" : "94",
-    "attributes" : [ "object" ],
-    "id" : "93"
-  }, {
-    "iri" : "http://www.owl-ontologies.com/odrl#target",
-    "baseIri" : "http://www.owl-ontologies.com/odrl",
-    "range" : "22",
-    "label" : {
-      "IRI-based" : "target",
-      "undefined" : "target"
-    },
-    "domain" : "43",
-    "attributes" : [ "object", "external" ],
-    "id" : "95"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/monitors",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "21",
-    "label" : {
-      "IRI-based" : "monitors",
-      "undefined" : "monitors"
-    },
-    "domain" : "0",
-    "attributes" : [ "object" ],
-    "id" : "96"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/guaranteedBy",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "11",
-    "label" : {
-      "IRI-based" : "guaranteedBy",
-      "undefined" : "guaranteed by"
-    },
-    "domain" : "23",
-    "attributes" : [ "object" ],
-    "id" : "97"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "26",
-    "label" : {
-      "IRI-based" : "contains",
-      "undefined" : "contains"
-    },
-    "domain" : "25",
-    "attributes" : [ "object" ],
-    "id" : "99"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/assetType",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "72",
-    "label" : {
-      "IRI-based" : "assetType",
-      "undefined" : "asset type"
-    },
-    "domain" : "22",
-    "attributes" : [ "object" ],
-    "id" : "100"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/gathers",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "3",
-    "label" : {
-      "IRI-based" : "gathers",
-      "undefined" : "gathers"
-    },
-    "domain" : "8",
-    "attributes" : [ "object" ],
-    "id" : "101"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/exposes",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "40",
-    "label" : {
-      "IRI-based" : "exposes",
-      "undefined" : "exposes"
-    },
-    "domain" : "22",
-    "attributes" : [ "object" ],
-    "id" : "102"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/starTime",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "104",
-    "label" : {
-      "IRI-based" : "starTime",
-      "undefined" : "star time"
-    },
-    "domain" : "8",
-    "attributes" : [ "datatype" ],
-    "id" : "103"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/weightingFactor",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "58",
+    "iri" : "https://w3id.org/def/lotaf#weightingFactor",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "10",
     "label" : {
       "IRI-based" : "weightingFactor",
       "undefined" : "weighting factor"
     },
-    "domain" : "3",
+    "domain" : "5",
     "attributes" : [ "datatype" ],
-    "id" : "105"
+    "id" : "9"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/violationDescription",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "63",
+    "iri" : "https://w3id.org/def/lotaf#guaranteedBy",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "13",
     "label" : {
-      "IRI-based" : "violationDescription",
-      "undefined" : "violation description"
+      "IRI-based" : "guaranteedBy",
+      "undefined" : "guaranteed by"
     },
-    "domain" : "11",
-    "attributes" : [ "datatype" ],
-    "id" : "106"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/customerID",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "52",
-    "label" : {
-      "IRI-based" : "customerID",
-      "undefined" : "customer i d"
-    },
-    "domain" : "11",
-    "attributes" : [ "datatype" ],
-    "id" : "107"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/endpoint",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "45",
-    "label" : {
-      "IRI-based" : "endpoint",
-      "undefined" : "endpoint"
-    },
-    "domain" : "22",
-    "attributes" : [ "datatype" ],
-    "id" : "108"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/lot",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "29",
-    "label" : {
-      "IRI-based" : "lot",
-      "undefined" : "lot"
-    },
-    "domain" : "8",
-    "attributes" : [ "datatype" ],
-    "id" : "109"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/constraint",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "28",
-    "label" : {
-      "IRI-based" : "constraint",
-      "undefined" : "constraint"
-    },
-    "domain" : "43",
-    "attributes" : [ "datatype" ],
-    "id" : "110"
-  }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/applies",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "15",
-    "label" : {
-      "IRI-based" : "applies",
-      "undefined" : "applies"
-    },
-    "domain" : "8",
+    "domain" : "12",
     "attributes" : [ "object" ],
-    "id" : "111"
+    "id" : "11"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networkStatus",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "98",
+    "iri" : "http://purl.org/terms/identifier",
+    "baseIri" : "http://purl.org/terms",
+    "range" : "16",
     "label" : {
-      "IRI-based" : "networkStatus",
-      "undefined" : "network status"
+      "IRI-based" : "identifier",
+      "undefined" : "identifier"
     },
-    "domain" : "21",
-    "attributes" : [ "object" ],
-    "id" : "112"
+    "domain" : "15",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "14"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/entityType",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
+    "range" : "5",
+    "domain" : "19",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "18"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#monitors",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "24",
+    "label" : {
+      "IRI-based" : "monitors",
+      "undefined" : "monitors"
+    },
+    "domain" : "23",
+    "attributes" : [ "object" ],
+    "id" : "22"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#symptomType",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "symptomType",
+      "undefined" : "symptom type"
+    },
+    "domain" : "2",
+    "attributes" : [ "object" ],
+    "id" : "34"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#fulfills",
+    "baseIri" : "https://w3id.org/def/lotaf",
     "range" : "17",
     "label" : {
-      "IRI-based" : "entityType",
-      "undefined" : "entity type"
+      "IRI-based" : "fulfills",
+      "undefined" : "fulfills"
     },
-    "domain" : "59",
+    "domain" : "27",
     "attributes" : [ "object" ],
-    "id" : "113"
+    "id" : "38"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/manages",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "23",
+    "iri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated",
+    "baseIri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel",
+    "range" : "41",
+    "label" : {
+      "IRI-based" : "reportGenerated",
+      "undefined" : "report generated"
+    },
+    "domain" : "40",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "39"
+  }, {
+    "iri" : "http://www.w3.org/ns/org#member",
+    "baseIri" : "http://www.w3.org/ns/org",
+    "range" : "44",
+    "label" : {
+      "IRI-based" : "member",
+      "undefined" : "member"
+    },
+    "domain" : "43",
+    "attributes" : [ "external", "object" ],
+    "id" : "42"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#manages",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "12",
     "label" : {
       "IRI-based" : "manages",
       "undefined" : "manages"
     },
-    "domain" : "17",
+    "domain" : "26",
     "attributes" : [ "object" ],
-    "id" : "114"
+    "id" : "45"
   }, {
-    "iri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo",
-    "baseIri" : "https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF",
-    "range" : "1",
+    "iri" : "https://w3id.org/def/lotaf#pertains",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "19",
+    "label" : {
+      "IRI-based" : "pertains",
+      "undefined" : "pertains"
+    },
+    "domain" : "2",
+    "attributes" : [ "object" ],
+    "id" : "47"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#contains",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "40",
+    "label" : {
+      "IRI-based" : "contains",
+      "undefined" : "contains"
+    },
+    "domain" : "12",
+    "attributes" : [ "object" ],
+    "id" : "48"
+  }, {
+    "iri" : "http://www.owl-ontologies.com/odrl#duty",
+    "baseIri" : "http://www.owl-ontologies.com/odrl",
+    "range" : "50",
+    "label" : {
+      "IRI-based" : "duty",
+      "undefined" : "duty"
+    },
+    "domain" : "31",
+    "attributes" : [ "external", "object" ],
+    "id" : "49"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#networServiceType",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "24",
+    "label" : {
+      "IRI-based" : "networServiceType",
+      "undefined" : "networ service type"
+    },
+    "domain" : "52",
+    "attributes" : [ "object" ],
+    "id" : "51"
+  }, {
+    "iri" : "http://xmlns.com/foaf/0.1/givenName",
+    "baseIri" : "http://xmlns.com/foaf/0.1",
+    "range" : "56",
+    "label" : {
+      "IRI-based" : "givenName",
+      "undefined" : "given name"
+    },
+    "domain" : "44",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "55"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#entityType",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "26",
+    "label" : {
+      "IRI-based" : "entityType",
+      "undefined" : "entity type"
+    },
+    "domain" : "58",
+    "attributes" : [ "object" ],
+    "id" : "57"
+  }, {
+    "iri" : "http://xmlns.com/foaf/0.1/lastName",
+    "baseIri" : "http://xmlns.com/foaf/0.1",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "lastName",
+      "undefined" : "last name"
+    },
+    "domain" : "44",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "61"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#request",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "65",
+    "label" : {
+      "IRI-based" : "request",
+      "undefined" : "request"
+    },
+    "domain" : "30",
+    "attributes" : [ "datatype" ],
+    "id" : "64"
+  }, {
+    "iri" : "http://www.w3.org/ns/org#organization",
+    "baseIri" : "http://www.w3.org/ns/org",
+    "range" : "25",
+    "label" : {
+      "IRI-based" : "organization",
+      "undefined" : "organization"
+    },
+    "domain" : "43",
+    "attributes" : [ "external", "object" ],
+    "id" : "72"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#violationDescription",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "68",
+    "label" : {
+      "IRI-based" : "violationDescription",
+      "undefined" : "violation description"
+    },
+    "domain" : "13",
+    "attributes" : [ "datatype" ],
+    "id" : "73"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#scope",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "scope",
+      "undefined" : "scope"
+    },
+    "domain" : "12",
+    "attributes" : [ "datatype" ],
+    "id" : "74"
+  }, {
+    "iri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber",
+    "baseIri" : "http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel",
+    "range" : "69",
+    "label" : {
+      "IRI-based" : "reportNumber",
+      "undefined" : "report number"
+    },
+    "domain" : "40",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "75"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#starTime",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "63",
+    "label" : {
+      "IRI-based" : "starTime",
+      "undefined" : "star time"
+    },
+    "domain" : "17",
+    "attributes" : [ "datatype" ],
+    "id" : "76"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#capacity",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "67",
+    "label" : {
+      "IRI-based" : "capacity",
+      "undefined" : "capacity"
+    },
+    "domain" : "27",
+    "attributes" : [ "datatype" ],
+    "id" : "77"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#trustor",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "54",
+    "label" : {
+      "IRI-based" : "trustor",
+      "undefined" : "trustor"
+    },
+    "domain" : "17",
+    "attributes" : [ "datatype" ],
+    "id" : "78"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#constraint",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "59",
+    "label" : {
+      "IRI-based" : "constraint",
+      "undefined" : "constraint"
+    },
+    "domain" : "50",
+    "attributes" : [ "datatype" ],
+    "id" : "79"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#belongsTo",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "23",
     "label" : {
       "IRI-based" : "belongsTo",
       "undefined" : "belongs to"
     },
-    "domain" : "87",
+    "domain" : "26",
     "attributes" : [ "object" ],
-    "id" : "115"
+    "id" : "80"
+  }, {
+    "iri" : "http://purl.org/terms/description",
+    "baseIri" : "http://purl.org/terms",
+    "range" : "37",
+    "label" : {
+      "IRI-based" : "description",
+      "undefined" : "description"
+    },
+    "domain" : "29",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "81"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#assetType",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "83",
+    "label" : {
+      "IRI-based" : "assetType",
+      "undefined" : "asset type"
+    },
+    "domain" : "27",
+    "attributes" : [ "object" ],
+    "id" : "82"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#gathers",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "5",
+    "label" : {
+      "IRI-based" : "gathers",
+      "undefined" : "gathers"
+    },
+    "domain" : "17",
+    "attributes" : [ "object" ],
+    "id" : "84"
+  }, {
+    "iri" : "http://www.w3.org/ns/org#role",
+    "baseIri" : "http://www.w3.org/ns/org",
+    "range" : "71",
+    "label" : {
+      "IRI-based" : "role",
+      "undefined" : "role"
+    },
+    "domain" : "43",
+    "attributes" : [ "external", "object" ],
+    "id" : "85"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#composedBy",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "27",
+    "label" : {
+      "IRI-based" : "composedBy",
+      "undefined" : "composed by"
+    },
+    "domain" : "24",
+    "attributes" : [ "object" ],
+    "id" : "86"
+  }, {
+    "range" : "44",
+    "domain" : "26",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "87"
+  }, {
+    "iri" : "http://www.owl-ontologies.com/odrl#target",
+    "baseIri" : "http://www.owl-ontologies.com/odrl",
+    "range" : "27",
+    "label" : {
+      "IRI-based" : "target",
+      "undefined" : "target"
+    },
+    "domain" : "50",
+    "attributes" : [ "external", "object" ],
+    "id" : "88"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#trustee",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "90",
+    "label" : {
+      "IRI-based" : "trustee",
+      "undefined" : "trustee"
+    },
+    "domain" : "17",
+    "attributes" : [ "datatype" ],
+    "id" : "89"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#providerID",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "92",
+    "label" : {
+      "IRI-based" : "providerID",
+      "undefined" : "provider i d"
+    },
+    "domain" : "13",
+    "attributes" : [ "datatype" ],
+    "id" : "91"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#enforces",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "enforces",
+      "undefined" : "enforces"
+    },
+    "domain" : "17",
+    "attributes" : [ "object" ],
+    "id" : "93"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#requirement",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "95",
+    "label" : {
+      "IRI-based" : "requirement",
+      "undefined" : "requirement"
+    },
+    "domain" : "13",
+    "attributes" : [ "datatype" ],
+    "id" : "94"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#endpoint",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "97",
+    "label" : {
+      "IRI-based" : "endpoint",
+      "undefined" : "endpoint"
+    },
+    "domain" : "27",
+    "attributes" : [ "datatype" ],
+    "id" : "96"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#deploys",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "24",
+    "label" : {
+      "IRI-based" : "deploys",
+      "undefined" : "deploys"
+    },
+    "domain" : "12",
+    "attributes" : [ "object" ],
+    "id" : "98"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#lot",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "60",
+    "label" : {
+      "IRI-based" : "lot",
+      "undefined" : "lot"
+    },
+    "domain" : "17",
+    "attributes" : [ "datatype" ],
+    "id" : "99"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#healthScore",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "66",
+    "label" : {
+      "IRI-based" : "healthScore",
+      "undefined" : "health score"
+    },
+    "domain" : "1",
+    "attributes" : [ "datatype" ],
+    "id" : "100"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#delivers",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "17",
+    "label" : {
+      "IRI-based" : "delivers",
+      "undefined" : "delivers"
+    },
+    "domain" : "24",
+    "attributes" : [ "object" ],
+    "id" : "101"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#owner",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "25",
+    "label" : {
+      "IRI-based" : "owner",
+      "undefined" : "owner"
+    },
+    "domain" : "23",
+    "attributes" : [ "object" ],
+    "id" : "102"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#networkStatus",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "networkStatus",
+      "undefined" : "network status"
+    },
+    "domain" : "24",
+    "attributes" : [ "object" ],
+    "id" : "103"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#customerID",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "53",
+    "label" : {
+      "IRI-based" : "customerID",
+      "undefined" : "customer i d"
+    },
+    "domain" : "13",
+    "attributes" : [ "datatype" ],
+    "id" : "104"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#applies",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "applies",
+      "undefined" : "applies"
+    },
+    "domain" : "17",
+    "attributes" : [ "object" ],
+    "id" : "105"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#includes",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "17",
+    "label" : {
+      "IRI-based" : "includes",
+      "undefined" : "includes"
+    },
+    "domain" : "13",
+    "attributes" : [ "object" ],
+    "id" : "106"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#connectionStatus",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "33",
+    "label" : {
+      "IRI-based" : "connectionStatus",
+      "undefined" : "connection status"
+    },
+    "domain" : "1",
+    "attributes" : [ "datatype" ],
+    "id" : "107"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#characteristics",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "32",
+    "label" : {
+      "IRI-based" : "characteristics",
+      "undefined" : "characteristics"
+    },
+    "domain" : "24",
+    "attributes" : [ "datatype" ],
+    "id" : "108"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#follows",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "31",
+    "label" : {
+      "IRI-based" : "follows",
+      "undefined" : "follows"
+    },
+    "domain" : "71",
+    "attributes" : [ "object" ],
+    "id" : "109"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#stopTime",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "36",
+    "label" : {
+      "IRI-based" : "stopTime",
+      "undefined" : "stop time"
+    },
+    "domain" : "17",
+    "attributes" : [ "datatype" ],
+    "id" : "110"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#exposes",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "exposes",
+      "undefined" : "exposes"
+    },
+    "domain" : "27",
+    "attributes" : [ "object" ],
+    "id" : "111"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#value",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "28",
+    "label" : {
+      "IRI-based" : "value",
+      "undefined" : "value"
+    },
+    "domain" : "20",
+    "attributes" : [ "datatype" ],
+    "id" : "112"
+  }, {
+    "iri" : "https://w3id.org/def/lotaf#informs",
+    "baseIri" : "https://w3id.org/def/lotaf",
+    "range" : "17",
+    "label" : {
+      "IRI-based" : "informs",
+      "undefined" : "informs"
+    },
+    "domain" : "40",
+    "attributes" : [ "object" ],
+    "id" : "113"
   } ]
 }

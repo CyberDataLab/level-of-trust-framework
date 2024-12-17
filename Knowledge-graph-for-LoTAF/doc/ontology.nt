@@ -1,12 +1,17 @@
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://purl.org/dc/elements/1.1/contributor> "Alfonso Serrano Gil" .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://purl.org/dc/elements/1.1/contributor> "Javier Paredes Serrano" .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://purl.org/dc/elements/1.1/contributor> "Manuel Gil Pérez" .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://purl.org/dc/elements/1.1/created> "2024-07-11"^^<http://www.w3.org/2001/XMLSchema#date> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://purl.org/dc/elements/1.1/creator> "Jose Maria Jorquera Valero" .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://purl.org/dc/elements/1.1/title> "Level of Trust Assessment Ontology for Continuum Computing" .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <http://www.w3.org/2002/07/owl#versionInfo> "0.0.2" .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/> .
+<https://w3id.org/def/lotaf#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/contributor> "Diego R. López" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/contributor> "Gregorio Martínez Pérez" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/contributor> "Ignacio Dominguez Martinez-Casanueva" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/contributor> "Lucía Cabanillas Rodríguez" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/contributor> "Manuel Gil Pérez" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/contributor> "Riccardo Nicolicchia" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/created> "2024-12-16"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/creator> "Alfonso Serrano Gil" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/creator> "Javier Paredes Serrano" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/creator> "José María Jorquera Valero" .
+<https://w3id.org/def/lotaf#> <http://purl.org/dc/elements/1.1/title> "Level of Trust Assessment Ontology for Computing Continuum" .
+<https://w3id.org/def/lotaf#> <http://www.w3.org/2002/07/owl#versionInfo> "1.0.0" .
+<https://w3id.org/def/lotaf#> <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/> .
 # 
 # 
 # #################################################################
@@ -85,147 +90,155 @@
 <http://www.w3.org/ns/org#role> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/org#Role> .
 <http://www.w3.org/ns/org#role> <http://www.w3.org/2000/01/rdf-schema#label> "role" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/applies
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/applies> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/applies> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/applies> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reward> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/applies> <http://www.w3.org/2000/01/rdf-schema#label> "applies" .
+# https://w3id.org/def/lotaf#applies
+<https://w3id.org/def/lotaf#applies> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#applies> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#applies> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#Reward> .
+<https://w3id.org/def/lotaf#applies> <http://www.w3.org/2000/01/rdf-schema#label> "applies" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/assetType
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/assetType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/assetType> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/assetType> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/assetType> <http://www.w3.org/2000/01/rdf-schema#label> "asset type" .
+# https://w3id.org/def/lotaf#assetType
+<https://w3id.org/def/lotaf#assetType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#assetType> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
+<https://w3id.org/def/lotaf#assetType> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#AssetType> .
+<https://w3id.org/def/lotaf#assetType> <http://www.w3.org/2000/01/rdf-schema#label> "asset type" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo> <http://www.w3.org/2000/01/rdf-schema#label> "belongs to" .
+# https://w3id.org/def/lotaf#belongsTo
+<https://w3id.org/def/lotaf#belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#User> .
+<https://w3id.org/def/lotaf#belongsTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#AdministrativeDomain> .
+<https://w3id.org/def/lotaf#belongsTo> <http://www.w3.org/2000/01/rdf-schema#label> "belongs to" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/composedBy
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/composedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/composedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/composedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.owl-ontologies.com/odrl#Asset> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/composedBy> <http://www.w3.org/2000/01/rdf-schema#label> "composed by" .
+# https://w3id.org/def/lotaf#composedBy
+<https://w3id.org/def/lotaf#composedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#composedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#NetworkService> .
+<https://w3id.org/def/lotaf#composedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.owl-ontologies.com/odrl#Asset> .
+<https://w3id.org/def/lotaf#composedBy> <http://www.w3.org/2000/01/rdf-schema#label> "composed by" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains> <http://www.w3.org/2000/01/rdf-schema#range> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains> <http://www.w3.org/2000/01/rdf-schema#label> "contains" .
+# https://w3id.org/def/lotaf#contains
+<https://w3id.org/def/lotaf#contains> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#contains> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
+<https://w3id.org/def/lotaf#contains> <http://www.w3.org/2000/01/rdf-schema#range> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> .
+<https://w3id.org/def/lotaf#contains> <http://www.w3.org/2000/01/rdf-schema#label> "contains" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/delivers
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/delivers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/delivers> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/delivers> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/delivers> <http://www.w3.org/2000/01/rdf-schema#label> "delivers" .
+# https://w3id.org/def/lotaf#delivers
+<https://w3id.org/def/lotaf#delivers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#delivers> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#NetworkService> .
+<https://w3id.org/def/lotaf#delivers> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#delivers> <http://www.w3.org/2000/01/rdf-schema#label> "delivers" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/deploys
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/deploys> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/deploys> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/deploys> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/deploys> <http://www.w3.org/2000/01/rdf-schema#label> "deploys" .
+# https://w3id.org/def/lotaf#deploys
+<https://w3id.org/def/lotaf#deploys> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#deploys> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
+<https://w3id.org/def/lotaf#deploys> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#NetworkService> .
+<https://w3id.org/def/lotaf#deploys> <http://www.w3.org/2000/01/rdf-schema#label> "deploys" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/enforces
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/enforces> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/enforces> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/enforces> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/enforces> <http://www.w3.org/2000/01/rdf-schema#label> "enforces" .
+# https://w3id.org/def/lotaf#enforces
+<https://w3id.org/def/lotaf#enforces> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#enforces> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#enforces> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#Punishment> .
+<https://w3id.org/def/lotaf#enforces> <http://www.w3.org/2000/01/rdf-schema#label> "enforces" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/entityType
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/entityType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/entityType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/entityType> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/entityType> <http://www.w3.org/2000/01/rdf-schema#label> "entity type" .
+# https://w3id.org/def/lotaf#entityType
+<https://w3id.org/def/lotaf#entityType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#entityType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#DigitalServiceEntity> .
+<https://w3id.org/def/lotaf#entityType> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#User> .
+<https://w3id.org/def/lotaf#entityType> <http://www.w3.org/2000/01/rdf-schema#label> "entity type" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/evaluates
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/evaluates> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/evaluates> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/evaluates> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/evaluates> <http://www.w3.org/2000/01/rdf-schema#label> "evaluates" .
+# https://w3id.org/def/lotaf#evaluates
+<https://w3id.org/def/lotaf#evaluates> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#evaluates> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Health> .
+<https://w3id.org/def/lotaf#evaluates> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#Symptom> .
+<https://w3id.org/def/lotaf#evaluates> <http://www.w3.org/2000/01/rdf-schema#label> "evaluates" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/exposes
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/exposes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/exposes> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/exposes> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/exposes> <http://www.w3.org/2000/01/rdf-schema#label> "exposes" .
+# https://w3id.org/def/lotaf#exposes
+<https://w3id.org/def/lotaf#exposes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#exposes> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
+<https://w3id.org/def/lotaf#exposes> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#Health> .
+<https://w3id.org/def/lotaf#exposes> <http://www.w3.org/2000/01/rdf-schema#label> "exposes" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/follows
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/follows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/follows> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/org#Role> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/follows> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.owl-ontologies.com/odrl#Policy> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/follows> <http://www.w3.org/2000/01/rdf-schema#label> "follows" .
+# https://w3id.org/def/lotaf#follows
+<https://w3id.org/def/lotaf#follows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#follows> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/org#Role> .
+<https://w3id.org/def/lotaf#follows> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.owl-ontologies.com/odrl#Policy> .
+<https://w3id.org/def/lotaf#follows> <http://www.w3.org/2000/01/rdf-schema#label> "follows" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/fulfills
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/fulfills> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/fulfills> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/fulfills> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/fulfills> <http://www.w3.org/2000/01/rdf-schema#label> "fulfills" .
+# https://w3id.org/def/lotaf#fulfills
+<https://w3id.org/def/lotaf#fulfills> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#fulfills> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
+<https://w3id.org/def/lotaf#fulfills> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#fulfills> <http://www.w3.org/2000/01/rdf-schema#label> "fulfills" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/gathers
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/gathers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/gathers> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/gathers> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/gathers> <http://www.w3.org/2000/01/rdf-schema#label> "gathers" .
+# https://w3id.org/def/lotaf#gathers
+<https://w3id.org/def/lotaf#gathers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#gathers> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#gathers> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#Indicator> .
+<https://w3id.org/def/lotaf#gathers> <http://www.w3.org/2000/01/rdf-schema#label> "gathers" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/guaranteedBy
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/guaranteedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/guaranteedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/guaranteedBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/guaranteedBy> <http://www.w3.org/2000/01/rdf-schema#label> "guaranteed by" .
+# https://w3id.org/def/lotaf#guaranteedBy
+<https://w3id.org/def/lotaf#guaranteedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#guaranteedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
+<https://w3id.org/def/lotaf#guaranteedBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#TrustLevelAgreement> .
+<https://w3id.org/def/lotaf#guaranteedBy> <http://www.w3.org/2000/01/rdf-schema#label> "guaranteed by" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs> <http://www.w3.org/2000/01/rdf-schema#label> "informs" .
+# https://w3id.org/def/lotaf#includes
+<https://w3id.org/def/lotaf#includes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#includes> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#TrustLevelAgreement> .
+<https://w3id.org/def/lotaf#includes> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#includes> <http://www.w3.org/2000/01/rdf-schema#label> "includes" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/manages
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/manages> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/manages> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/manages> <http://www.w3.org/2000/01/rdf-schema#range> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/manages> <http://www.w3.org/2000/01/rdf-schema#label> "manages" .
+# https://w3id.org/def/lotaf#informs
+<https://w3id.org/def/lotaf#informs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#informs> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> .
+<https://w3id.org/def/lotaf#informs> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#informs> <http://www.w3.org/2000/01/rdf-schema#label> "informs" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/monitors
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/monitors> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/monitors> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/monitors> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/monitors> <http://www.w3.org/2000/01/rdf-schema#label> "monitors" .
+# https://w3id.org/def/lotaf#manages
+<https://w3id.org/def/lotaf#manages> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#manages> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#User> .
+<https://w3id.org/def/lotaf#manages> <http://www.w3.org/2000/01/rdf-schema#range> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
+<https://w3id.org/def/lotaf#manages> <http://www.w3.org/2000/01/rdf-schema#label> "manages" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networServiceType
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networServiceType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networServiceType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networServiceType> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networServiceType> <http://www.w3.org/2000/01/rdf-schema#label> "networ service type" .
+# https://w3id.org/def/lotaf#monitors
+<https://w3id.org/def/lotaf#monitors> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#monitors> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#AdministrativeDomain> .
+<https://w3id.org/def/lotaf#monitors> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#NetworkService> .
+<https://w3id.org/def/lotaf#monitors> <http://www.w3.org/2000/01/rdf-schema#label> "monitors" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networkStatus
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networkStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networkStatus> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networkStatus> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networkStatus> <http://www.w3.org/2000/01/rdf-schema#label> "network status" .
+# https://w3id.org/def/lotaf#networServiceType
+<https://w3id.org/def/lotaf#networServiceType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#networServiceType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#NetworkServiceType> .
+<https://w3id.org/def/lotaf#networServiceType> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#NetworkService> .
+<https://w3id.org/def/lotaf#networServiceType> <http://www.w3.org/2000/01/rdf-schema#label> "networ service type" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/owner
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/owner> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/owner> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/owner> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/org#Organization> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/owner> <http://www.w3.org/2000/01/rdf-schema#label> "owner" .
+# https://w3id.org/def/lotaf#networkStatus
+<https://w3id.org/def/lotaf#networkStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#networkStatus> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#NetworkService> .
+<https://w3id.org/def/lotaf#networkStatus> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
+<https://w3id.org/def/lotaf#networkStatus> <http://www.w3.org/2000/01/rdf-schema#label> "network status" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction> <http://www.w3.org/2000/01/rdf-schema#label> "punishment action" .
+# https://w3id.org/def/lotaf#owner
+<https://w3id.org/def/lotaf#owner> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#owner> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#AdministrativeDomain> .
+<https://w3id.org/def/lotaf#owner> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/org#Organization> .
+<https://w3id.org/def/lotaf#owner> <http://www.w3.org/2000/01/rdf-schema#label> "owner" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/symptomType
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/symptomType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/symptomType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/symptomType> <http://www.w3.org/2000/01/rdf-schema#range> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/symptomType> <http://www.w3.org/2000/01/rdf-schema#label> "symptom type" .
+# https://w3id.org/def/lotaf#pertains
+<https://w3id.org/def/lotaf#pertains> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#pertains> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Symptom> .
+<https://w3id.org/def/lotaf#pertains> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#ObjectiveIndicator> .
+<https://w3id.org/def/lotaf#pertains> <http://www.w3.org/2000/01/rdf-schema#label> "pertains" .
+# 
+# https://w3id.org/def/lotaf#punishmentAction
+<https://w3id.org/def/lotaf#punishmentAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#punishmentAction> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Punishment> .
+<https://w3id.org/def/lotaf#punishmentAction> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#PunishmentAction> .
+<https://w3id.org/def/lotaf#punishmentAction> <http://www.w3.org/2000/01/rdf-schema#label> "punishment action" .
+# 
+# https://w3id.org/def/lotaf#symptomType
+<https://w3id.org/def/lotaf#symptomType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/def/lotaf#symptomType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Symptom> .
+<https://w3id.org/def/lotaf#symptomType> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/def/lotaf#SymptomType> .
+<https://w3id.org/def/lotaf#symptomType> <http://www.w3.org/2000/01/rdf-schema#label> "symptom type" .
 # 
 # 
 # 
@@ -238,9 +251,9 @@
 # 
 # http://purl.org/terms/description
 <http://purl.org/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://purl.org/terms/description> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain> .
-<http://purl.org/terms/description> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<http://purl.org/terms/description> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom> .
+<http://purl.org/terms/description> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#AdministrativeDomain> .
+<http://purl.org/terms/description> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#NetworkService> .
+<http://purl.org/terms/description> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Symptom> .
 <http://purl.org/terms/description> <http://www.w3.org/2000/01/rdf-schema#label> "description" .
 # 
 # http://purl.org/terms/identifier
@@ -248,10 +261,10 @@
 <http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
 <http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
 <http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/org#Organization> .
-<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain> .
-<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> .
-<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> .
+<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#AdministrativeDomain> .
+<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#NetworkService> .
+<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#TrustLevelAgreement> .
+<http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#User> .
 <http://purl.org/terms/identifier> <http://www.w3.org/2000/01/rdf-schema#label> "identifier" .
 # 
 # http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated
@@ -274,103 +287,103 @@
 <http://xmlns.com/foaf/0.1/lastName> <http://www.w3.org/2000/01/rdf-schema#domain> <http://xmlns.com/foaf/0.1/Person> .
 <http://xmlns.com/foaf/0.1/lastName> <http://www.w3.org/2000/01/rdf-schema#label> "last name" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/capacity
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/capacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/capacity> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/capacity> <http://www.w3.org/2000/01/rdf-schema#label> "capacity" .
+# https://w3id.org/def/lotaf#capacity
+<https://w3id.org/def/lotaf#capacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#capacity> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
+<https://w3id.org/def/lotaf#capacity> <http://www.w3.org/2000/01/rdf-schema#label> "capacity" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/characteristics
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/characteristics> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/characteristics> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/characteristics> <http://www.w3.org/2000/01/rdf-schema#label> "characteristics" .
+# https://w3id.org/def/lotaf#characteristics
+<https://w3id.org/def/lotaf#characteristics> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#characteristics> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#NetworkService> .
+<https://w3id.org/def/lotaf#characteristics> <http://www.w3.org/2000/01/rdf-schema#label> "characteristics" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/connectionStatus
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/connectionStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/connectionStatus> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/connectionStatus> <http://www.w3.org/2000/01/rdf-schema#label> "connection status" .
+# https://w3id.org/def/lotaf#connectionStatus
+<https://w3id.org/def/lotaf#connectionStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#connectionStatus> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Health> .
+<https://w3id.org/def/lotaf#connectionStatus> <http://www.w3.org/2000/01/rdf-schema#label> "connection status" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/constraint
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/constraint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/constraint> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Rule> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/constraint> <http://www.w3.org/2000/01/rdf-schema#label> "constraint" .
+# https://w3id.org/def/lotaf#constraint
+<https://w3id.org/def/lotaf#constraint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#constraint> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Rule> .
+<https://w3id.org/def/lotaf#constraint> <http://www.w3.org/2000/01/rdf-schema#label> "constraint" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/customerID
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/customerID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/customerID> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/customerID> <http://www.w3.org/2000/01/rdf-schema#label> "customer i d" .
+# https://w3id.org/def/lotaf#customerID
+<https://w3id.org/def/lotaf#customerID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#customerID> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#TrustLevelAgreement> .
+<https://w3id.org/def/lotaf#customerID> <http://www.w3.org/2000/01/rdf-schema#label> "customer i d" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/endpoint
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/endpoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/endpoint> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/endpoint> <http://www.w3.org/2000/01/rdf-schema#label> "endpoint" .
+# https://w3id.org/def/lotaf#endpoint
+<https://w3id.org/def/lotaf#endpoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#endpoint> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Asset> .
+<https://w3id.org/def/lotaf#endpoint> <http://www.w3.org/2000/01/rdf-schema#label> "endpoint" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/healthScore
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/healthScore> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/healthScore> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/healthScore> <http://www.w3.org/2000/01/rdf-schema#label> "health score" .
+# https://w3id.org/def/lotaf#healthScore
+<https://w3id.org/def/lotaf#healthScore> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#healthScore> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Health> .
+<https://w3id.org/def/lotaf#healthScore> <http://www.w3.org/2000/01/rdf-schema#label> "health score" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/lot
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/lot> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/lot> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/lot> <http://www.w3.org/2000/01/rdf-schema#label> "lot" .
+# https://w3id.org/def/lotaf#lot
+<https://w3id.org/def/lotaf#lot> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#lot> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#lot> <http://www.w3.org/2000/01/rdf-schema#label> "lot" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/providerID
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/providerID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/providerID> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/providerID> <http://www.w3.org/2000/01/rdf-schema#label> "provider i d" .
+# https://w3id.org/def/lotaf#providerID
+<https://w3id.org/def/lotaf#providerID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#providerID> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#TrustLevelAgreement> .
+<https://w3id.org/def/lotaf#providerID> <http://www.w3.org/2000/01/rdf-schema#label> "provider i d" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/request
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/request> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/request> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Policy> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/request> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/request> <http://www.w3.org/2000/01/rdf-schema#label> "request" .
+# https://w3id.org/def/lotaf#request
+<https://w3id.org/def/lotaf#request> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#request> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.owl-ontologies.com/odrl#Policy> .
+<https://w3id.org/def/lotaf#request> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#User> .
+<https://w3id.org/def/lotaf#request> <http://www.w3.org/2000/01/rdf-schema#label> "request" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/requirement
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/requirement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/requirement> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/requirement> <http://www.w3.org/2000/01/rdf-schema#label> "requirement" .
+# https://w3id.org/def/lotaf#requirement
+<https://w3id.org/def/lotaf#requirement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#requirement> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#TrustLevelAgreement> .
+<https://w3id.org/def/lotaf#requirement> <http://www.w3.org/2000/01/rdf-schema#label> "requirement" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/scope
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/scope> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/scope> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/scope> <http://www.w3.org/2000/01/rdf-schema#label> "scope" .
+# https://w3id.org/def/lotaf#scope
+<https://w3id.org/def/lotaf#scope> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#scope> <http://www.w3.org/2000/01/rdf-schema#domain> <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> .
+<https://w3id.org/def/lotaf#scope> <http://www.w3.org/2000/01/rdf-schema#label> "scope" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/starTime
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/starTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/starTime> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/starTime> <http://www.w3.org/2000/01/rdf-schema#label> "star time" .
+# https://w3id.org/def/lotaf#starTime
+<https://w3id.org/def/lotaf#starTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#starTime> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#starTime> <http://www.w3.org/2000/01/rdf-schema#label> "star time" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/stopTime
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/stopTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/stopTime> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/stopTime> <http://www.w3.org/2000/01/rdf-schema#label> "stop time" .
+# https://w3id.org/def/lotaf#stopTime
+<https://w3id.org/def/lotaf#stopTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#stopTime> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#stopTime> <http://www.w3.org/2000/01/rdf-schema#label> "stop time" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustee
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustee> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustee> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustee> <http://www.w3.org/2000/01/rdf-schema#label> "trustee" .
+# https://w3id.org/def/lotaf#trustee
+<https://w3id.org/def/lotaf#trustee> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#trustee> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#trustee> <http://www.w3.org/2000/01/rdf-schema#label> "trustee" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustor
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustor> <http://www.w3.org/2000/01/rdf-schema#label> "trustor" .
+# https://w3id.org/def/lotaf#trustor
+<https://w3id.org/def/lotaf#trustor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#trustor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#LevelOfTrust> .
+<https://w3id.org/def/lotaf#trustor> <http://www.w3.org/2000/01/rdf-schema#label> "trustor" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reward> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value> <http://www.w3.org/2000/01/rdf-schema#label> "value" .
+# https://w3id.org/def/lotaf#value
+<https://w3id.org/def/lotaf#value> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#value> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Indicator> .
+<https://w3id.org/def/lotaf#value> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Punishment> .
+<https://w3id.org/def/lotaf#value> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Reward> .
+<https://w3id.org/def/lotaf#value> <http://www.w3.org/2000/01/rdf-schema#label> "value" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/violationDescription
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/violationDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/violationDescription> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/violationDescription> <http://www.w3.org/2000/01/rdf-schema#label> "violation description" .
+# https://w3id.org/def/lotaf#violationDescription
+<https://w3id.org/def/lotaf#violationDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#violationDescription> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#TrustLevelAgreement> .
+<https://w3id.org/def/lotaf#violationDescription> <http://www.w3.org/2000/01/rdf-schema#label> "violation description" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/weightingFactor
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/weightingFactor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/weightingFactor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/weightingFactor> <http://www.w3.org/2000/01/rdf-schema#label> "weighting factor" .
+# https://w3id.org/def/lotaf#weightingFactor
+<https://w3id.org/def/lotaf#weightingFactor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/def/lotaf#weightingFactor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/def/lotaf#Indicator> .
+<https://w3id.org/def/lotaf#weightingFactor> <http://www.w3.org/2000/01/rdf-schema#label> "weighting factor" .
 # 
 # 
 # 
@@ -417,80 +430,80 @@
 <http://xmlns.com/foaf/0.1/Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://xmlns.com/foaf/0.1/Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain> <http://www.w3.org/2000/01/rdf-schema#label> "Administrative Domain" .
+# https://w3id.org/def/lotaf#AdministrativeDomain
+<https://w3id.org/def/lotaf#AdministrativeDomain> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#AdministrativeDomain> <http://www.w3.org/2000/01/rdf-schema#label> "Administrative Domain" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType> <http://www.w3.org/2000/01/rdf-schema#label> "Asset Type" .
+# https://w3id.org/def/lotaf#AssetType
+<https://w3id.org/def/lotaf#AssetType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#AssetType> <http://www.w3.org/2000/01/rdf-schema#label> "Asset Type" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity> <http://www.w3.org/2000/01/rdf-schema#label> "Digital Service Entity" .
+# https://w3id.org/def/lotaf#DigitalServiceEntity
+<https://w3id.org/def/lotaf#DigitalServiceEntity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#DigitalServiceEntity> <http://www.w3.org/2000/01/rdf-schema#label> "Digital Service Entity" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health> <http://www.w3.org/2000/01/rdf-schema#label> "Health" .
+# https://w3id.org/def/lotaf#Health
+<https://w3id.org/def/lotaf#Health> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#Health> <http://www.w3.org/2000/01/rdf-schema#label> "Health" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator> <http://www.w3.org/2000/01/rdf-schema#label> "Indicator" .
+# https://w3id.org/def/lotaf#Indicator
+<https://w3id.org/def/lotaf#Indicator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#Indicator> <http://www.w3.org/2000/01/rdf-schema#label> "Indicator" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust> <http://www.w3.org/2000/01/rdf-schema#label> "Level Of Trust" .
+# https://w3id.org/def/lotaf#LevelOfTrust
+<https://w3id.org/def/lotaf#LevelOfTrust> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#LevelOfTrust> <http://www.w3.org/2000/01/rdf-schema#label> "Level Of Trust" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService> <http://www.w3.org/2000/01/rdf-schema#label> "Network Service" .
+# https://w3id.org/def/lotaf#NetworkService
+<https://w3id.org/def/lotaf#NetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#NetworkService> <http://www.w3.org/2000/01/rdf-schema#label> "Network Service" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Network Service Status" .
+# https://w3id.org/def/lotaf#NetworkServiceStatus
+<https://w3id.org/def/lotaf#NetworkServiceStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#NetworkServiceStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Network Service Status" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> <http://www.w3.org/2000/01/rdf-schema#label> "Network Service Type" .
+# https://w3id.org/def/lotaf#NetworkServiceType
+<https://w3id.org/def/lotaf#NetworkServiceType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#NetworkServiceType> <http://www.w3.org/2000/01/rdf-schema#label> "Network Service Type" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#label> "Objective Indicator" .
+# https://w3id.org/def/lotaf#ObjectiveIndicator
+<https://w3id.org/def/lotaf#ObjectiveIndicator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#ObjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/def/lotaf#Indicator> .
+<https://w3id.org/def/lotaf#ObjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#label> "Objective Indicator" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment> <http://www.w3.org/2000/01/rdf-schema#label> "Punishment" .
+# https://w3id.org/def/lotaf#Punishment
+<https://w3id.org/def/lotaf#Punishment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#Punishment> <http://www.w3.org/2000/01/rdf-schema#label> "Punishment" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction> <http://www.w3.org/2000/01/rdf-schema#label> "Punishment Action" .
+# https://w3id.org/def/lotaf#PunishmentAction
+<https://w3id.org/def/lotaf#PunishmentAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#PunishmentAction> <http://www.w3.org/2000/01/rdf-schema#label> "Punishment Action" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reward
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reward> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reward> <http://www.w3.org/2000/01/rdf-schema#label> "Reward" .
+# https://w3id.org/def/lotaf#Reward
+<https://w3id.org/def/lotaf#Reward> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#Reward> <http://www.w3.org/2000/01/rdf-schema#label> "Reward" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#label> "Subjective Indicator" .
+# https://w3id.org/def/lotaf#SubjectiveIndicator
+<https://w3id.org/def/lotaf#SubjectiveIndicator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#SubjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/def/lotaf#Indicator> .
+<https://w3id.org/def/lotaf#SubjectiveIndicator> <http://www.w3.org/2000/01/rdf-schema#label> "Subjective Indicator" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom> <http://www.w3.org/2000/01/rdf-schema#label> "Symptom" .
+# https://w3id.org/def/lotaf#Symptom
+<https://w3id.org/def/lotaf#Symptom> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#Symptom> <http://www.w3.org/2000/01/rdf-schema#label> "Symptom" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> <http://www.w3.org/2000/01/rdf-schema#label> "Symptom Type" .
+# https://w3id.org/def/lotaf#SymptomType
+<https://w3id.org/def/lotaf#SymptomType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#SymptomType> <http://www.w3.org/2000/01/rdf-schema#label> "Symptom Type" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement> <http://www.w3.org/2000/01/rdf-schema#label> "Trust Level Agreement" .
+# https://w3id.org/def/lotaf#TrustLevelAgreement
+<https://w3id.org/def/lotaf#TrustLevelAgreement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#TrustLevelAgreement> <http://www.w3.org/2000/01/rdf-schema#label> "Trust Level Agreement" .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://xmlns.com/foaf/0.1/Person> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User> <http://www.w3.org/2000/01/rdf-schema#label> "User" .
+# https://w3id.org/def/lotaf#User
+<https://w3id.org/def/lotaf#User> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/def/lotaf#User> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://xmlns.com/foaf/0.1/Person> .
+<https://w3id.org/def/lotaf#User> <http://www.w3.org/2000/01/rdf-schema#label> "User" .
 # 
 # 
 # 
@@ -501,160 +514,160 @@
 # #################################################################
 # 
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AllocatingNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AllocatingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AllocatingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#AllocatingNetworkService
+<https://w3id.org/def/lotaf#AllocatingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#AllocatingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Availability
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Availability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Availability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> .
+# https://w3id.org/def/lotaf#Availability
+<https://w3id.org/def/lotaf#Availability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Availability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#ObjectiveIndicator> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CPU
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CPU> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CPU> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> .
+# https://w3id.org/def/lotaf#CPU
+<https://w3id.org/def/lotaf#CPU> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#CPU> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SymptomType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Cloud
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Cloud> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Cloud> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> .
+# https://w3id.org/def/lotaf#Cloud
+<https://w3id.org/def/lotaf#Cloud> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Cloud> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudContinuum
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> .
+# https://w3id.org/def/lotaf#CloudContinuum
+<https://w3id.org/def/lotaf#CloudContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#CloudContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudEdgeContinuum
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudEdgeContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudEdgeContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> .
+# https://w3id.org/def/lotaf#CloudEdgeContinuum
+<https://w3id.org/def/lotaf#CloudEdgeContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#CloudEdgeContinuum> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Credibility
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Credibility> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Credibility> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator> .
+# https://w3id.org/def/lotaf#Credibility
+<https://w3id.org/def/lotaf#Credibility> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Credibility> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SubjectiveIndicator> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CustomerNotificationAction
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CustomerNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CustomerNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction> .
+# https://w3id.org/def/lotaf#CustomerNotificationAction
+<https://w3id.org/def/lotaf#CustomerNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#CustomerNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#PunishmentAction> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DeployingNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DeployingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DeployingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#DeployingNetworkService
+<https://w3id.org/def/lotaf#DeployingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#DeployingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceCustomer
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceCustomer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceCustomer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity> .
+# https://w3id.org/def/lotaf#DigitalServiceCustomer
+<https://w3id.org/def/lotaf#DigitalServiceCustomer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#DigitalServiceCustomer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#DigitalServiceEntity> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceProvider
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceProvider> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceProvider> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity> .
+# https://w3id.org/def/lotaf#DigitalServiceProvider
+<https://w3id.org/def/lotaf#DigitalServiceProvider> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#DigitalServiceProvider> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#DigitalServiceEntity> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Edge
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Edge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Edge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> .
+# https://w3id.org/def/lotaf#Edge
+<https://w3id.org/def/lotaf#Edge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Edge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EndingTrustAgreementAction
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EndingTrustAgreementAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EndingTrustAgreementAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction> .
+# https://w3id.org/def/lotaf#EndingTrustAgreementAction
+<https://w3id.org/def/lotaf#EndingTrustAgreementAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#EndingTrustAgreementAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#PunishmentAction> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EvaluatingOtherAssesstsAction
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EvaluatingOtherAssesstsAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EvaluatingOtherAssesstsAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction> .
+# https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction
+<https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#PunishmentAction> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FarEdge
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FarEdge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FarEdge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType> .
+# https://w3id.org/def/lotaf#FarEdge
+<https://w3id.org/def/lotaf#FarEdge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#FarEdge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Feedback
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Feedback> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Feedback> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator> .
+# https://w3id.org/def/lotaf#Feedback
+<https://w3id.org/def/lotaf#Feedback> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Feedback> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SubjectiveIndicator> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FinishedNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FinishedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FinishedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#FinishedNetworkService
+<https://w3id.org/def/lotaf#FinishedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#FinishedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/HealthyNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/HealthyNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/HealthyNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#HealthyNetworkService
+<https://w3id.org/def/lotaf#HealthyNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#HealthyNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InactiveNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InactiveNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InactiveNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#InactiveNetworkService
+<https://w3id.org/def/lotaf#InactiveNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#InactiveNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Infrastructure
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Infrastructure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Infrastructure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType> .
+# https://w3id.org/def/lotaf#Infrastructure
+<https://w3id.org/def/lotaf#Infrastructure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Infrastructure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#AssetType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InitializingNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InitializingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InitializingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#InitializingNetworkService
+<https://w3id.org/def/lotaf#InitializingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#InitializingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MaintainingNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MaintainingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MaintainingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#MaintainingNetworkService
+<https://w3id.org/def/lotaf#MaintainingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#MaintainingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Memory
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Memory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Memory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> .
+# https://w3id.org/def/lotaf#Memory
+<https://w3id.org/def/lotaf#Memory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Memory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SymptomType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MigratingNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MigratingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MigratingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#MigratingNetworkService
+<https://w3id.org/def/lotaf#MigratingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#MigratingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Networking
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Networking> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Networking> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> .
+# https://w3id.org/def/lotaf#Networking
+<https://w3id.org/def/lotaf#Networking> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Networking> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SymptomType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/OverloadNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/OverloadNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/OverloadNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#OverloadNetworkService
+<https://w3id.org/def/lotaf#OverloadNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#OverloadNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PausedNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PausedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PausedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#PausedNetworkService
+<https://w3id.org/def/lotaf#PausedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#PausedNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Processes
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Processes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Processes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> .
+# https://w3id.org/def/lotaf#Processes
+<https://w3id.org/def/lotaf#Processes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Processes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SymptomType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ProviderNotificationAction
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ProviderNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ProviderNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction> .
+# https://w3id.org/def/lotaf#ProviderNotificationAction
+<https://w3id.org/def/lotaf#ProviderNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#ProviderNotificationAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#PunishmentAction> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reliability
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reliability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reliability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> .
+# https://w3id.org/def/lotaf#Reliability
+<https://w3id.org/def/lotaf#Reliability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Reliability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#ObjectiveIndicator> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Resource
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Resource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Resource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType> .
+# https://w3id.org/def/lotaf#Resource
+<https://w3id.org/def/lotaf#Resource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Resource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#AssetType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/RunningNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/RunningNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/RunningNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#RunningNetworkService
+<https://w3id.org/def/lotaf#RunningNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#RunningNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Scalability
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Scalability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Scalability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> .
+# https://w3id.org/def/lotaf#Scalability
+<https://w3id.org/def/lotaf#Scalability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Scalability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#ObjectiveIndicator> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ScalingNetworkService
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ScalingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ScalingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus> .
+# https://w3id.org/def/lotaf#ScalingNetworkService
+<https://w3id.org/def/lotaf#ScalingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#ScalingNetworkService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#NetworkServiceStatus> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Service
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Service> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Service> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType> .
+# https://w3id.org/def/lotaf#Service
+<https://w3id.org/def/lotaf#Service> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Service> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#AssetType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Stability
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Stability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Stability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator> .
+# https://w3id.org/def/lotaf#Stability
+<https://w3id.org/def/lotaf#Stability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Stability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#ObjectiveIndicator> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Subservice
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Subservice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Subservice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType> .
+# https://w3id.org/def/lotaf#Subservice
+<https://w3id.org/def/lotaf#Subservice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#Subservice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#AssetType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VPP
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VPP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VPP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> .
+# https://w3id.org/def/lotaf#VPP
+<https://w3id.org/def/lotaf#VPP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#VPP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SymptomType> .
 # 
-# https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VirtualMachines
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VirtualMachines> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VirtualMachines> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType> .
+# https://w3id.org/def/lotaf#VirtualMachines
+<https://w3id.org/def/lotaf#VirtualMachines> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/def/lotaf#VirtualMachines> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/def/lotaf#SymptomType> .
 # 
 # Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

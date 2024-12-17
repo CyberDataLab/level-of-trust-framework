@@ -1,20 +1,25 @@
-@prefix : <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
+@prefix : <https://w3id.org/def/lotaf#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
+@base <https://w3id.org/def/lotaf#> .
 
-<https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> rdf:type owl:Ontology ;
-                                                                                                 <http://purl.org/dc/elements/1.1/contributor> "Alfonso Serrano Gil" ,
-                                                                                                                                               "Javier Paredes Serrano" ,
-                                                                                                                                               "Manuel Gil Pérez" ;
-                                                                                                 <http://purl.org/dc/elements/1.1/created> "2024-07-11"^^xsd:date ;
-                                                                                                 <http://purl.org/dc/elements/1.1/creator> "Jose Maria Jorquera Valero" ;
-                                                                                                 <http://purl.org/dc/elements/1.1/title> "Level of Trust Assessment Ontology for Continuum Computing" ;
-                                                                                                 owl:versionInfo "0.0.2" ;
-                                                                                                 <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/> .
+<https://w3id.org/def/lotaf#> rdf:type owl:Ontology ;
+                               <http://purl.org/dc/elements/1.1/contributor> "Diego R. López" ,
+                                                                             "Gregorio Martínez Pérez" ,
+                                                                             "Ignacio Dominguez Martinez-Casanueva" ,
+                                                                             "Lucía Cabanillas Rodríguez" ,
+                                                                             "Manuel Gil Pérez" ,
+                                                                             "Riccardo Nicolicchia" ;
+                               <http://purl.org/dc/elements/1.1/created> "2024-12-16"^^xsd:date ;
+                               <http://purl.org/dc/elements/1.1/creator> "Alfonso Serrano Gil" ,
+                                                                         "Javier Paredes Serrano" ,
+                                                                         "José María Jorquera Valero" ;
+                               <http://purl.org/dc/elements/1.1/title> "Level of Trust Assessment Ontology for Computing Continuum" ;
+                               owl:versionInfo "1.0.0" ;
+                               <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/> .
 
 #################################################################
 #    Annotation properties
@@ -91,165 +96,175 @@ xsd:date rdf:type rdfs:Datatype .
                                 rdfs:label "role" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/applies
+###  https://w3id.org/def/lotaf#applies
 :applies rdf:type owl:ObjectProperty ;
          rdfs:domain :LevelOfTrust ;
          rdfs:range :Reward ;
          rdfs:label "applies" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/assetType
+###  https://w3id.org/def/lotaf#assetType
 :assetType rdf:type owl:ObjectProperty ;
            rdfs:domain <http://www.owl-ontologies.com/odrl#Asset> ;
            rdfs:range :AssetType ;
            rdfs:label "asset type" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/belongsTo
+###  https://w3id.org/def/lotaf#belongsTo
 :belongsTo rdf:type owl:ObjectProperty ;
-           rdfs:domain :Symptom ,
-                       :User ;
-           rdfs:range :AdministrativeDomain ,
-                      :ObjectiveIndicator ;
+           rdfs:domain :User ;
+           rdfs:range :AdministrativeDomain ;
            rdfs:label "belongs to" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/composedBy
+###  https://w3id.org/def/lotaf#composedBy
 :composedBy rdf:type owl:ObjectProperty ;
             rdfs:domain :NetworkService ;
             rdfs:range <http://www.owl-ontologies.com/odrl#Asset> ;
             rdfs:label "composed by" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/contains
+###  https://w3id.org/def/lotaf#contains
 :contains rdf:type owl:ObjectProperty ;
-          rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ,
-                      :TrustLevelAgreement ;
-          rdfs:range <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> ,
-                     :LevelOfTrust ;
+          rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ;
+          rdfs:range <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> ;
           rdfs:label "contains" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/delivers
+###  https://w3id.org/def/lotaf#delivers
 :delivers rdf:type owl:ObjectProperty ;
           rdfs:domain :NetworkService ;
           rdfs:range :LevelOfTrust ;
           rdfs:label "delivers" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/deploys
+###  https://w3id.org/def/lotaf#deploys
 :deploys rdf:type owl:ObjectProperty ;
          rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ;
          rdfs:range :NetworkService ;
          rdfs:label "deploys" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/enforces
+###  https://w3id.org/def/lotaf#enforces
 :enforces rdf:type owl:ObjectProperty ;
           rdfs:domain :LevelOfTrust ;
           rdfs:range :Punishment ;
           rdfs:label "enforces" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/entityType
+###  https://w3id.org/def/lotaf#entityType
 :entityType rdf:type owl:ObjectProperty ;
             rdfs:domain :DigitalServiceEntity ;
             rdfs:range :User ;
             rdfs:label "entity type" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/evaluates
+###  https://w3id.org/def/lotaf#evaluates
 :evaluates rdf:type owl:ObjectProperty ;
            rdfs:domain :Health ;
            rdfs:range :Symptom ;
            rdfs:label "evaluates" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/exposes
+###  https://w3id.org/def/lotaf#exposes
 :exposes rdf:type owl:ObjectProperty ;
          rdfs:domain <http://www.owl-ontologies.com/odrl#Asset> ;
          rdfs:range :Health ;
          rdfs:label "exposes" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/follows
+###  https://w3id.org/def/lotaf#follows
 :follows rdf:type owl:ObjectProperty ;
          rdfs:domain <http://www.w3.org/ns/org#Role> ;
          rdfs:range <http://www.owl-ontologies.com/odrl#Policy> ;
          rdfs:label "follows" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/fulfills
+###  https://w3id.org/def/lotaf#fulfills
 :fulfills rdf:type owl:ObjectProperty ;
           rdfs:domain <http://www.owl-ontologies.com/odrl#Asset> ;
           rdfs:range :LevelOfTrust ;
           rdfs:label "fulfills" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/gathers
+###  https://w3id.org/def/lotaf#gathers
 :gathers rdf:type owl:ObjectProperty ;
          rdfs:domain :LevelOfTrust ;
          rdfs:range :Indicator ;
          rdfs:label "gathers" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/guaranteedBy
+###  https://w3id.org/def/lotaf#guaranteedBy
 :guaranteedBy rdf:type owl:ObjectProperty ;
               rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ;
               rdfs:range :TrustLevelAgreement ;
               rdfs:label "guaranteed by" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/informs
+###  https://w3id.org/def/lotaf#includes
+:includes rdf:type owl:ObjectProperty ;
+          rdfs:domain :TrustLevelAgreement ;
+          rdfs:range :LevelOfTrust ;
+          rdfs:label "includes" .
+
+
+###  https://w3id.org/def/lotaf#informs
 :informs rdf:type owl:ObjectProperty ;
          rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport> ;
          rdfs:range :LevelOfTrust ;
          rdfs:label "informs" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/manages
+###  https://w3id.org/def/lotaf#manages
 :manages rdf:type owl:ObjectProperty ;
          rdfs:domain :User ;
          rdfs:range <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ;
          rdfs:label "manages" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/monitors
+###  https://w3id.org/def/lotaf#monitors
 :monitors rdf:type owl:ObjectProperty ;
           rdfs:domain :AdministrativeDomain ;
           rdfs:range :NetworkService ;
           rdfs:label "monitors" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networServiceType
+###  https://w3id.org/def/lotaf#networServiceType
 :networServiceType rdf:type owl:ObjectProperty ;
                    rdfs:domain :NetworkServiceType ;
                    rdfs:range :NetworkService ;
                    rdfs:label "networ service type" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/networkStatus
+###  https://w3id.org/def/lotaf#networkStatus
 :networkStatus rdf:type owl:ObjectProperty ;
                rdfs:domain :NetworkService ;
                rdfs:range :NetworkServiceStatus ;
                rdfs:label "network status" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/owner
+###  https://w3id.org/def/lotaf#owner
 :owner rdf:type owl:ObjectProperty ;
        rdfs:domain :AdministrativeDomain ;
        rdfs:range <http://www.w3.org/ns/org#Organization> ;
        rdfs:label "owner" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/punishmentAction
+###  https://w3id.org/def/lotaf#pertains
+:pertains rdf:type owl:ObjectProperty ;
+          rdfs:domain :Symptom ;
+          rdfs:range :ObjectiveIndicator ;
+          rdfs:label "pertains" .
+
+
+###  https://w3id.org/def/lotaf#punishmentAction
 :punishmentAction rdf:type owl:ObjectProperty ;
                   rdfs:domain :Punishment ;
                   rdfs:range :PunishmentAction ;
                   rdfs:label "punishment action" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/symptomType
+###  https://w3id.org/def/lotaf#symptomType
 :symptomType rdf:type owl:ObjectProperty ;
              rdfs:domain :Symptom ;
              rdfs:range :SymptomType ;
@@ -304,104 +319,104 @@ xsd:date rdf:type rdfs:Datatype .
                                      rdfs:label "last name" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/capacity
+###  https://w3id.org/def/lotaf#capacity
 :capacity rdf:type owl:DatatypeProperty ;
           rdfs:domain <http://www.owl-ontologies.com/odrl#Asset> ;
           rdfs:label "capacity" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/characteristics
+###  https://w3id.org/def/lotaf#characteristics
 :characteristics rdf:type owl:DatatypeProperty ;
                  rdfs:domain :NetworkService ;
                  rdfs:label "characteristics" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/connectionStatus
+###  https://w3id.org/def/lotaf#connectionStatus
 :connectionStatus rdf:type owl:DatatypeProperty ;
                   rdfs:domain :Health ;
                   rdfs:label "connection status" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/constraint
+###  https://w3id.org/def/lotaf#constraint
 :constraint rdf:type owl:DatatypeProperty ;
             rdfs:domain <http://www.owl-ontologies.com/odrl#Rule> ;
             rdfs:label "constraint" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/customerID
+###  https://w3id.org/def/lotaf#customerID
 :customerID rdf:type owl:DatatypeProperty ;
             rdfs:domain :TrustLevelAgreement ;
             rdfs:label "customer i d" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/endpoint
+###  https://w3id.org/def/lotaf#endpoint
 :endpoint rdf:type owl:DatatypeProperty ;
           rdfs:domain <http://www.owl-ontologies.com/odrl#Asset> ;
           rdfs:label "endpoint" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/healthScore
+###  https://w3id.org/def/lotaf#healthScore
 :healthScore rdf:type owl:DatatypeProperty ;
              rdfs:domain :Health ;
              rdfs:label "health score" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/lot
+###  https://w3id.org/def/lotaf#lot
 :lot rdf:type owl:DatatypeProperty ;
      rdfs:domain :LevelOfTrust ;
      rdfs:label "lot" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/providerID
+###  https://w3id.org/def/lotaf#providerID
 :providerID rdf:type owl:DatatypeProperty ;
             rdfs:domain :TrustLevelAgreement ;
             rdfs:label "provider i d" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/request
+###  https://w3id.org/def/lotaf#request
 :request rdf:type owl:DatatypeProperty ;
          rdfs:domain <http://www.owl-ontologies.com/odrl#Policy> ,
                      :User ;
          rdfs:label "request" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/requirement
+###  https://w3id.org/def/lotaf#requirement
 :requirement rdf:type owl:DatatypeProperty ;
              rdfs:domain :TrustLevelAgreement ;
              rdfs:label "requirement" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/scope
+###  https://w3id.org/def/lotaf#scope
 :scope rdf:type owl:DatatypeProperty ;
        rdfs:domain <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent> ;
        rdfs:label "scope" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/starTime
+###  https://w3id.org/def/lotaf#starTime
 :starTime rdf:type owl:DatatypeProperty ;
           rdfs:domain :LevelOfTrust ;
           rdfs:label "star time" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/stopTime
+###  https://w3id.org/def/lotaf#stopTime
 :stopTime rdf:type owl:DatatypeProperty ;
           rdfs:domain :LevelOfTrust ;
           rdfs:label "stop time" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustee
+###  https://w3id.org/def/lotaf#trustee
 :trustee rdf:type owl:DatatypeProperty ;
          rdfs:domain :LevelOfTrust ;
          rdfs:label "trustee" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/trustor
+###  https://w3id.org/def/lotaf#trustor
 :trustor rdf:type owl:DatatypeProperty ;
          rdfs:domain :LevelOfTrust ;
          rdfs:label "trustor" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value
+###  https://w3id.org/def/lotaf#value
 :value rdf:type owl:DatatypeProperty ;
        rdfs:domain :Indicator ,
                    :Punishment ,
@@ -409,13 +424,13 @@ xsd:date rdf:type rdfs:Datatype .
        rdfs:label "value" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/violationDescription
+###  https://w3id.org/def/lotaf#violationDescription
 :violationDescription rdf:type owl:DatatypeProperty ;
                       rdfs:domain :TrustLevelAgreement ;
                       rdfs:label "violation description" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/weightingFactor
+###  https://w3id.org/def/lotaf#weightingFactor
 :weightingFactor rdf:type owl:DatatypeProperty ;
                  rdfs:domain :Indicator ;
                  rdfs:label "weighting factor" .
@@ -470,94 +485,94 @@ xsd:date rdf:type rdfs:Datatype .
                                    rdfs:label "Person" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain
+###  https://w3id.org/def/lotaf#AdministrativeDomain
 :AdministrativeDomain rdf:type owl:Class ;
                       rdfs:label "Administrative Domain" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AssetType
+###  https://w3id.org/def/lotaf#AssetType
 :AssetType rdf:type owl:Class ;
            rdfs:label "Asset Type" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceEntity
+###  https://w3id.org/def/lotaf#DigitalServiceEntity
 :DigitalServiceEntity rdf:type owl:Class ;
                       rdfs:label "Digital Service Entity" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health
+###  https://w3id.org/def/lotaf#Health
 :Health rdf:type owl:Class ;
         rdfs:label "Health" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator
+###  https://w3id.org/def/lotaf#Indicator
 :Indicator rdf:type owl:Class ;
            rdfs:label "Indicator" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust
+###  https://w3id.org/def/lotaf#LevelOfTrust
 :LevelOfTrust rdf:type owl:Class ;
               rdfs:label "Level Of Trust" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService
+###  https://w3id.org/def/lotaf#NetworkService
 :NetworkService rdf:type owl:Class ;
                 rdfs:label "Network Service" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceStatus
+###  https://w3id.org/def/lotaf#NetworkServiceStatus
 :NetworkServiceStatus rdf:type owl:Class ;
                       rdfs:label "Network Service Status" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkServiceType
+###  https://w3id.org/def/lotaf#NetworkServiceType
 :NetworkServiceType rdf:type owl:Class ;
                     rdfs:label "Network Service Type" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator
+###  https://w3id.org/def/lotaf#ObjectiveIndicator
 :ObjectiveIndicator rdf:type owl:Class ;
                     rdfs:subClassOf :Indicator ;
                     rdfs:label "Objective Indicator" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment
+###  https://w3id.org/def/lotaf#Punishment
 :Punishment rdf:type owl:Class ;
             rdfs:label "Punishment" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PunishmentAction
+###  https://w3id.org/def/lotaf#PunishmentAction
 :PunishmentAction rdf:type owl:Class ;
                   rdfs:label "Punishment Action" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reward
+###  https://w3id.org/def/lotaf#Reward
 :Reward rdf:type owl:Class ;
         rdfs:label "Reward" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator
+###  https://w3id.org/def/lotaf#SubjectiveIndicator
 :SubjectiveIndicator rdf:type owl:Class ;
                      rdfs:subClassOf :Indicator ;
                      rdfs:label "Subjective Indicator" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom
+###  https://w3id.org/def/lotaf#Symptom
 :Symptom rdf:type owl:Class ;
          rdfs:label "Symptom" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SymptomType
+###  https://w3id.org/def/lotaf#SymptomType
 :SymptomType rdf:type owl:Class ;
              rdfs:label "Symptom Type" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement
+###  https://w3id.org/def/lotaf#TrustLevelAgreement
 :TrustLevelAgreement rdf:type owl:Class ;
                      rdfs:label "Trust Level Agreement" .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User
+###  https://w3id.org/def/lotaf#User
 :User rdf:type owl:Class ;
       rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
       rdfs:label "User" .
@@ -567,197 +582,197 @@ xsd:date rdf:type rdfs:Datatype .
 #    Individuals
 #################################################################
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AllocatingNetworkService
+###  https://w3id.org/def/lotaf#AllocatingNetworkService
 :AllocatingNetworkService rdf:type owl:NamedIndividual ,
                                    :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Availability
+###  https://w3id.org/def/lotaf#Availability
 :Availability rdf:type owl:NamedIndividual ,
                        :ObjectiveIndicator .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CPU
+###  https://w3id.org/def/lotaf#CPU
 :CPU rdf:type owl:NamedIndividual ,
               :SymptomType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Cloud
+###  https://w3id.org/def/lotaf#Cloud
 :Cloud rdf:type owl:NamedIndividual ,
                 :NetworkServiceType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudContinuum
+###  https://w3id.org/def/lotaf#CloudContinuum
 :CloudContinuum rdf:type owl:NamedIndividual ,
                          :NetworkServiceType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CloudEdgeContinuum
+###  https://w3id.org/def/lotaf#CloudEdgeContinuum
 :CloudEdgeContinuum rdf:type owl:NamedIndividual ,
                              :NetworkServiceType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Credibility
+###  https://w3id.org/def/lotaf#Credibility
 :Credibility rdf:type owl:NamedIndividual ,
                       :SubjectiveIndicator .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/CustomerNotificationAction
+###  https://w3id.org/def/lotaf#CustomerNotificationAction
 :CustomerNotificationAction rdf:type owl:NamedIndividual ,
                                      :PunishmentAction .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DeployingNetworkService
+###  https://w3id.org/def/lotaf#DeployingNetworkService
 :DeployingNetworkService rdf:type owl:NamedIndividual ,
                                   :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceCustomer
+###  https://w3id.org/def/lotaf#DigitalServiceCustomer
 :DigitalServiceCustomer rdf:type owl:NamedIndividual ,
                                  :DigitalServiceEntity .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/DigitalServiceProvider
+###  https://w3id.org/def/lotaf#DigitalServiceProvider
 :DigitalServiceProvider rdf:type owl:NamedIndividual ,
                                  :DigitalServiceEntity .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Edge
+###  https://w3id.org/def/lotaf#Edge
 :Edge rdf:type owl:NamedIndividual ,
                :NetworkServiceType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EndingTrustAgreementAction
+###  https://w3id.org/def/lotaf#EndingTrustAgreementAction
 :EndingTrustAgreementAction rdf:type owl:NamedIndividual ,
                                      :PunishmentAction .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/EvaluatingOtherAssesstsAction
+###  https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction
 :EvaluatingOtherAssesstsAction rdf:type owl:NamedIndividual ,
                                         :PunishmentAction .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FarEdge
+###  https://w3id.org/def/lotaf#FarEdge
 :FarEdge rdf:type owl:NamedIndividual ,
                   :NetworkServiceType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Feedback
+###  https://w3id.org/def/lotaf#Feedback
 :Feedback rdf:type owl:NamedIndividual ,
                    :SubjectiveIndicator .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/FinishedNetworkService
+###  https://w3id.org/def/lotaf#FinishedNetworkService
 :FinishedNetworkService rdf:type owl:NamedIndividual ,
                                  :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/HealthyNetworkService
+###  https://w3id.org/def/lotaf#HealthyNetworkService
 :HealthyNetworkService rdf:type owl:NamedIndividual ,
                                 :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InactiveNetworkService
+###  https://w3id.org/def/lotaf#InactiveNetworkService
 :InactiveNetworkService rdf:type owl:NamedIndividual ,
                                  :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Infrastructure
+###  https://w3id.org/def/lotaf#Infrastructure
 :Infrastructure rdf:type owl:NamedIndividual ,
                          :AssetType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/InitializingNetworkService
+###  https://w3id.org/def/lotaf#InitializingNetworkService
 :InitializingNetworkService rdf:type owl:NamedIndividual ,
                                      :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MaintainingNetworkService
+###  https://w3id.org/def/lotaf#MaintainingNetworkService
 :MaintainingNetworkService rdf:type owl:NamedIndividual ,
                                     :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Memory
+###  https://w3id.org/def/lotaf#Memory
 :Memory rdf:type owl:NamedIndividual ,
                  :SymptomType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/MigratingNetworkService
+###  https://w3id.org/def/lotaf#MigratingNetworkService
 :MigratingNetworkService rdf:type owl:NamedIndividual ,
                                   :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Networking
+###  https://w3id.org/def/lotaf#Networking
 :Networking rdf:type owl:NamedIndividual ,
                      :SymptomType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/OverloadNetworkService
+###  https://w3id.org/def/lotaf#OverloadNetworkService
 :OverloadNetworkService rdf:type owl:NamedIndividual ,
                                  :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/PausedNetworkService
+###  https://w3id.org/def/lotaf#PausedNetworkService
 :PausedNetworkService rdf:type owl:NamedIndividual ,
                                :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Processes
+###  https://w3id.org/def/lotaf#Processes
 :Processes rdf:type owl:NamedIndividual ,
                     :SymptomType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ProviderNotificationAction
+###  https://w3id.org/def/lotaf#ProviderNotificationAction
 :ProviderNotificationAction rdf:type owl:NamedIndividual ,
                                      :PunishmentAction .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Reliability
+###  https://w3id.org/def/lotaf#Reliability
 :Reliability rdf:type owl:NamedIndividual ,
                       :ObjectiveIndicator .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Resource
+###  https://w3id.org/def/lotaf#Resource
 :Resource rdf:type owl:NamedIndividual ,
                    :AssetType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/RunningNetworkService
+###  https://w3id.org/def/lotaf#RunningNetworkService
 :RunningNetworkService rdf:type owl:NamedIndividual ,
                                 :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Scalability
+###  https://w3id.org/def/lotaf#Scalability
 :Scalability rdf:type owl:NamedIndividual ,
                       :ObjectiveIndicator .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ScalingNetworkService
+###  https://w3id.org/def/lotaf#ScalingNetworkService
 :ScalingNetworkService rdf:type owl:NamedIndividual ,
                                 :NetworkServiceStatus .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Service
+###  https://w3id.org/def/lotaf#Service
 :Service rdf:type owl:NamedIndividual ,
                   :AssetType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Stability
+###  https://w3id.org/def/lotaf#Stability
 :Stability rdf:type owl:NamedIndividual ,
                     :ObjectiveIndicator .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Subservice
+###  https://w3id.org/def/lotaf#Subservice
 :Subservice rdf:type owl:NamedIndividual ,
                      :AssetType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VPP
+###  https://w3id.org/def/lotaf#VPP
 :VPP rdf:type owl:NamedIndividual ,
               :SymptomType .
 
 
-###  https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/VirtualMachines
+###  https://w3id.org/def/lotaf#VirtualMachines
 :VirtualMachines rdf:type owl:NamedIndividual ,
                           :SymptomType .
 
