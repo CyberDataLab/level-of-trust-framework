@@ -1,2 +1,0 @@
-# Knowledge-graphs-for-LoTAF
-This folder contains the XML file with the latest conceptual model for the Level of Trust Assessment Ontology for Cloud Continuum. From this XML, we can upload our ontology by using [Chowlk](https://chowlk.linkeddata.es/).
