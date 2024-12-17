@@ -1,0 +1,109 @@
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/ns/prov#specializationOf
+<http://www.w3.org/ns/prov#specializationOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/ns/prov#wasAttributedTo
+<http://www.w3.org/ns/prov#wasAttributedTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://xmlns.com/foaf/0.1/name
+<http://xmlns.com/foaf/0.1/name> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/ns/prov#Agent
+<http://www.w3.org/ns/prov#Agent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent0
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent0> <http://xmlns.com/foaf/0.1/name> "Alfonso Serrano Gil" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent1
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent1> <http://xmlns.com/foaf/0.1/name> "Javier Paredes Serrano" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent2
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent2> <http://xmlns.com/foaf/0.1/name> "José María Jorquera Valero" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent3
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent3> <http://xmlns.com/foaf/0.1/name> "Diego R. López" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent4
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent4> <http://xmlns.com/foaf/0.1/name> "Gregorio Martínez Pérez" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent5
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent5> <http://xmlns.com/foaf/0.1/name> "Ignacio Dominguez Martinez-Casanueva" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent6
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent6> <http://xmlns.com/foaf/0.1/name> "Lucía Cabanillas Rodríguez" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent7
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent7> <http://xmlns.com/foaf/0.1/name> "Manuel Gil Pérez" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent8
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent8> <http://xmlns.com/foaf/0.1/name> "Riccardo Nicolicchia" .
+# 
+# file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Entity> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://purl.org/dc/terms/title> "Level of Trust Assessment Ontology for Continuum Computing" .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#specializationOf> <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent0> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent1> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent2> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent3> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent4> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent5> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent6> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent7> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/provenance-en.ttlagent8> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <http://www.essepuntato.it/lode/> .
+<file:/home/ahmad/repos/chema.jv@hotmail.com/Knowledge-graph-for-LoTAF/doc/provenance/..%5Cindex-en.html> <http://www.w3.org/ns/prov#wasAttributedTo> <https://github.com/dgarijo/Widoco/> .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
