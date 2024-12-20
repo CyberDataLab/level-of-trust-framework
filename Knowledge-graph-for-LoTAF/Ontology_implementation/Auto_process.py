@@ -73,7 +73,7 @@ def delete_config():
     except Exception as e:
         return JSONResponse(content={"message": f"An error occurred: {str(e)}"}, status_code=500)
     
-
+@app.get("/remove_graph")
 def remove_graph():
     try:
         with driver.session() as session:

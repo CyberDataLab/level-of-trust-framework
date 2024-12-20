@@ -8,13 +8,19 @@
     {
         "User": {
             "identifier": "u1",
-            "manages": "i1"
+            "request": "request_u1",
+            "manages": "i1",
+            "belongsTo": "ad1",
+            "signs": "tla1",
+            "entityType": "DigitalServiceCustomer"
         }
     },
     {
         "User": {
             "identifier": "u2",
-            "manages": "i1"
+            "request": "request_u2",
+            "manages": "i1",
+            "entityType": "DigitalServiceCustomer"
         }
     },
     {
@@ -37,23 +43,23 @@
         }
     },
     {
-        "AdminstrativeDomain": {
+        "AdministrativeDomain": {
             "identifier": "ad1",
             "description": "descriptionAD",
             "owner": "AcmeCorporation",
-            "monitors": "ns1"
+            "monitors": "service1"
         }
     },
     {
         "Policy": {
             "request": "req1",
-            "duty": "rule1"
+            "duty": "const1"
         }
     },
     {
         "Rule": {
             "constraint": "const1",
-            "target": "asset1"
+            "target": "as1"
         }
     },
     {
@@ -62,7 +68,8 @@
             "customerID": "cID",
             "providerID": "pID",
             "requirement": "req",
-            "violationDescription": "vd"
+            "violationDescription": "vd",
+            "includes": "trustor_trustee"
         }
     },
     {
@@ -71,8 +78,8 @@
             "description": "desc1",
             "characteristics": "characteristics1",
             "networkStatus": "ScalingNetworkService",
-            "networServiceType": "MODIFICAR EN DIAGRAMA",
-            "composedBy": "asset1",
+            "networkServiceType": "Cloud",
+            "composedBy": "as1",
             "delivers": "trustor_trustee"
         }
     },
@@ -81,7 +88,8 @@
             "identifier": "i1",
             "scope": "sc",
             "contains": "ir",
-            "deploys": "ns1"
+            "deploys": "service1",
+            "guaranteedBy": "tla1"
         }
     },
     {
@@ -98,7 +106,7 @@
         "IntentReport": {
             "reportNumber": "ir",
             "reportGenerated": "rg",
-            "informs": "lot"
+            "informs": "trustor_trustee"
         }
     }, 
     {
@@ -108,7 +116,8 @@
             "lot": "10",
             "startTime": "April",
             "stopTime": "July",
-            "enforces": "pu",
+            "enforces": "20",
+            "applies": "40",
             "gathers": "ind"
         }
     },
@@ -123,6 +132,12 @@
         "Punishment": {
             "value": "20",
             "punishmentAction": "EndingTrustAgreementAction"
+        }
+    },
+    {
+        "Punishment": {
+            "value": "20",
+            "punishmentAction": "CustomerNotificationAction"
         }
     },
     {

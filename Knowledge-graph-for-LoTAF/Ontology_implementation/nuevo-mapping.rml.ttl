@@ -70,15 +70,19 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate org:member ;
-        rr:objectMap [ rml:reference "member" ] ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person/{member}"
+        ]
     ] ;
     rr:predicateObjectMap [
         rr:predicate org:role ;
-        rr:objectMap [ rml:reference "role" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Role/{role}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate org:organization ;
-        rr:objectMap [ rml:reference "organization" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization/{organization}" ] ;
     ] .
 
 
@@ -99,7 +103,8 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:follows ;
-        rr:objectMap [ rml:reference "follows" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy/{follows}" ] ;
     ] .
 
 # Mapping for User
@@ -118,14 +123,47 @@
         rr:objectMap [ rml:reference "identifier" ] ;
     ] ;
     rr:predicateObjectMap [
+        rr:predicate lotaf:request ;
+        rr:objectMap [ rml:reference "request" ] ;
+    ] ;
+    rr:predicateObjectMap [
         rr:predicate lotaf:manages ;
-        rr:objectMap [ rml:reference "manages" ] ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/{manages}" ;
+        ] ; 
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:belongsTo ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain/{belongsTo}" ;
+        ] ; 
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:signs ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/{signs}" ;
+        ] ; 
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:entityType ;
+        rr:objectMap [
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/DigitalServiceEntity/{entityType}" ;
+        ] ; 
     ] ;
     rr:predicateObjectMap [
         rr:predicate rdfs:subClassOf ;
         rr:objectMap [ rr:constant lotaf:Person ]
     ] .
 
+# Instances of DigitalServiceEntity
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/DigitalServiceEntity/DigitalServiceProvider>
+    rdf:type lotaf:DigitalServiceEntity ;
+    rdfs:label "DigitalServiceProvider" .
+
+<https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/DigitalServiceEntity/DigitalServiceCustomer>
+    rdf:type lotaf:DigitalServiceEntity ;
+    rdfs:label "DigitalServiceCustomer" .
 
 
 # Mapping for Reward
@@ -179,12 +217,9 @@
     rr:predicateObjectMap [
         rr:predicate lotaf:punishmentAction ;
         rr:objectMap [
-            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/{punishmentAction}"
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/{punishmentAction}"
         ]
     ] .
-    
-
-
 
 # Mapping LevelOfTrust
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust>
@@ -219,15 +254,18 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:enforces ;
-        rr:objectMap [ rml:reference "enforces" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/{enforces}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:applies ;
-        rr:objectMap [ rml:reference "applies" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward/{applies}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:gathers ;
-        rr:objectMap [ rml:reference "gathers" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Indicator/{gathers}" ] ;
     ] .
 
 # Mapping IntentReport
@@ -251,7 +289,8 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:informs ;
-        rr:objectMap [ rml:reference "informs" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/{informs}"] ;
     ] .
 
 
@@ -277,11 +316,18 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:contains ;
-        rr:objectMap [ rml:reference "contains" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/IntentReport/{contains}" ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:guaranteedBy ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/{guaranteedBy}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:deploys ;
-        rr:objectMap [ rml:reference "deploys" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/{deploys}" ] ;
     ] .
 
 # Mapping for TrustLevelAgreement
@@ -317,7 +363,8 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:includes ;
-        rr:objectMap [ rml:reference "includes" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/{includes}" ] ;
     ] .
 
 
@@ -342,11 +389,13 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:owner ;
-        rr:objectMap [ rml:reference "manages" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization/{owner}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:monitors ;
-        rr:objectMap [ rml:reference "monitors" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/{monitors}" ] ;
     ] .
 
 # Instances of NetworkServiceStatus
@@ -410,9 +459,9 @@
         rr:class lotaf:NetworkService
     ] ;
     rr:predicateObjectMap [
-        rr:predicate lotaf:networServiceType ;
+        rr:predicate lotaf:networkServiceType ;
         rr:objectMap [
-            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/{networServiceType}"
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/{networkServiceType}"
         ]
     ] ;
      rr:predicateObjectMap [
@@ -435,11 +484,13 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:delivers ;
-        rr:objectMap [ rml:reference "delivers" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/{delivers}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:composedBy ;
-        rr:objectMap [ rml:reference "composedBy" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/{composedBy}" ] ;
     ] .
 
 # Instances of NetworkServiceType
@@ -476,7 +527,8 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate ordl:duty ;
-        rr:objectMap [ rml:reference "duty" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule/{duty}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate dct:request ;
@@ -496,7 +548,8 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate ordl:target ;
-        rr:objectMap [ rml:reference "target" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/{target}" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate dct:constraint ;
