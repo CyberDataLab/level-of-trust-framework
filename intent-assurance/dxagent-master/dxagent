@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""
+dxagent
+
+   DxAgent UNIX script
+
+@author: K.Edeline
+"""
+
+import sys
+from agent.dxagent import DXAgent
+
+dxa = DXAgent()
+cmd = dxa.args.cmd
+cmd_switch = {
+   'start'   : dxa.start,
+   'stop'    : dxa.stop,
+   'restart' : dxa.restart,
+   'status'  : dxa.print_status,
+}
+
+if cmd in cmd_switch:
+   retval = cmd_switch[cmd]()
+   sys.exit(retval)
+else:
+   sys.stdout.write("{} command not found\n".format(cmd))
+   sys.exit(1)
+
