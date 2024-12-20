@@ -12,6 +12,12 @@
         }
     },
     {
+        "User": {
+            "identifier": "u2",
+            "manages": "i1"
+        }
+    },
+    {
         "Organization": {
             "identifier": "AcmeCorporation"
         }
