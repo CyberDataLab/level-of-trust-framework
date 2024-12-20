@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="static/style.css" rel="stylesheet" />
+<meta charset=utf-8 />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+<title>Service Dependencies Graph</title>
+<script src="static/js/cytoscape.min.js"></script>
+<script src="static/js/cytoscape-node-html-label.js"></script>
+<script src="https://unpkg.com/cytoscape-undo-redo/cytoscape-undo-redo.js"></script>
+<script src="static/js/cytoscape-expand-collapse.js"></script>
+</head>
+<body>
+<div id="cy"></div>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+ 
+<!-- Load application code at the end to ensure DOM is loaded -->
+<script type="text/javascript"  charset="utf-8">
+   var socket = io();
+   var dxnodes = {{ dxnodes|tojson }};
+   var dxedges = {{ dxedges|tojson }};
+   
+   socket.on('dxgraph', function(dxgraph) {
+   
+      // do not add collapsed compound nodes
+      var api = cy.expandCollapse('get');
+      dxgraph["nodes"].forEach(function (item, index) {
+         var node = cy.nodes('[id ="'+item.data.id+'"]');
+         if (!api.isExpandable(node)) { 
+            cy.json([item]);
+            node.json(item);
+         };
+      });
+      
+      dxgraph["edges"].forEach(function (item, index) {
+         var edge = cy.edges('[id ="'+item.data.id+'"]');
+         cy.json([item]);
+         edge.json(item);
+      });
+   });
+
+</script>
+<script type="text/javascript" src="static/code.js"></script>
+</body>
+</html>
