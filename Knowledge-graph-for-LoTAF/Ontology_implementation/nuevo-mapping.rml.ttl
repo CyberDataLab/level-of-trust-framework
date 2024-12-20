@@ -12,6 +12,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix icm: <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/> .
+@prefix ordl: <http://www.owl-ontologies.com/odrl#> .
 
 
 
@@ -496,7 +497,7 @@
     rr:predicateObjectMap [
         rr:predicate ordl:target ;
         rr:objectMap [ rml:reference "target" ] ;
-    ] .
+    ] ;
     rr:predicateObjectMap [
         rr:predicate dct:constraint ;
         rr:objectMap [ rml:reference "constraint" ] ;
