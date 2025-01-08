@@ -1,11 +1,13 @@
 @prefix aeros: <https://w3id.org/aerOS/continuum#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix icm: <http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/> .
 @prefix lotaf: <https://w3id.org/def/lotaf#> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix odrl: <http://www.owl-ontologies.com/odrl#> .
+@prefix ofo: <https://w3id.org/ofo#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -18,6 +20,8 @@ dc:created a owl:AnnotationProperty .
 dc:creator a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
+
+dcterms:source a owl:AnnotationProperty .
 
 dct:description a owl:DatatypeProperty ;
     rdfs:label "description" ;
@@ -87,11 +91,6 @@ aeros:cpuCores a owl:DatatypeProperty ;
     rdfs:domain odrl:Asset ;
     rdfs:range xsd:integer .
 
-aeros:location a owl:DatatypeProperty ;
-    rdfs:label "location" ;
-    rdfs:domain odrl:Asset ;
-    rdfs:range xsd:Location .
-
 aeros:ramCapacity a owl:DatatypeProperty ;
     rdfs:label "ram capacity" ;
     rdfs:domain odrl:Asset ;
@@ -109,6 +108,7 @@ lotaf: a owl:Ontology ;
         "Javier Paredes Serrano",
         "José María Jorquera Valero" ;
     dc:title "Level of Trust Assessment Ontology for Computing Continuum" ;
+    dcterms:source <https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF> ;
     owl:versionInfo "1.0.0" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
 
@@ -118,16 +118,16 @@ lotaf:AllocatingNetworkService a owl:NamedIndividual,
 lotaf:Availability a owl:NamedIndividual,
         lotaf:ObjectiveIndicator .
 
-lotaf:CPU a owl:NamedIndividual,
+lotaf:CPUSymptom a owl:NamedIndividual,
         lotaf:SymptomType .
 
-lotaf:Cloud a owl:NamedIndividual,
+lotaf:CloudContinuumType a owl:NamedIndividual,
         lotaf:NetworkServiceType .
 
-lotaf:CloudContinuum a owl:NamedIndividual,
+lotaf:CloudEdgeContinuumType a owl:NamedIndividual,
         lotaf:NetworkServiceType .
 
-lotaf:CloudEdgeContinuum a owl:NamedIndividual,
+lotaf:CloudType a owl:NamedIndividual,
         lotaf:NetworkServiceType .
 
 lotaf:Credibility a owl:NamedIndividual,
@@ -145,7 +145,7 @@ lotaf:DigitalServiceCustomer a owl:NamedIndividual,
 lotaf:DigitalServiceProvider a owl:NamedIndividual,
         lotaf:DigitalServiceEntity .
 
-lotaf:Edge a owl:NamedIndividual,
+lotaf:EdgeType a owl:NamedIndividual,
         lotaf:NetworkServiceType .
 
 lotaf:EndingTrustAgreementAction a owl:NamedIndividual,
@@ -154,7 +154,7 @@ lotaf:EndingTrustAgreementAction a owl:NamedIndividual,
 lotaf:EvaluatingOtherAssesstsAction a owl:NamedIndividual,
         lotaf:PunishmentAction .
 
-lotaf:FarEdge a owl:NamedIndividual,
+lotaf:FarEdgeType a owl:NamedIndividual,
         lotaf:NetworkServiceType .
 
 lotaf:Feedback a owl:NamedIndividual,
@@ -163,7 +163,7 @@ lotaf:Feedback a owl:NamedIndividual,
 lotaf:FinishedNetworkService a owl:NamedIndividual,
         lotaf:NetworkServiceStatus .
 
-lotaf:Green a owl:NamedIndividual,
+lotaf:GreenHealthStatus a owl:NamedIndividual,
         lotaf:HealthStatus .
 
 lotaf:HealthyNetworkService a owl:NamedIndividual,
@@ -172,7 +172,7 @@ lotaf:HealthyNetworkService a owl:NamedIndividual,
 lotaf:InactiveNetworkService a owl:NamedIndividual,
         lotaf:NetworkServiceStatus .
 
-lotaf:Infrastructure a owl:NamedIndividual,
+lotaf:InfrastructureAsset a owl:NamedIndividual,
         lotaf:AssetType .
 
 lotaf:InitializingNetworkService a owl:NamedIndividual,
@@ -181,16 +181,16 @@ lotaf:InitializingNetworkService a owl:NamedIndividual,
 lotaf:MaintainingNetworkService a owl:NamedIndividual,
         lotaf:NetworkServiceStatus .
 
-lotaf:Memory a owl:NamedIndividual,
+lotaf:MemorySymptom a owl:NamedIndividual,
         lotaf:SymptomType .
 
 lotaf:MigratingNetworkService a owl:NamedIndividual,
         lotaf:NetworkServiceStatus .
 
-lotaf:Networking a owl:NamedIndividual,
+lotaf:NetworkingSymptom a owl:NamedIndividual,
         lotaf:SymptomType .
 
-lotaf:Orange a owl:NamedIndividual,
+lotaf:OrangeHealthStatus a owl:NamedIndividual,
         lotaf:HealthStatus .
 
 lotaf:OverloadNetworkService a owl:NamedIndividual,
@@ -199,19 +199,19 @@ lotaf:OverloadNetworkService a owl:NamedIndividual,
 lotaf:PausedNetworkService a owl:NamedIndividual,
         lotaf:NetworkServiceStatus .
 
-lotaf:Processes a owl:NamedIndividual,
+lotaf:ProcessesSymptom a owl:NamedIndividual,
         lotaf:SymptomType .
 
 lotaf:ProviderNotificationAction a owl:NamedIndividual,
         lotaf:PunishmentAction .
 
-lotaf:Red a owl:NamedIndividual,
+lotaf:RedHealthStatus a owl:NamedIndividual,
         lotaf:HealthStatus .
 
 lotaf:Reliability a owl:NamedIndividual,
         lotaf:ObjectiveIndicator .
 
-lotaf:Resource a owl:NamedIndividual,
+lotaf:ResourceAsset a owl:NamedIndividual,
         lotaf:AssetType .
 
 lotaf:RunningNetworkService a owl:NamedIndividual,
@@ -223,19 +223,19 @@ lotaf:Scalability a owl:NamedIndividual,
 lotaf:ScalingNetworkService a owl:NamedIndividual,
         lotaf:NetworkServiceStatus .
 
-lotaf:Service a owl:NamedIndividual,
+lotaf:ServiceAsset a owl:NamedIndividual,
         lotaf:AssetType .
 
 lotaf:Stability a owl:NamedIndividual,
         lotaf:ObjectiveIndicator .
 
-lotaf:Subservice a owl:NamedIndividual,
+lotaf:SubserviceAsset a owl:NamedIndividual,
         lotaf:AssetType .
 
-lotaf:VPP a owl:NamedIndividual,
+lotaf:VPPSymptom a owl:NamedIndividual,
         lotaf:SymptomType .
 
-lotaf:VirtualMachines a owl:NamedIndividual,
+lotaf:VirtualMachinesSymptom a owl:NamedIndividual,
         lotaf:SymptomType .
 
 lotaf:applies a owl:ObjectProperty ;
@@ -258,8 +258,8 @@ lotaf:belongsTo a owl:ObjectProperty ;
     rdfs:domain lotaf:User ;
     rdfs:range lotaf:AdministrativeDomain .
 
-lotaf:characteristics a owl:DatatypeProperty ;
-    rdfs:label "characteristics" ;
+lotaf:characteristic a owl:DatatypeProperty ;
+    rdfs:label "characteristic" ;
     rdfs:domain lotaf:NetworkService ;
     rdfs:range xsd:string .
 
@@ -448,15 +448,15 @@ lotaf:throughput a owl:DatatypeProperty ;
     rdfs:domain odrl:Asset ;
     rdfs:range xsd:float .
 
-lotaf:trustee a owl:DatatypeProperty ;
+lotaf:trustee a owl:ObjectProperty ;
     rdfs:label "trustee" ;
-    rdfs:domain lotaf:LevelOfTrust ;
-    rdfs:range xsd:string .
+    rdfs:domain lotaf:User ;
+    rdfs:range lotaf:NetworkService .
 
-lotaf:trustor a owl:DatatypeProperty ;
+lotaf:trustor a owl:ObjectProperty ;
     rdfs:label "trustor" ;
-    rdfs:domain lotaf:LevelOfTrust ;
-    rdfs:range xsd:string .
+    rdfs:domain lotaf:User ;
+    rdfs:range lotaf:NetworkService .
 
 lotaf:value a owl:DatatypeProperty ;
     rdfs:label "value" ;
@@ -474,6 +474,11 @@ lotaf:weightingFactor a owl:DatatypeProperty ;
     rdfs:label "weighting factor" ;
     rdfs:domain lotaf:Indicator ;
     rdfs:range xsd:float .
+
+ofo:location a owl:DatatypeProperty ;
+    rdfs:label "location" ;
+    rdfs:domain odrl:Asset ;
+    rdfs:range xsd:string .
 
 org:Role a owl:Class ;
     rdfs:label "Role" .
@@ -540,21 +545,21 @@ icm:Intent a owl:Class ;
 lotaf:NetworkServiceType a owl:Class ;
     rdfs:label "Network Service Type" .
 
-lotaf:User a owl:Class ;
-    rdfs:label "User" ;
-    rdfs:subClassOf foaf:Person .
-
 lotaf:SymptomType a owl:Class ;
     rdfs:label "Symptom Type" .
 
 lotaf:TrustLevelAgreement a owl:Class ;
     rdfs:label "Trust Level Agreement" .
 
-lotaf:NetworkService a owl:Class ;
-    rdfs:label "Network Service" .
+lotaf:User a owl:Class ;
+    rdfs:label "User" ;
+    rdfs:subClassOf foaf:Person .
 
 lotaf:LevelOfTrust a owl:Class ;
     rdfs:label "Level Of Trust" .
+
+lotaf:NetworkService a owl:Class ;
+    rdfs:label "Network Service" .
 
 odrl:Asset a owl:Class ;
     rdfs:label "Asset" .
