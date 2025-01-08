@@ -79,6 +79,9 @@ $(function(){
    <dt>Contributors:</dt>
    <dd>Ignacio Dominguez Martinez-Casanueva</dd><dd>Riccardo Nicolicchia</dd><dd>Lucía Cabanillas Rodríguez</dd><dd>Diego R. López</dd><dd>Manuel Gil Pérez</dd><dd>Gregorio Martínez Pérez</dd>
 
+   <dt>Source:</dt>
+   <dd><a href="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF">https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF</a></dd>
+
 <dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://insertlicenseURIhere.example.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.example.org" /></a>
 </dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
 <!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
@@ -251,11 +254,6 @@ This ontology has the following classes and properties.</span>
              <a href="#informs" title="https://w3id.org/def/lotaf#informs">informs</a>
           </li>
           <li>
-             <a href="#https://w3id.org/aerOS/continuum#location" title="https://w3id.org/aerOS/continuum#location">
-                <span>location</span>
-             </a>
-          </li>
-          <li>
              <a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a>
           </li>
           <li>
@@ -294,6 +292,12 @@ This ontology has the following classes and properties.</span>
           <li>
              <a href="#http://www.owl-ontologies.com/odrl#target" title="http://www.owl-ontologies.com/odrl#target">target</a>
           </li>
+          <li>
+             <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a>
+          </li>
+          <li>
+             <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a>
+          </li>
        </ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
                                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                                         class="hlist">
@@ -301,7 +305,7 @@ This ontology has the following classes and properties.</span>
              <a href="#bandwith" title="https://w3id.org/def/lotaf#bandwith">bandwith</a>
           </li>
           <li>
-             <a href="#characteristics" title="https://w3id.org/def/lotaf#characteristics">characteristics</a>
+             <a href="#characteristic" title="https://w3id.org/def/lotaf#characteristic">characteristic</a>
           </li>
           <li>
              <a href="#constraint" title="https://w3id.org/def/lotaf#constraint">constraint</a>
@@ -329,6 +333,9 @@ This ontology has the following classes and properties.</span>
           </li>
           <li>
              <a href="#http://xmlns.com/foaf/0.1/lastName" title="http://xmlns.com/foaf/0.1/lastName">last name</a>
+          </li>
+          <li>
+             <a href="#https://w3id.org/ofo#location" title="https://w3id.org/ofo#location">location</a>
           </li>
           <li>
              <a href="#lot" title="https://w3id.org/def/lotaf#lot">lot</a>
@@ -369,12 +376,6 @@ This ontology has the following classes and properties.</span>
              <a href="#throughput" title="https://w3id.org/def/lotaf#throughput">throughput</a>
           </li>
           <li>
-             <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a>
-          </li>
-          <li>
-             <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a>
-          </li>
-          <li>
              <a href="#value" title="https://w3id.org/def/lotaf#value">value</a>
           </li>
           <li>
@@ -407,6 +408,11 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
+             <a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source">
+                <span>source</span>
+             </a>
+          </li>
+          <li>
              <a href="#http://purl.org/dc/elements/1.1/title" title="http://purl.org/dc/elements/1.1/title">
                 <span>title</span>
              </a>
@@ -431,23 +437,24 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#CPU" title="https://w3id.org/def/lotaf#CPU">
-                <span>C P U</span>
+             <a href="#CPUSymptom" title="https://w3id.org/def/lotaf#CPUSymptom">
+                <span>C P U Symptom</span>
              </a>
           </li>
           <li>
-             <a href="#Cloud" title="https://w3id.org/def/lotaf#Cloud">
-                <span>Cloud</span>
+             <a href="#CloudContinuumType" title="https://w3id.org/def/lotaf#CloudContinuumType">
+                <span>Cloud Continuum Type</span>
              </a>
           </li>
           <li>
-             <a href="#CloudContinuum" title="https://w3id.org/def/lotaf#CloudContinuum">
-                <span>Cloud Continuum</span>
+             <a href="#CloudEdgeContinuumType"
+                title="https://w3id.org/def/lotaf#CloudEdgeContinuumType">
+                <span>Cloud Edge Continuum Type</span>
              </a>
           </li>
           <li>
-             <a href="#CloudEdgeContinuum" title="https://w3id.org/def/lotaf#CloudEdgeContinuum">
-                <span>Cloud Edge Continuum</span>
+             <a href="#CloudType" title="https://w3id.org/def/lotaf#CloudType">
+                <span>Cloud Type</span>
              </a>
           </li>
           <li>
@@ -480,8 +487,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Edge" title="https://w3id.org/def/lotaf#Edge">
-                <span>Edge</span>
+             <a href="#EdgeType" title="https://w3id.org/def/lotaf#EdgeType">
+                <span>Edge Type</span>
              </a>
           </li>
           <li>
@@ -497,8 +504,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#FarEdge" title="https://w3id.org/def/lotaf#FarEdge">
-                <span>Far Edge</span>
+             <a href="#FarEdgeType" title="https://w3id.org/def/lotaf#FarEdgeType">
+                <span>Far Edge Type</span>
              </a>
           </li>
           <li>
@@ -513,8 +520,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Green" title="https://w3id.org/def/lotaf#Green">
-                <span>Green</span>
+             <a href="#GreenHealthStatus" title="https://w3id.org/def/lotaf#GreenHealthStatus">
+                <span>Green Health Status</span>
              </a>
           </li>
           <li>
@@ -530,8 +537,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Infrastructure" title="https://w3id.org/def/lotaf#Infrastructure">
-                <span>Infrastructure</span>
+             <a href="#InfrastructureAsset" title="https://w3id.org/def/lotaf#InfrastructureAsset">
+                <span>Infrastructure Asset</span>
              </a>
           </li>
           <li>
@@ -547,8 +554,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Memory" title="https://w3id.org/def/lotaf#Memory">
-                <span>Memory</span>
+             <a href="#MemorySymptom" title="https://w3id.org/def/lotaf#MemorySymptom">
+                <span>Memory Symptom</span>
              </a>
           </li>
           <li>
@@ -558,13 +565,13 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Networking" title="https://w3id.org/def/lotaf#Networking">
-                <span>Networking</span>
+             <a href="#NetworkingSymptom" title="https://w3id.org/def/lotaf#NetworkingSymptom">
+                <span>Networking Symptom</span>
              </a>
           </li>
           <li>
-             <a href="#Orange" title="https://w3id.org/def/lotaf#Orange">
-                <span>Orange</span>
+             <a href="#OrangeHealthStatus" title="https://w3id.org/def/lotaf#OrangeHealthStatus">
+                <span>Orange Health Status</span>
              </a>
           </li>
           <li>
@@ -579,8 +586,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Processes" title="https://w3id.org/def/lotaf#Processes">
-                <span>Processes</span>
+             <a href="#ProcessesSymptom" title="https://w3id.org/def/lotaf#ProcessesSymptom">
+                <span>Processes Symptom</span>
              </a>
           </li>
           <li>
@@ -590,8 +597,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Red" title="https://w3id.org/def/lotaf#Red">
-                <span>Red</span>
+             <a href="#RedHealthStatus" title="https://w3id.org/def/lotaf#RedHealthStatus">
+                <span>Red Health Status</span>
              </a>
           </li>
           <li>
@@ -600,8 +607,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Resource" title="https://w3id.org/def/lotaf#Resource">
-                <span>Resource</span>
+             <a href="#ResourceAsset" title="https://w3id.org/def/lotaf#ResourceAsset">
+                <span>Resource Asset</span>
              </a>
           </li>
           <li>
@@ -622,8 +629,8 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Service" title="https://w3id.org/def/lotaf#Service">
-                <span>Service</span>
+             <a href="#ServiceAsset" title="https://w3id.org/def/lotaf#ServiceAsset">
+                <span>Service Asset</span>
              </a>
           </li>
           <li>
@@ -632,18 +639,19 @@ This ontology has the following classes and properties.</span>
              </a>
           </li>
           <li>
-             <a href="#Subservice" title="https://w3id.org/def/lotaf#Subservice">
-                <span>Subservice</span>
+             <a href="#SubserviceAsset" title="https://w3id.org/def/lotaf#SubserviceAsset">
+                <span>Subservice Asset</span>
              </a>
           </li>
           <li>
-             <a href="#VPP" title="https://w3id.org/def/lotaf#VPP">
-                <span>V P P</span>
+             <a href="#VPPSymptom" title="https://w3id.org/def/lotaf#VPPSymptom">
+                <span>V P P Symptom</span>
              </a>
           </li>
           <li>
-             <a href="#VirtualMachines" title="https://w3id.org/def/lotaf#VirtualMachines">
-                <span>Virtual Machines</span>
+             <a href="#VirtualMachinesSymptom"
+                title="https://w3id.org/def/lotaf#VirtualMachinesSymptom">
+                <span>Virtual Machines Symptom</span>
              </a>
           </li>
        </ul><iframe src="webvowl/index.html"></iframe>
@@ -735,7 +743,7 @@ This section provides details for each class and property defined by Level of Tr
                   is in domain of
                </dt>
                <dd>
-                  <a href="#assetType" title="https://w3id.org/def/lotaf#assetType">asset type</a> <sup class="type-op" title="object property">op</sup>, <a href="#bandwith" title="https://w3id.org/def/lotaf#bandwith">bandwith</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/aerOS/continuum#cpuCores" title="https://w3id.org/aerOS/continuum#cpuCores">cpu cores</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#endpoint" title="https://w3id.org/def/lotaf#endpoint">endpoint</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#exposes" title="https://w3id.org/def/lotaf#exposes">exposes</a> <sup class="type-op" title="object property">op</sup>, <a href="#fulfills" title="https://w3id.org/def/lotaf#fulfills">fulfills</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/aerOS/continuum#location" title="https://w3id.org/aerOS/continuum#location">location</a> <sup class="type-op" title="object property">op</sup>, <a href="#powerConsumption" title="https://w3id.org/def/lotaf#powerConsumption">power consumption</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/aerOS/continuum#ramCapacity" title="https://w3id.org/aerOS/continuum#ramCapacity">ram capacity</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#throughput" title="https://w3id.org/def/lotaf#throughput">throughput</a> <sup class="type-dp" title="data property">dp</sup>
+                  <a href="#assetType" title="https://w3id.org/def/lotaf#assetType">asset type</a> <sup class="type-op" title="object property">op</sup>, <a href="#bandwith" title="https://w3id.org/def/lotaf#bandwith">bandwith</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/aerOS/continuum#cpuCores" title="https://w3id.org/aerOS/continuum#cpuCores">cpu cores</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#endpoint" title="https://w3id.org/def/lotaf#endpoint">endpoint</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#exposes" title="https://w3id.org/def/lotaf#exposes">exposes</a> <sup class="type-op" title="object property">op</sup>, <a href="#fulfills" title="https://w3id.org/def/lotaf#fulfills">fulfills</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/ofo#location" title="https://w3id.org/ofo#location">location</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#powerConsumption" title="https://w3id.org/def/lotaf#powerConsumption">power consumption</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/aerOS/continuum#ramCapacity" title="https://w3id.org/aerOS/continuum#ramCapacity">ram capacity</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#throughput" title="https://w3id.org/def/lotaf#throughput">throughput</a> <sup class="type-dp" title="data property">dp</sup>
                </dd>
                <dt>
                   is in range of
@@ -759,7 +767,7 @@ This section provides details for each class and property defined by Level of Tr
                   has members
                </dt>
                <dd>
-                  <a href="#Infrastructure" title="https://w3id.org/def/lotaf#Infrastructure">Infrastructure</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Resource" title="https://w3id.org/def/lotaf#Resource">Resource</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Service" title="https://w3id.org/def/lotaf#Service">Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Subservice" title="https://w3id.org/def/lotaf#Subservice">Subservice</a> <sup class="type-ni" title="named individual">ni</sup>
+                  <a href="#InfrastructureAsset" title="https://w3id.org/def/lotaf#InfrastructureAsset">Infrastructure Asset</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ResourceAsset" title="https://w3id.org/def/lotaf#ResourceAsset">Resource Asset</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ServiceAsset" title="https://w3id.org/def/lotaf#ServiceAsset">Service Asset</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#SubserviceAsset" title="https://w3id.org/def/lotaf#SubserviceAsset">Subservice Asset</a> <sup class="type-ni" title="named individual">ni</sup>
                </dd>
             </dl>
          </div>
@@ -813,7 +821,7 @@ This section provides details for each class and property defined by Level of Tr
                   has members
                </dt>
                <dd>
-                  <a href="#Green" title="https://w3id.org/def/lotaf#Green">Green</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Orange" title="https://w3id.org/def/lotaf#Orange">Orange</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Red" title="https://w3id.org/def/lotaf#Red">Red</a> <sup class="type-ni" title="named individual">ni</sup>
+                  <a href="#GreenHealthStatus" title="https://w3id.org/def/lotaf#GreenHealthStatus">Green Health Status</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OrangeHealthStatus" title="https://w3id.org/def/lotaf#OrangeHealthStatus">Orange Health Status</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#RedHealthStatus" title="https://w3id.org/def/lotaf#RedHealthStatus">Red Health Status</a> <sup class="type-ni" title="named individual">ni</sup>
                </dd>
             </dl>
          </div>
@@ -885,7 +893,7 @@ This section provides details for each class and property defined by Level of Tr
                   is in domain of
                </dt>
                <dd>
-                  <a href="#applies" title="https://w3id.org/def/lotaf#applies">applies</a> <sup class="type-op" title="object property">op</sup>, <a href="#enforces" title="https://w3id.org/def/lotaf#enforces">enforces</a> <sup class="type-op" title="object property">op</sup>, <a href="#gathers" title="https://w3id.org/def/lotaf#gathers">gathers</a> <sup class="type-op" title="object property">op</sup>, <a href="#lot" title="https://w3id.org/def/lotaf#lot">lot</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#startTime" title="https://w3id.org/def/lotaf#startTime">start time</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#stopTime" title="https://w3id.org/def/lotaf#stopTime">stop time</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a> <sup class="type-dp" title="data property">dp</sup>
+                  <a href="#applies" title="https://w3id.org/def/lotaf#applies">applies</a> <sup class="type-op" title="object property">op</sup>, <a href="#enforces" title="https://w3id.org/def/lotaf#enforces">enforces</a> <sup class="type-op" title="object property">op</sup>, <a href="#gathers" title="https://w3id.org/def/lotaf#gathers">gathers</a> <sup class="type-op" title="object property">op</sup>, <a href="#lot" title="https://w3id.org/def/lotaf#lot">lot</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#startTime" title="https://w3id.org/def/lotaf#startTime">start time</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#stopTime" title="https://w3id.org/def/lotaf#stopTime">stop time</a> <sup class="type-dp" title="data property">dp</sup>
                </dd>
                <dt>
                   is in range of
@@ -915,13 +923,13 @@ This section provides details for each class and property defined by Level of Tr
                   is in domain of
                </dt>
                <dd>
-                  <a href="#characteristics" title="https://w3id.org/def/lotaf#characteristics">characteristics</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#composedBy" title="https://w3id.org/def/lotaf#composedBy">composed by</a> <sup class="type-op" title="object property">op</sup>, <a href="#delivers" title="https://w3id.org/def/lotaf#delivers">delivers</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/description" title="http://purl.org/terms/description">description</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#networkStatus" title="https://w3id.org/def/lotaf#networkStatus">network status</a> <sup class="type-op" title="object property">op</sup>
+                  <a href="#characteristic" title="https://w3id.org/def/lotaf#characteristic">characteristic</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#composedBy" title="https://w3id.org/def/lotaf#composedBy">composed by</a> <sup class="type-op" title="object property">op</sup>, <a href="#delivers" title="https://w3id.org/def/lotaf#delivers">delivers</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/description" title="http://purl.org/terms/description">description</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#networkStatus" title="https://w3id.org/def/lotaf#networkStatus">network status</a> <sup class="type-op" title="object property">op</sup>
                </dd>
                <dt>
                   is in range of
                </dt>
                <dd>
-                  <a href="#deploys" title="https://w3id.org/def/lotaf#deploys">deploys</a> <sup class="type-op" title="object property">op</sup>, <a href="#monitors" title="https://w3id.org/def/lotaf#monitors">monitors</a> <sup class="type-op" title="object property">op</sup>, <a href="#networkServiceType" title="https://w3id.org/def/lotaf#networkServiceType">network service type</a> <sup class="type-op" title="object property">op</sup>
+                  <a href="#deploys" title="https://w3id.org/def/lotaf#deploys">deploys</a> <sup class="type-op" title="object property">op</sup>, <a href="#monitors" title="https://w3id.org/def/lotaf#monitors">monitors</a> <sup class="type-op" title="object property">op</sup>, <a href="#networkServiceType" title="https://w3id.org/def/lotaf#networkServiceType">network service type</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a> <sup class="type-op" title="object property">op</sup>
                </dd>
             </dl>
          </div>
@@ -957,7 +965,7 @@ This section provides details for each class and property defined by Level of Tr
                   has members
                </dt>
                <dd>
-                  <a href="#Cloud" title="https://w3id.org/def/lotaf#Cloud">Cloud</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#CloudContinuum" title="https://w3id.org/def/lotaf#CloudContinuum">Cloud Continuum</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#CloudEdgeContinuum" title="https://w3id.org/def/lotaf#CloudEdgeContinuum">Cloud Edge Continuum</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Edge" title="https://w3id.org/def/lotaf#Edge">Edge</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#FarEdge" title="https://w3id.org/def/lotaf#FarEdge">Far Edge</a> <sup class="type-ni" title="named individual">ni</sup>
+                  <a href="#CloudContinuumType" title="https://w3id.org/def/lotaf#CloudContinuumType">Cloud Continuum Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#CloudEdgeContinuumType" title="https://w3id.org/def/lotaf#CloudEdgeContinuumType">Cloud Edge Continuum Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#CloudType" title="https://w3id.org/def/lotaf#CloudType">Cloud Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EdgeType" title="https://w3id.org/def/lotaf#EdgeType">Edge Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#FarEdgeType" title="https://w3id.org/def/lotaf#FarEdgeType">Far Edge Type</a> <sup class="type-ni" title="named individual">ni</sup>
                </dd>
             </dl>
          </div>
@@ -1185,7 +1193,7 @@ This section provides details for each class and property defined by Level of Tr
                   has members
                </dt>
                <dd>
-                  <a href="#CPU" title="https://w3id.org/def/lotaf#CPU">C P U</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Memory" title="https://w3id.org/def/lotaf#Memory">Memory</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Networking" title="https://w3id.org/def/lotaf#Networking">Networking</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Processes" title="https://w3id.org/def/lotaf#Processes">Processes</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#VPP" title="https://w3id.org/def/lotaf#VPP">V P P</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#VirtualMachines" title="https://w3id.org/def/lotaf#VirtualMachines">Virtual Machines</a> <sup class="type-ni" title="named individual">ni</sup>
+                  <a href="#CPUSymptom" title="https://w3id.org/def/lotaf#CPUSymptom">C P U Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#MemorySymptom" title="https://w3id.org/def/lotaf#MemorySymptom">Memory Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NetworkingSymptom" title="https://w3id.org/def/lotaf#NetworkingSymptom">Networking Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ProcessesSymptom" title="https://w3id.org/def/lotaf#ProcessesSymptom">Processes Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#VPPSymptom" title="https://w3id.org/def/lotaf#VPPSymptom">V P P Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#VirtualMachinesSymptom" title="https://w3id.org/def/lotaf#VirtualMachinesSymptom">Virtual Machines Symptom</a> <sup class="type-ni" title="named individual">ni</sup>
                </dd>
             </dl>
          </div>
@@ -1221,7 +1229,7 @@ This section provides details for each class and property defined by Level of Tr
                   is in domain of
                </dt>
                <dd>
-                  <a href="#belongsTo" title="https://w3id.org/def/lotaf#belongsTo">belongs to</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a> <sup class="type-op" title="object property">op</sup>, <a href="#request" title="https://w3id.org/def/lotaf#request">request</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#signs" title="https://w3id.org/def/lotaf#signs">signs</a> <sup class="type-op" title="object property">op</sup>
+                  <a href="#belongsTo" title="https://w3id.org/def/lotaf#belongsTo">belongs to</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a> <sup class="type-op" title="object property">op</sup>, <a href="#request" title="https://w3id.org/def/lotaf#request">request</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#signs" title="https://w3id.org/def/lotaf#signs">signs</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a> <sup class="type-op" title="object property">op</sup>
                </dd>
                <dt>
                   is in range of
@@ -1253,7 +1261,6 @@ This section provides details for each class and property defined by Level of Tr
             <li><a href="#healthStatus" title="https://w3id.org/def/lotaf#healthStatus">health status</a></li>
             <li><a href="#includes" title="https://w3id.org/def/lotaf#includes">includes</a></li>
             <li><a href="#informs" title="https://w3id.org/def/lotaf#informs">informs</a></li>
-            <li><a href="#https://w3id.org/aerOS/continuum#location" title="https://w3id.org/aerOS/continuum#location"> <span>location</span> </a></li>
             <li><a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a></li>
             <li><a href="#http://www.w3.org/ns/org#member" title="http://www.w3.org/ns/org#member">member</a></li>
             <li><a href="#monitors" title="https://w3id.org/def/lotaf#monitors">monitors</a></li>
@@ -1267,6 +1274,8 @@ This section provides details for each class and property defined by Level of Tr
             <li><a href="#signs" title="https://w3id.org/def/lotaf#signs">signs</a></li>
             <li><a href="#symptomType" title="https://w3id.org/def/lotaf#symptomType">symptom type</a></li>
             <li><a href="#http://www.owl-ontologies.com/odrl#target" title="http://www.owl-ontologies.com/odrl#target">target</a></li>
+            <li><a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a></li>
+            <li><a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a></li>
          </ul>
          <div class="entity" id="applies">
             <h3>applies<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
@@ -1648,32 +1657,6 @@ This section provides details for each class and property defined by Level of Tr
                </dl>
             </div>
          </div>
-         <div class="entity" id="https://w3id.org/aerOS/continuum#location">
-            <h3>location<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/aerOS/continuum#location</p>
-            <div class="description">
-               <dl>
-                  <dt>
-                     has domain
-                  </dt>
-                  <dd>
-                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
-                  </dd>
-                  <dt>
-                     has range
-                  </dt>
-                  <dd>
-                     <a href="http://www.w3.org/2001/XMLSchema#Location" target="_blank" title="http://www.w3.org/2001/XMLSchema#Location">Location</a> <sup class="type-c" title="class">c</sup>
-                  </dd>
-                  <dt>
-                     is also defined as
-                  </dt>
-                  <dd>
-                     data property
-                  </dd>
-               </dl>
-            </div>
-         </div>
          <div class="entity" id="manages">
             <h3>manages<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
             <p><strong>IRI:</strong> https://w3id.org/def/lotaf#manages</p>
@@ -1934,11 +1917,51 @@ This section provides details for each class and property defined by Level of Tr
                </dl>
             </div>
          </div>
+         <div class="entity" id="trustee">
+            <h3>trustee<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#trustee</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="trustor">
+            <h3>trustor<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#trustor</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
       </div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
          <h3 id="dataproperties-headline" class="list">Data Properties</h3>
          <ul class="hlist">
             <li><a href="#bandwith" title="https://w3id.org/def/lotaf#bandwith">bandwith</a></li>
-            <li><a href="#characteristics" title="https://w3id.org/def/lotaf#characteristics">characteristics</a></li>
+            <li><a href="#characteristic" title="https://w3id.org/def/lotaf#characteristic">characteristic</a></li>
             <li><a href="#constraint" title="https://w3id.org/def/lotaf#constraint">constraint</a></li>
             <li><a href="#https://w3id.org/aerOS/continuum#cpuCores" title="https://w3id.org/aerOS/continuum#cpuCores">cpu cores</a></li>
             <li><a href="#customerID" title="https://w3id.org/def/lotaf#customerID">customer i d</a></li>
@@ -1948,6 +1971,7 @@ This section provides details for each class and property defined by Level of Tr
             <li><a href="#healthScore" title="https://w3id.org/def/lotaf#healthScore">health score</a></li>
             <li><a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a></li>
             <li><a href="#http://xmlns.com/foaf/0.1/lastName" title="http://xmlns.com/foaf/0.1/lastName">last name</a></li>
+            <li><a href="#https://w3id.org/ofo#location" title="https://w3id.org/ofo#location">location</a></li>
             <li><a href="#lot" title="https://w3id.org/def/lotaf#lot">lot</a></li>
             <li><a href="#powerConsumption" title="https://w3id.org/def/lotaf#powerConsumption">power consumption</a></li>
             <li><a href="#providerID" title="https://w3id.org/def/lotaf#providerID">provider i d</a></li>
@@ -1960,8 +1984,6 @@ This section provides details for each class and property defined by Level of Tr
             <li><a href="#startTime" title="https://w3id.org/def/lotaf#startTime">start time</a></li>
             <li><a href="#stopTime" title="https://w3id.org/def/lotaf#stopTime">stop time</a></li>
             <li><a href="#throughput" title="https://w3id.org/def/lotaf#throughput">throughput</a></li>
-            <li><a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a></li>
-            <li><a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a></li>
             <li><a href="#value" title="https://w3id.org/def/lotaf#value">value</a></li>
             <li><a href="#violationDescription" title="https://w3id.org/def/lotaf#violationDescription">violation description</a></li>
             <li><a href="#weightingFactor" title="https://w3id.org/def/lotaf#weightingFactor">weighting factor</a></li>
@@ -1986,9 +2008,9 @@ This section provides details for each class and property defined by Level of Tr
                </dl>
             </div>
          </div>
-         <div class="entity" id="characteristics">
-            <h3>characteristics<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#characteristics</p>
+         <div class="entity" id="characteristic">
+            <h3>characteristic<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#characteristic</p>
             <div class="description">
                <dl>
                   <dt>
@@ -2200,6 +2222,26 @@ This section provides details for each class and property defined by Level of Tr
                   </dt>
                   <dd>
                      <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="https://w3id.org/ofo#location">
+            <h3>location<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/ofo#location</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
                   </dd>
                   <dt>
                      has range
@@ -2435,46 +2477,6 @@ This section provides details for each class and property defined by Level of Tr
                </dl>
             </div>
          </div>
-         <div class="entity" id="trustee">
-            <h3>trustee<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#trustee</p>
-            <div class="description">
-               <dl>
-                  <dt>
-                     has domain
-                  </dt>
-                  <dd>
-                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
-                  </dd>
-                  <dt>
-                     has range
-                  </dt>
-                  <dd>
-                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
-                  </dd>
-               </dl>
-            </div>
-         </div>
-         <div class="entity" id="trustor">
-            <h3>trustor<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#trustor</p>
-            <div class="description">
-               <dl>
-                  <dt>
-                     has domain
-                  </dt>
-                  <dd>
-                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
-                  </dd>
-                  <dt>
-                     has range
-                  </dt>
-                  <dd>
-                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
-                  </dd>
-               </dl>
-            </div>
-         </div>
          <div class="entity" id="value">
             <h3>value<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
             <p><strong>IRI:</strong> https://w3id.org/def/lotaf#value</p>
@@ -2548,6 +2550,7 @@ This section provides details for each class and property defined by Level of Tr
             <li><a href="#http://purl.org/dc/elements/1.1/created" title="http://purl.org/dc/elements/1.1/created"> <span>created</span> </a></li>
             <li><a href="#https://w3id.org/mod#createdWith" title="https://w3id.org/mod#createdWith"> <span>created With</span> </a></li>
             <li><a href="#http://purl.org/dc/elements/1.1/creator" title="http://purl.org/dc/elements/1.1/creator"> <span>creator</span> </a></li>
+            <li><a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source"> <span>source</span> </a></li>
             <li><a href="#http://purl.org/dc/elements/1.1/title" title="http://purl.org/dc/elements/1.1/title"> <span>title</span> </a></li>
             <li><a href="#http://www.w3.org/2002/07/owl#versionInfo" title="http://www.w3.org/2002/07/owl#versionInfo"> <span>version Info</span> </a></li>
          </ul>
@@ -2567,6 +2570,10 @@ This section provides details for each class and property defined by Level of Tr
             <h3>creator<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
             <p><strong>IRI:</strong> http://purl.org/dc/elements/1.1/creator</p>
          </div>
+         <div class="entity" id="http://purl.org/dc/terms/source">
+            <h3>source<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/dc/terms/source</p>
+         </div>
          <div class="entity" id="http://purl.org/dc/elements/1.1/title">
             <h3>title<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
             <p><strong>IRI:</strong> http://purl.org/dc/elements/1.1/title</p>
@@ -2580,46 +2587,46 @@ This section provides details for each class and property defined by Level of Tr
          <ul class="hlist">
             <li><a href="#AllocatingNetworkService" title="https://w3id.org/def/lotaf#AllocatingNetworkService"> <span>Allocating Network Service</span> </a></li>
             <li><a href="#Availability" title="https://w3id.org/def/lotaf#Availability"> <span>Availability</span> </a></li>
-            <li><a href="#CPU" title="https://w3id.org/def/lotaf#CPU"> <span>C P U</span> </a></li>
-            <li><a href="#Cloud" title="https://w3id.org/def/lotaf#Cloud"> <span>Cloud</span> </a></li>
-            <li><a href="#CloudContinuum" title="https://w3id.org/def/lotaf#CloudContinuum"> <span>Cloud Continuum</span> </a></li>
-            <li><a href="#CloudEdgeContinuum" title="https://w3id.org/def/lotaf#CloudEdgeContinuum"> <span>Cloud Edge Continuum</span> </a></li>
+            <li><a href="#CPUSymptom" title="https://w3id.org/def/lotaf#CPUSymptom"> <span>C P U Symptom</span> </a></li>
+            <li><a href="#CloudContinuumType" title="https://w3id.org/def/lotaf#CloudContinuumType"> <span>Cloud Continuum Type</span> </a></li>
+            <li><a href="#CloudEdgeContinuumType" title="https://w3id.org/def/lotaf#CloudEdgeContinuumType"> <span>Cloud Edge Continuum Type</span> </a></li>
+            <li><a href="#CloudType" title="https://w3id.org/def/lotaf#CloudType"> <span>Cloud Type</span> </a></li>
             <li><a href="#Credibility" title="https://w3id.org/def/lotaf#Credibility"> <span>Credibility</span> </a></li>
             <li><a href="#CustomerNotificationAction" title="https://w3id.org/def/lotaf#CustomerNotificationAction"> <span>Customer Notification Action</span> </a></li>
             <li><a href="#DeployingNetworkService" title="https://w3id.org/def/lotaf#DeployingNetworkService"> <span>Deploying Network Service</span> </a></li>
             <li><a href="#DigitalServiceCustomer" title="https://w3id.org/def/lotaf#DigitalServiceCustomer"> <span>Digital Service Customer</span> </a></li>
             <li><a href="#DigitalServiceProvider" title="https://w3id.org/def/lotaf#DigitalServiceProvider"> <span>Digital Service Provider</span> </a></li>
-            <li><a href="#Edge" title="https://w3id.org/def/lotaf#Edge"> <span>Edge</span> </a></li>
+            <li><a href="#EdgeType" title="https://w3id.org/def/lotaf#EdgeType"> <span>Edge Type</span> </a></li>
             <li><a href="#EndingTrustAgreementAction" title="https://w3id.org/def/lotaf#EndingTrustAgreementAction"> <span>Ending Trust Agreement Action</span> </a></li>
             <li><a href="#EvaluatingOtherAssesstsAction" title="https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction"> <span>Evaluating Other Assessts Action</span> </a></li>
-            <li><a href="#FarEdge" title="https://w3id.org/def/lotaf#FarEdge"> <span>Far Edge</span> </a></li>
+            <li><a href="#FarEdgeType" title="https://w3id.org/def/lotaf#FarEdgeType"> <span>Far Edge Type</span> </a></li>
             <li><a href="#Feedback" title="https://w3id.org/def/lotaf#Feedback"> <span>Feedback</span> </a></li>
             <li><a href="#FinishedNetworkService" title="https://w3id.org/def/lotaf#FinishedNetworkService"> <span>Finished Network Service</span> </a></li>
-            <li><a href="#Green" title="https://w3id.org/def/lotaf#Green"> <span>Green</span> </a></li>
+            <li><a href="#GreenHealthStatus" title="https://w3id.org/def/lotaf#GreenHealthStatus"> <span>Green Health Status</span> </a></li>
             <li><a href="#HealthyNetworkService" title="https://w3id.org/def/lotaf#HealthyNetworkService"> <span>Healthy Network Service</span> </a></li>
             <li><a href="#InactiveNetworkService" title="https://w3id.org/def/lotaf#InactiveNetworkService"> <span>Inactive Network Service</span> </a></li>
-            <li><a href="#Infrastructure" title="https://w3id.org/def/lotaf#Infrastructure"> <span>Infrastructure</span> </a></li>
+            <li><a href="#InfrastructureAsset" title="https://w3id.org/def/lotaf#InfrastructureAsset"> <span>Infrastructure Asset</span> </a></li>
             <li><a href="#InitializingNetworkService" title="https://w3id.org/def/lotaf#InitializingNetworkService"> <span>Initializing Network Service</span> </a></li>
             <li><a href="#MaintainingNetworkService" title="https://w3id.org/def/lotaf#MaintainingNetworkService"> <span>Maintaining Network Service</span> </a></li>
-            <li><a href="#Memory" title="https://w3id.org/def/lotaf#Memory"> <span>Memory</span> </a></li>
+            <li><a href="#MemorySymptom" title="https://w3id.org/def/lotaf#MemorySymptom"> <span>Memory Symptom</span> </a></li>
             <li><a href="#MigratingNetworkService" title="https://w3id.org/def/lotaf#MigratingNetworkService"> <span>Migrating Network Service</span> </a></li>
-            <li><a href="#Networking" title="https://w3id.org/def/lotaf#Networking"> <span>Networking</span> </a></li>
-            <li><a href="#Orange" title="https://w3id.org/def/lotaf#Orange"> <span>Orange</span> </a></li>
+            <li><a href="#NetworkingSymptom" title="https://w3id.org/def/lotaf#NetworkingSymptom"> <span>Networking Symptom</span> </a></li>
+            <li><a href="#OrangeHealthStatus" title="https://w3id.org/def/lotaf#OrangeHealthStatus"> <span>Orange Health Status</span> </a></li>
             <li><a href="#OverloadNetworkService" title="https://w3id.org/def/lotaf#OverloadNetworkService"> <span>Overload Network Service</span> </a></li>
             <li><a href="#PausedNetworkService" title="https://w3id.org/def/lotaf#PausedNetworkService"> <span>Paused Network Service</span> </a></li>
-            <li><a href="#Processes" title="https://w3id.org/def/lotaf#Processes"> <span>Processes</span> </a></li>
+            <li><a href="#ProcessesSymptom" title="https://w3id.org/def/lotaf#ProcessesSymptom"> <span>Processes Symptom</span> </a></li>
             <li><a href="#ProviderNotificationAction" title="https://w3id.org/def/lotaf#ProviderNotificationAction"> <span>Provider Notification Action</span> </a></li>
-            <li><a href="#Red" title="https://w3id.org/def/lotaf#Red"> <span>Red</span> </a></li>
+            <li><a href="#RedHealthStatus" title="https://w3id.org/def/lotaf#RedHealthStatus"> <span>Red Health Status</span> </a></li>
             <li><a href="#Reliability" title="https://w3id.org/def/lotaf#Reliability"> <span>Reliability</span> </a></li>
-            <li><a href="#Resource" title="https://w3id.org/def/lotaf#Resource"> <span>Resource</span> </a></li>
+            <li><a href="#ResourceAsset" title="https://w3id.org/def/lotaf#ResourceAsset"> <span>Resource Asset</span> </a></li>
             <li><a href="#RunningNetworkService" title="https://w3id.org/def/lotaf#RunningNetworkService"> <span>Running Network Service</span> </a></li>
             <li><a href="#Scalability" title="https://w3id.org/def/lotaf#Scalability"> <span>Scalability</span> </a></li>
             <li><a href="#ScalingNetworkService" title="https://w3id.org/def/lotaf#ScalingNetworkService"> <span>Scaling Network Service</span> </a></li>
-            <li><a href="#Service" title="https://w3id.org/def/lotaf#Service"> <span>Service</span> </a></li>
+            <li><a href="#ServiceAsset" title="https://w3id.org/def/lotaf#ServiceAsset"> <span>Service Asset</span> </a></li>
             <li><a href="#Stability" title="https://w3id.org/def/lotaf#Stability"> <span>Stability</span> </a></li>
-            <li><a href="#Subservice" title="https://w3id.org/def/lotaf#Subservice"> <span>Subservice</span> </a></li>
-            <li><a href="#VPP" title="https://w3id.org/def/lotaf#VPP"> <span>V P P</span> </a></li>
-            <li><a href="#VirtualMachines" title="https://w3id.org/def/lotaf#VirtualMachines"> <span>Virtual Machines</span> </a></li>
+            <li><a href="#SubserviceAsset" title="https://w3id.org/def/lotaf#SubserviceAsset"> <span>Subservice Asset</span> </a></li>
+            <li><a href="#VPPSymptom" title="https://w3id.org/def/lotaf#VPPSymptom"> <span>V P P Symptom</span> </a></li>
+            <li><a href="#VirtualMachinesSymptom" title="https://w3id.org/def/lotaf#VirtualMachinesSymptom"> <span>Virtual Machines Symptom</span> </a></li>
          </ul>
          <div class="entity" id="AllocatingNetworkService">
             <h3>Allocating Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
@@ -2645,9 +2652,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="CPU">
-            <h3>C P U<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CPU</p>
+         <div class="entity" id="CPUSymptom">
+            <h3>C P U Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CPUSymptom</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2657,9 +2664,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Cloud">
-            <h3>Cloud<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Cloud</p>
+         <div class="entity" id="CloudContinuumType">
+            <h3>Cloud Continuum Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudContinuumType</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2669,9 +2676,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="CloudContinuum">
-            <h3>Cloud Continuum<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudContinuum</p>
+         <div class="entity" id="CloudEdgeContinuumType">
+            <h3>Cloud Edge Continuum Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudEdgeContinuumType</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2681,9 +2688,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="CloudEdgeContinuum">
-            <h3>Cloud Edge Continuum<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudEdgeContinuum</p>
+         <div class="entity" id="CloudType">
+            <h3>Cloud Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudType</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2753,9 +2760,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Edge">
-            <h3>Edge<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Edge</p>
+         <div class="entity" id="EdgeType">
+            <h3>Edge Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#EdgeType</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2789,9 +2796,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="FarEdge">
-            <h3>Far Edge<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#FarEdge</p>
+         <div class="entity" id="FarEdgeType">
+            <h3>Far Edge Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#FarEdgeType</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2825,9 +2832,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Green">
-            <h3>Green<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Green</p>
+         <div class="entity" id="GreenHealthStatus">
+            <h3>Green Health Status<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#GreenHealthStatus</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2861,9 +2868,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Infrastructure">
-            <h3>Infrastructure<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Infrastructure</p>
+         <div class="entity" id="InfrastructureAsset">
+            <h3>Infrastructure Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#InfrastructureAsset</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2897,9 +2904,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Memory">
-            <h3>Memory<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Memory</p>
+         <div class="entity" id="MemorySymptom">
+            <h3>Memory Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#MemorySymptom</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2921,9 +2928,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Networking">
-            <h3>Networking<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Networking</p>
+         <div class="entity" id="NetworkingSymptom">
+            <h3>Networking Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#NetworkingSymptom</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2933,9 +2940,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Orange">
-            <h3>Orange<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Orange</p>
+         <div class="entity" id="OrangeHealthStatus">
+            <h3>Orange Health Status<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#OrangeHealthStatus</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2969,9 +2976,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Processes">
-            <h3>Processes<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Processes</p>
+         <div class="entity" id="ProcessesSymptom">
+            <h3>Processes Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ProcessesSymptom</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -2993,9 +3000,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Red">
-            <h3>Red<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Red</p>
+         <div class="entity" id="RedHealthStatus">
+            <h3>Red Health Status<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#RedHealthStatus</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -3017,9 +3024,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Resource">
-            <h3>Resource<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Resource</p>
+         <div class="entity" id="ResourceAsset">
+            <h3>Resource Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ResourceAsset</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -3065,9 +3072,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Service">
-            <h3>Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Service</p>
+         <div class="entity" id="ServiceAsset">
+            <h3>Service Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ServiceAsset</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -3089,9 +3096,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="Subservice">
-            <h3>Subservice<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Subservice</p>
+         <div class="entity" id="SubserviceAsset">
+            <h3>Subservice Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#SubserviceAsset</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -3101,9 +3108,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="VPP">
-            <h3>V P P<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#VPP</p>
+         <div class="entity" id="VPPSymptom">
+            <h3>V P P Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#VPPSymptom</p>
             <dl class="description">
                <dt>
                   belongs to
@@ -3113,9 +3120,9 @@ This section provides details for each class and property defined by Level of Tr
                </dd>
             </dl>
          </div>
-         <div class="entity" id="VirtualMachines">
-            <h3>Virtual Machines<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
-            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#VirtualMachines</p>
+         <div class="entity" id="VirtualMachinesSymptom">
+            <h3>Virtual Machines Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#VirtualMachinesSymptom</p>
             <dl class="description">
                <dt>
                   belongs to
