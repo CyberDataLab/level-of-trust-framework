@@ -3,6 +3,8 @@ from fastapi.responses import JSONResponse
 import uvicorn
 from neo4j import GraphDatabase
 import os
+import io
+import sys
 import morph_kgc
 
 # Define the Neo4j connection details
@@ -11,6 +13,8 @@ NEO4J_URI = "bolt://localhost"
 USERNAME = "neo4j"
 PASSWORD = "PASSWORD"
 
+# Connection with Neo4j
+driver = GraphDatabase.driver(NEO4J_URI, auth=(USERNAME, PASSWORD))
 
 # API
 
@@ -31,23 +35,34 @@ app = FastAPI(
 @app.get("/map_data")
 def map_data(mapping_file_path: str, output_path: str):
 
+    absolute_mapping_file_path = get_path(mapping_file_path)
+    absolute_output_file_path = get_path(output_path)
+
     # Definir la ruta de tu archivo de mapeo
     mapping_path =  f"""
                         [DataSource]
-                        mappings: {mapping_file_path}
+                        mappings: {absolute_mapping_file_path}
                     """
+    try:
 
-    # Generar las tripletas RDF
-    g = morph_kgc.materialize(mapping_path)
-
-    # Guardar las tripletas en un archivo RDF
-    g.serialize(destination=output_path, format="xml")
-
-    return output_path
+        # Generar las tripletas RDF
+        g = morph_kgc.materialize(mapping_path)
 
 
-# Connection with Neo4j
-driver = GraphDatabase.driver(NEO4J_URI, auth=(USERNAME, PASSWORD))
+        # Guardar las tripletas en un archivo RDF
+        g.serialize(destination=absolute_output_file_path, format="xml")
+
+        return JSONResponse(
+            content={"message": "Mapping completed successfully."},
+            status_code=200
+        )
+    
+    except Exception as e:
+        return JSONResponse(
+            content={"message": f"An error occurred: {str(e)}"},
+            status_code=500
+        )
+    
 
 @app.get("/delete_config")
 def delete_config():
@@ -110,14 +125,14 @@ def start_config():
 @app.get("/load_triplets")
 def load_triplets(file_path: str):
 
-    if os.path.exists(file_path):
-        file_path = file_path.replace("\\", "/")
+    absolute_path = get_path(file_path)
 
+    if os.path.exists(absolute_path):
         try:
             with driver.session() as session:
                 # Import RDF data with neosemantics
                 query = f"""
-                        CALL n10s.rdf.import.fetch("file:///{file_path}", 'RDF/XML')
+                        CALL n10s.rdf.import.fetch("file:///{absolute_path}", 'RDF/XML')
                         """
                 # Execute command
                 session.execute_write(lambda tx: tx.run(query))
@@ -128,7 +143,20 @@ def load_triplets(file_path: str):
         return JSONResponse(content={"message": "File not found at the specified path."}, status_code=404)
 
     
-    
+def get_path(relative_path):
+
+    base_dir = os.path.dirname(os.path.abspath(__file__)) # Absolute route of actual script
+
+    if not os.path.isabs(relative_path):
+        absolute_path = os.path.normpath(os.path.join(base_dir, relative_path))
+    else:
+        absolute_path = relative_path
+
+    absolute_path = absolute_path.replace("\\", "/")
+
+    return absolute_path
+
+
 
 if __name__ == "__main__":
 
