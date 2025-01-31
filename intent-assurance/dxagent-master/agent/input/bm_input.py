@@ -314,8 +314,8 @@ class BMWatcher():
       self._process_proc_net_stat_rt_cache()
       self._process_proc_net_arp()
       self._process_net_settings()
-      #self._process_sensors()
-      #self._process_interfaces()
+      self._process_sensors()
+      self._process_interfaces()
       self._process_routes()
       if self.ioam_gnmi_nodes:
          self._input_gnmi()
@@ -954,16 +954,20 @@ class BMWatcher():
       # 127.0.0.53 indicates such behavior
       if not nameserver or nameserver == "127.0.0.53":
          try:
-            res=subprocess.run(["systemd-resolve","--no-pager","--status"],
-                                capture_output=True)
+            #res=subprocess.run(["systemd-resolve","--no-pager","--status"], capture_output=True)
+            res = subprocess.run(["resolvectl", "status"], capture_output=True)
             this_if = "global"
             for l in res.stdout.split(b'\n'):
                if b"Link" in l:
                   this_if=l.split()[-1][1:-1].decode()
                elif b"Current DNS Server" in l:
                   nameservers[this_if]=l.split()[-1].decode()
-         except:
-            self.info("systemd probe failed")
+         # except:
+         #   self.info("systemd probe failed")
+         except FileNotFoundError:
+            self.info("systemd-resolve not found. Falling back to /etc/resolv.conf.")
+         except subprocess.SubprocessError as e:
+            self.info(f"Error running systemd-resolve: {e}. Falling back to /etc/resolv/conf/")
 
       # DHCP
       # parse dhcp lease files
@@ -1047,7 +1051,8 @@ class BMWatcher():
                   if_dict["ip6_gw_addr"].append(item[0])
                   if_dict["ip6_gw_if"].append(item[1])
                   if_dict["ip6_gw_default"].append(item[2])
-                  
+         
+         # self.info(f"Current keys in if_dict for interface {if_name}: {list(if_dict.keys())}")
          self.read_ethtool_info(if_name, if_dict)
                   
          #
@@ -1160,11 +1165,14 @@ class BMWatcher():
             if_dict[attr].append(getter(if_name))
          except:
             pass
-            
+
+      #self.info(f"Features of _ethtool: {list(self._ethtool.get_features(if_name))}")      
       for feature in self._ethtool.get_features(if_name)[0].values():
          if not feature.name or not feature.available:
             continue
          #self.info("if: {} feature: {}".format(if_name,feature.name))
+         if feature.name not in if_dict:
+            continue
          if_dict[feature.name].append(int(feature.enable))
          #self.info("inserted {} type {}".format(if_dict[attr]._top(),
          #                                       if_dict[attr].type))

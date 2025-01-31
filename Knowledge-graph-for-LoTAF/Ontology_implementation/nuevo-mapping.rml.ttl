@@ -20,7 +20,7 @@
 # Mapping for Organization
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Organization"
     ] ;
@@ -36,7 +36,7 @@
 # Mapping for Person
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Person"
     ] ;
@@ -56,7 +56,7 @@
 # Mapping for Membership
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Membership>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Membership"
     ] ;
@@ -89,7 +89,7 @@
 # Mapping for Role
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Role>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Role"
     ] ;
@@ -110,7 +110,7 @@
 # Mapping for User
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].User"
     ] ;
@@ -169,7 +169,7 @@
 # Mapping for Reward
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Reward"
     ] ;
@@ -202,7 +202,7 @@
 # Mapping of Punishment
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Punishment"
     ] ;
@@ -224,7 +224,7 @@
 # Mapping LevelOfTrust
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].LevelOfTrust"
     ] ;
@@ -271,7 +271,6 @@
 # Mapping IntentReport
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/IntentReport>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].IntentReport"
     ] ;
@@ -298,7 +297,7 @@
 # Mapping for Intent
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Intent"
     ] ;
@@ -333,7 +332,7 @@
 # Mapping for TrustLevelAgreement
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].TrustLevelAgreement"
     ] ;
@@ -371,7 +370,7 @@
 # Mapping for AdministrativeDomain
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].AdministrativeDomain"
     ] ;
@@ -450,7 +449,7 @@
 # Mapping for NetworkService
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].NetworkService"
     ] ;
@@ -517,7 +516,7 @@
 # Mapping for Policy
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Policy"
     ] ;
@@ -538,7 +537,7 @@
 # Mapping for Rule
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Rule"
     ] ;
@@ -559,7 +558,7 @@
 # Mapping for Asset
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Asset"
     ] ;
@@ -614,7 +613,7 @@
 # Mapping for Symptom
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Symptom"
     ] ;
@@ -661,7 +660,7 @@
 # Mapping for SubjectiveIndicator
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].SubjectiveIndicator"
     ] ;
@@ -694,7 +693,7 @@
 # Mapping for ObjectiveIndicator
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].ObjectiveIndicator"
     ] ;
@@ -735,7 +734,7 @@
 # Mapping for Health
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health>
     rml:logicalSource [
-        rml:source "./prueba.json" ;
+        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Health"
     ] ;

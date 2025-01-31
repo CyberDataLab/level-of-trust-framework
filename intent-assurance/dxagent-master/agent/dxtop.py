@@ -12,8 +12,6 @@ import sched
 import time
 import datetime
 import os
-import mmap
-import csv
 
 from .constants import *
 from .core.utils import remove_suffix
@@ -256,8 +254,7 @@ class DXTop(IOManager):
          self._append_content(self._center_text(" "), 6)
 
       self._append_content(self._center_text("Metrics"), 6, curses.A_REVERSE)
-      score_cpu = self._format_attrs_list_rb_percpu("/node/bm/cpus/cpu", 6, health=True)
-
+      self._format_attrs_list_rb_percpu("/node/bm/cpus/cpu", 6, health=True)
       self._format_attrs_list_rb("/node/bm/net/if", 6, health=True)
       
       if "/node/bm/net/ioam" in self._data:
@@ -274,11 +271,11 @@ class DXTop(IOManager):
             self._format_attrs_list_rb("/node/bm/net/ioam/namespace", 6, subdict=ioam_dict,
                                       health=True, health_index=ioam_name)
       
-      score_sensor = self._format_attrs_list_rb("/node/bm/sensors/sensor", 6, health=True)
-      score_mem = self._format_attrs_rb("/node/bm/mem", 6, health=True)
-      score_proc = self._format_attrs_rb("/node/bm/proc", 6, health=True)
-      score_disk = self._format_attrs_list_rb("/node/bm/disks/disk", 6, health=True)
-      score_net = self._format_attrs_rb("/node/bm/net", 6, health=True)
+      self._format_attrs_list_rb("/node/bm/sensors/sensor", 6, health=True)
+      self._format_attrs_rb("/node/bm/mem", 6, health=True)
+      self._format_attrs_rb("/node/bm/proc", 6, health=True)
+      self._format_attrs_list_rb("/node/bm/disks/disk", 6, health=True)
+      self._format_attrs_rb("/node/bm/net", 6, health=True)
       
       if "/node/vm" in self._data:
          for vm_name in self._data["/node/vm"]:
@@ -307,14 +304,13 @@ class DXTop(IOManager):
                                       health=True, health_index=kb_name)
              
       self.resize_columns()
-      self.write_real_time_scores(score_cpu, score_sensor, score_mem, score_proc, score_disk, score_net)
       
    def _indexed_path(self, path, index=""):
       """
       add name missing from data path
       """
       path = path.replace("/node","/node[name={}]".format(self.sysinfo.node))
-      #path = path.replace("vm","vm[name={}]".format(index))
+      path = path.replace("vm","vm[name={}]".format(index))
       path = path.replace("kb","kb[name={}]".format(index))
       path = path.replace("ioam","ioam[name={}]".format(index))
       #self.info(path)
@@ -324,10 +320,11 @@ class DXTop(IOManager):
       # XXX:
       #self.info(self._data["health_scores"]) 
       #self.info(path)
-
+      
       suffixes = ["/if", "/cpu", "/sensor", "/disk", "/namespace"]
       for suffix in suffixes:
          path = remove_suffix(path, suffix)
+      
       return self._data["health_scores"][path]
 
    def _format_attrs_rb(self, category, pad_index, extend_name=False,
@@ -338,8 +335,6 @@ class DXTop(IOManager):
       @param extend_name if True, prepend attr name with subservice path
  
       """
-      score = 0
-
       if subdict:
          data=subdict
       else:
@@ -396,7 +391,6 @@ class DXTop(IOManager):
          self._append_content(s, pad_index, flags, fill=True)      
 
       self._append_content(self.hline_bottom(self.col_sizes), pad_index)
-      return score
 
    def _format_attrs_list_rb(self, category, pad_index, extend_name=False,
                              subdict=None, title=True, health=False,
@@ -407,9 +401,6 @@ class DXTop(IOManager):
       @param extend_name if True, prepend attr name with subservice path
  
       """
-      score_global = 0
-      score = 0
-
       if subdict:
          data=subdict
       else:
@@ -435,9 +426,6 @@ class DXTop(IOManager):
          self._append_content(self._center_text(title_str),
                               pad_index, flags)
       self._append_content(self.hline_top(self.col_sizes), pad_index)
-
-      #Store the mean of disk health
-      score_global = score
 
       for i,(k,d) in enumerate(data[category].items()):
 
@@ -493,7 +481,6 @@ class DXTop(IOManager):
             self._append_content(self.hline_bottom(self.col_sizes), pad_index)
          else:
             self._append_content(self.hline_x(self.col_sizes), pad_index)
-      return score_global
 
    def _format_attrs_list_rb_percpu(self, category, pad_index, subdict=None,
                                     extend_name=False, health=False,
@@ -509,7 +496,7 @@ class DXTop(IOManager):
          data=self._data
       if category not in data:
          return
-      cpu_slice = 5
+      cpu_slice = os.cpu_count()
       cpu_count = len(data[category])-1
       if "cpu" in data[category]:
          keys = data[category]["cpu"].keys()
@@ -518,14 +505,9 @@ class DXTop(IOManager):
       
       title_str = category
       flags = curses.A_BOLD
-      score = ""
       if health:
          title_str = self._indexed_path(category, index=health_index)
          score = self._root_health_score(title_str)
-
-         #with open ("/home/chema/Escritorio/prueba.txt", "w") as file:
-            #file.write(str(score))
-
          title_str += " health:"
          category_len = len(title_str)
          title_str += str(score)
@@ -554,22 +536,20 @@ class DXTop(IOManager):
             for cpu_index in range(i,i+cpu_slice):
 
                cpu_label="cpu{}".format(cpu_index)
-               if cpu_label in data[category]:
-                  d = data[category][cpu_label][k]
-                  value, severity = d[:2]
-                  if severity:
-                     flags.append((len(s),curses.color_pair(severity)))
-                  s += ("{}"+" "*self.col_sizes_cpu[1]).format(
-                        value)[:self.col_sizes_cpu[1]]
+               d = data[category][cpu_label][k]
+               value, severity = d[:2]
+               if severity:
+                  flags.append((len(s),curses.color_pair(severity)))
+               s += ("{}"+" "*self.col_sizes_cpu[1]).format(
+                     value)[:self.col_sizes_cpu[1]]
 
-                  if severity:
-                     flags.append((len(s),0))
-                  if cpu_index < i+cpu_slice-1:
-                     s += VLINE_CHAR
+               if severity:
+                  flags.append((len(s),0))
+               if cpu_index < i+cpu_slice-1:
+                  s += VLINE_CHAR
             self._append_content(s, pad_index, flags, fill=True)
             
          self._append_content(self.hline_bottom(self.col_sizes_cpu), pad_index)
-      return score
 
    def _format_colname_pad(self):
       self.colname_pad.clear()
@@ -906,28 +886,4 @@ class DXTop(IOManager):
       finally:
          self.exit()
 
-   def write_real_time_scores(self, cpus, sensors, mem, proc, disks, net):
-      # Define data headers
-      headers = ['ID','Timestamp', 'CPUs', 'Sensors', 'Mem', 'Proc', 'Disks', 'Nets']
-      file_exists = os.path.isfile('scores.csv')
 
-      #Obtain container or host's MAC adrress
-      ID = self.get_mac_address()
-
-      with open('/tmp/scores.csv', mode='a', newline='', ) as file:
-         writer = csv.writer(file)
-         timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-         if not file_exists:
-            writer.writerow(headers)
-
-         #Check if the sensor gathering process is running in the node to be monitored (used to fail)
-         if not sensors:
-            sensors = 0
-
-         writer.writerow([ID, timestamp, int(cpus), int(sensors), int(mem), int(proc), int(disks), int(net)])
-
-
-   def get_mac_address(self):
-      with open('/sys/class/net/ens18/address', 'r') as f:
-         mac = f.read().strip()
-      return mac

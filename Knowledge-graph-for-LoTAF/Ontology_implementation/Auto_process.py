@@ -33,15 +33,17 @@ app = FastAPI(
 
 
 @app.get("/map_data")
-def map_data(mapping_file_path: str, output_path: str):
+def map_data(input_path: str, mapping_file_path: str, output_path: str):
 
     absolute_mapping_file_path = get_path(mapping_file_path)
     absolute_output_file_path = get_path(output_path)
-
+    absolute_input_path = get_path(input_path)
+    
     # Definir la ruta de tu archivo de mapeo
     mapping_path =  f"""
                         [DataSource]
                         mappings: {absolute_mapping_file_path}
+                        file_path: {absolute_input_path}
                     """
     try:
 

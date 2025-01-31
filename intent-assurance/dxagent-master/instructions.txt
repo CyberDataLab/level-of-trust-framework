@@ -1,0 +1,225 @@
+First, we need to install the following packages with root privileges:
+
+    sudo apt install python3-vpp-api
+    sudo apt install python3-ethtool
+    sudo apt install python3-pyroute2
+    sudo pip install protobuf==3.20.0
+    sudo python3 -m pip install grpcio
+    sudo python3 -m pip install netifaces
+    sudo python3 -m pip install cisco-gnmi
+
+If we are going to install the DxAgent in a VM, we need to set the parameter “vbox_user” to our virtual machine’s name. 
+Likewise, if we do not use the gRPC exporter to share data or to display on the web the graph, we need to comment on the parameter “target”.
+
+Afterwards, we need to add a new line in order to resolve one bug where there are more interfaces in pyroute2 than in our pc. 
+We need to include the following code snippet in the "def read_ethtool_info(self, if_name, if_dict)" function of "bm_input.py" file:
+
+def read_ethtool_info(self, if_name, if_dict):
+      """
+
+      @see ethtool.c from python3-ethtool
+      """
+      getters = [("driver", ethtool.get_module), 
+                 ("bus_info", ethtool.get_businfo),
+                # ("ufo", ethtool.get_ufo),
+                ("wireless_protocol", ethtool.get_wireless_protocol),
+               ]
+      for attr, getter in getters:
+         try:
+            if_dict[attr].append(getter(if_name))
+         except:
+            pass
+
+      #self.info(f"Features of _ethtool: {list(self._ethtool.get_features(if_name))}")      
+      for feature in self._ethtool.get_features(if_name)[0].values():
+         if not feature.name or not feature.available:
+            continue
+         #self.info("if: {} feature: {}".format(if_name,feature.name))
+->       if feature.name not in if_dict:
+            continue
+         if_dict[feature.name].append(int(feature.enable))
+         #self.info("inserted {} type {}".format(if_dict[attr]._top(),
+         #                                       if_dict[attr].type))
+         ...
+
+Furthermore, if we encounter a "Systemd probe failed" error in "dxagent.log" means that our DNS resolution is not configurated correctly.
+There are two posible meanings: (1) Our dns are stored in /etc/resolv.conf, (2) Our system uses systemd based resolution but it is not recognized.
+To check whether of these two alerts is our problem, we can see "/etc/resolv.conf" and if there is no "nameserver" line or it is set to "127.0.0.53" it
+means that our system use systemd based resolution.
+Having checked this, we need to change a line in "def _process_interfaces(self)" method of "bm_input.py". In the part of DNS we need to comment the next 
+line and add the following two, so we can check one final problem.
+
+      # DNS
+      # before ~2018 dns are stored in /etc/resolv.conf
+      nameserver=""
+      nameservers={}
+      with open('/etc/resolv.conf') as f:
+         for l in f.readlines():
+            if l.startswith("nameserver"):
+               nameserver = l.split()[-1]
+               break
+      # post-2018 systems use systemd based resolution
+      # 127.0.0.53 indicates such behavior
+      if not nameserver or nameserver == "127.0.0.53":
+         try:
+            res=subprocess.run(["systemd-resolve","--no-pager","--status"], capture_output=True)
+            this_if = "global"
+            for l in res.stdout.split(b'\n'):
+               if b"Link" in l:
+                  this_if=l.split()[-1][1:-1].decode()
+               elif b"Current DNS Server" in l:
+                  nameservers[this_if]=l.split()[-1].decode()
+->       # except:
+->       #   self.info("systemd probe failed")
+->       except FileNotFoundError:
+->          self.info("systemd-resolve not found. Falling back to /etc/resolv.conf.")
+->       except subprocess.SubprocessError as e:
+->          self.info(f"Error running systemd-resolve: {e}. Falling back to /etc/resolv/conf/")
+
+Once we have done these changes, we need to run "dxagent" again and check "dxagent.log". If we have an error "systemd-resolve not found. Falling back to 
+/etc/resolv.conf." (and we have checked that we use systemd based resolution), we need to change one more line to use the proper system:
+
+    # DNS
+      # before ~2018 dns are stored in /etc/resolv.conf
+      nameserver=""
+      nameservers={}
+      with open('/etc/resolv.conf') as f:
+         for l in f.readlines():
+            if l.startswith("nameserver"):
+               nameserver = l.split()[-1]
+               break
+      # post-2018 systems use systemd based resolution
+      # 127.0.0.53 indicates such behavior
+      if not nameserver or nameserver == "127.0.0.53":
+         try:
+->          #res=subprocess.run(["systemd-resolve","--no-pager","--status"], capture_output=True)
+->          res = subprocess.run(["resolvectl", "status"], capture_output=True)
+            this_if = "global"
+            for l in res.stdout.split(b'\n'):
+               if b"Link" in l:
+                  this_if=l.split()[-1][1:-1].decode()
+               elif b"Current DNS Server" in l:
+                  nameservers[this_if]=l.split()[-1].decode()
+         # except:
+         #   self.info("systemd probe failed")
+         except FileNotFoundError:
+            self.info("systemd-resolve not found. Falling back to /etc/resolv.conf.")
+         except subprocess.SubprocessError as e:
+            self.info(f"Error running systemd-resolve: {e}. Falling back to /etc/resolv/conf/")
+
+
+Besides, we need to include a specific verification for the number of CPUs since the author declared 8 CPUs but we have 12 CPUs.
+In particular, we changed the following variable to -> cpu_slice = "os.cpu_count()" in order to check the number of CPUs our system has.
+This change has been done in "dxtop.py" file.
+
+If we are going to use "dxweb" we need to create the certificates for the web. To do so, we need to go to /certs and run "./gen_certs.h 0.0.0.0 0.0.0.0".
+
+If the device uses ARM (instead of Intel/AMD), please add "import glob" and change the original method "_process_sensors" in "agent/input/bm_input.py" for:
+
+def _process_sensors(self):
+    dev_cooling_path = "/sys/class/thermal/"
+    attr_names = ["type", "temperature"]
+    attr_types = [str, float]
+    attr_units = ["", "C°"]
+    category = "sensors/thermal"
+
+    for d in os.listdir(dev_cooling_path):
+        if not d.startswith("thermal_zone"):
+            continue
+
+        path = os.path.join(dev_cooling_path, d)
+        self._data[category].setdefault(d, init_rb_dict(
+            attr_names, types=attr_types, units=attr_units))
+
+        with open(os.path.join(path, "type"), 'r') as f:
+            sensor_type = f.read().strip()
+            self._data[category][d]["type"].append(sensor_type)
+        
+        with open(os.path.join(path, "temp"), 'r') as f:
+            temp = int(f.read().strip())
+            self._data[category][d]["temperature"].append(temp / 1000)
+
+    cpu_sensor_path = "/sys/class/hwmon/"
+    attr_names = ["label", "input", "max", "critical"]
+    attr_types = [str, float, float, float]
+    attr_units = ["", "C°", "C°", "C°"]
+    category = "sensors/coretemp"
+
+    for hwmon_dir in glob.glob(os.path.join(cpu_sensor_path, "hwmon*")):
+        sensor_id = os.path.basename(hwmon_dir)  # Ej: hwmon0
+        base_path = os.path.join(hwmon_dir, "")
+
+        n = 1
+        while True:
+            temp_input = os.path.join(base_path, f"temp{n}_input")
+            if not os.path.exists(temp_input):
+                break
+
+            label = f"temp{n}"
+            label_file = os.path.join(base_path, f"temp{n}_label")
+            if os.path.exists(label_file):
+                with open(label_file, 'r') as f:
+                    label = f.read().strip()
+
+            input_temp = 0.0
+            with open(temp_input, 'r') as f:
+                input_temp = int(f.read().strip()) / 1000
+
+            max_temp = 0.0
+            max_file = os.path.join(base_path, f"temp{n}_max")
+            if os.path.exists(max_file):
+                with open(max_file, 'r') as f:
+                    max_temp = int(f.read().strip()) / 1000
+
+            crit_temp = 0.0
+            crit_file = os.path.join(base_path, f"temp{n}_crit")
+            if os.path.exists(crit_file):
+                with open(crit_file, 'r') as f:
+                    crit_temp = int(f.read().strip()) / 1000
+
+            entry_name = f"{sensor_id}_temp{n}"
+            self._data[category].setdefault(entry_name, init_rb_dict(
+                attr_names, types=attr_types, units=attr_units))
+
+            self._data[category][entry_name]["label"].append(label)
+            self._data[category][entry_name]["input"].append(input_temp)
+            self._data[category][entry_name]["max"].append(max_temp)
+            self._data[category][entry_name]["critical"].append(crit_temp)
+
+            n += 1
+
+    fan_sensor_path = "/sys/class/hwmon/"
+    category = "sensors/fans"
+    attr_names = ["label", "input"]
+    attr_types = [str, int]
+    attr_units = ["", "RPM"]
+
+    for hwmon_dir in glob.glob(os.path.join(fan_sensor_path, "hwmon*")):
+        base_path = os.path.join(hwmon_dir, "")
+        
+        n = 1
+        while True:
+            fan_input = os.path.join(base_path, f"fan{n}_input")
+            if not os.path.exists(fan_input):
+                break
+
+            # Leer valores del ventilador
+            label = f"fan{n}"
+            label_file = os.path.join(base_path, f"fan{n}_label")
+            if os.path.exists(label_file):
+                with open(label_file, 'r') as f:
+                    label = f.read().strip()
+
+            with open(fan_input, 'r') as f:
+                rpm = int(f.read().strip())
+
+            entry_name = f"{os.path.basename(hwmon_dir)}_fan{n}"
+            self._data[category].setdefault(entry_name, init_rb_dict(
+                attr_names, types=attr_types, units=attr_units))
+
+            self._data[category][entry_name]["label"].append(label)
+            self._data[category][entry_name]["input"].append(rpm)
+
+            n += 1
+
+

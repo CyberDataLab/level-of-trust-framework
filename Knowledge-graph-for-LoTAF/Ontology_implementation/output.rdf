@@ -2,154 +2,154 @@
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
    xmlns:foaf="http://xmlns.com/foaf/0.1/"
-   xmlns:ns1="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/"
-   xmlns:ns2="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/"
-   xmlns:ns3="http://www.owl-ontologies.com/odrl#"
+   xmlns:ns1="http://www.owl-ontologies.com/odrl#"
+   xmlns:ns2="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/"
+   xmlns:ns3="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/"
    xmlns:org="http://www.w3.org/ns/org#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee">
-    <ns1:applies rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward/40"/>
-    <ns1:enforces rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/20"/>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust"/>
-    <ns1:gathers rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Indicator/ind"/>
-    <ns1:trustor>trustor</ns1:trustor>
-    <ns1:trustee>trustee</ns1:trustee>
-    <ns1:lot>10</ns1:lot>
-    <ns1:stopTime>July</ns1:stopTime>
-    <ns1:startTime>April</ns1:startTime>
-  </rdf:Description>
   <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/tla1">
-    <dcterms:identifier>tla1</dcterms:identifier>
-    <ns1:violationDescription>vd</ns1:violationDescription>
-    <ns1:requirement>req</ns1:requirement>
+    <ns2:customerID>cID</ns2:customerID>
+    <ns2:providerID>pID</ns2:providerID>
+    <ns2:requirement>req</ns2:requirement>
     <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/TrustLevelAgreement"/>
-    <ns1:customerID>cID</ns1:customerID>
-    <ns1:providerID>pID</ns1:providerID>
-    <ns1:includes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule/const1">
-    <dcterms:constraint>const1</dcterms:constraint>
-    <ns3:target rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/as1"/>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Rule"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/i1">
-    <ns1:contains rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/IntentReport/ir"/>
-    <rdf:type rdf:resource="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent"/>
-    <ns1:scope>sc</ns1:scope>
-    <ns1:deploys rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/service1"/>
-    <dcterms:identifier>i1</dcterms:identifier>
-    <ns1:guaranteedBy rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/tla1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/as1">
-    <ns1:exposes>health1</ns1:exposes>
-    <dcterms:identifier>as1</dcterms:identifier>
-    <ns1:capacity>capacity1</ns1:capacity>
-    <ns1:fulfills>trustor_trustee</ns1:fulfills>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
-    <ns1:assetType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/Infrastructure"/>
-    <ns1:endpoint>endpoint1</ns1:endpoint>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User/u2">
-    <ns1:manages rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/i1"/>
-    <dcterms:identifier>u2</dcterms:identifier>
-    <ns1:request>request_u2</ns1:request>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User"/>
-    <ns1:entityType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/DigitalServiceEntity/DigitalServiceCustomer"/>
-    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User/u1">
-    <ns1:signs rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/tla1"/>
-    <ns1:belongsTo rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain/ad1"/>
-    <ns1:manages rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/i1"/>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User"/>
-    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Person"/>
-    <ns1:entityType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/DigitalServiceEntity/DigitalServiceCustomer"/>
-    <ns1:request>request_u1</ns1:request>
-    <dcterms:identifier>u1</dcterms:identifier>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain/ad1">
-    <ns1:owner rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization/AcmeCorporation"/>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain"/>
-    <dcterms:identifier>ad1</dcterms:identifier>
-    <ns1:monitors rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/service1"/>
-    <dcterms:description>descriptionAD</dcterms:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/20">
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator"/>
-    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator"/>
-    <ns1:weightingFactor>20</ns1:weightingFactor>
-    <ns1:value>3</ns1:value>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/20">
-    <ns1:punishmentAction rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/EndingTrustAgreementAction"/>
-    <ns1:punishmentAction rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/CustomerNotificationAction"/>
-    <ns1:value>20</ns1:value>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment"/>
+    <ns2:violationDescription>vd</ns2:violationDescription>
+    <ns2:includes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee"/>
+    <dcterms:identifier>tla1</dcterms:identifier>
   </rdf:Description>
   <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/service1">
-    <ns1:delivers rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee"/>
-    <ns1:characteristics>characteristics1</ns1:characteristics>
     <dcterms:description>desc1</dcterms:description>
-    <ns1:networkServiceType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/Cloud"/>
-    <ns1:networkStatus rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/ScalingNetworkService"/>
-    <dcterms:identifier>service1</dcterms:identifier>
+    <ns2:composedBy rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/as1"/>
+    <ns2:networkServiceType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceType/Cloud"/>
+    <ns2:delivers rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee"/>
     <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/NetworkService"/>
-    <ns1:composedBy rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/as1"/>
+    <dcterms:identifier>service1</dcterms:identifier>
+    <ns2:networkStatus rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkServiceStatus/ScalingNetworkService"/>
+    <ns2:characteristics>characteristics1</ns2:characteristics>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User/u2">
+    <ns2:request>request_u2</ns2:request>
+    <dcterms:identifier>u2</dcterms:identifier>
+    <ns2:entityType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/DigitalServiceEntity/DigitalServiceCustomer"/>
+    <ns2:manages rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/i1"/>
+    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Person"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/i1">
+    <ns2:scope>sc</ns2:scope>
+    <ns2:deploys rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/service1"/>
+    <rdf:type rdf:resource="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent"/>
+    <ns2:guaranteedBy rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/tla1"/>
+    <dcterms:identifier>i1</dcterms:identifier>
+    <ns2:contains rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/IntentReport/ir"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/IntentReport/ir">
     <rdf:type rdf:resource="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport"/>
-    <ns2:reportNumber>ir</ns2:reportNumber>
-    <ns1:informs rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee"/>
-    <ns2:reportGenerated>rg</ns2:reportGenerated>
+    <ns3:reportGenerated>rg</ns3:reportGenerated>
+    <ns3:reportNumber>ir</ns3:reportNumber>
+    <ns2:informs rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward/40">
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value"/>
-    <ns1:value>40</ns1:value>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/LevelOfTrust/trustor_trustee">
+    <ns2:gathers rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Indicator/ind"/>
+    <ns2:enforces rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/20"/>
+    <ns2:stopTime>July</ns2:stopTime>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/LevelOfTrust"/>
+    <ns2:trustor>trustor</ns2:trustor>
+    <ns2:applies rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward/40"/>
+    <ns2:trustee>trustee</ns2:trustee>
+    <ns2:startTime>April</ns2:startTime>
+    <ns2:lot>10</ns2:lot>
   </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person/John_Doe">
-    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-    <foaf:lastName>Doe</foaf:lastName>
-    <foaf:givenName>John</foaf:givenName>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator/20">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator"/>
+    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator"/>
+    <ns2:weightingFactor>20</ns2:weightingFactor>
+    <ns2:value>3</ns2:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy/req1">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Policy"/>
+    <dcterms:request>req1</dcterms:request>
+    <ns1:duty rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule/const1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/as1">
+    <ns2:exposes>health1</ns2:exposes>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns2:fulfills>trustor_trustee</ns2:fulfills>
+    <dcterms:identifier>as1</dcterms:identifier>
+    <ns2:capacity>capacity1</ns2:capacity>
+    <ns2:endpoint>endpoint1</ns2:endpoint>
+    <ns2:assetType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AssetType/Infrastructure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/20">
+    <ns2:healthScore>20</ns2:healthScore>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns2:evaluates>symptom</ns2:evaluates>
+    <ns2:connectionStatus>status</ns2:connectionStatus>
   </rdf:Description>
   <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Membership/m1">
+    <org:member rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person/John_Doe"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/org#Membership"/>
     <org:organization rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization/AcmeCorporation"/>
-    <org:member rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person/John_Doe"/>
     <dcterms:identifier>m1</dcterms:identifier>
     <org:role rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Role/r1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Role/r1">
-    <ns1:follows rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy/ar1"/>
-    <dcterms:identifier>r1</dcterms:identifier>
-    <rdf:type rdf:resource="http://www.w3.org/ns/org#Role"/>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/User/u1">
+    <ns2:entityType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/DigitalServiceEntity/DigitalServiceCustomer"/>
+    <dcterms:identifier>u1</dcterms:identifier>
+    <ns2:signs rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/TrustLevelAgreement/tla1"/>
+    <ns2:request>request_u1</ns2:request>
+    <ns2:manages rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Intent/i1"/>
+    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Person"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/User"/>
+    <ns2:belongsTo rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain/ad1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy/req1">
-    <dcterms:request>req1</dcterms:request>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Policy"/>
-    <ns3:duty rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule/const1"/>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/ObjectiveIndicator/20">
+    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator"/>
+    <ns2:value>3</ns2:value>
+    <ns2:weightingFactor>20</ns2:weightingFactor>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/ObjectiveIndicator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Person/John_Doe">
+    <foaf:lastName>Doe</foaf:lastName>
+    <foaf:givenName>John</foaf:givenName>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Reward/40">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/value"/>
+    <ns2:value>40</ns2:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Punishment/20">
+    <ns2:punishmentAction rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/CustomerNotificationAction"/>
+    <ns2:punishmentAction rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/PunishmentAction/EndingTrustAgreementAction"/>
+    <ns2:value>20</ns2:value>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Punishment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Rule/const1">
+    <ns1:target rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/as1"/>
+    <dcterms:constraint>const1</dcterms:constraint>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Rule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/AdministrativeDomain/ad1">
+    <dcterms:description>descriptionAD</dcterms:description>
+    <dcterms:identifier>ad1</dcterms:identifier>
+    <ns2:monitors rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/NetworkService/service1"/>
+    <ns2:owner rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization/AcmeCorporation"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/AdministrativeDomain"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Role/r1">
+    <rdf:type rdf:resource="http://www.w3.org/ns/org#Role"/>
+    <dcterms:identifier>r1</dcterms:identifier>
+    <ns2:follows rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Policy/ar1"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom/desc1">
     <dcterms:description>desc1</dcterms:description>
+    <ns2:symptomType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/VPP"/>
+    <ns2:pertains>indicator</ns2:pertains>
     <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Symptom"/>
-    <ns1:symptomType rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SymptomType/VPP"/>
-    <ns1:pertains>indicator</ns1:pertains>
   </rdf:Description>
   <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Organization/AcmeCorporation">
     <dcterms:identifier>AcmeCorporation</dcterms:identifier>
     <rdf:type rdf:resource="http://www.w3.org/ns/org#Organization"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/SubjectiveIndicator/20">
-    <ns1:value>3</ns1:value>
-    <ns1:weightingFactor>20</ns1:weightingFactor>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/SubjectiveIndicator"/>
-    <rdfs:subClassOf rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Indicator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/20">
-    <ns1:evaluates>symptom</ns1:evaluates>
-    <ns1:connectionStatus>status</ns1:connectionStatus>
-    <ns1:healthScore>20</ns1:healthScore>
-    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
   </rdf:Description>
 </rdf:RDF>
