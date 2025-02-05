@@ -135,3 +135,7 @@ certs/*pem
 certs/*csr
 certs/*crt
 certs/*srl
+
+# Objects
+*.json
+*.yaml

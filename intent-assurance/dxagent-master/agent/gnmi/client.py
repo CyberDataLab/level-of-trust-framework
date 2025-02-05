@@ -158,9 +158,9 @@ if __name__ == "__main__":
       response_json = json.loads(json_format.MessageToJson(response))
       print(response_json)
       print(response.update.timestamp)
-#      for i in response_json["update"]["update"]:
-#         print(base64.b64decode(i["val"]["jsonVal"]))
-#      print(base64.b64decode(response_json["update"]["update"][0]["val"]["jsonVal"]))
+      for i in response_json["update"]["update"]:
+         print(base64.b64decode(i["val"]["jsonVal"]))
+      print(base64.b64decode(response_json["update"]["update"][0]["val"]["jsonVal"]))
       
       
       
