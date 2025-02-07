@@ -1,12 +1,12 @@
 First, we need to install the following packages with root privileges:
 
-    sudo apt install python3-vpp-api
-    sudo apt install python3-ethtool
-    sudo apt install python3-pyroute2
-    sudo pip install protobuf==3.20.0
-    sudo python3 -m pip install grpcio
-    sudo python3 -m pip install netifaces
-    sudo python3 -m pip install cisco-gnmi
+    sudo apt update
+    sudo apt install python3-dev libnl-3-dev libnl-route-3-dev
+    python3 -m venv <virtual_environment_name>
+
+    pip install wheel protobuf==3.20.0 grpcio netifaces cisco-gnmi ethtool pyroute2
+or use
+    pip install -r requirements.txt
 
 If we are going to install the DxAgent in a VM, we need to set the parameter “vbox_user” to our virtual machine’s name. 
 Likewise, if we do not use the gRPC exporter to share data or to display on the web the graph, we need to comment on the parameter “target”.
@@ -223,3 +223,4 @@ def _process_sensors(self):
             n += 1
 
 
+If you want to export data, check dxcollector usage.
