@@ -139,3 +139,6 @@ certs/*srl
 # Objects
 *.json
 *.yaml
+
+# KAFKA
+/kafka

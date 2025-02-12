@@ -5,19 +5,27 @@ import time
 import argparse
 from google.protobuf import json_format
 from cisco_gnmi import ClientBuilder
-import sys
+from confluent_kafka import Producer
 
 # gNMI Server configuration
 GNMI_SERVER = "0.0.0.0:50051"  # Exporter address
-XPATHS = ["/"]  # Root path to fetch all data
+XPATHS = ["/health"]  # Root path to fetch all data
 GNMI_MODE = "SAMPLE"  # Subscription mode: SAMPLE, ON_CHANGE, POLL
+# Kafka configuration
+KAFKA_BROKER = "localhost:9092"
+KAFKA_TOPIC = "dxagent_gnmi_data"
 
 class GNMIDataCollector:
-    def __init__(self, output_format, output_file):
+    def __init__(self, output_format, output_file, kafka_enabled):
         self.target = GNMI_SERVER
         self.output_format = output_format.lower()  # Ensure lowercase format
         self.output_file = output_file if output_file else f"datos_exporter.{self.output_format}"
         self.client = self.connect_to_gnmi()
+
+        self.kafka_enabled = kafka_enabled
+
+        if self.kafka_enabled:
+            self.producer = Producer({'bootstrap.servers': KAFKA_BROKER})
 
     def connect_to_gnmi(self):
         """Establishes connection with the gNMI Exporter"""
@@ -37,6 +45,12 @@ class GNMIDataCollector:
             print("[ERROR] Unsupported format. Use 'json' or 'yaml'.")
             return
         print(f"[INFO] Data saved to {self.output_file}")
+
+    def send_to_kafka(self, data):
+        message = json.dumps(data)
+        self.producer.produce(KAFKA_TOPIC, value=message)
+        self.producer.flush()
+        print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
 
     def fetch_data(self):
         """Fetches real-time data and saves it in JSON or YAML format"""
@@ -80,14 +94,18 @@ class GNMIDataCollector:
                     # Save in the chosen format
                     self.save_data(collected_data)
 
+                    # Send to kafka
+                    if self.kafka_enabled:
+                        self.send_to_kafka(entry)
+
                 # Time control between samples
                 time.sleep(5)
 
         except KeyboardInterrupt:
             print("\n[INFO] Stopping data collection.")
 
-def start_collector(format_type, output_file):
+def start_collector(format_type, output_file, kafka_enabled):
     """Function to start data collection"""
     print("[INFO] Press CTRL+C to quit.")
-    collector = GNMIDataCollector(format_type, output_file)
+    collector = GNMIDataCollector(format_type, output_file, kafka_enabled)
     collector.fetch_data()

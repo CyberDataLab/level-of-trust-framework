@@ -10,6 +10,7 @@ Usage:
 Options:
   -f, --format <json|yaml>   Specify the output format.
   -o, --output <filename>    Specify the output file name (optional).
+  --kafka                    Enable Kafka integration
   -h, --help                 Show this help message.
 
 Examples:
@@ -17,6 +18,7 @@ Examples:
   dxcollector -f yaml                    # Save as datos_exporter.yaml
   dxcollector -f json -o my_data.json    # Save as my_data.json
   dxcollector -f yaml -o metrics.yaml    # Save as metrics.yaml
+  dxcollector -f json --kafka            # Send to Kafka and save as JSON
 """
 
 import sys
@@ -27,6 +29,7 @@ def main():
     parser = argparse.ArgumentParser(description="gNMI Data Collector", add_help=False)
     parser.add_argument("-f", "--format", choices=["json", "yaml"], required=True, help="Specify the output format.")
     parser.add_argument("-o", "--output", help="Specify the output file name (optional).")
+    parser.add_argument("--kafka", action="store_true", help="Enable Kafka integration.")
     parser.add_argument("-h", "--help", action="store_true", help="Show this help message.")
 
     args = parser.parse_args()
@@ -36,7 +39,7 @@ def main():
         sys.exit(0)
 
     # Start the collector
-    start_collector(args.format, args.output)
+    start_collector(args.format, args.output, args.kafka)
 
 if __name__ == "__main__":
     main()

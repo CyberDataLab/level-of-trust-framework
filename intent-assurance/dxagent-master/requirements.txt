@@ -5,3 +5,5 @@ netifaces
 cisco-gnmi
 ethtool
 pyroute2
+pyyaml
+confluent-kafka
