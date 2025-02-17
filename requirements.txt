@@ -7,3 +7,5 @@ fastapi
 uvicorn
 httpx
 pydantic
+confluent_kafka
+python-dotenv
