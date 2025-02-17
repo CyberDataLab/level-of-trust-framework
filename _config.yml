@@ -1,0 +1,2 @@
+exclude:
+  - "intent-assurance/dxagent-master/dxagent_venv/*"
