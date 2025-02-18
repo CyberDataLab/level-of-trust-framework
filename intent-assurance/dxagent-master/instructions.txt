@@ -7,6 +7,16 @@ First, we need to install the following packages with root privileges:
     pip install wheel protobuf==3.20.0 grpcio netifaces cisco-gnmi ethtool pyroute2
 or use
     pip install -r requirements.txt
+--------------------------------
+DOCKER
+
+docker build -t imagen_dxagent .
+docker run -v /proc:/proc --name contenedor_dxagent imagen_dxagent
+
+In core/daemon.py change self.username = ... to self.username   = pwd.getpwuid(os.getuid()).pw_name
+
+
+-------------------------------
 
 If we are going to install the DxAgent in a VM, we need to set the parameter “vbox_user” to our virtual machine’s name. 
 Likewise, if we do not use the gRPC exporter to share data or to display on the web the graph, we need to comment on the parameter “target”.
