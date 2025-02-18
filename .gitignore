@@ -1,3 +1,5 @@
 .DS_Store
 .idea/
 /Knowledge-graph-for-LoTAF/Ontology_implementation/output.rdf
+/intent-assurance/ca_location/hexa-x-ii-ca.crt
+/intent-assurance/keystore/tid.client.keystore.jks
