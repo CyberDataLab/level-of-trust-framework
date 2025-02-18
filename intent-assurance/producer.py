@@ -5,6 +5,7 @@ from confluent_kafka import Producer,KafkaException
 import random,time
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
 
 load_dotenv()
@@ -20,9 +21,6 @@ conf = {
     'ssl.ca.location': os.getenv("CA_CERT_LOCATION"),
     'ssl.endpoint.identification.algorithm': 'https'
 }
-
-
-
 
 def delivery_report(errmsg, msg):
     """
@@ -55,14 +53,9 @@ try:
 except KafkaException as e:
     print(f'Exception:{e}')
 
-
-
-
-
-
 try:
     while True:
-        jsonString1 = f'{{"Company":"UMU", "WP":"WP6", "value": {random.randint(0,1678)}}}'
+        jsonString1 = f'{{"id":"9a:ea:c9:e4:50:0e", "Timestamp":{datetime.now().isoformat()}, "CPU_health": {random.randint(85,100)}, "Sensors_health": {0}, "Memory_health": {random.randint(80,100)}, "Processes_health": {random.randint(98,100)},"Disks_health": {random.randint(94,100)}, "Network_health": {random.randint(95,100)}}}'
         jsonv1 = jsonString1.encode()
         # Asynchronously produce a message, the delivery report callback
         # will be triggered from poll() above, or flush() below, when the message has
