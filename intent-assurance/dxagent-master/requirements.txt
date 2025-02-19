@@ -6,4 +6,4 @@ cisco-gnmi
 ethtool
 pyroute2
 pyyaml
-confluent-kafka
+confluent_kafka
