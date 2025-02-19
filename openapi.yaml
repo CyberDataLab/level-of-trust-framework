@@ -25,7 +25,7 @@ paths:
         - name: address
           in: query
           description: IP address in which node to evaluate is reached
-          required: true
+          required: false
           schema:
             type: string
       responses:
