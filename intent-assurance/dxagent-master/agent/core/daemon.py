@@ -33,7 +33,7 @@ class Daemon():
       self.name       = name
       self.puid       = 0
       self.cwd        = os.getcwd()
-      self.username   = os.getlogin()
+      self.username   = pwd.getpwuid(os.getuid()).pw_name
       self._dropped   = False
 
    def _fork(self):

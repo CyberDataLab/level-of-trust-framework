@@ -1,0 +1,10 @@
+*
+
+!dxagent
+!dxagent.ini
+!agent/
+!certs/
+!res/
+!yang/
+!requirements.txt
+!docker-dxagent/entrypoint.sh

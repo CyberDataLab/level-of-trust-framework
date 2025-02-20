@@ -13,7 +13,7 @@ DOCKER
 docker build -t imagen_dxagent .
 docker run -v /proc:/proc --name contenedor_dxagent imagen_dxagent
 
-In core/daemon.py change self.username = ... to self.username   = pwd.getpwuid(os.getuid()).pw_name
+In core/daemon.py change self.username = os.getlogin() to self.username   = pwd.getpwuid(os.getuid()).pw_name
 
 
 -------------------------------
