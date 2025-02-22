@@ -77,11 +77,10 @@ function command_exists() {
 }
 
 # Set certificates for gNMI exporter
+echo_info "Do you want to set up certificates for the gNMI exporter? (y/n)"
+read -r SET_CERTS
 
-echo_info "Are you going to use gNMI exporter? (y/n)"
-read -r USE_GNMI
-
-if [[ "$USE_GNMI" == "y" || "$USE_GNMI" == "Y" ]]; then
+if [[ " SET_CERTS" == "y" || " SET_CERTS" == "Y" ]]; then
     echo_info "Which is the server hostname for the gNMI exporter?"
     read -r SERVER_HOSTNAME
     echo_info "Which is the server IP for the gNMI exporter?"
