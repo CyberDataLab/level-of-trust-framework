@@ -7,6 +7,8 @@ First, we need to install the following packages with root privileges:
     pip install wheel protobuf==3.20.0 grpcio netifaces cisco-gnmi ethtool pyroute2
 or use
     pip install -r requirements.txt
+
+    sudo venv/bin/python dxagent (start|stop|status)
 --------------------------------
 DOCKER
 

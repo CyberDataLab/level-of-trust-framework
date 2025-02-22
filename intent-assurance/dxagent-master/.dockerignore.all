@@ -1,0 +1,12 @@
+*
+
+!dxagent
+!dxagent.ini
+!agent/
+!certs/
+!res/
+!yang/
+!requirements-dxagent.txt
+!entrypoint_dxagent.sh
+!dxcollector
+!requirements-dxcollector.txt

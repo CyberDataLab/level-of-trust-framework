@@ -22,17 +22,14 @@ ENV USER=docker_dxagent_user
 # Darle permisos al directorio de la aplicación para el usuario
 WORKDIR /app
 COPY . /app/
-COPY docker-dxagent/entrypoint.sh entrypoint.sh
 
 RUN chown -R docker_dxagent_user:docker_dxagent_user /app
 
-# Instalar las dependencias de la aplicación
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements-dxagent.txt
 
-RUN chmod +x entrypoint.sh
+RUN chmod +x entrypoint_dxagent.sh
 
 # Establecer el usuario por defecto para el contenedor
-USER docker_dxagent_user
+USER root
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint_dxagent.sh"]

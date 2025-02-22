@@ -3,8 +3,8 @@ services:
     container_name: dxagent
     build: 
       context: .
-      dockerfile: docker-dxagent/Dockerfile
-    network_mode: "host"
+      dockerfile: Dockerfile.dxagent
+    network_mode: host
     privileged: true
     volumes:
       - /etc/proc:/etc/proc
