@@ -44,10 +44,10 @@ read -r ARQUITECTURE
 
 if [[ "$ARQUITECTURE" == "1" ]]; then
     echo_info "Setting up files for x86_64 arquitecture"
-    mv aux/bm_input_x86.py agent/input/bm_input.py
+    cp aux/bm_input_x86.py agent/input/bm_input.py
 elif [[ "$ARQUITECTURE" == "2" ]]; then
     echo_info "Setting up files for arm64 arquitecture"
-    mv aux/bm_input_arm.py agent/input/bm_input.py
+    cp aux/bm_input_arm.py agent/input/bm_input.py
 else
     echo_error "Invalid arquitecture. Please select 1 or 2."
     exit 1
@@ -75,6 +75,29 @@ apt-get update -y
 function command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
+
+# Set certificates for gNMI exporter
+
+echo_info "Are you going to use gNMI exporter? (y/n)"
+read -r USE_GNMI
+
+if [[ "$USE_GNMI" == "y" || "$USE_GNMI" == "Y" ]]; then
+    echo_info "Which is the server hostname for the gNMI exporter?"
+    read -r SERVER_HOSTNAME
+    echo_info "Which is the server IP for the gNMI exporter?"
+    read -r SERVER_IP
+    cd certs/
+    ./gen_certs.sh "$SERVER_HOSTNAME" "$SERVER_IP"
+    cd ..
+    if [ $? -eq 0 ]; then
+        echo_success "Certificates for gNMI exporter generated successfully"
+    else
+        echo_error "Failed to generate certificates for gNMI exporter"
+        exit 1
+    fi
+else
+    echo_info "Skipping setting up certificates for gNMI exporter"
+fi
 
 # 1. Install Python3
 echo_info "Installing Python3"
