@@ -57,7 +57,7 @@ fi
 echo_info "Do you want to create a virtual environment for the DX Agent? (y/n)"
 read -r CREATE_VENV
 
-if [[ "$CREATE_VENV" != "y" || "$CREATE_VENV" != "Y" || "$CREATE_VENV" != "n" || "$CREATE_VENV" != "N" ]]; then
+if [[ "$CREATE_VENV" != "y" && "$CREATE_VENV" != "Y" && "$CREATE_VENV" != "n" && "$CREATE_VENV" != "N" ]]; then
     echo_info "Invalid option. Please select y or n."
     exit 1
 fi
@@ -210,28 +210,6 @@ else
     echo_info "To start the DX Agent, run: sudo python3 dxagent (start|stop|status)"
 fi
 
-# 7. Set certificates for gNMI exporter
-
-echo_info "Are you going to use gNMI exporter? (y/n)"
-read -r USE_GNMI
-
-if [[ "$USE_GNMI" == "y" || "$USE_GNMI" == "Y" ]]; then
-    echo_info "Which is the server hostname for the gNMI exporter?"
-    read -r SERVER_HOSTNAME
-    echo_info "Which is the server IP for the gNMI exporter?"
-    read -r SERVER_IP
-    cd certs/
-    ./gen_certs.sh "$SERVER_HOSTNAME" "$SERVER_IP"
-    cd ..
-    if [ $? -eq 0 ]; then
-        echo_success "Certificates for gNMI exporter generated successfully"
-    else
-        echo_error "Failed to generate certificates for gNMI exporter"
-        exit 1
-    fi
-else
-    echo_info "Skipping setting up certificates for gNMI exporter"
-fi
 
 # End of script
 exit 0
