@@ -27,7 +27,7 @@ from agent.dxcollector import start_collector
 
 def main():
     parser = argparse.ArgumentParser(description="gNMI Data Collector", add_help=False)
-    parser.add_argument("-f", "--format", choices=["json", "yaml"], required=True, help="Specify the output format.")
+    parser.add_argument("-f", "--format", choices=["json", "yaml"], required=False, help="Specify the output format.")
     parser.add_argument("-o", "--output", help="Specify the output file name (optional).")
     parser.add_argument("--kafka", action="store_true", help="Enable Kafka integration.")
     parser.add_argument("-h", "--help", action="store_true", help="Show this help message.")
@@ -37,6 +37,11 @@ def main():
     if args.help:
         print(__doc__)
         sys.exit(0)
+
+    if not args.format:
+        print("Error: the following arguments are required: -f/--format")
+        print(__doc__)
+        sys.exit(1)
 
     # Start the collector
     start_collector(args.format, args.output, args.kafka)
