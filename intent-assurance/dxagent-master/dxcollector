@@ -5,7 +5,7 @@ gNMI Data Collector
    Script to start GNMI Data Collection
 
 Usage:
-  dxcollector -f <format> [-o <filename>]
+  dxcollector -f <format> [-o <filename>] [--kafka]
 
 Options:
   -f, --format <json|yaml>   Specify the output format.
