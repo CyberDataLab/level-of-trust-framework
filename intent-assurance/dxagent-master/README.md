@@ -136,7 +136,7 @@ while sending it to Kafka to process the information.
 
 ### DxCollector Commands
 
-* `dxcollector [-h] [-f <json|yaml] [-o <filename>] [--kafka]`
+* `dxcollector [-h] [-f <json|yaml>] [-o <filename>] [--kafka]`
    * `filename` defaults to `datos_exporter.{json/yaml}` 
    * `--kafka` enables kafka export.
 
