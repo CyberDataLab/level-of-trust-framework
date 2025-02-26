@@ -4,13 +4,6 @@ LoTAF is an **open-source** trustworthy function for designing, deploying and en
 
 ![Framework](https://github.com/CyberDataLab/level-of-trust-framework/blob/main/LoT_architecture.png)
 
-## 📑 Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#📜license)
-
 ## 🔧 Features
 
 - 📡 **Real-time trust assurance reports**  
@@ -34,7 +27,7 @@ LoTAF is an **open-source** trustworthy function for designing, deploying and en
 
 **Option 1 (Recommended)**: Run our ad-hoc shell which contemplates your central processing unit, your deployment preferences, and create a virtual environment, and set required certificates for gNMI exporter and Kafka Bus. The installation and deploy is as follows:
 
-### 📊 DxAgent setup
+#### 📊 DxAgent setup
 
 This is the enhanced monitoring agent contemplated in LoTAF to continuously get real-time data. It is highly recommended to run `sudo ./setup.sh` to install every necessary dependency.
 
