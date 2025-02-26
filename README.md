@@ -33,15 +33,15 @@ LoTAF is an **open-source** trustworthy function to design, deploy, and ensure e
 
 3. **Determine** your installation approach:
 
-3. 1.  Run our ad-hoc shell which contemplates your central processing unit, your deployment preferences, and create a virtual environment, and set required certificates for gNMI exporter and Kafka Bus (**Recommended**)
+Run our ad-hoc shell which contemplates your central processing unit, your deployment preferences, and create a virtual environment, and set required certificates for gNMI exporter and Kafka Bus (**Recommended**)
 
-4.  📊 DxAgent setup
+### 📊 DxAgent setup
 
 This is the enhanced monitoring agent contemplated in LoTAF to continuously get real-time data. It is highly recommended to run `sudo ./setup.sh` to install every necessary dependency.
 
 In order to uninstall everything installed in `setup.sh` except python3, run `sudo ./uninstall.sh`.
 
-5. 🔍 DxCollector
+### 🔍 DxCollector
 
 After running the DxAgent, it is required to launch DxCollector to observe health scores that DxAgent produces. DxCollector is an interface that collects the DxAgent data and stores it in json/yaml files while sending it to Kafka to process the information.
 
