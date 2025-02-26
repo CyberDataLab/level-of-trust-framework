@@ -43,7 +43,7 @@ In order to uninstall everything installed in `setup.sh` except python3, run `su
 
 **Option 2**: Use the installation and deployment configuration from the baseline DxAgent. Follow the README.md file inside:
 
-    ```bash
+    ``bash
     cd intent-assurance/dxagent-master/
 
 4. **Start** DxCollector service
