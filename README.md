@@ -80,7 +80,7 @@ The list of requirements are automatically installed during the `sudo ./setup.sh
 * `Confluent_kafka`
    * pip install confluent_kafka
 
-## License
+## License 📜
 
 LoTAF is **open-source** under the **GPL-3.0 license**. See the `LICENSE` file for details.
 
