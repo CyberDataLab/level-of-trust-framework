@@ -40,10 +40,7 @@ This is the enhanced monitoring agent contemplated in LoTAF to continuously get 
 
 In order to uninstall everything installed in `setup.sh` except python3, run `sudo ./uninstall.sh`.
 
-**Option 2**: Use the installation and deployment configuration from the baseline DxAgent. Follow the README.md file inside:
-**Navigate** to the project directory:
-    ```bash
-    cd intent-assurance/dxagent-master/
+**Option 2**: Use the installation and deployment configuration from the baseline DxAgent. Follow the README.md file inside `cd intent-assurance/dxagent-master/`.
 
 ## 🕹️ Usage
 
