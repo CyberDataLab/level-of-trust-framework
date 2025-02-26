@@ -9,7 +9,6 @@ LoTAF is an **open-source** trustworthy function to design, deploy, and ensure e
 - [Features](#features)
 - [Installation & Deployment](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## 🔧 Features
@@ -42,11 +41,12 @@ This is the enhanced monitoring agent contemplated in LoTAF to continuously get 
 In order to uninstall everything installed in `setup.sh` except python3, run `sudo ./uninstall.sh`.
 
 **Option 2**: Use the installation and deployment configuration from the baseline DxAgent. Follow the README.md file inside:
-
-    ``bash
+    ```bash
     cd intent-assurance/dxagent-master/
 
-4. **Start** DxCollector service
+## 🕹️ Usage
+
+1. **Start** the DxCollector service:
 
 After running the DxAgent, it is required to launch DxCollector to observe health scores. DxCollector is an interface that collects the DxAgent data and stores it in json/yaml files while sending it to Kafka to process the information. The DxCollector must be launched in another terminal.
 
@@ -82,5 +82,8 @@ The list of requirements are automatically installed during the `sudo ./setup.sh
 * `Confluent_kafka`
    * pip install confluent_kafka
 
+## 📜 License
+
+LoTAF is **open-source** under the **GPL-3.0 license**. See the `LICENSE` file for details.
 
 
