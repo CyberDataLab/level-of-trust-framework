@@ -1,6 +1,6 @@
 <h1 align="center">LoTAF (Level of Trust Assessment Function)</h1>
 
-LoTAF is an **open-source** trustworthy function to design, deploy, and ensure end-users' **trust requirements** are being fulfilling during an **end-to-end** business relationship. By using LoTAF, you may declare trust as an **intent** to orchestrate **6G network services** and gurantee a Trust Level Agreement in a **multi-domain** and **multi-stakeholder** scenario. 
+LoTAF is an **open-source** trustworthy function for designing, deploying and ensuring that end-users' **trust requirements** are fulfilling during an **end-to-end** business relationship. By using LoTAF, you may declare trust as an **intent** to orchestrate **6G network services** and guarantee a Trust Level Agreement in a **multi-domain** and **multi-stakeholder** scenario. 
 
 ![Framework](https://github.com/CyberDataLab/level-of-trust-framework/blob/main/LoT_architecture.png)
 
