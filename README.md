@@ -33,7 +33,7 @@ LoTAF is an **open-source** trustworthy function to design, deploy, and ensure e
 
 3. **Determine** your installation approach:
 
-Option 1 (**Recommended**): Run our ad-hoc shell which contemplates your central processing unit, your deployment preferences, and create a virtual environment, and set required certificates for gNMI exporter and Kafka Bus. The installation and deploy is as follows:
+**Option 1 (Recommended)**: Run our ad-hoc shell which contemplates your central processing unit, your deployment preferences, and create a virtual environment, and set required certificates for gNMI exporter and Kafka Bus. The installation and deploy is as follows:
 
 ### 📊 DxAgent setup
 
