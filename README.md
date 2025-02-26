@@ -41,7 +41,7 @@ In order to uninstall everything installed in `setup.sh` except python3, run `su
 
 After running the DxAgent, it is required to launch DxCollector to observe health scores. DxCollector is an interface that collects the DxAgent data and stores it in json/yaml files while sending it to Kafka to process the information. The DxCollector must be launched in another terminal.
 
-### 🔍 DxCollector -- Commands
+#### 🔍 DxCollector -- Commands
 
 Note that both Kafka and JSON options can be activated at the same time.
 
@@ -49,7 +49,7 @@ Note that both Kafka and JSON options can be activated at the same time.
    * `filename` defaults to `datos_exporter.{json/yaml}` 
    * `--kafka` enables kafka export.
 
-### DxCollector -- Important code
+#### 💻 DxCollector -- Important code
 
 The following parameters should be configured on `intent-assurance/dxagent-master/agent/dxcollector.py`. This version deploys Kafka and GNMI server in local mode, but if you want to use an external Kafka Cluster, you will need to update the `KAFKA_BROKER` and `KAFKA_TOPIC` options.
 
@@ -61,7 +61,7 @@ The following parameters should be configured on `intent-assurance/dxagent-maste
 * `KAFKA_TOPIC:` Topic to send the DxAgent data. 
 * `XPATHS:` See [agent/gnmi/README.md](https://github.com/ekorian/dxagent/tree/master/agent/gnmi).
 
-### Requirements
+#### 📋 Requirements
 The list of requirements are automatically installed during the `sudo ./setup.sh` script.
 
 * `Protobuf 3.20.0`
