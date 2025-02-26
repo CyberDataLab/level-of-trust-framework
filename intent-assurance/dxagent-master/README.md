@@ -126,44 +126,4 @@ python >= 3.8 to have dxtop available, otherwise python >= 3.5.
    
 ### About
 
-Medical diagnosis (abbreviated Dx or DS) is the process of determining which disease
-or condition explains a person's symptoms and signs. It is most often referred to as diagnosis.
-
-## DxCollector
-
-DxCollector is an interface that collects the DxAgent data and stores it in json/yaml files
-while sending it to Kafka to process the information.
-
-### DxCollector Commands
-
-* `dxcollector [-h] [-f <json|yaml>] [-o <filename>] [--kafka]`
-   * `filename` defaults to `datos_exporter.{json/yaml}` 
-   * `--kafka` enables kafka export.
-
-### DxCollector Important code
-
-* `GNMI_SERVER:` gNMI address.
-* `GNMI_MODE:` Subscription mode:
-   * `SAMPLE:` Receive data in time intervals.
-   * `ON_CHANGE:` Receive data when data is different.
-* `KAFKA_BROKER:` Address of the Kafka Broker.
-* `KAFKA_TOPIC:` Topic to send the DxAgent data. 
-* `XPATHS:` See [agent/gnmi/README.md](https://github.com/ekorian/dxagent/tree/master/agent/gnmi).
-
-### Requirements
-
-* `Protobuf 3.20.0`
-   * pip install protobuf == 3.20.0
-* `Pyyaml`  
-   * pip install pyyaml
-* `Cisco-gnmi`
-   * pip install cisco-gnmi
-* `Confluent_kafka`
-   * pip install confluent_kafka
-
-
-# DxAgent setup
-
-It is highly recommended to run `sudo ./setup.sh` to install every necessary dependency.
-
-In order to uninstall everything installed in `setup.sh` except python3, run `sudo ./uninstall.sh`.
+Medical diagnosis (abbreviated Dx or DS) is the process of determining which disease or condition explains a person's symptoms and signs. It is most often referred to as diagnosis.
