@@ -1,6 +1,6 @@
 <h1 align="center">LoTAF (Level of Trust Assessment Function)</h1>
 
-LoTAF is an **open-source** trustworthy function to design, deploy, and ensure end-users' **trust requirements** are being fulfilling during an **end-to-end** relationship. By using LoTAF, you may declare trust as an **intent** to orchestrate 6G network services and gurantee a Trust Level Agreement in a **multi-domain** and **multi-stakeholder** scenario. 
+LoTAF is an **open-source** trustworthy function to design, deploy, and ensure end-users' **trust requirements** are being fulfilling during an **end-to-end** relationship. By using LoTAF, you may declare trust as an **intent** to orchestrate **6G** network services and gurantee a Trust Level Agreement in a **multi-domain** and **multi-stakeholder** scenario. 
 
 ![Framework](https://github.com/CyberDataLab/level-of-trust-framework/blob/main/LoT_architecture.png)
 
@@ -33,7 +33,7 @@ LoTAF is an **open-source** trustworthy function to design, deploy, and ensure e
 
 3. **Determine** your installation approach:
 
-Run our ad-hoc shell which contemplates your central processing unit, your deployment preferences, and create a virtual environment, and set required certificates for gNMI exporter and Kafka Bus (**Recommended**)
+Option 1 (**Recommended**): Run our ad-hoc shell which contemplates your central processing unit, your deployment preferences, and create a virtual environment, and set required certificates for gNMI exporter and Kafka Bus. The installation and deploy is as follows:
 
 ### 📊 DxAgent setup
 
@@ -43,15 +43,19 @@ In order to uninstall everything installed in `setup.sh` except python3, run `su
 
 ### 🔍 DxCollector
 
-After running the DxAgent, it is required to launch DxCollector to observe health scores that DxAgent produces. DxCollector is an interface that collects the DxAgent data and stores it in json/yaml files while sending it to Kafka to process the information.
+After running the DxAgent, it is required to launch DxCollector to observe health scores. DxCollector is an interface that collects the DxAgent data and stores it in json/yaml files while sending it to Kafka to process the information. The DxCollector must be launched in another terminal.
 
-### DxCollector Commands
+### DxCollector -- Commands
+
+Note that both Kafka and JSON options can be activated at the same time.
 
 * `dxcollector [-h] [-f <json|yaml>] [-o <filename>] [--kafka]`
    * `filename` defaults to `datos_exporter.{json/yaml}` 
    * `--kafka` enables kafka export.
 
-### DxCollector Important code
+### DxCollector -- Important code
+
+The following parameters should be configured on `intent-assurance/dxagent-master/agent/dxcollector.py`. This version deploys Kafka and GNMI server in local mode, but if you want to use an external Kafka Cluster, you will need to update the `KAFKA_BROKER` and `KAFKA_TOPIC` options.
 
 * `GNMI_SERVER:` gNMI address.
 * `GNMI_MODE:` Subscription mode:
@@ -62,6 +66,7 @@ After running the DxAgent, it is required to launch DxCollector to observe healt
 * `XPATHS:` See [agent/gnmi/README.md](https://github.com/ekorian/dxagent/tree/master/agent/gnmi).
 
 ### Requirements
+The list of requirements are automatically installed during the `sudo ./setup.sh` script.
 
 * `Protobuf 3.20.0`
    * pip install protobuf == 3.20.0
