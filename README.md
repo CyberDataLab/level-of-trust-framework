@@ -41,11 +41,16 @@ This is the enhanced monitoring agent contemplated in LoTAF to continuously get 
 
 In order to uninstall everything installed in `setup.sh` except python3, run `sudo ./uninstall.sh`.
 
-### 🔍 DxCollector
+**Option 2**: Use the installation and deployment configuration from the baseline DxAgent. Follow the README.md file inside:
+
+    ```bash
+    cd intent-assurance/dxagent-master/
+
+4. **Start** DxCollector service
 
 After running the DxAgent, it is required to launch DxCollector to observe health scores. DxCollector is an interface that collects the DxAgent data and stores it in json/yaml files while sending it to Kafka to process the information. The DxCollector must be launched in another terminal.
 
-### DxCollector -- Commands
+### 🔍 DxCollector -- Commands
 
 Note that both Kafka and JSON options can be activated at the same time.
 
