@@ -33,17 +33,21 @@ This is the enhanced monitoring agent contemplated in LoTAF to continuously get 
 
 Afterwards, the script describes the next steps to activate the virtual environment previously created and to run the DxAgent after its proper installation.
 
-Active virtual environment: `source $VENV_DIR/bin/activate`
+Active virtual environment:
+    ```bash
+   source $VENV_DIR/bin/activate
 
-Run DxAgent: `sudo $VENV_DIR/bin/python dxagent (start|stop|status)`
+Run DxAgent: 
+    ```bash
+   sudo $VENV_DIR/bin/python dxagent (start|stop|status)`
 
 After launching the DxAgent, it is highly recommended to check the status via 
 
-*`sudo $VENV_DIR/bin/python dxagent status` 
+   * `sudo $VENV_DIR/bin/python dxagent status` 
 
 The logs associated with DxAgent can be found at 
 
-*`/var/log/dxagent.log`
+   * `/var/log/dxagent.log`
 
 In order to uninstall everything installed in `setup.sh` except python3, run `sudo ./uninstall.sh`.
 
