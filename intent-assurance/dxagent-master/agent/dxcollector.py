@@ -3,6 +3,9 @@ import yaml
 import base64
 import time
 import argparse
+import os
+from uuid import uuid4
+from dotenv import load_dotenv
 from google.protobuf import json_format
 from cisco_gnmi import ClientBuilder
 from confluent_kafka import Producer
@@ -15,6 +18,20 @@ GNMI_MODE = "SAMPLE"  # Subscription mode: SAMPLE, ON_CHANGE, POLL
 KAFKA_BROKER = "localhost:9092"
 KAFKA_TOPIC = "dxagent_gnmi_data"
 
+load_dotenv()
+
+conf = {
+    'bootstrap.servers': os.getenv("BOOTSTRAP_SERVERS_URLS"),
+    "enable.ssl.certificate.verification": "false",
+    "api.version.request":"false",
+    'security.protocol': 'SSL',
+    'ssl.keystore.password': os.getenv("SECRET"),
+    'ssl.key.password': os.getenv("SECRET"),
+    'ssl.keystore.location': os.getenv("KEYSTORE_LOCATION"),
+    'ssl.ca.location': os.getenv("CA_CERT_LOCATION"),
+    'ssl.endpoint.identification.algorithm': 'https'
+}
+
 class GNMIDataCollector:
     def __init__(self, output_format, output_file, kafka_enabled):
         self.target = GNMI_SERVER
@@ -26,6 +43,7 @@ class GNMIDataCollector:
 
         if self.kafka_enabled:
             self.producer = Producer({'bootstrap.servers': KAFKA_BROKER})
+            self.producer_TID = Producer(conf)
 
     def connect_to_gnmi(self):
         """Establishes connection with the gNMI Exporter"""
@@ -52,6 +70,10 @@ class GNMIDataCollector:
         self.producer.flush()
         print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
 
+        self.producer_TID.produce(os.getenv("TOPIC_PRODUCE"), value=message)
+        self.producer_TID.flush()
+        print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
+
     def fetch_data(self):
         """Fetches real-time data and saves it in JSON or YAML format"""
         collected_data = []
@@ -65,7 +87,7 @@ class GNMIDataCollector:
                     timestamp = response_json["update"]["timestamp"]
                     updates = response_json["update"]["update"]
 
-                    entry = {"timestamp": timestamp, "data": {}}
+                    entry = {"id": "9a:ea:c9:e4:50:0e", "timestamp": timestamp, "data": {}}
 
                     for update in updates:
                         path = update["path"]["elem"]

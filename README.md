@@ -33,7 +33,7 @@ This is the enhanced monitoring agent contemplated in LoTAF to continuously get 
 
 Afterwards, the script describes the next steps to activate the virtual environment previously created and to run the DxAgent after its proper installation.
 
-Active virtual environment:
+Activete virtual environment:
    ```bash
     source $VENV_DIR/bin/activate
    ```
@@ -65,7 +65,7 @@ After running the DxAgent, it is required to launch DxCollector to observe healt
 
 Note that both Kafka and JSON options can be activated at the same time.
 
-* `dxcollector [-h] [-f <json|yaml>] [-o <filename>] [--kafka]`
+* `./dxcollector [-h] [-f <json|yaml>] [-o <filename>] [--kafka]`
    * `filename` defaults to `datos_exporter.{json/yaml}` 
    * `--kafka` enables kafka export.
 
