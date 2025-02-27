@@ -35,11 +35,13 @@ Afterwards, the script describes the next steps to activate the virtual environm
 
 Active virtual environment:
    ```bash
-   git clone https://github.com/CyberDataLab/level-of-trust-framework.git
+    source $VENV_DIR/bin/activate
+   ```
 
 Run DxAgent: 
     ```bash
     sudo $VENV_DIR/bin/python dxagent (start|stop|status)
+    ```
 
 After launching the DxAgent, it is highly recommended to check the status via 
 
