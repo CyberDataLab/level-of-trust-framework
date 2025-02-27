@@ -157,7 +157,7 @@ if [[ "$CREATE_VENV" == "y" || "$CREATE_VENV" == "Y" ]]; then
 
     # 5. Install the dependencies in the virtual environment
     echo_info "Installing the dependencies in the virtual environment"
-    apt install -y python3-dev libnl-3-dev libnl-route-3-dev
+    apt-get install -y python3-dev libnl-3-dev libnl-route-3-dev libnl-genl-3-dev pkg-config build-essential
     sudo -u "$USER_NAME" "$VENV_DIR/bin/python" -m pip install -r "$SCRIPT_DIR/requirements.txt"
 
     if [ $? -eq 0 ]; then
@@ -187,7 +187,7 @@ if [[ "$CREATE_VENV" == "y" || "$CREATE_VENV" == "Y" ]]; then
 else
     # Install dependencies globally
     echo_info "Installing the dependencies globally"
-    apt install -y python3-dev libnl-3-dev libnl-route-3-dev
+    apt-get install -y python3-dev libnl-3-dev libnl-route-3-dev libnl-genl-3-dev pkg-config build-essential
     pip3 install -r "$SCRIPT_DIR/requirements.txt"
 
     if [ $? -eq 0 ]; then

@@ -31,6 +31,13 @@ LoTAF is an **open-source** trustworthy function for designing, deploying and en
 
 This is the enhanced monitoring agent contemplated in LoTAF to continuously get real-time data. It is highly recommended to run `sudo ./setup.sh` to install every necessary dependency.
 
+Afterwards, the script describes the next steps to activate the virtual environment previously created and to run the DxAgent after its proper installation.
+
+`source $VENV_DIR/bin/activate`
+`sudo $VENV_DIR/bin/python dxagent (start|stop|status)`
+
+After launching the DxAgent, it is highly recommended to check the status via `sudo $VENV_DIR/bin/python dxagent status`. The logs associated with DxAgent can be found at `/var/log/dxagent.log`.
+
 In order to uninstall everything installed in `setup.sh` except python3, run `sudo ./uninstall.sh`.
 
 **Option 2**: Use the installation and deployment configuration from the baseline DxAgent. Follow the README.md file inside `cd intent-assurance/dxagent-master/`.

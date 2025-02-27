@@ -1134,28 +1134,55 @@ class BMWatcher():
 
       # atm, we only consider main table
       for route in self._route.get_routes(table=254):
-         if route['event'] != 'RTM_NEWROUTE':
-            self.info("Unexpected route event: {}".format(route['event']))
-         route['proto'] = rt_proto[route['proto']]
-         route['scope'] = rt_scope[route['scope']]
-         route['type'] = rt_type[route['type']]
-         route_attrs = dict(route["attrs"])
-         if route["family"] == socket.AF_INET:
-            route_dict = self._data["routes4"]
-         elif route["family"] == socket.AF_INET6:
-            route_dict = self._data["routes6"]
+        if route['event'] != 'RTM_NEWROUTE':
+            self.info(f"Unexpected route event: {route['event']}")
+            continue
             
-         if 'RTA_DST' in route_attrs:
-            key = "{}/{}".format(route_attrs["RTA_DST"], route['dst_len'])
-         else:
-            key = "default"
-         
-         route_dict.setdefault(key, init_rb_dict(attrs, type=str))
-         for attr in base_attrs:
-            route_dict[key][attr].append(route[attr])
-         for attr in extra_attrs:
-            if attr in route_attrs:
-               route_dict[key][attr].append(route_attrs[attr])
+        try:
+            # Handle protocol mapping
+            proto_num = route['proto']
+            route['proto'] = rt_proto.get(proto_num, f"PROTO_{proto_num}")
+            
+            # Handle scope mapping
+            scope_num = route['scope']
+            route['scope'] = rt_scope.get(scope_num, f"SCOPE_{scope_num}")
+            
+            # Handle type mapping
+            type_num = route['type']
+            route['type'] = rt_type.get(type_num, f"TYPE_{type_num}")
+            
+            route_attrs = dict(route["attrs"])
+            
+            # Determine route dictionary based on family
+            if route["family"] == socket.AF_INET:
+                route_dict = self._data["routes4"]
+            elif route["family"] == socket.AF_INET6:
+                route_dict = self._data["routes6"]
+            else:
+                self.info(f"Unknown route family: {route['family']}")
+                continue
+                
+            # Determine route key
+            if 'RTA_DST' in route_attrs:
+                key = f"{route_attrs['RTA_DST']}/{route['dst_len']}"
+            else:
+                key = "default"
+            
+            # Initialize route dictionary if needed
+            route_dict.setdefault(key, init_rb_dict(attrs, type=str))
+            
+            # Store base attributes
+            for attr in base_attrs:
+                route_dict[key][attr].append(route[attr])
+                
+            # Store extra attributes if present
+            for attr in extra_attrs:
+                if attr in route_attrs:
+                    route_dict[key][attr].append(route_attrs[attr])
+                    
+        except Exception as e:
+            self.info(f"Error processing route: {e}")
+            continue
       
 
    def read_ethtool_info(self, if_name, if_dict):

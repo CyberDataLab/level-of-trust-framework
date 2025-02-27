@@ -342,37 +342,98 @@ class BMWatcher():
             temp = f.readlines()[0].rstrip()
             self._data[category][d]["temperature"].append(int(temp)/1000)
       
-      cpu_sensor_path="/sys/devices/platform/coretemp.0/hwmon/"
+      # List of possible CPU sensor paths
+      cpu_sensor_paths = [
+         "/sys/devices/platform/coretemp.0/hwmon/",
+         "/sys/class/hwmon/",
+         "/sys/devices/platform/coretemp.0/hwmon/hwmon*/",
+         "/sys/class/thermal/"
+      ]
+
+      category = "sensors/coretemp"
       attr_names = ["label", "input", "max", "critical"]
       attr_types = [str, float, float, float]
       attr_units = ["", "C°", "C°", "C°"]
-      category = "sensors/coretemp"
 
-      for d in next(os.walk(cpu_sensor_path))[1]:
-         if "hwmon" not in d:
-            continue
-         
-         path = cpu_sensor_path+d+"/"
-         for n in range(1,512):
-            name = "temp{}".format(n)
-            if not os.path.exists(path+name+"_label"):
-               break
+      # Try each possible sensor path
+      sensor_found = False
+      for cpu_sensor_path in cpu_sensor_paths:
+         try:
+               # Check if path exists
+               if not os.path.exists(cpu_sensor_path):
+                  continue
 
-            self._data[category].setdefault(name, init_rb_dict(
-                 attr_names, types=attr_types, units=attr_units))
+               # Get directory listing
+               dirs = []
+               try:
+                  dirs = next(os.walk(cpu_sensor_path))[1]
+               except StopIteration:
+                  continue
 
-            with open(path+name+"_label") as f:
-               label = f.readlines()[0].rstrip()
-               self._data[category][name]["label"].append(label)
-            with open(path+name+"_input") as f:
-               input = f.readlines()[0].rstrip()
-               self._data[category][name]["input"].append(int(input)/1000.0)
-            with open(path+name+"_max") as f:
-               max = f.readlines()[0].rstrip()
-               self._data[category][name]["max"].append(int(max)/1000.0)
-            with open(path+name+"_crit") as f:
-               crit = f.readlines()[0].rstrip()
-               self._data[category][name]["critical"].append(int(crit)/1000.0)
+               for d in dirs:
+                  if "hwmon" not in d and "thermal" not in d:
+                     continue
+
+                  path = os.path.join(cpu_sensor_path, d) + "/"
+                  
+                  # Try different temperature file patterns
+                  temp_patterns = range(1, 512)  # Original range
+                  
+                  for n in temp_patterns:
+                     name = f"temp{n}"
+                     label_file = os.path.join(path, f"{name}_label")
+                     input_file = os.path.join(path, f"{name}_input")
+                     
+                     # Check if required files exist
+                     if not os.path.exists(label_file) or not os.path.exists(input_file):
+                           continue
+
+                     # Initialize data structure if needed
+                     if name not in self._data[category]:
+                           self._data[category][name] = init_rb_dict(
+                              attr_names, types=attr_types, units=attr_units)
+
+                     try:
+                           # Read label
+                           with open(label_file) as f:
+                              label = f.readline().strip()
+                              self._data[category][name]["label"].append(label)
+
+                           # Read input temperature
+                           with open(input_file) as f:
+                              input_temp = int(f.readline().strip())
+                              self._data[category][name]["input"].append(input_temp/1000.0)
+
+                           # Try to read max temperature
+                           try:
+                              with open(os.path.join(path, f"{name}_max")) as f:
+                                 max_temp = int(f.readline().strip())
+                                 self._data[category][name]["max"].append(max_temp/1000.0)
+                           except (IOError, ValueError):
+                              self._data[category][name]["max"].append(0.0)
+
+                           # Try to read critical temperature
+                           try:
+                              with open(os.path.join(path, f"{name}_crit")) as f:
+                                 crit_temp = int(f.readline().strip())
+                                 self._data[category][name]["critical"].append(crit_temp/1000.0)
+                           except (IOError, ValueError):
+                              self._data[category][name]["critical"].append(0.0)
+
+                           sensor_found = True
+                     except (IOError, ValueError) as e:
+                           self.info(f"Error reading sensor {name}: {e}")
+                           continue
+
+               if sensor_found:
+                  break
+
+         except Exception as e:
+               self.info(f"Error processing sensor path {cpu_sensor_path}: {e}")
+               continue
+
+      if not sensor_found:
+         self.info("No CPU temperature sensors found in any of the standard locations")
 
       fan_sensor_path="/sys/devices/platform/"
       attr_names = ["label", "input", "temperature"]
@@ -1126,28 +1187,55 @@ class BMWatcher():
 
       # atm, we only consider main table
       for route in self._route.get_routes(table=254):
-         if route['event'] != 'RTM_NEWROUTE':
-            self.info("Unexpected route event: {}".format(route['event']))
-         route['proto'] = rt_proto[route['proto']]
-         route['scope'] = rt_scope[route['scope']]
-         route['type'] = rt_type[route['type']]
-         route_attrs = dict(route["attrs"])
-         if route["family"] == socket.AF_INET:
-            route_dict = self._data["routes4"]
-         elif route["family"] == socket.AF_INET6:
-            route_dict = self._data["routes6"]
+        if route['event'] != 'RTM_NEWROUTE':
+            self.info(f"Unexpected route event: {route['event']}")
+            continue
             
-         if 'RTA_DST' in route_attrs:
-            key = "{}/{}".format(route_attrs["RTA_DST"], route['dst_len'])
-         else:
-            key = "default"
-         
-         route_dict.setdefault(key, init_rb_dict(attrs, type=str))
-         for attr in base_attrs:
-            route_dict[key][attr].append(route[attr])
-         for attr in extra_attrs:
-            if attr in route_attrs:
-               route_dict[key][attr].append(route_attrs[attr])
+        try:
+            # Handle protocol mapping
+            proto_num = route['proto']
+            route['proto'] = rt_proto.get(proto_num, f"PROTO_{proto_num}")
+            
+            # Handle scope mapping
+            scope_num = route['scope']
+            route['scope'] = rt_scope.get(scope_num, f"SCOPE_{scope_num}")
+            
+            # Handle type mapping
+            type_num = route['type']
+            route['type'] = rt_type.get(type_num, f"TYPE_{type_num}")
+            
+            route_attrs = dict(route["attrs"])
+            
+            # Determine route dictionary based on family
+            if route["family"] == socket.AF_INET:
+                route_dict = self._data["routes4"]
+            elif route["family"] == socket.AF_INET6:
+                route_dict = self._data["routes6"]
+            else:
+                self.info(f"Unknown route family: {route['family']}")
+                continue
+                
+            # Determine route key
+            if 'RTA_DST' in route_attrs:
+                key = f"{route_attrs['RTA_DST']}/{route['dst_len']}"
+            else:
+                key = "default"
+            
+            # Initialize route dictionary if needed
+            route_dict.setdefault(key, init_rb_dict(attrs, type=str))
+            
+            # Store base attributes
+            for attr in base_attrs:
+                route_dict[key][attr].append(route[attr])
+                
+            # Store extra attributes if present
+            for attr in extra_attrs:
+                if attr in route_attrs:
+                    route_dict[key][attr].append(route_attrs[attr])
+                    
+        except Exception as e:
+            self.info(f"Error processing route: {e}")
+            continue
       
 
    def read_ethtool_info(self, if_name, if_dict):
