@@ -38,14 +38,14 @@ Active virtual environment:
     source $VENV_DIR/bin/activate
    ```
 
-Run DxAgent: 
-    ```bash
-    sudo $VENV_DIR/bin/python dxagent (start|stop|status)
-    ```
+Run DxAgent:
+```bash
+sudo $VENV_DIR/bin/python dxagent (start|stop|status)
+```
 
 After launching the DxAgent, it is highly recommended to check the status via 
 
-   * `sudo $VENV_DIR/bin/python dxagent status 
+   * `sudo $VENV_DIR/bin/python dxagent status` 
 
 The logs associated with DxAgent can be found at 
 
