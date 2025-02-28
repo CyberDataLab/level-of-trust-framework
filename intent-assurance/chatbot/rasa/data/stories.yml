@@ -1,0 +1,34 @@
+version: "3.1"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: welcome
+      - action: utter_greet
+
+  - story: build confirm
+    steps:
+      - intent: build
+      - action: action_build
+      - intent: confirm
+      - action: action_deploy
+
+  - story: build with feedback
+    steps:
+      - intent: build
+      - action: action_build
+      - intent: reject
+      - action: utter_ask_for_feedback
+      - action: action_feedback
+      - intent: confirm
+      - action: action_feedback_confirm
+
+  - story: build and feedback rejected
+    steps:
+      - intent: build
+      - action: action_build
+      - intent: reject
+      - action: utter_ask_for_feedback
+      - action: action_feedback
+      - intent: reject
+      - action: utter_start_over
