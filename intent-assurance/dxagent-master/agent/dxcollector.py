@@ -87,7 +87,7 @@ class GNMIDataCollector:
 
         self.producer_TID.produce(os.getenv("TOPIC_PRODUCE"), value=message)
         self.producer_TID.flush()
-        print(f"[INFO] Data sent to kafka topic '{os.getenv("TOPIC_PRODUCE")}'")
+        print(f"[INFO] Data sent to kafka topic", os.getenv("TOPIC_PRODUCE"))
 
     def get_machine_uuid(self):
         return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.getnode())))
