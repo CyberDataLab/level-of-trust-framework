@@ -6,4 +6,4 @@ cisco-gnmi
 ethtool
 pyroute2
 pyyaml
-confluent_kafka
+confluent_kafka == 2.8.0
