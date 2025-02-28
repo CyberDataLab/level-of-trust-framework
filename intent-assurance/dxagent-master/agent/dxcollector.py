@@ -4,6 +4,7 @@ import base64
 import time
 import argparse
 import os
+from pathlib import Path
 from uuid import uuid4
 from dotenv import load_dotenv
 from google.protobuf import json_format
@@ -18,17 +19,23 @@ GNMI_MODE = "SAMPLE"  # Subscription mode: SAMPLE, ON_CHANGE, POLL
 KAFKA_BROKER = "localhost:9092"
 KAFKA_TOPIC = "dxagent_gnmi_data"
 
-load_dotenv()
+# Get the base directory
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+# No str() needed - using pathlib's methods
+env_path = BASE_DIR / 'intent-assurance' / '.env'
+load_dotenv(env_path)  # Path object works directly
+
+# str() needed - Kafka config expects string paths
 conf = {
     'bootstrap.servers': os.getenv("BOOTSTRAP_SERVERS_URLS"),
     "enable.ssl.certificate.verification": "false",
-    "api.version.request":"false",
+    "api.version.request": "false",
     'security.protocol': 'SSL',
     'ssl.keystore.password': os.getenv("SECRET"),
     'ssl.key.password': os.getenv("SECRET"),
-    'ssl.keystore.location': os.getenv("KEYSTORE_LOCATION"),
-    'ssl.ca.location': os.getenv("CA_CERT_LOCATION"),
+    'ssl.keystore.location': str(BASE_DIR / 'intent-assurance' / os.getenv("KEYSTORE_LOCATION")),
+    'ssl.ca.location': str(BASE_DIR / 'intent-assurance' / os.getenv("CA_CERT_LOCATION")),
     'ssl.endpoint.identification.algorithm': 'https'
 }
 
@@ -42,7 +49,7 @@ class GNMIDataCollector:
         self.kafka_enabled = kafka_enabled
 
         if self.kafka_enabled:
-            self.producer = Producer({'bootstrap.servers': KAFKA_BROKER})
+            #self.producer = Producer({'bootstrap.servers': KAFKA_BROKER})
             self.producer_TID = Producer(conf)
 
     def connect_to_gnmi(self):
@@ -66,9 +73,9 @@ class GNMIDataCollector:
 
     def send_to_kafka(self, data):
         message = json.dumps(data)
-        self.producer.produce(KAFKA_TOPIC, value=message)
-        self.producer.flush()
-        print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
+        #self.producer.produce(KAFKA_TOPIC, value=message)
+        #self.producer.flush()
+        #print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
 
         self.producer_TID.produce(os.getenv("TOPIC_PRODUCE"), value=message)
         self.producer_TID.flush()
