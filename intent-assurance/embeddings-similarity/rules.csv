@@ -1,0 +1,37 @@
+name,path,severity,rule
+"Bare Metal Memory High Availability (Free > 50%)",/node/bm/mem,Orange,free>50
+"Bare Metal CPU Underutilized (Idle > 90%)",/node/bm/cpus/cpu,Orange,idle_time>90
+"Virtual Machine CPU Underutilized (Idle > 90%)",/node/vm/cpus/cpu,Orange,idle_time>90
+"Bare Metal Swap Usage Active (Swap Used > 0)",/node/bm/disks/disk,Red,swap_used!=0
+"Bare Metal Memory Exhausted (Free < 50)",/node/bm/mem,Orange,free<50
+"Bare Metal Critical Memory Exhaustion (Free <50 for 1min)",/node/bm/mem,Red,1min(free)<50
+"Virtual Machine Memory Exhausted (Free < 50)",/node/vm/mem,Orange,free<50
+"Virtual Machine Critical Memory Exhaustion (Free <50 for 1min)",/node/vm/mem,Red,1min(free)<50
+"Bare Metal Hugepages Depleted (Pages Free = 0)",/node/bm/mem,Orange,pages_free==0
+"Bare Metal CPU Overloaded (Idle ≤1% for 1min)",/node/bm/cpus/cpu,Orange,1min(idle_time)<=1
+"Bare Metal CPU Critical Overload (Idle ≤1% for 5min)",/node/bm/cpus/cpu,Red,5min(idle_time)<=1
+"Virtual Machine CPU Overloaded (Idle ≤1% for 1min)",/node/vm/cpus/cpu,Orange,1min(idle_time)<=1
+"Virtual Machine CPU Critical Overload (Idle ≤1% for 5min)",/node/vm/cpus/cpu,Red,5min(idle_time)<=1
+"Bare Metal Temperature Limit Reached (Temp ≥ Max)",/node/bm/sensors/sensor,Orange,input_temp>=max_temp
+"Bare Metal Critical Temperature Alert (Temp ≥ Critical)",/node/bm/sensors/sensor,Red,input_temp>=critical_temp
+"Bare Metal Critical Fan Speed (Speed < 100 RPM)",/node/bm/sensors/sensor,Red,input_fanspeed<100
+"Bare Metal Zombie Processes Active (Count > 0)",/node/bm/proc,Orange,zombie_count>0
+"Virtual Machine SSH Access Down (SSH == 0)",/node/vm/net,Orange,ssh==0
+"Bare Metal Network Critical: Default Gateway ARP Missing (State=UP & GW Not in ARP)",/node/bm/net/if,Red,(state=="up") and (gw_in_arp==0)
+"Bare Metal Network Non-Standard MTU (MTU ≠1500 on Ethernet)",/node/bm/net/if,Red,(mtu!=1500) and (type=="ether")
+"Bare Metal Network Interface Flapping (Changes ≥6/min)",/node/bm/net/if,Red,1min(dynamicity(changes_count))>=6
+"Bare Metal Network High Rx Errors (Errors >100/min)",/node/bm/net/if,Orange,1min(dynamicity(rx_error))>100
+"Bare Metal Network High Packet Drops (Rx Drops >10k/1min)",/node/bm/net/if,Orange,1min(dynamicity(rx_drop))>10000
+"Bare Metal Network High Tx Errors (Errors >100/min)",/node/bm/net/if,Orange,1min(dynamicity(tx_error))>100
+"Bare Metal Network High Tx Packet Loss (Tx Drops >100/1min)",/node/bm/net/if,Orange,1min(dynamicity(tx_drop))>100
+"Kernel/DPDK Network GSO Buffer Starvation (Count >0)",/node/kb/net/if,Orange,dynamicity(gso_no_buffers)>0
+"Kernel/DPDK Network Mbuf Depletion (Drops >0)",/node/kb/net/if,Orange,dynamicity(rx_no_buffer)>0
+"Kernel/DPDK Network IP4 Input Buffer Missing (Count >0)",/node/kb/net/if,Orange,dynamicity(ip4_input_out_of_buffers)>0
+"Kernel/DPDK Network Excessive IP Fragments (Chain Length > Threshold)",/node/kb/net/if,Orange,dynamicity(ip4_input_fragment_chain_too_long)>0
+"Kernel/DPDK Network IP4 Destination Miss (Count >0)",/node/kb/net/if,Orange,dynamicity(ip4_input_destination_lookup_miss)>0
+"Kernel/DPDK Network High Rx Errors (Errors >100/min)",/node/kb/net/if,Orange,1min(dynamicity(rx_error))>100
+"Kernel/DPDK Network High Packet Drops (Rx Drops >10k/1min)",/node/kb/net/if,Orange,1min(dynamicity(rx_drop))>10000
+"Kernel/DPDK Network High Tx Errors (Errors >100/min)",/node/kb/net/if,Orange,1min(dynamicity(tx_error))>100
+"Kernel/DPDK Network High Tx Packet Loss (Tx Drops >100/1min)",/node/kb/net/if,Orange,1min(dynamicity(tx_drop))>100
+"Kernel/DPDK Memory Low Buffers (Free <10%)",/node/kb/mem,Orange,(buffer_free/buffer_total)<0.1
+"Kernel/DPDK Network DPDK Buffer Allocation Errors (Count >0)",/node/kb/net/if,Orange,dynamicity(dpdk_alloc_errors)>0
