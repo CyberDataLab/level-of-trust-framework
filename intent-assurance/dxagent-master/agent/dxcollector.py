@@ -77,13 +77,17 @@ class GNMIDataCollector:
 
     def send_to_kafka(self, data):
         message = json.dumps(data)
-        #self.producer.produce(KAFKA_TOPIC, value=message)
-        #self.producer.flush()
-        #print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
+        self.producer.produce(KAFKA_TOPIC, value=message)
+        self.producer.flush()
+        print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
+
+
+    def send_to_kafka_TID(self, data):
+        message = json.dumps(data)
 
         self.producer_TID.produce(os.getenv("TOPIC_PRODUCE"), value=message)
         self.producer_TID.flush()
-        print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
+        print(f"[INFO] Data sent to kafka topic '{os.getenv("TOPIC_PRODUCE")}'")
 
     def get_machine_uuid(self):
         return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.getnode())))
@@ -132,7 +136,8 @@ class GNMIDataCollector:
 
                     # Send to kafka
                     if self.kafka_enabled:
-                        self.send_to_kafka(entry)
+                        #self.send_to_kafka(entry)
+                        self.send_to_kafka_TID(entry)
 
                 # Time control between samples
                 time.sleep(5)

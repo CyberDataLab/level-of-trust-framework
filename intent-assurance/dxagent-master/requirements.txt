@@ -7,3 +7,4 @@ ethtool
 pyroute2
 pyyaml
 confluent_kafka == 2.8.0
+python-dotenv
