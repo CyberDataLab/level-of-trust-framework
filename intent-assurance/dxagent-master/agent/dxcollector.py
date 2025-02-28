@@ -20,13 +20,16 @@ KAFKA_BROKER = "localhost:9092"
 KAFKA_TOPIC = "dxagent_gnmi_data"
 
 # Get the base directory
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+env_path = Path(BASE_DIR).joinpath('intent-assurance', '.env')
 
-# No str() needed - using pathlib's methods
-env_path = BASE_DIR / 'intent-assurance' / '.env'
-load_dotenv(env_path)  # Path object works directly
+if not env_path.exists():
+    raise FileNotFoundError(f"Environment file not found at: {env_path}")
 
-# str() needed - Kafka config expects string paths
+print(f"Loading environment from: {env_path}")
+load_dotenv(env_path)
+
+# Update the conf dictionary to use Path.joinpath()
 conf = {
     'bootstrap.servers': os.getenv("BOOTSTRAP_SERVERS_URLS"),
     "enable.ssl.certificate.verification": "false",
@@ -34,8 +37,8 @@ conf = {
     'security.protocol': 'SSL',
     'ssl.keystore.password': os.getenv("SECRET"),
     'ssl.key.password': os.getenv("SECRET"),
-    'ssl.keystore.location': str(BASE_DIR / 'intent-assurance' / os.getenv("KEYSTORE_LOCATION")),
-    'ssl.ca.location': str(BASE_DIR / 'intent-assurance' / os.getenv("CA_CERT_LOCATION")),
+    'ssl.keystore.location': str(Path(BASE_DIR).joinpath('intent-assurance', os.getenv("KEYSTORE_LOCATION") or '')),
+    'ssl.ca.location': str(Path(BASE_DIR).joinpath('intent-assurance', os.getenv("CA_CERT_LOCATION") or '')),
     'ssl.endpoint.identification.algorithm': 'https'
 }
 
