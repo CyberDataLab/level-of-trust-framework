@@ -4,6 +4,7 @@ import base64
 import time
 import argparse
 import os
+import uuid
 from pathlib import Path
 from uuid import uuid4
 from dotenv import load_dotenv
@@ -84,6 +85,9 @@ class GNMIDataCollector:
         self.producer_TID.flush()
         print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
 
+    def get_machine_uuid():
+        return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.getnode())))
+
     def fetch_data(self):
         """Fetches real-time data and saves it in JSON or YAML format"""
         collected_data = []
@@ -97,7 +101,7 @@ class GNMIDataCollector:
                     timestamp = response_json["update"]["timestamp"]
                     updates = response_json["update"]["update"]
 
-                    entry = {"id": "9a:ea:c9:e4:50:0e", "timestamp": timestamp, "data": {}}
+                    entry = {"id": self.get_machine_uuid(), "timestamp": timestamp, "data": {}}
 
                     for update in updates:
                         path = update["path"]["elem"]

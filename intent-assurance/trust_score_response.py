@@ -70,7 +70,7 @@ def fix_timestamp_field(message):
         # Use regex to find the Timestamp field and add quotes around it
         return re.sub(r'("Timestamp":\s*)(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+)', r'\1"\2"', message)
 
-def consume_kafka_messages():
+def consume_kafka_messages_old():
     """
     Consume messages from a Kafka Topic synchronously.
     The consumer_timeout_ms parameter ensures that if no messages are received for the specified time,
@@ -140,6 +140,69 @@ def consume_kafka_messages():
 
     consumer.close()
     return overall_mean
+
+def consume_kafka_messages():
+    """
+    Consume messages from a Kafka Topic synchronously and compute trust scores.
+    Uses the pre-computed health score from /health/node for each device ID.
+    """
+    consumer = Consumer(conf)
+    consumer.subscribe([kafka_topic_name], on_assign=reset_offset)
+    id_scores = {}  # Dictionary to track scores and counts per ID
+
+    while True:
+        # Poll for messages with 1 second timeout
+        msg = consumer.poll(timeout=1.0)
+        
+        if msg is None:
+            # No message received, assume all messages consumed
+            break
+        
+        if msg.error():
+            if msg.error().code() == KafkaError._PARTITION_EOF:
+                break
+            else:
+                print(f"Error consuming message: {msg.error()}")
+                break
+        
+        # Process the received message
+        print(f"Received message: {msg.value().decode('utf-8')}")
+        
+        try:
+            # Parse the message
+            decoded_message = json.loads(msg.value().decode('utf-8'))
+            
+            # Process the single message
+            device_id = decoded_message["id"]
+            health_score = float(decoded_message["data"]["/health/node"])
+            
+            # Update running average for this device ID
+            if device_id in id_scores:
+                current_avg = id_scores[device_id]["trust_index"]
+                current_count = id_scores[device_id]["counter"]
+                # Calculate new average
+                new_avg = (current_avg * current_count + (health_score/100)) / (current_count + 1)
+                id_scores[device_id]["trust_index"] = round(new_avg, 4)
+                id_scores[device_id]["counter"] += 1
+            else:
+                # First score for this device
+                id_scores[device_id] = {
+                    "id": device_id,
+                    "trust_index": round(health_score / 100, 4),
+                    "counter": 1
+                }
+                
+        except json.JSONDecodeError as e:
+            print(f"JSON decode error: {e}")
+            print(f"Raw message: {msg.value().decode('utf-8')}")
+        except KeyError as e:
+            print(f"Missing required field in message: {e}")
+            continue
+
+    consumer.close()
+    
+    # Convert dictionary to list of scores
+    return list(id_scores.values())
 
             
 # Define the FastAPI route to expose the retrieve_trust_scores method
