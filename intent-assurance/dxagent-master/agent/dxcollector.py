@@ -85,7 +85,7 @@ class GNMIDataCollector:
         self.producer_TID.flush()
         print(f"[INFO] Data sent to kafka topic '{KAFKA_TOPIC}'")
 
-    def get_machine_uuid():
+    def get_machine_uuid(self):
         return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.getnode())))
 
     def fetch_data(self):
