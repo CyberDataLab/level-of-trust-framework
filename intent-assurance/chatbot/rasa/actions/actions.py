@@ -9,8 +9,11 @@
 
 from typing import Any, Text, Dict, List
 
+import json
+
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 
 #
 # class ActionHelloWorld(Action):
@@ -25,6 +28,8 @@ from rasa_sdk.executor import CollectingDispatcher
 #         dispatcher.utter_message(text="Hello World!")
 #
 #         return []
+
+# Action to extract the entities from the user intent "build"
 class ActionBuild(Action):
 
     def name(self) -> Text:
@@ -33,10 +38,35 @@ class ActionBuild(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        # Extract the entities from the user intent
+        middlebox = list(tracker.get_latest_entity_values("middlebox"))
+        assets = list(tracker.get_latest_entity_values("asset"))
+        users = list(tracker.get_latest_entity_values("user"))
 
-        dispatcher.utter_message(text="Hello World!")
+        # Show the middlebox and assets extracted
+        dispatcher.utter_message("Building " + middlebox[0] + "...")
+        if assets:
+            dispatcher.utter_message("Using assets: ")
+            for asset in assets:
+                dispatcher.utter_message(asset)
+        # Prepare the JSON for the service slot
+        service_data = {
+            "service": middlebox[0],
+            "assets": assets
+        }
+        service_json = json.dumps(service_data)
 
-        return []
+        # Show the users extracted
+        dispatcher.utter_message("Accessible to: ")
+        for user in users:
+            dispatcher.utter_message(user)
+        # Prepare the JSON for the users slot
+        user_data = {"users": users}
+        users_json = json.dumps(user_data)
+
+        # Update slots
+        return [SlotSet("service_assets_dict", service_json), SlotSet("users", users_json)]
     
 class ActionDeploy(Action):
 
@@ -47,8 +77,8 @@ class ActionDeploy(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Hello World!")
-
+        dispatcher.utter_message(text="Deploying confirmed services...")
+        #TODO: Add deployment Ollama/LangChain logic here
         return []
 
 class ActionFeedback(Action):

@@ -30,21 +30,63 @@ entities:
   - service
   - traffic
   - group
-  - middlebox
+  - middlebox #Service
   - qos_metric
   - qos_unit
   - qos_value
   - qos_constraint
   - location
+  - user
+  - requirement
+  - asset
+  - access_policy
+slots:
+  service_assets_dict:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  users:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+#   middlebox:
+#     type: text
+#     auto_fill: true
+#     influence_conversation: false
+#     mappings:
+#     - type: from_entity
+#       entity: middlebox
+#   requirement:
+#     type: text
+#     auto_fill: true
+#     influence_conversation: false
+#     mappings:
+#     - type: from_entity
+#       entity: requirement
+#   access_policy:
+#     type: text
+#     auto_fill: true
+#     influence_conversation: false
+#     mappings:
+#     - type: from_entity
+#       entity: access_policy
 responses:
   utter_greet:
     - text: Hey! How are you?
   utter_goodbye:
     - text: Bye! Thank you!
   utter_ask_for_feedback:
-    - text: Hmm, okay. What did I miss?
+    - text: Hmm, okay. Tell me an entity I missed, or cancel the feedback loop.
+  utter_ask_for_more_feedback:
+    - text: Okay. Tell me another entity I missed, or cancel the feedback loop.
+  utter_ask_build_confirmation:
+    - text: Are all these parameters correct?
   utter_start_over:
     - text: Okay. Please start over then.
+  utter_ask_build_after_feedback:
+    - text: Should I deploy the services with all this feedback collected?
 actions:
   - action_feedback
   - action_feedback_confirm

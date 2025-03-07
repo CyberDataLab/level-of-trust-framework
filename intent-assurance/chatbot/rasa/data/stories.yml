@@ -6,29 +6,47 @@ stories:
       - intent: welcome
       - action: utter_greet
 
-  - story: build confirm
+  - story: User requests a build
     steps:
       - intent: build
       - action: action_build
+      - action: utter_ask_build_confirmation
+
+  - story: User confirms the build requested
+    steps:
+      - action: utter_ask_build_confirmation
       - intent: confirm
       - action: action_deploy
 
-  - story: build with feedback
+  - story: User rejects the build requested
     steps:
-      - intent: build
-      - action: action_build
+      - action: utter_ask_build_confirmation
       - intent: reject
       - action: utter_ask_for_feedback
+      - checkpoint: build_feedback_loop
+  
+  - story: continue build feedback loop
+    steps:
+      - checkpoint: build_feedback_loop
+      - intent: build-feedback
       - action: action_feedback
-      - intent: confirm
-      - action: action_feedback_confirm
+      - action: utter_ask_for_more_feedback
+      - checkpoint: build_feedback_loop
 
-  - story: build and feedback rejected
+  - story: end build feeback loop
     steps:
-      - intent: build
-      - action: action_build
+      - checkpoint: build_feedback_loop
       - intent: reject
-      - action: utter_ask_for_feedback
-      - action: action_feedback
+      - action: utter_ask_build_after_feedback
+
+  - story: User confirms the build after feedback
+    steps:
+      - action: utter_ask_build_after_feedback
+      - intent: confirm
+      - action: action_deploy
+  
+  - story: User rejects the build after feedback
+    steps:
+      - action: utter_ask_build_after_feedback
       - intent: reject
       - action: utter_start_over

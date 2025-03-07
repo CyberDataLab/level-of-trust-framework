@@ -197,7 +197,19 @@ nlu:
     - [Set](operation) to [1](qos_value) [Gbps](qos_unit) [bandwidth](qos_metric) [limit](qos_constraint) for the traffic to [DMZ](location)
     - [set to](operation) [10](qos_value) [kbps](qos_unit) the [upload rate](qos_metric) for [faculty](group)
     - [setup](operation) a [TCP accelerator](middlebox) between [LAN](location) and [video server](location)
-
+    - I want to deploy a [web server](middlebox) on [two Ubuntu Server 20.04 VMs](asset) and it must be [only accessible](access_policy) by the [administrator](user)
+    - I want to deploy a [database server](middlebox) on [three CentOS VMs](asset) and it must be [only accessible](access_policy) by the [DBA](user)
+    - Deploy a [file server](middlebox) on [four Debian VMs](asset) and [restrict access](access_policy) to [IT staff](user)
+    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset) and ensure it is [only accessible](access_policy) by the [mail admin](user)
+    - Install a [proxy server](middlebox) on [two Fedora VMs](asset) and limit access to [network admin](user)
+    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and make it [only accessible](access_policy) by the [network team](user)
+    - Deploy a [web server](middlebox) on [two Ubuntu Server 20.04 VMs](asset) and [three CentOS VMs](asset) and it must be [only accessible](access_policy) by the [administrator](user)
+    - I want to deploy a [database server](middlebox) on [three CentOS VMs](asset) and [four Debian VMs](asset) and it must be [only accessible](access_policy) by the [DBA](user)
+    - Deploy a [file server](middlebox) on [four Debian VMs](asset) and [five Red Hat VMs](asset) and [restrict access](access_policy) to [IT staff](user)
+    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset) and [six Ubuntu VMs](asset) and ensure it is [only accessible](access_policy) by the [mail admin](user)
+    - Install a [proxy server](middlebox) on [two Fedora VMs](asset) and [three CentOS VMs](asset) and limit access to [network admin](user)
+    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and [four Debian VMs](asset) and make it [only accessible](access_policy) by the [network team](user)
+    
 - intent: build-feedback
   examples: |
     - [blocked](value) is an [operation](entity)
