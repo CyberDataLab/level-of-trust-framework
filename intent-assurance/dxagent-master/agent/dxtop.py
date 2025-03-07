@@ -746,17 +746,31 @@ class DXTop(IOManager):
       curses.init_pair(10, curses.COLOR_RED, curses.COLOR_WHITE)
       
       # health gradation color, 101 colors from green to red
-      self.health_colors = [i for i in range(11,213) if not i & 8]
-      for c,i in enumerate(self.health_colors):
-         # reverse red and green
-         c = 100-c
-         # c
-         # 0   => (1000,0,0)    red
-         # 50  => (1000,700,0) orange
-         # 100 => (0,1000,0)    green
-         curses.init_color(i, min(2*c,100)*10, max(0,min(200-(2*c)-30,100))*10, 0)
-         curses.init_pair(i, i, -1)
-         curses.init_pair(i | 8, i, curses.COLOR_WHITE)
+      num_colors = curses.COLORS
+      can_change_color = curses.can_change_color()
+
+      if can_change_color and num_colors >= 213:
+         self.health_colors = [i for i in range(11,213) if not i & 8]
+         for c,i in enumerate(self.health_colors):
+            # reverse red and green
+            c = 100-c
+            # c
+            # 0   => (1000,0,0)    red
+            # 50  => (1000,700,0) orange
+            # 100 => (0,1000,0)    green
+            curses.init_color(i, min(2*c,100)*10, max(0,min(200-(2*c)-30,100))*10, 0)
+            curses.init_pair(i, i, -1)
+            curses.init_pair(i | 8, i, curses.COLOR_WHITE)
+      else:
+         self.health_colors= []
+         for score in range (101):
+            if score <= 33:
+               color_pair = 1
+            elif score <= 66:
+               color_pair = 4
+            else:
+               color_pair = 2
+            self.health_colors.append(color_pair) 
       
       # This color is combined to other colors using | (binary or)
       # to obtain the selection color (i.E., with white background)
