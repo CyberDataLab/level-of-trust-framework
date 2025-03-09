@@ -231,3 +231,10 @@ nlu:
     - [firewall](value) is a [middlebox](entity)
     - [nat](value) is a [middlebox](entity)
 
+- intent: create-tla
+  examples: |
+    - Make a TLA for the user [Bob](user) that allows him to [use up to 500Mb of bandwidth for OpenLDAP](requirement) and [forbids the use of a LDAP client below v5.0](requirement)“
+    - Create a TLA for the user [Alice](user) that allows her to [use up to 1Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v2.0](requirement)“
+    - Do a TLA for the user [Charlie](user) that allows him to [use up to 2Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a SSH client below v1.0](requirement)“
+    - Create a TLA for the user [David](user) that allows him to [use up to 3Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v3.0](requirement)“
+    - Create a TLA for the user [Eve](user) that allows her to [use up to 4Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v4.0](requirement)“

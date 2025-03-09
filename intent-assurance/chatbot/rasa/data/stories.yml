@@ -6,6 +6,7 @@ stories:
       - intent: welcome
       - action: utter_greet
 
+# Build stories
   - story: User requests a build
     steps:
       - intent: build
@@ -49,4 +50,50 @@ stories:
     steps:
       - action: utter_ask_build_after_feedback
       - intent: reject
-      - action: utter_start_over
+      - action: action_start_over
+
+# TLA stories
+  - story: User asks to create a TLA
+    steps:
+      - intent: create-tla
+      - action: action_create_tla
+      - action: utter_ask_create_tla_confirmation
+  
+  - story: User confirms the TLA creation requested
+    steps:
+      - action: utter_ask_create_tla_confirmation
+      - intent: confirm
+      - action: action_deploy
+
+  - story: User rejects the TLA creation requested
+    steps:
+      - action: utter_ask_create_tla_confirmation
+      - intent: reject
+      - action: utter_ask_for_feedback
+      - checkpoint: tla_creation_feedback_loop
+  
+  - story: continue TLA creation feedback loop
+    steps:
+      - checkpoint: tla_creation_feedback_loop
+      - intent: build-feedback
+      - action: action_feedback
+      - action: utter_ask_for_more_feedback
+      - checkpoint: tla_creation_feedback_loop
+
+  - story: end TLA creation feeback loop
+    steps:
+      - checkpoint: tla_creation_feedback_loop
+      - intent: reject
+      - action: utter_ask_build_after_feedback
+
+  - story: User confirms the TLA creation after feedback
+    steps:
+      - action: utter_ask_build_after_feedback
+      - intent: confirm
+      - action: action_deploy
+  
+  - story: User rejects the TLA creation after feedback
+    steps:
+      - action: utter_ask_build_after_feedback
+      - intent: reject
+      - action: action_start_over
