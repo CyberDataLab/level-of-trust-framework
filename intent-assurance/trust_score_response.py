@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 from additional_interfaces import router as trust_management_router  # Import router from Trust_Management_System
-from typing import List
+from typing import List, Dict, Any, Optional
 from confluent_kafka import Consumer, KafkaError
 from dotenv import load_dotenv
 import os
@@ -54,6 +54,14 @@ class Trust_Score_Response(BaseModel):
                 "id": "uuid1",
                 "trust_index": 0.4,
                 "counter": 1
+        }
+
+class FilePathRequest(BaseModel):
+    file_path: str
+    
+    class Config:
+        json_schema_extra = {
+            "file_path": "/path/to/your/data.json"
         }
 
 
@@ -174,7 +182,7 @@ def consume_kafka_messages():
             
             # Process the single message
             device_id = decoded_message["id"]
-            health_score = float(decoded_message["data"]["/health/node"])
+            health_score = float(decoded_message["data"]["/health/node/trust_index"])
             
             # Update running average for this device ID
             if device_id in id_scores:
@@ -204,6 +212,86 @@ def consume_kafka_messages():
     # Convert dictionary to list of scores
     return list(id_scores.values())
 
+def compute_trust_scores_from_json(file_path: str) -> List[Dict[str, Any]]:
+    """
+    Compute trust scores from a JSON file
+    
+    Args:
+        file_path: Path to the JSON file containing the trust data
+        
+    Returns:
+        List of dictionaries containing trust scores for each device ID
+    """
+    # Check if file exists
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"File not found: {file_path}")
+    
+    try:
+        # Read the JSON file
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+        
+        id_scores = {}  # Dictionary to track scores and counts per ID
+        
+        # Process each message in the JSON data
+        for message in data:
+            try:
+                # Extract device ID and health score
+                device_id = message["id"]
+                health_score = float(message["data"]["/health/node/trust_index"])
+                
+                # Update running average for this device ID
+                if device_id in id_scores:
+                    current_avg = id_scores[device_id]["trust_index"]
+                    current_count = id_scores[device_id]["counter"]
+                    # Calculate new average
+                    new_avg = (current_avg * current_count + (health_score/100)) / (current_count + 1)
+                    id_scores[device_id]["trust_index"] = round(new_avg, 4)
+                    id_scores[device_id]["counter"] += 1
+                else:
+                    # First score for this device
+                    id_scores[device_id] = {
+                        "id": device_id,
+                        "trust_index": round(health_score / 100, 4),
+                        "counter": 1
+                    }
+            except KeyError as e:
+                print(f"Missing required field in message: {e}")
+                continue
+        
+        # Convert dictionary to list of scores
+        return list(id_scores.values())
+    
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON format: {str(e)}")
+    except Exception as e:
+        raise Exception(f"Error processing JSON file: {str(e)}")
+
+
+@app.get("/compute_trust_from_file", response_model=List[Trust_Score_Response],
+        tags=["monitoring"],
+        summary="Compute trust scores from a JSON file",
+        description="Read a JSON file and compute average trust scores for each device ID")
+async def get_trust_from_file(file_path: str = Query(..., description="Path to the JSON file containing trust data")):
+    """
+    Compute trust scores from a JSON file path provided as a query parameter
+    
+    Args:
+        file_path: Path to the JSON file
+        
+    Returns:
+        List of trust scores for each device ID
+    """
+    try:
+        trust_scores = compute_trust_scores_from_json(file_path)
+        return trust_scores
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
             
 # Define the FastAPI route to expose the retrieve_trust_scores method
 @app.get("/trust_management_LoTAF", response_model=List[Trust_Score_Response], tags=["monitoring"], summary="Get trust scores", description="Retrieve trust scores from the available computation nodes")
