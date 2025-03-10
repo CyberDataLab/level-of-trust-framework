@@ -129,6 +129,8 @@ class GNMIDataCollector:
 
                         entry["data"][path_str] = value
 
+                    # Modify the entry with trust index before adding to collected_data
+                    entry = self.calculate_trust_index(entry)
                     collected_data.append(entry)
 
                     # Save in the chosen format
@@ -144,6 +146,45 @@ class GNMIDataCollector:
 
         except KeyboardInterrupt:
             print("\n[INFO] Stopping data collection.")
+
+    def calculate_trust_index(self, entry):
+        """
+        Calculate the trust index by averaging all numeric values in the data dictionary
+        that have a path starting with '/health/node/'.
+        
+        Args:
+            entry (dict): The data entry containing 'data' with health metrics
+            
+        Returns:
+            dict: The modified entry with added trust_index
+        """
+        if not entry or 'data' not in entry:
+            return entry
+        
+        health_values = []
+        
+        # Extract numeric values from paths starting with '/health/node/'
+        for path, value in entry['data'].items():
+            if path.startswith('/health/node/'):
+                try:
+                    # Convert value to float if it's a string representing a number
+                    if isinstance(value, str) and value.replace('.', '', 1).isdigit():
+                        health_values.append(float(value))
+                    elif isinstance(value, (int, float)):
+                        health_values.append(float(value))
+                except (ValueError, TypeError):
+                    # Skip values that can't be converted to float
+                    continue
+        
+        # Calculate average if there are valid values
+        if health_values:
+            trust_index = sum(health_values) / len(health_values)
+            # Round to 2 decimal places
+            trust_index = round(trust_index, 2)
+            # Add the trust index to the entry
+            entry['data']['/health/node/trust_index'] = trust_index
+        
+        return entry
 
 def start_collector(format_type, output_file, kafka_enabled):
     """Function to start data collection"""
