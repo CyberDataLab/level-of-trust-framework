@@ -210,6 +210,7 @@ nlu:
     - Install a [proxy server](middlebox) on [two Fedora VMs](asset) and [three CentOS VMs](asset) and limit access to [network admin](user)
     - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and [four Debian VMs](asset) and make it [only accessible](access_policy) by the [network team](user)
     
+#TODO: Change feedback mechanism (terms "values" and "entities" seems too ambiguos for the NLP to understand)
 - intent: build-feedback
   examples: |
     - [blocked](value) is an [operation](entity)
@@ -238,3 +239,13 @@ nlu:
     - Do a TLA for the user [Charlie](user) that allows him to [use up to 2Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a SSH client below v1.0](requirement)“
     - Create a TLA for the user [David](user) that allows him to [use up to 3Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v3.0](requirement)“
     - Create a TLA for the user [Eve](user) that allows her to [use up to 4Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v4.0](requirement)“
+
+#TODO: Change feedback mechanism (terms "values" and "entities" seems too ambiguous for the NLP to understand)
+- intent: tla-feedback
+  examples: |
+    - [use up to 500Mb of bandwidth for OpenLDAP](value) is a [requirement](entity)
+    - [forbids the use of a LDAP client below v5.0](value) is a [requirement](entity)
+    - [use up to 1Gb of bandwidth for OpenLDAP](value) is a [requirement](entity)
+    - [forbids the use of a OpenLDAP client below v2.0](value) is a [requirement](entity)
+    - [use up to 2Gb of bandwidth for OpenLDAP](value) is a [requirement](entity)
+    - [forbids the use of a SSH client below v1.0](value) is a [requirement](entity)

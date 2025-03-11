@@ -92,20 +92,22 @@ class ActionDeploy(Action):
         return flush_slots()
 
 # Action to extract the entities from the user intent "build-feedback"
-class ActionFeedback(Action):
+class ActionBuildFeedback(Action):
 
     def name(self) -> Text:
-        return "action_feedback"
+        return "action_build_feedback"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Action Feedback")
+        last_message = tracker.latest_message.get('text')
+        dispatcher.utter_message(f"Last message you said: {last_message}")
+        dispatcher.utter_message(text="Action Build Feedback")
 
         return []
 
-""" Build actions """
+""" TLA actions """
 
 # Action to extract the entities from the user intent "create_tla"
 class ActionCreateTLA(Action):
@@ -133,6 +135,21 @@ class ActionCreateTLA(Action):
         tla_json = json.dumps(tla_data)
 
         return [SlotSet("tla_dict", tla_json)]
+    
+class ActionTLAFeedback(Action):
+
+    def name(self) -> Text:
+        return "action_tla_feedback"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        last_message = tracker.latest_message.get('text')
+        dispatcher.utter_message(f"Last message you said: {last_message}")
+        dispatcher.utter_message(text="Action TLA Feedback")
+
+        return []
 
 """ Auxiliar actions """
 
@@ -145,7 +162,7 @@ class ActionStartOver(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text="Well then, let's start over, ask me anything!")
+        
+        dispatcher.utter_message(text="Aborting current processes, let's start over, ask me anything!")
 
         return flush_slots()

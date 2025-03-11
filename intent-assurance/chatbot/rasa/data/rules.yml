@@ -1,0 +1,6 @@
+rules:
+
+- rule: Cancel any current transaction
+  steps:
+  - intent: cancel
+  - action: action_start_over

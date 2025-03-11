@@ -1,4 +1,5 @@
 version: "3.1"
+#TODO: Change intent and action names to distinguish between build/TLA
 
 stories:
   - story: happy path
@@ -30,7 +31,7 @@ stories:
     steps:
       - checkpoint: build_feedback_loop
       - intent: build-feedback
-      - action: action_feedback
+      - action: action_build_feedback
       - action: utter_ask_for_more_feedback
       - checkpoint: build_feedback_loop
 
@@ -75,8 +76,8 @@ stories:
   - story: continue TLA creation feedback loop
     steps:
       - checkpoint: tla_creation_feedback_loop
-      - intent: build-feedback
-      - action: action_feedback
+      - intent: tla-feedback
+      - action: action_tla_feedback
       - action: utter_ask_for_more_feedback
       - checkpoint: tla_creation_feedback_loop
 

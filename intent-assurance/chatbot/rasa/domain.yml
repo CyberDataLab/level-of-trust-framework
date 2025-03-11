@@ -1,4 +1,5 @@
 version: "3.1"
+#TODO: Change intent and action names to distinguish between build/TLA
 
 config:
   store_entities_as_slots: false
@@ -19,11 +20,25 @@ intents:
   - reject:
       use_entities: true
   - build:
-      use_entities: true
+      use_entities:
+        - middlebox
+        - access_policy
+        - asset
+        - user
   - build-feedback:
-      use_entities: true
+      use_entities:
+        - middlebox
+        - access_policy
+        - asset
+        - user
   - create-tla:
-      use_entities: true
+      use_entities:
+        - user
+        - requirement
+  - tla-feedback:
+      use_entities:
+        - user
+        - requirement
 entities:
   - entity
   - value
@@ -58,27 +73,6 @@ slots:
     influence_conversation: false
     mappings:
     - type: custom
-#   middlebox:
-#     type: text
-#     auto_fill: true
-#     influence_conversation: false
-#     mappings:
-#     - type: from_entity
-#       entity: middlebox
-#   requirement:
-#     type: text
-#     auto_fill: true
-#     influence_conversation: false
-#     mappings:
-#     - type: from_entity
-#       entity: requirement
-#   access_policy:
-#     type: text
-#     auto_fill: true
-#     influence_conversation: false
-#     mappings:
-#     - type: from_entity
-#       entity: access_policy
 responses:
   utter_greet:
     - text: Hey! How are you?
@@ -95,10 +89,10 @@ responses:
   utter_ask_build_after_feedback:
     - text: Should I deploy the services with all this feedback collected?
 actions:
-  - action_feedback
-  - action_feedback_confirm
-  - action_deploy
   - action_build
+  - action_build_feedback
+  - action_deploy
   - action_create_tla
+  - action_tla_feedback
   - action_start_over
 e2e_actions: []
