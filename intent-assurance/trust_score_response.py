@@ -212,12 +212,14 @@ def consume_kafka_messages():
     # Convert dictionary to list of scores
     return list(id_scores.values())
 
-def compute_trust_scores_from_json(file_path: str) -> List[Dict[str, Any]]:
+def compute_trust_scores_from_json(file_path: str, start_time: Optional[str] = None, end_time: Optional[str] = None) -> List[Dict[str, Any]]:
     """
-    Compute trust scores from a JSON file
+    Compute trust scores from a JSON file, optionally filtering by timestamp range
     
     Args:
         file_path: Path to the JSON file containing the trust data
+        start_time: Optional start timestamp (inclusive) in ISO format or nanoseconds
+        end_time: Optional end timestamp (inclusive) in ISO format or nanoseconds
         
     Returns:
         List of dictionaries containing trust scores for each device ID
@@ -225,6 +227,34 @@ def compute_trust_scores_from_json(file_path: str) -> List[Dict[str, Any]]:
     # Check if file exists
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
+
+    # Convert timestamp strings to nanoseconds if provided
+    start_ns = None
+    end_ns = None
+    
+    if start_time:
+        try:
+            # Try to parse as nanoseconds (string of digits)
+            if start_time.isdigit():
+                start_ns = int(start_time)
+            else:
+                # Try to parse as ISO format
+                dt = datetime.fromisoformat(start_time.replace('Z', '+00:00'))
+                start_ns = int(dt.timestamp() * 1_000_000_000)
+        except (ValueError, TypeError):
+            raise ValueError(f"Invalid start timestamp format: {start_time}")
+    
+    if end_time:
+        try:
+            # Try to parse as nanoseconds (string of digits)
+            if end_time.isdigit():
+                end_ns = int(end_time)
+            else:
+                # Try to parse as ISO format
+                dt = datetime.fromisoformat(end_time.replace('Z', '+00:00'))
+                end_ns = int(dt.timestamp() * 1_000_000_000)
+        except (ValueError, TypeError):
+            raise ValueError(f"Invalid end timestamp format: {end_time}")
     
     try:
         # Read the JSON file
@@ -236,6 +266,15 @@ def compute_trust_scores_from_json(file_path: str) -> List[Dict[str, Any]]:
         # Process each message in the JSON data
         for message in data:
             try:
+                # Extract timestamp from the message
+                msg_timestamp = int(message["timestamp"])
+                
+                # Skip messages outside the specified time range
+                if start_ns and msg_timestamp < start_ns:
+                    continue
+                if end_ns and msg_timestamp > end_ns:
+                    continue
+                
                 # Extract device ID and health score
                 device_id = message["id"]
                 health_score = float(message["data"]["/health/node/trust_index"])
@@ -271,19 +310,26 @@ def compute_trust_scores_from_json(file_path: str) -> List[Dict[str, Any]]:
 @app.get("/compute_trust_from_file", response_model=List[Trust_Score_Response],
         tags=["monitoring"],
         summary="Compute trust scores from a JSON file",
-        description="Read a JSON file and compute average trust scores for each device ID")
-async def get_trust_from_file(file_path: str = Query(..., description="Path to the JSON file containing trust data")):
+        description="Read a JSON file and compute average trust scores for each device ID, optionally filtered by timestamps")
+async def get_trust_from_file(
+    file_path: str = Query(..., description="Path to the JSON file containing trust data"),
+    start_time: Optional[str] = Query(None, description="Optional start timestamp (ISO format or nanoseconds)"),
+    end_time: Optional[str] = Query(None, description="Optional end timestamp (ISO format or nanoseconds)")
+):
     """
-    Compute trust scores from a JSON file path provided as a query parameter
+    Compute trust scores from a JSON file path provided as a query parameter,
+    optionally filtered by start and end timestamps
     
     Args:
         file_path: Path to the JSON file
+        start_time: Optional start timestamp (inclusive) in ISO format or nanoseconds
+        end_time: Optional end timestamp (inclusive) in ISO format or nanoseconds
         
     Returns:
         List of trust scores for each device ID
     """
     try:
-        trust_scores = compute_trust_scores_from_json(file_path)
+        trust_scores = compute_trust_scores_from_json(file_path, start_time, end_time)
         return trust_scores
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
