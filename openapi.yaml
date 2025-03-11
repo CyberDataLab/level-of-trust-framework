@@ -40,6 +40,69 @@ paths:
                 title: Response Get Trust Scores Trust Management LoTAF
         '400':
           description: Invalid ID supplied
+  /compute_trust_from_file:
+    get:
+      tags:
+        - Intent Assurance
+      summary: Compute trust scores from a JSON file
+      description: Read a JSON file and compute average trust scores for each device ID, optionally filtered by timestamps
+      operationId: get_trust_from_file
+      parameters:
+        - name: file_path
+          in: query
+          description: Path to the JSON file containing trust data
+          required: true
+          schema:
+            type: string
+        - name: start_time
+          in: query
+          description: Optional start timestamp (ISO format or nanoseconds)
+          required: false
+          schema:
+            type: string
+        - name: end_time
+          in: query
+          description: Optional end timestamp (ISO format or nanoseconds)
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Trust_Score_Response'
+                type: array
+                title: Response Compute Trust From File
+        '400':
+          description: Bad request - Invalid parameters or timestamp format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+        '404':
+          description: File not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
   /api/trust_management:
     get:
       tags:
