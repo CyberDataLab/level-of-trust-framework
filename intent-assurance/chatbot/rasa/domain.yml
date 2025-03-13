@@ -88,6 +88,8 @@ responses:
     - text: Are all these TLA parameters correct?  
   utter_ask_build_after_feedback:
     - text: Should I deploy the services with all this feedback collected?
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
 actions:
   - action_build
   - action_build_feedback

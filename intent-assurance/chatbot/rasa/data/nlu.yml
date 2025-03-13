@@ -214,17 +214,6 @@ nlu:
 - intent: build-feedback
   examples: |
     - [blocked](value) is an [operation](entity)
-    - you missed [blocked](value)
-    - an [operation](entity)
-    - a [location](entity)
-    - you've missed the [ResNet](value)
-    - the [entity](value)
-    - you've missed the [location](entity)
-    - the [location](entity)
-    - [firewall](value)
-    - the [middlebox](entity)
-    - the [middlebox](entity) I want is a [shaper](value)
-    - the [location](entity) is '[backend](value)'
     - [housing](value) is a [location](entity)
     - [Dorms](value) is a [location](entity)
     - [University](value) is a [location](entity)
