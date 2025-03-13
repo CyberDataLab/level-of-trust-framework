@@ -16,6 +16,7 @@ import json
 import re
 import statistics
 import math
+import datetime
 
 from ..core.rbuffer import init_rb_dict, Severity
 from ..input.sysinfo import SysInfo
@@ -591,11 +592,37 @@ class Subservice():
          if result:
             self.positive_symptoms.append(symptom)
             self.health_score = max(0,self.health_score-symptom.weight)
+
+            # Log activated symptom to file
+            self._log_activated_symptom(symptom)
             
       positives.extend(self.positive_symptoms)
       health_scores[self.fullname] = self.health_score
       return positives, health_scores
 
+   def _log_activated_symptom(self, symptom):
+    """
+    Log activated symptom to a text file
+    
+    @param symptom The activated symptom
+    """
+    import datetime
+    log_file = os.path.join(os.path.dirname(__file__), '..', '..', 'activated_symptoms.txt')
+    
+    try:
+        with open(log_file, 'a') as f:
+            timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"[{timestamp}] Node: {self.fullname}\n")
+            f.write(f"  Activated Rule: {symptom.name}\n")
+            f.write(f"  Path: {symptom.path}\n")
+            f.write(f"  Severity: {symptom.severity.name}\n")
+            f.write(f"  Weight: {symptom.weight}\n")
+            f.write(f"  Rule: {symptom.rule}\n")
+            f.write(f"  New Health Score: {self.health_score}\n")
+            f.write("-" * 80 + "\n")
+    except Exception as e:
+        print(f"Error logging activated symptom: {str(e)}")
+        
    def _init_metrics_rb(self, subservice):
       return self.engine._init_metrics_rb(subservice)
       
