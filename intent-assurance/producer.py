@@ -43,7 +43,7 @@ def delivery_report(errmsg, msg):
         msg.key(), msg.topic(), msg.partition(), msg.offset()))
 
 
-kafka_topic_name = os.getenv("TOPIC_PRODUCE")
+kafka_topic_name = os.getenv("TOPIC_PRODUCE_TM")
 
 print("Starting Kafka Producer")
 
@@ -55,18 +55,24 @@ except KafkaException as e:
 
 try:
     while True:
-        jsonString1 = f'{{"id":"9a:ea:c9:e4:50:0e", "Timestamp":{datetime.now().isoformat()}, "CPU_health": {random.randint(85,100)}, "Sensors_health": {0}, "Memory_health": {random.randint(80,100)}, "Processes_health": {random.randint(98,100)},"Disks_health": {random.randint(94,100)}, "Network_health": {random.randint(95,100)}}}'
-        jsonv1 = jsonString1.encode()
+        #jsonString1 = f'{{"id":"9a:ea:c9:e4:50:0e", "Timestamp":{datetime.now().isoformat()}, "CPU_health": {random.randint(85,100)}, "Sensors_health": {0}, "Memory_health": {random.randint(80,100)}, "Processes_health": {random.randint(98,100)},"Disks_health": {random.randint(94,100)}, "Network_health": {random.randint(95,100)}}}'
+        #jsonv1 = jsonString1.encode()
         # Asynchronously produce a message, the delivery report callback
         # will be triggered from poll() above, or flush() below, when the message has
         # been successfully delivered or failed permanently.
-        producer1.produce(topic=kafka_topic_name, key=str(uuid4()), value=jsonv1, on_delivery=delivery_report)
+        #producer1.produce(topic=kafka_topic_name, key=str(uuid4()), value=jsonv1, on_delivery=delivery_report)
 
         # Trigger any available delivery report callbacks from previous produce() calls
-        res = producer1.poll(5)
+        #res = producer1.poll(5)
         # Wait for any outstanding messages to be delivered and delivery report
         # callbacks to be triggered.
-        res2=producer1.flush(1)
+        #res2=producer1.flush(1)
+        message = json.dumps({"ids": ["7406f4db-06dc-5d96-9e0d-793f5083f923"]})
+
+        producer1.produce(os.getenv("TOPIC_PRODUCE_TM"), value=message)
+        producer1.flush()
+        print(f"[INFO] Data sent to kafka topic", os.getenv("TOPIC_PRODUCE_TM"))
+
         time.sleep(1)
 
 

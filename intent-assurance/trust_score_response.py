@@ -41,7 +41,7 @@ conf = {
 
 }
 
-kafka_topic_name = os.getenv("TOPIC_CONSUME")
+kafka_topic_name = os.getenv("TOPIC_CONSUME_LOTAF")
 
 # Define the Pydantic model for the response of /trust_management_LoTAF
 class Trust_Score_Response(BaseModel):
