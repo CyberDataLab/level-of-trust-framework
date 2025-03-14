@@ -2,8 +2,7 @@
 # https://rasa.com/docs/rasa/model-configuration/
 recipe: default.v1
 
-# The assistant project unique identifier
-# This default value must be replaced with a unique assistant name within your deployment
+# The assistant project unique identifier, must be replaced with a unique assistant name within your deployment
 assistant_id: trust-chatbot
 
 # Configuration for Rasa NLU.
@@ -28,7 +27,7 @@ pipeline:
     epochs: 100
     constrain_similarities: true
   - name: FallbackClassifier
-    threshold: 0.7
+    threshold: 0.5
     ambiguity_threshold: 0.1
 
 # Configuration for Rasa Core.
@@ -42,5 +41,3 @@ policies:
     max_history: 5
     epochs: 100
     constrain_similarities: true
-
-

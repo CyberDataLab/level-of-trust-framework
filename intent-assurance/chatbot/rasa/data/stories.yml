@@ -1,15 +1,12 @@
 version: "3.1"
-#TODO: Change intent and action names to distinguish between build/TLA
 
 stories:
-  - story: happy path
-    steps:
-      - intent: welcome
-      - action: utter_greet
 
 # Build stories
   - story: User requests a build
     steps:
+      - slot_was_set:
+        - service_assets_dict: null
       - intent: build
       - action: action_build
       - action: utter_ask_build_confirmation
@@ -17,6 +14,8 @@ stories:
   - story: User confirms the build requested
     steps:
       - action: utter_ask_build_confirmation
+      - slot_was_set:
+        - service_assets_dict: true
       - intent: confirm
       - action: action_deploy
 
@@ -43,58 +42,69 @@ stories:
 
   - story: User confirms the build after feedback
     steps:
+      - slot_was_set:
+        - service_assets_dict: true
       - action: utter_ask_build_after_feedback
       - intent: confirm
       - action: action_deploy
+      - action: action_restart
   
   - story: User rejects the build after feedback
     steps:
       - action: utter_ask_build_after_feedback
       - intent: reject
-      - action: action_start_over
+      - action: action_restart
 
 # TLA stories
-  - story: User asks to create a TLA
+  - story: User asks for a TLA action
     steps:
-      - intent: create-tla
-      - action: action_create_tla
-      - action: utter_ask_create_tla_confirmation
+      - slot_was_set:
+        - tla_dict: null
+      - intent: tla
+      - action: action_check_tla
+      - action: utter_ask_tla_confirmation
   
-  - story: User confirms the TLA creation requested
+  - story: User confirms the TLA action requested
     steps:
-      - action: utter_ask_create_tla_confirmation
+      - slot_was_set:
+        - tla_dict: true
+      - action: utter_ask_tla_confirmation
       - intent: confirm
-      - action: action_deploy
+      - action: action_pass_tla
+      - action: action_restart
 
-  - story: User rejects the TLA creation requested
+  - story: User rejects the TLA action suggested
     steps:
-      - action: utter_ask_create_tla_confirmation
+      - action: utter_ask_tla_confirmation
       - intent: reject
       - action: utter_ask_for_feedback
-      - checkpoint: tla_creation_feedback_loop
+      - checkpoint: tla_feedback_loop
   
   - story: continue TLA creation feedback loop
     steps:
-      - checkpoint: tla_creation_feedback_loop
+      - checkpoint: tla_feedback_loop
       - intent: tla-feedback
       - action: action_tla_feedback
       - action: utter_ask_for_more_feedback
-      - checkpoint: tla_creation_feedback_loop
+      - checkpoint: tla_feedback_loop
 
-  - story: end TLA creation feeback loop
+  - story: end TLA action feeback loop
     steps:
-      - checkpoint: tla_creation_feedback_loop
+      - checkpoint: tla_feedback_loop
       - intent: reject
       - action: utter_ask_build_after_feedback
 
-  - story: User confirms the TLA creation after feedback
+  - story: User confirms the TLA action after feedback
     steps:
       - action: utter_ask_build_after_feedback
+      - slot_was_set:
+        - tla_dict: true
       - intent: confirm
-      - action: action_deploy
+      - action: action_pass_tla
+      - action: action_restart
   
-  - story: User rejects the TLA creation after feedback
+  - story: User rejects the TLA action after feedback
     steps:
       - action: utter_ask_build_after_feedback
       - intent: reject
-      - action: action_start_over
+      - action: action_restart

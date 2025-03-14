@@ -22,22 +22,16 @@ intents:
   - build:
       use_entities:
         - middlebox
-        - access_policy
         - asset
-        - user
   - build-feedback:
       use_entities:
         - middlebox
-        - access_policy
         - asset
-        - user
-  - create-tla:
+  - tla:
       use_entities:
-        - user
         - requirement
   - tla-feedback:
       use_entities:
-        - user
         - requirement
 entities:
   - entity
@@ -53,24 +47,17 @@ entities:
   - qos_value
   - qos_constraint
   - location
-  - user
   - requirement
   - asset
-  - access_policy
 slots:
   service_assets_dict:
     type: text
-    influence_conversation: false
-    mappings:
-    - type: custom
-  users:
-    type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
     - type: custom
   tla_dict:
     type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
     - type: custom
 responses:
@@ -78,13 +65,15 @@ responses:
     - text: Hey! How are you?
   utter_goodbye:
     - text: Bye! Thank you!
+  utter_you_are_welcome:
+    - text: I'm glad I could help you!
   utter_ask_for_feedback:
     - text: Hmm, okay. Tell me an entity I missed, or cancel the feedback loop.
   utter_ask_for_more_feedback:
     - text: Okay. Tell me another entity I missed, or cancel the feedback loop.
   utter_ask_build_confirmation:
     - text: Are all these build parameters correct?
-  utter_ask_create_tla_confirmation:
+  utter_ask_tla_confirmation:
     - text: Are all these TLA parameters correct?  
   utter_ask_build_after_feedback:
     - text: Should I deploy the services with all this feedback collected?
@@ -94,7 +83,7 @@ actions:
   - action_build
   - action_build_feedback
   - action_deploy
-  - action_create_tla
+  - action_check_tla
+  - action_pass_tla
   - action_tla_feedback
-  - action_start_over
 e2e_actions: []

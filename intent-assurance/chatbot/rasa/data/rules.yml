@@ -1,5 +1,35 @@
 rules:
 
+- rule: Greet the user
+  condition:
+  - slot_was_set:
+    - service_assets_dict: null
+  - slot_was_set:
+    - tla_dict: null
+  steps:
+    - intent: welcome
+    - action: utter_greet
+
+- rule: Say goodbye to the user
+  condition:
+  - slot_was_set:
+    - service_assets_dict: null
+  - slot_was_set:
+    - tla_dict: null
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: Say you are welcome to the user
+  condition:
+  - slot_was_set:
+    - service_assets_dict: null
+  - slot_was_set:
+    - tla_dict: null
+  steps:
+    - intent: thanks
+    - action: utter_you_are_welcome
+
 - rule: Cancel any current transaction
   steps:
   - intent: cancel

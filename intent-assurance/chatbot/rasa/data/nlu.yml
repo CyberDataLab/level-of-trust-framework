@@ -27,6 +27,17 @@ nlu:
     - Start over
     - Please cancel
     - Cancel
+    - Cancel that
+    - Abort
+    - Stop
+    - I want to cancel
+    - I want to stop
+    - I want to start over
+    - stop that
+    - cancel that
+    - abort all processes
+    - nevermind
+    - forget it
 - intent: confirm
   examples: |
     - sure
@@ -120,13 +131,55 @@ nlu:
 - intent: build
   examples: |
     - [Add](operation) [DPI](middlebox) middlebox into [all traffic](traffic) from [Internet](location) to the [Labs](location)
-    - [All traffic](traffic) from the [Internet](location) to the [Labs](location) has to go to [DPI](middlebox) server and then goes to the Labs
     - [add](operation) [dpi](middlebox) to [labs](location) [network](location)
     - [add](operation) [DPI](middlebox) to the [labs](location) network
     - [add](operation) [dpi](middlebox) to [labs](location)
+    - Deploy a [file server](middlebox) on [four Debian VMs](asset)
+    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset)
+    - Install a [proxy server](middlebox) on [two Fedora VMs](asset)
+    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset)
+    - Deploy a [web server](middlebox) on [two Ubuntu Server 20.04 VMs](asset) and [three CentOS VMs](asset)
+    - I want to deploy a [database server](middlebox) on [three CentOS VMs](asset) and [four Debian VMs](asset)
+    - Deploy a [file server](middlebox) on [four Debian VMs](asset) and [five Red Hat VMs](asset)
+    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset) and [six Ubuntu VMs](asset)
+    - Install a [proxy server](middlebox) on [two Fedora VMs](asset) and [three CentOS VMs](asset)
+    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and [four Debian VMs](asset)
+    - [Add](operation) [monitor](middlebox) for the [university](location)
+    - From [internet](location) to [Labs](location) [add](operation) [DPI](middlebox)
+    - [add](operation) a [firewall](middlebox)
+    - [Add](operation) [inspection](middlebox) for the [university](location)
+    - [Remove](operation) [firewall](middlebox) from the [university](location) to the [datacenter](location)
+    - From [gateway](location) to [network](location) [add](operation) middlebox [firewall](middlebox)
+    - From [university](location) to [internet](location) [add](operation) middlebox [dpi](middlebox)
+    - From [dorms](location) to [internet](location) [add](operation) [nat](middlebox)
+    - From [university](location) to [internet](location) [add](operation) [firewall](middlebox)
+    - Please add [traffic shaper](middlebox) between the [internet](location) and the [dorms](location)
+    - [Add](operation) [inspection](middlebox) for the [university](location)
+    - Add [monitor](middlebox) for the [university](location)
+    - add [shaping](middlebox) for [gateway](location)
+    - [Add](operation) [intrusion detection](middlebox) and [address translation](middlebox) for [servers](location) network
+    - [Remove](operation) [load balancing](middlebox) from [gateway](location) to [database](location).
+    - [Add](operation) [firewall](middlebox) from [gateway](location) to the [lab](location).
+    - Deploy a [web server](middlebox) inside an [Ubuntu-server 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores], then deploy a [mail server](middlebox) inside a [windows server machine](asset) with [500GB of disk space](asset) and [4 processing cores](asset).
+    - I want a [firewall](middlebox) running on a [linux machine](asset) with [8GB of RAM](asset) and a IDS(middlebox) on a [windows machine](asset) with [1TB of disk space](asset).
+    - Build a [web server](middlebox) on a [Ubuntu 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), also deploy a [cloud storage](middlebox) with [2TB of disk space](asset).
+    - Deploy a [DNS server](middlebox) on [Debian 10] with [4GB of RAM](asset) and [2 processing cores](asset) and a [firewall](middlebox) on [CentOS 8]. 
+    - Set up a [mail server](middlebox), a [web server](middlebox) and a [database server](middlebox).
+    - build a [web server](middlebox), a [firewall](middlebox) and a [load balancer](middlebox). 
+- intent: build-feedback
+  examples: |
+    - [blocked](value) is an [operation](entity)
+    - [housing](value) is a [location](entity)
+    - [Dorms](value) is a [location](entity)
+    - [University](value) is a [location](entity)
+    - [copyright](value) is a [middlebox](entity)
+    - [firewall](value) is a [middlebox](entity)
+    - [nat](value) is a [middlebox](entity)
+
+- intent: tla
+  examples: |
     - [limit](qos_constraint) [servers](location) [bandwidth](qos_metric) to [5](qos_value) [gbps](qos_unit)
     - [Limit](qos_constraint) [students](group) in the [dorm](location) to [10](qos_value) [GB per week](qos_unit)
-    - Make sure [all traffic](traffic) from the [Internet](location) to the [labs](location) is [inspected](middlebox) by the [DPI](middlebox) middlebox
     - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
     - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
     - [limit](qos_constraint) the [bandwidth](qos_metric) to [5](qos_value) [Gb](qos_unit) for rack [servers](location)
@@ -141,7 +194,6 @@ nlu:
     - for endpoint [dorms](location) [set](operation) [quota](qos_metric) [download](qos_constraint) [10](qos_value) [gb/wk](qos_unit)
     - At endpoint [Dorms](location) [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit)
     - [Students](group) shall [download](qos_constraint) [no more than](qos_metric) [1000000](qos_value) [MB per week](qos_unit)
-    - please [add](operation) a [DPI](middlebox) to ensure [students](group) from the [labs](location) are not accessing suspicious applications
     - [Limit](qos_constraint) rack [servers](location) to [5](qos_value) [gbps](qos_unit)
     - [Limit](qos_constraint) [servers](location) to [5](qos_value) [gbps](qos_unit)
     - [Set](operation) [5](qos_value) [gbps](qos_unit) [limit](qos_constraint) for [servers](location)
@@ -151,11 +203,9 @@ nlu:
     - [limit](qos_constraint) the [bandwidth](qos_metric) in [server racks](location) to [5](qos_value) [gbps](qos_unit)
     - I want the [torrent traffic](traffic) from [guest users](group) to be [no more than](qos_metric) [100](qos_value) [mbps](qos_unit)
     - [limit](qos_constraint) [network usage](qos_metric) of all [students](group) in the [dorms](location) to no more than [10](qos_value) [gb per seven days](qos_unit)
-    - [Add](operation) [monitor](middlebox) for the [university](location)
     - [set](operation) a [maximum](qos_constraint) of [5](qos_value) [gbps](qos_unit) to the [servers](location)
     - [students](group) should [download](qos_constraint) up to [10](qos_value) [GB per week](qos_unit) of [data](qos_metric).
     - [set](operation) [torrent traffic](traffic) from [guests](group) to [100](qos_value) [mbps](qos_unit)
-    - From [internet](location) to [Labs](location) [add](operation) [DPI](middlebox)
     - [limit](qos_constraint) the [bandwidth rate](qos_metric) of the [server racks](location) to [5](qos_value) [gbps](qos_unit)
     - [limit](qos_constraint) to [100](qos_value) [Mbps](qos_unit) the [bandwidth](qos_metric) [torrent traffic](traffic) can consume
     - put a [download](qos_constraint) [quota](qos_metric) for [students](group) of [10](qos_value) [gb per week](qos_unit)
@@ -164,31 +214,12 @@ nlu:
     - [limit](qos_constraint) [torrent traffic](traffic) for [guests](group) to [100](qos_value) [Mbps](qos_unit)
     - [Students](group) can [download](qos_constraint) up to [10](qos_value) [GB per week](qos_unit) of [data](qos_metric).
     - [Limit](qos_constraint) [bandwidth](qos_metric) usage to [50](qos_value) [mbps](qos_unit) for [professors](group).
-    - [add](operation) a [firewall](middlebox)
-    - From [gateway](location) to [network](location) [add](operation) middlebox [firewall](middlebox)
-    - From [my house](location) to [PUCRS](location) [add](operation) middlebox [dpi](middlebox)
-    - From [dorms](location) to [internet](location) [add](operation) [nat](middlebox)
-    - From [university](location) to [internet](location) [add](operation) [firewall](middlebox)
-    - Please add [traffic shaper](middlebox) between the [internet](location) and the [dorms](location)
-    - [Block](operation) [streaming traffic](traffic) on [UFRGS](location)
-    - [Add](operation) [inspection](middlebox) for the [university](location)
-    - Add [monitor](middlebox) for the [university](location)
-    - [Add](operation) [traffic monitor](middlebox) from [PUC](location) to [UFRGS](location)
-    - add [shaping](middlebox) for [gateway](location)
-    - Add a [firewall](middlebox) and [address translation](middlebox) for [att](group) and [verizon](group)
     - [Define](operation) a [quota](qos_metric) of [10](qos_value) [GB per week](qos_unit) for all [students](group)
     - [Dorms](location) traffic to [internet](location) [must pass through](operation) a [firewall](middlebox)
     - We provide a [quota](qos_metric) to all [students](group) of [1](qos_value) [GB/wk](qos_unit) of usage.
-    - [Add](operation) [inspection](middlebox) for the [university](location)
-    - [Remove](operation) [firewall](middlebox) from the [university](location) to [my house](location)
     - [add](operation) [security](middlebox) from [entry](location) to [backend](location)
     - From [gateway](location) to [my network](location) [remove](operation) [nat](middlebox)
-    - [Remove](operation) [load balancing](middlebox) from [gateway](location) to [database](location)
-    - [Add](operation) [firewall](middlebox) from [gateway](location) to [my house](location)
-    - [Remove](operation) [nat](middlebox) for [gateway](location)
     - [Students](group) [may use](qos_metric) up to [10](qos_value) [GB of data weekly](qos_unit)
-    - [Add](operation) [intrusion detection](middlebox) and [address translation](middlebox) for [servers](location) network
-    - [Set](operation) [users](group) [bandwidth](qos_metric) to [500](qos_value) [kbps](qos_unit) when the [100](qos_value) [Gb per month](qos_unit) [quota](qos_metric) is reached
     - [Students](group) [should not use more than](qos_metric) [five](qos_value) [gigabytes of bandwidth per week](qos_unit)
     - [Limit](qos_constraint) in [10](qos_value) [Mbps](qos_unit) the [download rate](qos_metric) of [dorms](location) from [internet](location)
     - [Setup](operation) a [packet filter](middlebox) for [guests](group) traffic
@@ -196,45 +227,10 @@ nlu:
     - [install](operation) an [email scanner](middlebox) for the [gateway](location)
     - [Set](operation) to [1](qos_value) [Gbps](qos_unit) [bandwidth](qos_metric) [limit](qos_constraint) for the traffic to [DMZ](location)
     - [set to](operation) [10](qos_value) [kbps](qos_unit) the [upload rate](qos_metric) for [faculty](group)
-    - [setup](operation) a [TCP accelerator](middlebox) between [LAN](location) and [video server](location)
-    - I want to deploy a [web server](middlebox) on [two Ubuntu Server 20.04 VMs](asset) and it must be [only accessible](access_policy) by the [administrator](user)
-    - I want to deploy a [database server](middlebox) on [three CentOS VMs](asset) and it must be [only accessible](access_policy) by the [DBA](user)
-    - Deploy a [file server](middlebox) on [four Debian VMs](asset) and [restrict access](access_policy) to [IT staff](user)
-    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset) and ensure it is [only accessible](access_policy) by the [mail admin](user)
-    - Install a [proxy server](middlebox) on [two Fedora VMs](asset) and limit access to [network admin](user)
-    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and make it [only accessible](access_policy) by the [network team](user)
-    - Deploy a [web server](middlebox) on [two Ubuntu Server 20.04 VMs](asset) and [three CentOS VMs](asset) and it must be [only accessible](access_policy) by the [administrator](user)
-    - I want to deploy a [database server](middlebox) on [three CentOS VMs](asset) and [four Debian VMs](asset) and it must be [only accessible](access_policy) by the [DBA](user)
-    - Deploy a [file server](middlebox) on [four Debian VMs](asset) and [five Red Hat VMs](asset) and [restrict access](access_policy) to [IT staff](user)
-    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset) and [six Ubuntu VMs](asset) and ensure it is [only accessible](access_policy) by the [mail admin](user)
-    - Install a [proxy server](middlebox) on [two Fedora VMs](asset) and [three CentOS VMs](asset) and limit access to [network admin](user)
-    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and [four Debian VMs](asset) and make it [only accessible](access_policy) by the [network team](user)
-    
-#TODO: Change feedback mechanism (terms "values" and "entities" seems too ambiguos for the NLP to understand)
-- intent: build-feedback
-  examples: |
-    - [blocked](value) is an [operation](entity)
-    - [housing](value) is a [location](entity)
-    - [Dorms](value) is a [location](entity)
-    - [University](value) is a [location](entity)
-    - [copyright](value) is a [middlebox](entity)
-    - [firewall](value) is a [middlebox](entity)
-    - [nat](value) is a [middlebox](entity)
 
-- intent: create-tla
-  examples: |
-    - Make a TLA for the user [Bob](user) that allows him to [use up to 500Mb of bandwidth for OpenLDAP](requirement) and [forbids the use of a LDAP client below v5.0](requirement)“
-    - Create a TLA for the user [Alice](user) that allows her to [use up to 1Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v2.0](requirement)“
-    - Do a TLA for the user [Charlie](user) that allows him to [use up to 2Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a SSH client below v1.0](requirement)“
-    - Create a TLA for the user [David](user) that allows him to [use up to 3Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v3.0](requirement)“
-    - Create a TLA for the user [Eve](user) that allows her to [use up to 4Gb of bandwidth for OpenLDAP](requirement) and [forbids the use of a OpenLDAP client below v4.0](requirement)“
-
-#TODO: Change feedback mechanism (terms "values" and "entities" seems too ambiguous for the NLP to understand)
 - intent: tla-feedback
   examples: |
-    - [use up to 500Mb of bandwidth for OpenLDAP](value) is a [requirement](entity)
-    - [forbids the use of a LDAP client below v5.0](value) is a [requirement](entity)
-    - [use up to 1Gb of bandwidth for OpenLDAP](value) is a [requirement](entity)
-    - [forbids the use of a OpenLDAP client below v2.0](value) is a [requirement](entity)
-    - [use up to 2Gb of bandwidth for OpenLDAP](value) is a [requirement](entity)
-    - [forbids the use of a SSH client below v1.0](value) is a [requirement](entity)
+    - [set](value) is an [operation](entity)
+    - [limit](value) is a [qos_constraint](entity)
+    - [servers](value) is a [location](entity)
+    - [bandwidth](value) is a [qos_metric](entity)
