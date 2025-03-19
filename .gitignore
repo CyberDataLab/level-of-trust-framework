@@ -7,4 +7,5 @@
 /intent-assurance/chatbot/rasa/actions/__pycache__/
 /intent-assurance/chatbot/rasa/.rasa/
 /intent-assurance/chatbot/rasa/models/
-embeddings-similarity
+__pycache__/
+venv/
