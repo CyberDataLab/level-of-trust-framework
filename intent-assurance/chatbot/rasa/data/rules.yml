@@ -1,3 +1,5 @@
+version: "3.1"
+
 rules:
 
 - rule: Greet the user
@@ -33,7 +35,7 @@ rules:
 - rule: Cancel any current transaction
   steps:
   - intent: cancel
-  - action: action_start_over
+  - action: action_restart
 
 - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
   steps:
