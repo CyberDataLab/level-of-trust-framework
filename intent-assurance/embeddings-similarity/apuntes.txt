@@ -187,3 +187,9 @@ Para generar reglas, mirar artículo que me ha pasado Javier. Si no sirve, inten
 Mirar pluggins de spacy en caso de que sean de ayuda (mirar trello).
 
 I want to deploy a web server that has minimum 6 CPUs available, with no transmision error neither receive errors from network. Moreover, I don't want the server to have high temperatures and I must be able to access to it with SSH.
+
+
+EXPERIMENTATION
+
+expanded.txt has the recommended rules with similarity_spacy.csv -> More accuracy
+not_expanded.txt has the recommended rules with rules_not_expanded.csv.
