@@ -15,32 +15,32 @@ stories:
 
   - story: User confirms the build requested
     steps:
-      - action: utter_ask_build_confirmation
       - slot_was_set:
         - tla_dict: null
         - service_assets_dict: true
         - current_build_message: true
+      - action: utter_ask_build_confirmation
       - intent: confirm
       - action: action_deploy
 
   - story: User rejects the build requested
     steps:
-      - action: utter_ask_build_confirmation
       - slot_was_set:
         - tla_dict: null
         - service_assets_dict: true
         - current_build_message: true
+      - action: utter_ask_build_confirmation
       - intent: reject
       - action: utter_ask_build_feedback
       - checkpoint: build_feedback_loop
   
   - story: continue build feedback loop
     steps:
-      - checkpoint: build_feedback_loop
       - slot_was_set:
         - tla_dict: null
         - service_assets_dict: true
         - current_build_message: true
+      - checkpoint: build_feedback_loop
       - intent: feedback
       - action: action_build_feedback
       - action: utter_ask_more_build_feedback
@@ -48,32 +48,32 @@ stories:
 
   - story: end build feeback loop
     steps:
-      - checkpoint: build_feedback_loop
       - slot_was_set:
         - tla_dict: null
         - service_assets_dict: true
         - current_build_message: true
+      - checkpoint: build_feedback_loop
       - intent: reject
       - action: utter_ask_build_after_feedback
 
   - story: User confirms the build after feedback
     steps:
-      - action: utter_ask_build_after_feedback
       - slot_was_set:
         - tla_dict: null
         - service_assets_dict: true
         - current_build_message: true
+      - action: utter_ask_build_after_feedback
       - intent: confirm
       - action: action_deploy
       - action: action_restart
   
   - story: User rejects the build after feedback
     steps:
-      - action: utter_ask_build_after_feedback
       - slot_was_set:
         - tla_dict: null
         - service_assets_dict: true
         - current_build_message: true
+      - action: utter_ask_build_after_feedback
       - intent: reject
       - action: action_restart
 

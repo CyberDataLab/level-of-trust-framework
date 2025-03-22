@@ -1,27 +1,6 @@
 version: "3.1"
 
 nlu:
-- intent: welcome
-  examples: |
-    - Hey
-    - What's up?
-    - Hi
-    - Hello
-- intent: thanks
-  examples: |
-    - I'm so happy
-    - that's great
-    - amazing
-    - awesome
-    - great
-    - Thanks a lot!
-    - thank you!
-- intent: goodbye
-  examples: |
-    - Great! Bye!
-    - Bye bye!
-    - See you later then!
-    - Ok, see you!
 - intent: cancel
   examples: |
     - Start over
@@ -37,6 +16,8 @@ nlu:
     - cancel that
     - abort all processes
     - nevermind
+    - exit
+    - quit
     - forget it
 - intent: confirm
   examples: |
@@ -200,6 +181,7 @@ nlu:
     - [install](operation) an [email scanner](middlebox) for the [gateway](location)
     - [Set](operation) to [1](qos_value) [Gbps](qos_unit) [bandwidth](qos_metric) [limit](qos_constraint) for the traffic to [DMZ](location)
 
+#TODO: Decide between is a/is not structure or is a/remove structure
 - intent: feedback
   examples: |
     - [set](value) is an [operation](entity)
@@ -213,3 +195,21 @@ nlu:
     - [copyright](value) is a [middlebox](entity)
     - [firewall](value) is a [middlebox](entity)
     - [nat](value) is a [middlebox](entity)
+    - [Apache](value) is a [middlebox](entity)
+    - [load balancer](value) is a [middlebox](entity)
+    - [monitor](value) is a [middlebox](entity)
+    - [inspection](value) is a [middlebox](entity)
+    - [shaping](value) is a [middlebox](entity)
+    - [Remove](operation) the [asset](entity) [ram](value) 
+    - [Remove](operation) the [asset](entity) [my network](value)
+    - [Remove](operation) the [asset](entity) [internet](value)
+    - [Remove](operation) the [asset](entity) [file server](value)
+    - [Remove](operation) the [asset](entity) [mail server](value)
+    - [Remove](operation) the [asset](entity) [cloud](value)
+    - [Remove](operation) the [asset](entity) [dns server](value)
+    - [Remove](operation) the [middlebox](entity) [gbps](value)
+    - [Remove](operation) the [middlebox](entity) [10Gb](value)
+    - [Remove](operation) the [middlebox](entity) [ubuntu server](value)
+    - [Remove](operation) the [middlebox](entity) [windows server](value)
+    - [Remove](operation) the [middlebox](entity) [4 processing cores](value)
+    - [Remove](operation) the [middlebox](entity) [500GB of disk space](value)

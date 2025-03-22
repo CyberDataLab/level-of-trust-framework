@@ -8,8 +8,11 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
-# Global variables
+# Constants
+ADD_FEEDBACK_ACTION = "add"
+REMOVE_FEEDBACK_ACTION = "remove"
 
+# Global variables
 build_classes = ["middlebox", "asset"]
 tla_classes = ["requirements"]
 
@@ -18,6 +21,8 @@ tla_classes = ["requirements"]
 def flush_slots():
     return [SlotSet("service_assets_dict", ""), SlotSet("tla_dict", ""),
              SlotSet("current_build_message", ""), SlotSet("current_tla_message", "")]
+
+""" Feedback functions """
 
 def add_asset_feedback(tracker, value):
     build_json = json.loads(tracker.get_slot("service_assets_dict"))
@@ -34,16 +39,97 @@ def add_asset_feedback(tracker, value):
                     return build_json
     return None
 
-def add_middlebox_feedback(tracker, value):
+def add_middlebox_feedback(dispatcher, tracker, value):
     build_json = json.loads(tracker.get_slot("service_assets_dict"))
-    if value in tracker.get_slot("current_build_message"):
-        new_service = {
-            "middlebox": value,
-            "assets": []
-        }
-        build_json.append(new_service)
-        return build_json
+    current_build_message = tracker.get_slot("current_build_message")
+
+    detected_middleboxes = [service["middlebox"] for service in build_json]
+    detected_assets = [asset for service in build_json for asset in service["assets"]]
+
+    dispatcher.utter_message(f"Current build message: {current_build_message}")
+    dispatcher.utter_message(f"build_json: {json.dumps(build_json, indent=4)}")
+
+    # 1) Localizamos la posición del token que se indicó cómo middlebox
+    new_middlebox_index = None
+    i = 0
+    for i, word in enumerate(current_build_message.split()):
+        dispatcher.utter_message(f"Word: {word} - Value: {value}")
+        if word.lower() == value.lower():
+            new_middlebox_index = i
+            dispatcher.utter_message(f"Match found at index {new_middlebox_index}")
+            break
+
+    if new_middlebox_index is None:
+        dispatcher.utter_message("No se encontró el token en el mensaje")
+        return None
+
+    # 2) A partir de esa posición, recolectamos las entidades de tipo 'asset' hasta toparte con otro middlebox
+    desired_assets = []
+    for j in range(new_middlebox_index + 1, len(current_build_message.split())):
+        word = current_build_message.split()[j]
+        if word in detected_middleboxes:
+            # Si encontramos otro middlebox, paramos
+            break
+        elif word in detected_assets:
+            desired_assets.append(word)
+
+    # 3) Buscamos en build_json un servicio con middlebox=="Unknown middlebox" que tenga esos assets
+    for service in build_json:
+        if service["middlebox"] == None:
+            # Comprobamos si coincide la lista de assets
+            if service["assets"] == desired_assets:
+                service["middlebox"] = value
+                dispatcher.utter_message("Middlebox updated")
+                dispatcher.utter_message(json.dumps(build_json, indent=4))
+                return build_json
+
+    # 4) Si no encontramos un servicio con esos assets, creamos uno nuevo
+    new_service = {
+        "middlebox": value,
+        "assets": []
+    }
+    build_json.append(new_service)
+    dispatcher.utter_message("New service added")
+    dispatcher.utter_message(json.dumps(build_json, indent=4))
+    return build_json
+
+def remove_build_feedback(tracker, value, entity):
+    build_json = json.loads(tracker.get_slot("service_assets_dict"))
+    if entity == "middlebox":
+        for service in build_json:
+            if service["middlebox"] == value:
+                build_json.remove(service)
+                return build_json
+    elif entity == "asset":
+        for service in build_json:
+            if value in service["assets"]:
+                service["assets"].remove(value)
+                return build_json
     return None
+
+def add_tla_feedback(tracker, value):
+    tla_json = json.loads(tracker.get_slot("tla_dict"))
+    requirements = tla_json["requirements"]
+    if value not in requirements:
+        requirements.append(value)
+        return tla_json
+    return None
+
+def remove_tla_feedback(tracker, value):
+    tla_json = json.loads(tracker.get_slot("tla_dict"))
+    requirements = tla_json["requirements"]
+    if value in requirements:
+        requirements.remove(value)
+        return tla_json
+    return None
+
+def process_feedback_output(dispatcher, new_json, action, entity, value):
+    if not new_json:
+        dispatcher.utter_message("I couldn't apply the feedback. Please provide a valid entity and value.")
+        return []
+    else:
+        dispatcher.utter_message(f"{action.capitalize()}ED {entity}: {value}")
+        return [SlotSet("service_assets_dict", json.dumps(new_json))]
 
 """ Build actions """
 
@@ -98,7 +184,6 @@ class ActionBuild(Action):
             services.append(current_service)
 
         # 3) Generate a user-facing response
-        # Show each middlebox and the assets specifically associated with it
         response_lines = []
         for i, service in enumerate(services, start=1):
             mb = service["middlebox"] or "Unknown middlebox"
@@ -156,7 +241,7 @@ class ActionDeploy(Action):
         
         return flush_slots()
 
-# Action to extract the entities from the user intent "build-feedback"
+# Action to extract the entities from the user intent "feedback"
 class ActionBuildFeedback(Action):
 
     def name(self) -> Text:
@@ -166,26 +251,27 @@ class ActionBuildFeedback(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        value = list(tracker.get_latest_entity_values("value"))[0]
-        entity = list(tracker.get_latest_entity_values("entity"))[0]
-        dispatcher.utter_message(f"Feedback received: {value} for {entity}")
+        value = next(tracker.get_latest_entity_values("value"), None)
+        entity = next(tracker.get_latest_entity_values("entity"), None)
+        action = next(tracker.get_latest_entity_values("action"), None)
 
+        dispatcher.utter_message(f"Received feedback: {value}-{entity}")
+
+        if not value or not entity:
+            dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
+            return []
+
+        # Check if the user wants to add an entity
         if entity == "middlebox":
-            new_build_json = add_middlebox_feedback(tracker, value)
-            if new_build_json:
-                dispatcher.utter_message(f"Added middlebox: {value}")
-                return [SlotSet("service_assets_dict", json.dumps(new_build_json))]
-            else:
-                dispatcher.utter_message("Could not add middlebox. Please specify a middlebox first.")
+            return process_feedback_output(dispatcher, add_middlebox_feedback(dispatcher, tracker, value), ADD_FEEDBACK_ACTION, entity, value)
         elif entity == "asset":
-            new_build_json = add_asset_feedback(tracker, value)
-            if new_build_json:
-                dispatcher.utter_message(f"Added asset: {value}")
-                return [SlotSet("service_assets_dict", json.dumps(new_build_json))]
-            else:
-                dispatcher.utter_message("Could not add asset. Please specify a middlebox first.")
+            return process_feedback_output(dispatcher, add_asset_feedback(tracker, value), ADD_FEEDBACK_ACTION, entity, value)
         else:
             dispatcher.utter_message("I'm not sure what you're referring to. Please provide a valid entity.")
+        
+        # Check if the user wants to remove an entity
+        if action.lower == REMOVE_FEEDBACK_ACTION:
+            return process_feedback_output(dispatcher, remove_build_feedback(tracker, value, entity), REMOVE_FEEDBACK_ACTION, entity, value)
 
         return []
 
@@ -229,16 +315,21 @@ class ActionTLAFeedback(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        value = list(tracker.get_latest_entity_values("value"))[0]
-        entity = list(tracker.get_latest_entity_values("entity"))[0]
-        dispatcher.utter_message(f"Feedback received: {value} for {entity}")
+        value = next(tracker.get_latest_entity_values("value"), None)
+        entity = next(tracker.get_latest_entity_values("entity"), None)
+        action = next(tracker.get_latest_entity_values("action"), None)
+
+        dispatcher.utter_message(f"Received feedback: {value}-{entity}")
+
+        if not value or not entity:
+            dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
+            return []
+        
+        if action.lower() == REMOVE_FEEDBACK_ACTION:
+            return process_feedback_output(dispatcher, remove_tla_feedback(tracker, value), REMOVE_FEEDBACK_ACTION, entity, value)
 
         if entity == "requirements":
-            tla_json = json.loads(tracker.get_slot("tla_dict"))
-            requirements = tla_json["requirements"]
-            requirements.append(value)
-            dispatcher.utter_message(f"Added requirement: {value}")
-            return [SlotSet("tla_dict", json.dumps(tla_json))]
+            return process_feedback_output(dispatcher, add_tla_feedback(tracker, value), ADD_FEEDBACK_ACTION, entity, value)
         else:
             dispatcher.utter_message("I'm not sure what you're referring to. Please provide a valid entity.")
 
