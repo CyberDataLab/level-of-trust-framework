@@ -165,21 +165,11 @@ nlu:
     - Build a [web server](middlebox) on a [Ubuntu 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), also deploy a [cloud storage](middlebox) with [2TB of disk space](asset).
     - Deploy a [DNS server](middlebox) on [Debian 10] with [4GB of RAM](asset) and [2 processing cores](asset) and a [firewall](middlebox) on [CentOS 8]. 
     - Set up a [mail server](middlebox), a [web server](middlebox) and a [database server](middlebox).
-    - build a [web server](middlebox), a [firewall](middlebox) and a [load balancer](middlebox). 
-- intent: build-feedback
-  examples: |
-    - [blocked](value) is an [operation](entity)
-    - [housing](value) is a [location](entity)
-    - [Dorms](value) is a [location](entity)
-    - [University](value) is a [location](entity)
-    - [copyright](value) is a [middlebox](entity)
-    - [firewall](value) is a [middlebox](entity)
-    - [nat](value) is a [middlebox](entity)
+    - build a [web server](middlebox), a [firewall](middlebox) and a [load balancer](middlebox).
 
 - intent: tla
   examples: |
     - [limit](qos_constraint) [servers](location) [bandwidth](qos_metric) to [5](qos_value) [gbps](qos_unit)
-    - [Limit](qos_constraint) [students](group) in the [dorm](location) to [10](qos_value) [GB per week](qos_unit)
     - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
     - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
     - [limit](qos_constraint) the [bandwidth](qos_metric) to [5](qos_value) [Gb](qos_unit) for rack [servers](location)
@@ -193,44 +183,33 @@ nlu:
     - [Limit](qos_constraint) [traffic](traffic) to [10](qos_value) [GB per week](qos_unit) at [Dorms](location)
     - for endpoint [dorms](location) [set](operation) [quota](qos_metric) [download](qos_constraint) [10](qos_value) [gb/wk](qos_unit)
     - At endpoint [Dorms](location) [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit)
-    - [Students](group) shall [download](qos_constraint) [no more than](qos_metric) [1000000](qos_value) [MB per week](qos_unit)
     - [Limit](qos_constraint) rack [servers](location) to [5](qos_value) [gbps](qos_unit)
     - [Limit](qos_constraint) [servers](location) to [5](qos_value) [gbps](qos_unit)
     - [Set](operation) [5](qos_value) [gbps](qos_unit) [limit](qos_constraint) for [servers](location)
     - [define](operation) [dorms](location) [quota](qos_metric) to [10](qos_value) [gb per week](qos_unit)
-    - [Students](group) shall [download](qos_constraint) [no more than](qos_metric) [1000000](qos_value) [megabytes per week](qos_unit)
     - please [limit](qos_constraint) [bandwidth](qos_metric) to [5](qos_value) [Gigabits per second](qos_unit) for the [server racks](location)
     - [limit](qos_constraint) the [bandwidth](qos_metric) in [server racks](location) to [5](qos_value) [gbps](qos_unit)
-    - I want the [torrent traffic](traffic) from [guest users](group) to be [no more than](qos_metric) [100](qos_value) [mbps](qos_unit)
-    - [limit](qos_constraint) [network usage](qos_metric) of all [students](group) in the [dorms](location) to no more than [10](qos_value) [gb per seven days](qos_unit)
     - [set](operation) a [maximum](qos_constraint) of [5](qos_value) [gbps](qos_unit) to the [servers](location)
-    - [students](group) should [download](qos_constraint) up to [10](qos_value) [GB per week](qos_unit) of [data](qos_metric).
-    - [set](operation) [torrent traffic](traffic) from [guests](group) to [100](qos_value) [mbps](qos_unit)
     - [limit](qos_constraint) the [bandwidth rate](qos_metric) of the [server racks](location) to [5](qos_value) [gbps](qos_unit)
     - [limit](qos_constraint) to [100](qos_value) [Mbps](qos_unit) the [bandwidth](qos_metric) [torrent traffic](traffic) can consume
-    - put a [download](qos_constraint) [quota](qos_metric) for [students](group) of [10](qos_value) [gb per week](qos_unit)
     - [limit](qos_constraint) [torrent traffic](traffic) to [100](qos_value) [mbps](qos_unit)
-    - [set](operation) a [10](qos_value) [GB per week](qos_unit) [download](qos_constraint) [quota](qos_metric) for [students](group) in [dorms](location)
-    - [limit](qos_constraint) [torrent traffic](traffic) for [guests](group) to [100](qos_value) [Mbps](qos_unit)
-    - [Students](group) can [download](qos_constraint) up to [10](qos_value) [GB per week](qos_unit) of [data](qos_metric).
-    - [Limit](qos_constraint) [bandwidth](qos_metric) usage to [50](qos_value) [mbps](qos_unit) for [professors](group).
-    - [Define](operation) a [quota](qos_metric) of [10](qos_value) [GB per week](qos_unit) for all [students](group)
     - [Dorms](location) traffic to [internet](location) [must pass through](operation) a [firewall](middlebox)
-    - We provide a [quota](qos_metric) to all [students](group) of [1](qos_value) [GB/wk](qos_unit) of usage.
     - [add](operation) [security](middlebox) from [entry](location) to [backend](location)
     - From [gateway](location) to [my network](location) [remove](operation) [nat](middlebox)
-    - [Students](group) [may use](qos_metric) up to [10](qos_value) [GB of data weekly](qos_unit)
-    - [Students](group) [should not use more than](qos_metric) [five](qos_value) [gigabytes of bandwidth per week](qos_unit)
     - [Limit](qos_constraint) in [10](qos_value) [Mbps](qos_unit) the [download rate](qos_metric) of [dorms](location) from [internet](location)
-    - [Setup](operation) a [packet filter](middlebox) for [guests](group) traffic
-    - [set](operation) to [1](qos_value) [GB per day](qos_unit) the [download limit](qos_metric) for [guests](group)
     - [install](operation) an [email scanner](middlebox) for the [gateway](location)
     - [Set](operation) to [1](qos_value) [Gbps](qos_unit) [bandwidth](qos_metric) [limit](qos_constraint) for the traffic to [DMZ](location)
-    - [set to](operation) [10](qos_value) [kbps](qos_unit) the [upload rate](qos_metric) for [faculty](group)
 
-- intent: tla-feedback
+- intent: feedback
   examples: |
     - [set](value) is an [operation](entity)
     - [limit](value) is a [qos_constraint](entity)
     - [servers](value) is a [location](entity)
     - [bandwidth](value) is a [qos_metric](entity)
+    - [blocked](value) is an [operation](entity)
+    - [housing](value) is a [location](entity)
+    - [Dorms](value) is a [location](entity)
+    - [University](value) is a [location](entity)
+    - [copyright](value) is a [middlebox](entity)
+    - [firewall](value) is a [middlebox](entity)
+    - [nat](value) is a [middlebox](entity)

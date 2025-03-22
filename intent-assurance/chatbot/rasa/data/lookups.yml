@@ -32,7 +32,6 @@ nlu:
       - peer2peer
       - torrent
       - peer-to-peer
-      - students can download 10gb in dorms
   - lookup: location
     examples: |
       - video server
@@ -232,30 +231,6 @@ nlu:
       - unset
       - unsettle
       - withhold
-  - lookup: group
-    examples: |
-      - all professors
-      - teachers
-      - professors
-      - all teachers
-      - all prof
-      - prof
-      - Guests' network
-      - guests
-      - guest users
-      - all students
-      - undergrads
-      - students
-      - scholar
-      - resident
-      - Staff members
-      - staff
-      - for all staff
-      - faculty
-      - consumers
-      - network users
-      - user
-      - users
   - lookup: middlebox
     examples: |
       - nat

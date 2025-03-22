@@ -4,33 +4,30 @@ version: "3.1"
 config:
   store_entities_as_slots: false
 session_config:
-  session_expiration_time: 60
+  session_expiration_time: 120
   carry_over_slots_to_new_session: false
 intents:
   - welcome:
-      use_entities: true
+      use_entities: false
   - thanks:
-      use_entities: true
+      use_entities: false
   - goodbye:
-      use_entities: true
+      use_entities: false
   - cancel:
-      use_entities: true
+      use_entities: false
   - confirm:
-      use_entities: true
+      use_entities: false
   - reject:
-      use_entities: true
+      use_entities: false
   - build:
       use_entities:
         - middlebox
         - asset
-  - build-feedback:
+  - feedback:
       use_entities:
-        - middlebox
-        - asset
+        - entity
+        - value
   - tla:
-      use_entities:
-        - requirement
-  - tla-feedback:
       use_entities:
         - requirement
 entities:
@@ -40,7 +37,6 @@ entities:
   - protocol
   - service
   - traffic
-  - group
   - middlebox #Service
   - qos_metric
   - qos_unit
@@ -60,30 +56,49 @@ slots:
     influence_conversation: true
     mappings:
     - type: custom
+  current_build_message:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+  current_tla_message:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
 responses:
+#General
   utter_greet:
     - text: Hey! How are you?
   utter_goodbye:
     - text: Bye! Thank you!
   utter_you_are_welcome:
     - text: I'm glad I could help you!
-  utter_ask_for_feedback:
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+#Build
+  utter_ask_build_feedback:
     - text: Hmm, okay. Tell me an entity I missed, or cancel the feedback loop.
-  utter_ask_for_more_feedback:
+  utter_ask_more_build_feedback:
     - text: Okay. Tell me another entity I missed, or cancel the feedback loop.
   utter_ask_build_confirmation:
     - text: Are all these build parameters correct?
-  utter_ask_tla_confirmation:
-    - text: Are all these TLA parameters correct?  
   utter_ask_build_after_feedback:
     - text: Should I deploy the services with all this feedback collected?
-  utter_please_rephrase:
-  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+#TLA
+  utter_ask_tla_confirmation:
+    - text: Are all these TLA parameters correct?  
+  utter_ask_tla_feedback:
+    - text: Hmm, okay. Tell me a requirement I missed, or cancel the feedback loop.
+  utter_ask_more_tla_feedback:
+    - text: Okay. Tell me another requirement I missed, or cancel the feedback loop.
+  utter_ask_tla_after_feedback:
+    - text: Should I pass the TLA with all this feedback collected?
 actions:
   - action_build
   - action_build_feedback
   - action_deploy
   - action_check_tla
-  - action_pass_tla
   - action_tla_feedback
+  - action_pass_tla
 e2e_actions: []
