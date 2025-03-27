@@ -1,0 +1,8 @@
+{
+    "compute": ["processing", "capacity", "throughput", "calculation"],
+    "network": ["bandwidth", "latency", "throughput", "transmission", "connectivity"],
+    "memory": ["ram", "swap", "buffers", "allocation", "storage"],
+    "speed": ["latency", "throughput", "performance", "response"],
+    "critical": ["emergency", "severe", "alert", "danger"],
+    "overload": ["saturation", "maxout", "overutilization"]
+}

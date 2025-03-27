@@ -1,44 +1,40 @@
 import pandas as pd
 import numpy as np
+import json
+import logging
+import joblib
+from pathlib import Path
+
 import spacy
 from spacy.matcher import PhraseMatcher
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.preprocessing import MultiLabelBinarizer
-import joblib
-from pathlib import Path
-
-
 from sentence_transformers import SentenceTransformer
-import logging
 
 # Logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+def load_json(file_path):
+    """
+    Load technical phrases from a JSON file and return as a list.
+    """
+    logger.info(f"Loading technical phrases from: {file_path}")
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    return data
 
 # Technical terms, synonyms, critical keywords and rule categories
-TECHNICAL_SYNONYMS = {
-    'compute': ['processing', 'capacity', 'throughput', 'calculation'],
-    'network': ['bandwidth', 'latency', 'throughput', 'transmission', 'connectivity'],
-    'memory': ['ram', 'swap', 'buffers', 'allocation', 'storage'],
-    'speed': ['latency', 'throughput', 'performance', 'response'],
-    'critical': ['emergency', 'severe', 'alert', 'danger'],
-    'overload': ['saturation', 'maxout', 'overutilization']
-}
+TECHNICAL_SYNONYMS = load_json('data/technical_synonyms.json')
 
-RULE_CATEGORIES = {
-    'cpu': ['cpu', 'processing', 'core', 'load', 'compute'],
-    'memory': ['memory', 'swap', 'buffer', 'allocation', 'free'],
-    'network': ['network', 'bandwidth', 'latency', 'packet', 'tx', 'rx'],
-    'hardware': ['temperature', 'fan', 'speed', 'hardware', 'metal'],
-    'system': ['zombie', 'process', 'kernel', 'dpdk', 'ssh']
-}
+RULE_CATEGORIES = load_json('data/rule_categories.json')
+
+TECHNICAL_PHRASES = load_json('data/technical_phrases.json')
 
 CRITICAL_KEYWORDS = {
     'critical': 2.0,
@@ -50,14 +46,6 @@ CRITICAL_KEYWORDS = {
     'exhausted': 1.3
 }
 
-TECHNICAL_PHRASES = [
-    "web server", "transmission error", "receive errors", "high temperatures", "access to it with SSH",
-    "ssh access", "network interface", "cpu usage", "cpu utilization", "cpu performance", "cpu load",
-    "cpu allocation", "memory usage", "memory utilization", "memory performance", "memory load",
-    "memory allocation", "network bandwidth", "network latency", "network throughput", "network packet",
-    "network tx", "network rx", "hardware temperature", "fan speed", "hardware speed", "hardware metal",
-    "system zombie", "system process", "system kernel", "system dpdk", "system ssh"
-]
 
 class HybridEncoder:
     def __init__(self):

@@ -1,0 +1,7 @@
+{
+    "cpu": ["cpu", "processing", "core", "load", "compute"],
+    "memory": ["memory", "swap", "buffer", "allocation", "free"],
+    "network": ["network", "bandwidth", "latency", "packet", "tx", "rx"],
+    "hardware": ["temperature", "fan", "speed", "hardware", "metal"],
+    "system": ["zombie", "process", "kernel", "dpdk", "ssh"]
+}
