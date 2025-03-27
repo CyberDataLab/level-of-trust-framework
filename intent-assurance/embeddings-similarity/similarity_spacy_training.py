@@ -29,8 +29,15 @@ def load_json(file_path):
         data = json.load(file)
     return data
 
+def invert_synonyms(synonyms):
+    inverted = {}
+    for key, values in synonyms.items():
+        for synonym in [key] + values:  # Incluye la clave y sus sinónimos
+            inverted[synonym] = [key] + values
+    return inverted
+
 # Technical terms, synonyms, critical keywords and rule categories
-TECHNICAL_SYNONYMS = load_json('data/technical_synonyms.json')
+INVERTED_TECHNICAL_SYNONYMS = invert_synonyms(load_json('data/technical_synonyms.json'))
 
 RULE_CATEGORIES = load_json('data/rule_categories.json')
 
@@ -151,10 +158,30 @@ class RuleRecommender:
                 continue
             # Expand technical synonyms
             lemma = token.lemma_
-            if lemma in TECHNICAL_SYNONYMS:
-                tokens.extend(TECHNICAL_SYNONYMS[lemma])
-            else:
+
+            """ O(n) every time a token is processed
+                o(1) when creating the dictionary
+            synonyms_found = False
+            for key, synonyms in TECHNICAL_SYNONYMS.items():
+                if lemma == key or lemma in synonyms:
+                    tokens.extend([key] + synonyms)  # Añade la clave y todos los sinónimos
+                    synonyms_found = True
+                    break
+            if not synonyms_found:
                 tokens.append(lemma)
+            """
+
+            # O(1) every time a token is processed
+            # O(n) when creating invert dictionary
+            for token in doc:
+                if token.is_punct:
+                    continue
+                lemma = token.lemma_
+                if lemma in INVERTED_TECHNICAL_SYNONYMS:
+                    tokens.extend(INVERTED_TECHNICAL_SYNONYMS[lemma])
+                else:
+                    tokens.append(lemma)
+
         # Filter out stopwords, short tokens, and digits
         filtered_tokens = [
             token for token in tokens
