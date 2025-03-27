@@ -141,15 +141,12 @@ nlu:
     - [Add](operation) [intrusion detection](middlebox) and [address translation](middlebox) for [servers](location) network
     - [Remove](operation) [load balancing](middlebox) from [gateway](location) to [database](location).
     - [Add](operation) [firewall](middlebox) from [gateway](location) to the [lab](location).
-    - Deploy a [web server](middlebox) inside an [Ubuntu-server 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores], then deploy a [mail server](middlebox) inside a [windows server machine](asset) with [500GB of disk space](asset) and [4 processing cores](asset).
+    - Deploy a [web server](middlebox) inside an [Ubuntu-server 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), then deploy a [mail server](middlebox) inside a [windows server machine](asset) with [500GB of disk space](asset) and [4 processing cores](asset).
     - I want a [firewall](middlebox) running on a [linux machine](asset) with [8GB of RAM](asset) and a IDS(middlebox) on a [windows machine](asset) with [1TB of disk space](asset).
     - Build a [web server](middlebox) on a [Ubuntu 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), also deploy a [cloud storage](middlebox) with [2TB of disk space](asset).
-    - Deploy a [DNS server](middlebox) on [Debian 10] with [4GB of RAM](asset) and [2 processing cores](asset) and a [firewall](middlebox) on [CentOS 8]. 
+    - Deploy a [DNS server](middlebox) on [Debian 10](asset) with [4GB of RAM](asset) and [2 processing cores](asset) and a [firewall](middlebox) on [CentOS 8]. 
     - Set up a [mail server](middlebox), a [web server](middlebox) and a [database server](middlebox).
     - build a [web server](middlebox), a [firewall](middlebox) and a [load balancer](middlebox).
-
-- intent: tla
-  examples: |
     - [limit](qos_constraint) [servers](location) [bandwidth](qos_metric) to [5](qos_value) [gbps](qos_unit)
     - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
     - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)

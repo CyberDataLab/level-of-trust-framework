@@ -20,24 +20,37 @@ tla_classes = ["requirements"]
 
 def flush_slots():
     return [SlotSet("service_assets_dict", ""), SlotSet("tla_dict", ""),
-             SlotSet("current_build_message", ""), SlotSet("current_tla_message", "")]
+             SlotSet("current_build_message", "")]
 
 """ Feedback functions """
 
 def add_asset_feedback(tracker, value):
     build_json = json.loads(tracker.get_slot("service_assets_dict"))
 
+    # Convertimos el mensaje actual y el valor buscado a minúsculas
+    current_build_message_lower = tracker.get_slot("current_build_message").lower().split()
+    value_lower = value.lower()
+
+    # Construimos una lista de middleboxes en minúsculas para comparaciones
+    middleboxes_lower = [service["middlebox"].lower() for service in build_json]
+
     latest_middlebox = None
-    for word in tracker.get_slot("current_build_message").split():
-        if word in [service["middlebox"] for service in build_json]:
-            latest_middlebox = word
+
+    for word in current_build_message_lower:
+        if word in middleboxes_lower:
+            idx = middleboxes_lower.index(word)
+            latest_middlebox = build_json[idx]["middlebox"]
             continue
-        if word == value:
+
+        if word == value_lower and latest_middlebox is not None:
             for service in build_json:
-                if service["middlebox"] == latest_middlebox:
+                if service["middlebox"].lower() == latest_middlebox.lower():
                     service["assets"].append(value)
                     return build_json
+
     return None
+
+
 
 def add_middlebox_feedback(dispatcher, tracker, value):
     build_json = json.loads(tracker.get_slot("service_assets_dict"))
@@ -93,19 +106,29 @@ def add_middlebox_feedback(dispatcher, tracker, value):
     dispatcher.utter_message(json.dumps(build_json, indent=4))
     return build_json
 
+import json
+
 def remove_build_feedback(tracker, value, entity):
     build_json = json.loads(tracker.get_slot("service_assets_dict"))
+
+    # Convertimos el valor a minúsculas para hacer la comparación
+    value_lower = value.lower()
+
     if entity == "middlebox":
         for service in build_json:
-            if service["middlebox"] == value:
+            if service["middlebox"].lower() == value_lower:
                 build_json.remove(service)
                 return build_json
+
     elif entity == "asset":
         for service in build_json:
-            if value in service["assets"]:
-                service["assets"].remove(value)
-                return build_json
+            for asset in service["assets"]:
+                if asset.lower() == value_lower:
+                    service["assets"].remove(asset)
+                    return build_json
+
     return None
+
 
 def add_tla_feedback(tracker, value):
     tla_json = json.loads(tracker.get_slot("tla_dict"))
@@ -128,7 +151,7 @@ def process_feedback_output(dispatcher, new_json, action, entity, value):
         dispatcher.utter_message("I couldn't apply the feedback. Please provide a valid entity and value.")
         return []
     else:
-        dispatcher.utter_message(f"{action.capitalize()}ED {entity}: {value}")
+        dispatcher.utter_message(f"{action.capitalize()}ed {entity}: {value}")
         return [SlotSet("service_assets_dict", json.dumps(new_json))]
 
 """ Build actions """
@@ -287,7 +310,6 @@ class ActionCheckTLA(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        current_tla_message = tracker.latest_message.get('text')
         # Extract the entities from the user intent
         requirements = list(tracker.get_latest_entity_values("requirements"))
 
@@ -303,7 +325,7 @@ class ActionCheckTLA(Action):
         }
         tla_json = json.dumps(tla_data)
 
-        return [SlotSet("tla_dict", tla_json), SlotSet("current_tla_message", current_tla_message)]
+        return [SlotSet("tla_dict", tla_json)]
     
 # Action to provide feedback on the TLA requirements
 class ActionTLAFeedback(Action):
