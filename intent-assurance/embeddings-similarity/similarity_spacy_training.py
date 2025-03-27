@@ -285,8 +285,8 @@ class RuleRecommender:
         query_emb = self.encoder.transform([processed_query])
 
         similarities = cosine_similarity(query_emb, self.embeddings).flatten()
-        boosted_scores = similarities * self.rules_df['criticality_score'].values
-
+        #boosted_scores = similarities * self.rules_df['criticality_score'].values
+        boosted_scores = (similarities * self.rules_df['criticality_score'].values) / 5.0
         mask = boosted_scores >= min_score
         results = self.rules_df[mask]
         scores = boosted_scores[mask]
@@ -330,9 +330,9 @@ class RuleRecommender:
 
 if __name__ == "__main__":
 
-    RULES_FILE = 'data/similarity_spacy.csv'
+    RULES_FILE = 'data/rules.csv'
     USER_QUERY = "I want to deploy a web server that has minimum 6 CPUs available, with no transmision error neither receive errors from network. Moreover, I don't want the server to have high temperatures and I must be able to access to it with SSH."
-    THRESHOLD = 0.3
+    THRESHOLD = -10000
 
     TRAINING_DATA = 'data/training_data.csv'
     

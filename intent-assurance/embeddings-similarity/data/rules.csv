@@ -12,8 +12,8 @@ r10,Bare Metal CPU Overloaded (Idle less or equal than 1% for 1min),1min(idle_ti
 r11,Bare Metal CPU Critical Overload (Idle less or equal than 1% for 5min),5min(idle_time)<=1
 r12,Virtual Machine CPU Overloaded (Idle less or equal than 1% for 1min),1min(idle_time)<=1
 r13,Virtual Machine CPU Critical Overload (Idle less or equal than 1% for 5min),5min(idle_time)<=1
-r14,Bare Metal Temperature Limit Reached (Temp more or equal than Max temperature),input_temp>=max_temp
-r15,Bare Metal Critical Temperature Alert (Temp more or equal than Critical),input_temp>=critical_temp
+r14,Bare Metal Temperature Limit Reached (Temperature more or equal than Max temperature),input_temp>=max_temp
+r15,Bare Metal Critical Temperature Alert (Temperature more or equal than Critical),input_temp>=critical_temp
 r16,Bare Metal Critical Fan Speed (Speed less than 100 RPM),input_fanspeed<100
 r17,Bare Metal Zombie Processes Active (Count more than 0),zombie_count>0
 r18,Virtual Machine SSH Access Down,ssh==0

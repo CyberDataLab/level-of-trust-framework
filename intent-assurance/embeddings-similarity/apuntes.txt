@@ -189,7 +189,36 @@ Mirar pluggins de spacy en caso de que sean de ayuda (mirar trello).
 I want to deploy a web server that has minimum 6 CPUs available, with no transmision error neither receive errors from network. Moreover, I don't want the server to have high temperatures and I must be able to access to it with SSH.
 
 
-EXPERIMENTATION
+CONSIDERACIÓN SOBRE SINONIMOS
 
-expanded.txt has the recommended rules with similarity_spacy.csv -> More accuracy
-not_expanded.txt has the recommended rules with rules_not_expanded.csv.
+Si implemento los sinonimos con un diccionario como el siguiente:
+
+{
+    "compute": ["processing", "capacity", "throughput", "calculation"],
+    "network": ["bandwidth", "latency", "throughput", "transmission", "connectivity"],
+    "memory": ["ram", "swap", "buffers", "allocation", "storage"],
+    "speed": ["latency", "throughput", "performance", "response"],
+    "critical": ["emergency", "severe", "alert", "danger"],
+    "overload": ["saturation", "maxout", "overutilization"]
+}
+
+Tenemos un problema, si aparece el token "processing" no detectará que es sinónimo de "compute", "capacity"... Para solucionar esto hay 2 formas:
+
+1: Cuando se procesen los token, recorrer las listas y comprobar si se encuentra la palabra en algún conjunto. Sin embargo, es muy ineficiente -> Por cada búsqueda el tiempo es lineal O(n).
+2: Crear un diccionario invertido en el que cada palabra se encuentre relacionada con sus sinónimos. Por ejemplo:
+        INVERTED_TECHNICAL_SYNONYMS = {
+            "cpu": ["cpu", "processor", "core"],
+            "processor": ["cpu", "processor", "core"],
+            "core": ["cpu", "processor", "core"],
+            "network": ["network", "lan", "ethernet"],
+            "lan": ["network", "lan", "ethernet"],
+            "ethernet": ["network", "lan", "ethernet"],
+            "memory": ["memory", "ram", "storage"],
+            "ram": ["memory", "ram", "storage"],
+            "storage": ["memory", "ram", "storage"]
+        }
+    Esto permite 2 cosas: Que cada palabra esté relacionada con su sinónimo y, que cada búsqueda sea constante O(1), pues sería comprobar solamente si el token se encuentra entre las keys del diccionario
+    mediante hash tables. 
+    La conversión de un diccionario normal a invertido tiene una complejidad de O(n), pero esto se realiza solo 1 vez y no por cada token procesado.
+
+He decidido utilizar la segunda opción por razones obvias. Sin embargo, en el fichero "technical_synonyms" se utiliza un diccionario normal para que sea legible y de fácil actualización.
