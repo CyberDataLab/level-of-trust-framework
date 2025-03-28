@@ -1,0 +1,46 @@
+{
+    "vnfProvider": "Bcom",
+    "vnfSoftwareVersion": "1.2.1",
+    "serviceType": "cloud",
+    "assets": [
+        {
+            "id": "resource-disk1",
+            "type": "resource",
+            "virtualStorageDesc": [
+                {
+                    "id": "VSD_WEF_AAA",
+                    "swImageDesc": "WEF_AAA_SWID"
+                },
+                {
+                    "typeOfStorage": "VOLUME",
+                    "sizeOfStorage": 256,
+                    "sizeOfStorageUnit": "GB"
+                },
+                {
+                    "health": {
+                        "score": 0,
+                        "status": "orange",
+                        "symptoms": [
+                            {
+                                "symptomType": "Memory",
+                                "objectiveIndicators": [
+                                    {
+                                        "indicatorType": "Availability",
+                                        "indicatorValue": 0.99
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "type": "infrastructure",
+            "location": {
+                "country": "Spain",
+                "network": "movistar-subnet1"
+            }
+        }
+    ]
+}

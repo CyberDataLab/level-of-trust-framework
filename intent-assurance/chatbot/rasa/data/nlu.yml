@@ -178,7 +178,6 @@ nlu:
     - [install](operation) an [email scanner](middlebox) for the [gateway](location)
     - [Set](operation) to [1](qos_value) [Gbps](qos_unit) [bandwidth](qos_metric) [limit](qos_constraint) for the traffic to [DMZ](location)
 
-#TODO: Decide between is a/is not structure or is a/remove structure
 - intent: feedback
   examples: |
     - [set](value) is an [operation](entity)

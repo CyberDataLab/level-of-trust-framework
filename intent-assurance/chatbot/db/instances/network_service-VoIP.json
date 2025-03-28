@@ -1,0 +1,72 @@
+{
+    "vnfProvider": "Bcom",
+    "vnfSoftwareVersion": "1.2.1",
+    "serviceType": "cloud",
+    "assets": [
+        {
+            "id": "resource-voip1",
+            "type": "service",
+            "serviceDesc": {
+                "id": "WEF_AAA_SID",
+                "serviceType": "voip",
+                "serviceSW": "asterisk",
+                "serviceVersion": "22.0.0"
+            },
+            "subservices": [
+                {
+                    "subserviceDesc": {
+                        "id": "subservice-ldap1",
+                        "subserviceType": "directory",
+                        "subserviceSW": "open-ldap",
+                        "subserviceVersion": "2.6.9"
+                    },
+                    "health": {
+                        "score": 0,
+                        "status": "green",
+                        "symptoms": [
+                            {
+                                "symptomType": "Processes",
+                                "objectiveIndicators": [
+                                    {
+                                        "indicatorType": "Stability",
+                                        "indicatorValue": 0.99
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "health": {
+                "score": 0,
+                "status": "green",
+                "symptoms": [
+                    {
+                        "symptomType": "Networking",
+                        "objectiveIndicators": [
+                            {
+                                "indicatorType": "Stability",
+                                "indicatorValue": 0.99
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "infrastructure-movistar1",
+            "type": "infrastructure",
+            "location": {
+                "country": "Spain",
+                "network": "movistar-subnet1",
+                "adressCompatibility": "IPv4",
+                "bandWidth": {
+                    "bandwidthValue": 100,
+                    "bandwidthUnit": "Mbps"
+                }
+            }
+        }
+    ]
+}

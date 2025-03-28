@@ -1,7 +1,10 @@
 #!/usr/bin/env sh
 
+
+# Rasa installation
 if ! command -v python3 >/dev/null 2>&1; then
-  echo "Error: No se encontró python3 en el sistema."
+  echo "Error: Python 3 was not found in the system."
+  echo "Please install Python 3.10"
   exit 1
 fi
 
@@ -19,3 +22,12 @@ else
   echo "Error: Se requiere Python 3.10 activo. Versión detectada: $PY_VERSION"
   exit 1
 fi
+
+# MongoDB installation
+if ! command -v docker >/dev/null 2>&1; then
+  echo "Error: No se encontró Docker en el sistema."
+  exit 1
+fi
+
+docker pull mongo:latest
+

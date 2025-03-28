@@ -1,5 +1,4 @@
 version: "3.1"
-#TODO: Change intent and action names to distinguish between build/TLA
 
 config:
   store_entities_as_slots: false

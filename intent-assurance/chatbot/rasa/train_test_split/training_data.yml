@@ -1,0 +1,1145 @@
+version: "3.1"
+nlu:
+- intent: cancel
+  examples: |
+    - I want to start over
+    - I want to cancel
+    - Cancel
+    - Stop
+    - cancel that
+    - Please cancel
+    - abort all processes
+    - quit
+    - Abort
+    - I want to stop
+    - Cancel that
+    - stop that
+- intent: feedback
+  examples: |
+    - [inspection](value) is a [middlebox](entity)
+    - [Remove](operation) the [asset](entity) [internet](value)
+    - [Remove](operation) the [asset](entity) [mail server](value)
+    - [firewall](value) is a [middlebox](entity)
+    - [Remove](operation) the [asset](entity) [my network](value)
+    - [limit](value) is a [qos_constraint](entity)
+    - [shaping](value) is a [middlebox](entity)
+    - [Dorms](value) is a [location](entity)
+    - [Remove](operation) the [middlebox](entity) [gbps](value)
+    - [Remove](operation) the [middlebox](entity) [ubuntu server](value)
+    - [copyright](value) is a [middlebox](entity)
+    - [Apache](value) is a [middlebox](entity)
+    - [bandwidth](value) is a [qos_metric](entity)
+    - [nat](value) is a [middlebox](entity)
+    - [servers](value) is a [location](entity)
+    - [Remove](operation) the [asset](entity) [cloud](value)
+    - [Remove](operation) the [asset](entity) [file server](value)
+    - [load balancer](value) is a [middlebox](entity)
+    - [Remove](operation) the [middlebox](entity) [4 processing cores](value)
+    - [University](value) is a [location](entity)
+    - [Remove](operation) the [middlebox](entity) [windows server](value)
+    - [Remove](operation) the [middlebox](entity) [10Gb](value)
+    - [blocked](value) is an [operation](entity)
+    - [Remove](operation) the [middlebox](entity) [500GB of disk space](value)
+- intent: confirm
+  examples: |
+    - yes that't ok
+    - that's correct
+    - yes please
+    - perfect
+    - yes you can do it
+    - okay I will
+    - yup
+    - yep
+    - why not
+    - exactly
+    - yes I do
+    - I think so
+    - ok
+    - alright why not
+    - go ahead
+    - right
+    - sure
+    - do it
+    - it's okay
+    - yeah
+    - for sure
+    - it looks perfect
+    - sg
+    - yes I can
+    - yep that's ok
+    - yes I agree
+    - of course
+    - I agree
+    - it's fine
+    - I don't mind
+    - alright
+    - absolutely
+    - that one works
+- intent: reject
+  examples: |
+    - no thanks
+    - thanks but not this time
+    - no not really
+    - no way no
+    - no we are good
+    - don't do it
+    - not at all
+    - nothing else
+    - never
+    - I don't want
+    - no no don't
+    - no maybe next time
+    - I'm not
+    - I disagree
+    - not this time
+    - definitely not
+    - not today
+    - not
+    - nothing else thanks
+    - no it isn't
+    - not right now
+    - nah
+    - don't
+    - no way
+    - na
+    - nah I'm good
+    - no I cannot
+    - I can't
+    - nope not really
+    - no
+    - nope
+    - no that's be all
+    - not really
+    - no never
+    - not interested
+- intent: build
+  examples: |
+    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and [four Debian VMs](asset)
+    - [Set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [dorms](location)
+    - [add](operation) [DPI](middlebox) to the [labs](location) network
+    - [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [servers](location)
+    - Install a [proxy server](middlebox) on [two Fedora VMs](asset)
+    - [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [labs](location)
+    - From [university](location) to [internet](location) [add](operation) [firewall](middlebox)
+    - [install](operation) an [email scanner](middlebox) for the [gateway](location)
+    - [Set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) [dorms](location)
+    - [Remove](operation) [load balancing](middlebox) from [gateway](location) to [database](location).
+    - I want to deploy a [database server](middlebox) on [three CentOS VMs](asset) and [four Debian VMs](asset)
+    - [add](operation) [security](middlebox) from [entry](location) to [backend](location)
+    - [Limit](qos_constraint) [traffic](traffic) to [10](qos_value) [GB per week](qos_unit) at [Dorms](location)
+    - From [gateway](location) to [my network](location) [remove](operation) [nat](middlebox)
+    - please [limit](qos_constraint) [bandwidth](qos_metric) to [5](qos_value) [Gigabits per second](qos_unit) for the [server racks](location)
+    - [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [LAN](location)
+    - From [gateway](location) to [network](location) [add](operation) middlebox [firewall](middlebox)
+    - for endpoint [dorms](location) [set](operation) [quota](qos_metric) [download](qos_constraint) [10](qos_value) [gb/wk](qos_unit)
+    - Deploy a [file server](middlebox) on [four Debian VMs](asset) and [five Red Hat VMs](asset)
+    - Please add [traffic shaper](middlebox) between the [internet](location) and the [dorms](location)
+    - [Remove](operation) [firewall](middlebox) from the [university](location) to the [datacenter](location)
+    - Deploy a [web server](middlebox) on [two Ubuntu Server 20.04 VMs](asset) and [three CentOS VMs](asset)
+    - [Add](operation) [monitor](middlebox) for the [university](location)
+    - [add](operation) [dpi](middlebox) to [labs](location)
+    - [Add](operation) [DPI](middlebox) middlebox into [all traffic](traffic) from [Internet](location) to the [Labs](location)
+    - Build a [web server](middlebox) on a [Ubuntu 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), also deploy a [cloud storage](middlebox) with [2TB of disk space](asset).
+    - [Set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [guest](location)
+    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset)
+    - [Set](operation) [5](qos_value) [gbps](qos_unit) [limit](qos_constraint) for [servers](location)
+    - [add](operation) a [firewall](middlebox)
+    - Deploy a [file server](middlebox) on [four Debian VMs](asset)
+    - build a [web server](middlebox), a [firewall](middlebox) and a [load balancer](middlebox).
+    - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
+    - I want a [firewall](middlebox) running on a [linux machine](asset) with [8GB of RAM](asset) and a IDS(middlebox) on a [windows machine](asset) with [1TB of disk space](asset).
+    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset) and [six Ubuntu VMs](asset)
+    - From [internet](location) to [Labs](location) [add](operation) [DPI](middlebox)
+    - [Limit](qos_constraint) in [10](qos_value) [Mbps](qos_unit) the [download rate](qos_metric) of [dorms](location) from [internet](location)
+    - [Add](operation) [inspection](middlebox) for the [university](location)
+    - [limit](qos_constraint) to [100](qos_value) [Mbps](qos_unit) the [bandwidth](qos_metric) [torrent traffic](traffic) can consume
+    - [limit](qos_constraint) the [bandwidth](qos_metric) in [server racks](location) to [5](qos_value) [gbps](qos_unit)
+    - add [shaping](middlebox) for [gateway](location)
+    - At endpoint [Dorms](location) [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit)
+    - [Limit](qos_constraint) rack [servers](location) to [5](qos_value) [gbps](qos_unit)
+    - Add [monitor](middlebox) for the [university](location)
+    - [Limit](qos_constraint) [servers](location) to [5](qos_value) [gbps](qos_unit)
+    - [Add](operation) [firewall](middlebox) from [gateway](location) to the [lab](location).
+    - [limit](qos_constraint) the [bandwidth rate](qos_metric) of the [server racks](location) to [5](qos_value) [gbps](qos_unit)
+    - [Dorms](location) traffic to [internet](location) [must pass through](operation) a [firewall](middlebox)
+    - [limit](qos_constraint) the [bandwidth](qos_metric) to [5](qos_value) [Gb](qos_unit) for rack [servers](location)
+    - Deploy a [web server](middlebox) inside an [Ubuntu-server 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), then deploy a [mail server](middlebox) inside a [windows server machine](asset) with [500GB of disk space](asset) and [4 processing cores](asset).
+    - [limit](qos_constraint) [servers](location) [bandwidth](qos_metric) to [5](qos_value) [gbps](qos_unit)
+- synonym: DMZ
+  examples: |
+    - DMZ
+    - demilitarized zone
+- synonym: H323 video conferencing
+  examples: |
+    - H323 video conferencing
+    - video and audio conferencing products that use the H.323
+- synonym: LAN
+  examples: |
+    - local area network
+    - LAN
+- synonym: MSN chat
+  examples: |
+    - MSN
+    - MSN chat
+- synonym: NETBIOS
+  examples: |
+    - NETBIOS
+    - netbios
+- synonym: NYURoam
+  examples: |
+    - NYURoam wireless networks
+    - NYURoam
+- synonym: PC Telephone
+  examples: |
+    - PC-Telephone
+    - PC Telephone
+    - pc-telephone
+- synonym: PUCRS
+  examples: |
+    - PUCRS
+    - PUC
+- synonym: RHIT-OPEN
+  examples: |
+    - RHIT-OPEN wireless network
+    - RHIT-OPEN
+- synonym: Servers
+  examples: |
+    - Servers
+- synonym: add
+  examples: |
+    - add
+    - append
+    - include
+    - increase
+    - must pass through
+    - pass through
+    - forward
+    - forward through
+    - affix
+- synonym: all
+  examples: |
+    - traffic
+    - all
+    - all traffic
+    - all middleboxes
+- synonym: allow
+  examples: |
+    - allow
+    - allowed
+    - allowing
+    - grant
+    - let
+    - permit
+    - let on
+    - authorize
+    - pass
+    - admit
+    - tolerate
+    - do not block
+    - must not be blocked
+    - unblock
+- synonym: application
+  examples: |
+    - application
+    - application servers
+- synonym: at&t
+  examples: |
+    - att
+    - ATT
+    - AT and T
+    - at and t
+    - at&t
+    - AT&T
+- synonym: backend
+  examples: |
+    - backend servers
+    - backend server
+    - backend
+- synonym: bandwidth
+  examples: |
+    - capped at
+    - cap
+    - bandwidth
+    - bandwidth consumption
+    - bandwidth rate
+    - download rate
+    - is rate-limited to
+    - link
+    - rate
+    - rate limits
+    - speed
+    - throughput
+    - data transfer rate
+    - upload rate
+- synonym: block
+  examples: |
+    - block
+    - blocked
+    - blocking
+    - can not run
+    - cannot run
+    - deny
+    - do not let
+    - may not run
+    - prevent
+    - stop
+    - obstruct
+    - cut off
+    - deter
+    - halt
+    - intercept
+    - impede
+    - stall
+    - thwart
+    - hinder
+    - hold up
+    - close
+    - close off
+    - bar
+    - barred
+    - do not allow
+    - must not be allowed
+- synonym: campus
+  examples: |
+    - campus
+    - entire campus
+- synonym: classrooms
+  examples: |
+    - classroom
+    - classrooms
+    - class
+- synonym: database
+  examples: |
+    - database
+    - base of data
+- synonym: dorms
+  examples: |
+    - bedrooms
+    - housing
+    - dorms
+    - student housing
+    - domitories
+    - residents
+    - student dorms
+- synonym: download
+  examples: |
+    - Download
+    - download
+    - downstream
+    - inbound
+    - incoming
+- synonym: dpi
+  examples: |
+    - deep packet inspection
+    - inspect
+    - deep inspection
+    - packet inspection
+    - dpi
+- synonym: email
+  examples: |
+    - mail server
+    - mail
+    - mail servers
+    - email
+- synonym: file sharing
+  examples: |
+    - file share server
+    - downloading
+    - download server
+    - file server
+    - file sharing
+- synonym: file transfer
+  examples: |
+    - file transfer
+    - file transfering
+- synonym: gateway
+  examples: |
+    - entry
+    - network gateway
+    - external
+    - entrypoint
+    - gateway
+    - internet
+- synonym: gb
+  examples: |
+    - Gigabytes
+    - gb
+    - gigabyte
+    - GB
+- synonym: gb/d
+  examples: |
+    - GB a day
+    - GB per 24-hour period
+    - gb/d
+    - gigabytes of bandwidth per day
+    - GB of data in a day
+    - gb daily
+    - gb day
+    - gigabytes daily
+- synonym: gb/hr
+  examples: |
+    - gb/hr
+    - gb per hour
+    - gygabit per hour
+    - GB per hour
+    - GB of data in an hour
+- synonym: gb/mth
+  examples: |
+    - GB monthly
+    - GB of Free monthly usage
+    - GB per month
+    - Gb per month
+    - gb/mth
+    - GB of data in a month
+    - gigabytes month
+    - gigabytes monthly
+    - gb month
+    - gb monthly
+- synonym: gb/wk
+  examples: |
+    - GB of data weekly
+    - gb every week
+    - gb per week
+    - gb/wk
+    - gigabyte every week
+    - gigabyte per week
+    - gigabytes of bandwidth per week
+    - gigabytes per each 7 day period
+    - GB of data in a week
+    - gb per seven days
+    - gigabyte per seven days
+    - gb week
+    - gb a week
+    - gigabyte a week
+    - gigabyte weekly
+    - gb weekly
+- synonym: gbps
+  examples: |
+    - gbps
+    - gigabit per second
+    - gigabit per seconds
+- synonym: group
+  examples: |
+    - aggregate
+    - group
+    - grouping
+- synonym: guests
+  examples: |
+    - guests
+    - Guests' network
+    - guest users
+- synonym: hosts
+  examples: |
+    - individual
+    - hosts
+    - host
+    - all hosts
+    - computers
+- synonym: ids
+  examples: |
+    - intrusion detection system
+    - ids
+    - intrusion detection
+- synonym: imap
+  examples: |
+    - imap
+    - IMAP
+- synonym: internal-network
+  examples: |
+    - the internal Rose-Hulman network
+    - internal-network
+- synonym: ips
+  examples: |
+    - intrusion prevention
+    - ips
+    - intrusion prevention system
+- synonym: irc
+  examples: |
+    - IRC
+    - irc
+- synonym: kbps
+  examples: |
+    - Kbps
+    - kbps
+- synonym: labs
+  examples: |
+    - labs
+    - laboratories
+    - students labs
+    - student laboratories
+    - student labs
+- synonym: load balancer
+  examples: |
+    - balancing
+    - load balancing
+    - load balancer
+    - Balance
+- synonym: macbook
+  examples: |
+    - my mac
+    - my macbook
+    - macbook
+- synonym: marketing
+  examples: |
+    - marketing
+    - marketing department
+- synonym: max
+  examples: |
+    - capped
+    - limit
+    - limited
+    - max
+    - maximum
+    - ceiling
+    - at most
+    - peak
+- synonym: mb/hr
+  examples: |
+    - Megabyte per hour
+    - Megabyte/hr
+    - Megabytes per hour
+    - mb/hr
+    - megabyte per hour
+    - megabyte/hr
+- synonym: mb/wk
+  examples: |
+    - mb every week
+    - mb per week
+    - mb/wk
+    - megabyte every week
+    - megabyte per week
+- synonym: mbps
+  examples: |
+    - Mb/s
+    - Mbps
+    - mbps
+    - megabit per second
+    - megabits per seconds
+- synonym: middlebox
+  examples: |
+    - middlebox
+    - network function
+    - virtual network function
+- synonym: min
+  examples: |
+    - min
+    - minimum
+    - lowest amount
+    - minimal
+- synonym: nat
+  examples: |
+    - nat
+    - address translation
+    - translation
+    - network address translation
+- synonym: network
+  examples: |
+    - wired/wireless network
+    - system
+    - wired network
+    - wireless
+    - wireless network
+    - my network
+    - network
+- synonym: network border system
+  examples: |
+    - network border system
+    - network border infrastructure system
+- synonym: none
+  examples: |
+    - does not have any
+    - does not enforce
+    - does not have
+    - doesn't have
+    - doesn't have any
+    - none
+- synonym: parental control
+  examples: |
+    - parent inspection
+    - child protection
+    - children protection
+    - parental control
+    - content control
+- synonym: pc
+  examples: |
+    - my pc
+    - my computer
+    - pc
+    - personal computer
+- synonym: popcorn-time
+  examples: |
+    - popcorn
+    - popcorn-time
+- synonym: professors
+  examples: |
+    - all professors
+    - teachers
+    - professors
+    - all teachers
+    - all prof
+    - prof
+- synonym: quota
+  examples: |
+    - data
+    - data plan
+    - data transfer limit
+    - may use
+    - may use up to
+    - quota
+    - reach
+    - reached
+    - should not use more than
+    - should use more than
+    - usage limit
+    - no more than
+    - network usage
+- synonym: r&d
+  examples: |
+    - r&d
+    - development
+    - r&d division
+    - programming divinsion
+    - development division
+- synonym: remove
+  examples: |
+    - cut out
+    - delete
+    - remove
+    - abolish
+    - extract
+    - clear away
+    - discard
+    - get rid of
+    - detach
+    - expel
+    - take out
+    - withdraw
+    - exclude
+- synonym: servers
+  examples: |
+    - server
+    - servers
+    - server racks
+- synonym: service
+  examples: |
+    - internet application
+    - service
+    - website
+- synonym: set
+  examples: |
+    - place
+    - Define
+    - allocate
+    - fix
+    - provide
+    - set
+    - settle
+    - will have
+    - establish
+    - put
+- synonym: staff
+  examples: |
+    - Staff members
+    - staff
+    - for all staff
+    - faculty
+- synonym: streaming
+  examples: |
+    - streaming
+    - video sites
+    - videos
+    - streaming traffic
+- synonym: students
+  examples: |
+    - resident
+    - all students
+    - undergrads
+    - students
+    - scholar
+- synonym: telnet
+  examples: |
+    - telnet
+    - Telnet
+- synonym: torrent
+  examples: |
+    - P2P application
+    - torrent traffic
+    - peer to peer
+    - peer2peer
+    - torrent
+    - peer-to-peer
+- synonym: traffic
+  examples: |
+    - flow
+    - type of traffic
+- synonym: traffic monitor
+  examples: |
+    - using notification
+    - system traffic monitor
+    - network traffic monitor
+    - traffic monitor
+    - monitors
+    - network throughput monitor
+- synonym: traffic shaping
+  examples: |
+    - traffic shaping
+    - traffic shaper
+    - priority
+    - shaping
+    - prioritize
+- synonym: unit firewall
+  examples: |
+    - unit firewall
+    - custom unit firewall
+- synonym: unset
+  examples: |
+    - dismiss
+    - unfix
+    - unset
+    - unsettle
+    - withhold
+- synonym: upload
+  examples: |
+    - Upload
+    - outbound
+    - outgoing
+    - upload
+    - uploading
+    - upstream
+- synonym: users
+  examples: |
+    - network users
+    - user
+    - users
+- synonym: verizon
+  examples: |
+    - verizon
+    - Verizon
+- synonym: virtual private network
+  examples: |
+    - private netwok
+    - vpn
+    - privacy
+    - tunneling
+- synonym: youtube
+  examples: |
+    - youtube
+    - YouTube
+- lookup: entity
+  examples: |
+    - aggregate
+    - group
+    - grouping
+    - location
+    - place
+    - middlebox
+    - network function
+    - virtual network function
+    - internet application
+    - service
+    - website
+    - flow
+    - traffic
+    - type of traffic
+- lookup: traffic
+  examples: |
+    - news
+    - all
+    - all traffic
+    - traffic
+    - streaming
+    - video sites
+    - videos
+    - streaming traffic
+    - P2P application
+    - torrent traffic
+    - peer to peer
+    - peer2peer
+    - torrent
+    - peer-to-peer
+- lookup: location
+  examples: |
+    - video server
+    - verizon
+    - Verizon
+    - university
+    - internal-network
+    - Servers
+    - house
+    - wired/wireless network
+    - system
+    - wired network
+    - wireless
+    - wireless network
+    - my network
+    - network
+    - PUCRS
+    - PUC
+    - database
+    - base of data
+    - data
+    - server
+    - servers
+    - server racks
+    - MITNet
+    - my mac
+    - my macbook
+    - macbook
+    - bedrooms
+    - housing
+    - dorms
+    - student housing
+    - domitories
+    - residents
+    - student dorms
+    - resident
+    - backend servers
+    - backend server
+    - backend
+    - UW network
+    - individual
+    - hosts
+    - host
+    - all hosts
+    - computers
+    - campus
+    - entire campus
+    - meeting room 23
+    - NYURoam wireless networks
+    - NYURoam
+    - RHIT-OPEN wireless network
+    - RHIT-OPEN
+    - att
+    - ATT
+    - at and t
+    - at&t
+    - AT&T
+    - DMZ
+    - demilitarized zone
+    - r&d
+    - development
+    - r&d division
+    - programming divinsion
+    - development division
+    - marketing
+    - marketing department
+    - UIC wireless-connected
+    - my pc
+    - my computer
+    - pc
+    - personal computer
+    - labs
+    - laboratories
+    - students labs
+    - student laboratories
+    - student labs
+    - application
+    - application servers
+    - local area network
+    - LAN
+    - guests
+    - classroom
+    - classrooms
+    - class
+    - entry
+    - network gateway
+    - external
+    - entrypoint
+    - gateway
+    - internet
+- lookup: service
+  examples: |
+    - AIM Chat
+    - NETBIOS
+    - netbios
+    - MSN video
+    - PC-Telephone
+    - PC Telephone
+    - pc-telephone
+    - IRC
+    - irc
+    - mail server
+    - mail
+    - mail servers
+    - email
+    - file share server
+    - downloading
+    - download server
+    - file server
+    - file sharing
+    - Sorenson Videophone 200
+    - file transfer
+    - file transfering
+    - everquest
+    - Everquest
+    - MSN application sharing
+    - Net2Phone
+    - H323 video conferencing
+    - MSN
+    - MSN chat
+    - MSN audio
+- lookup: protocol
+  examples: |
+    - dns
+    - ftp
+    - http
+    - https
+    - quic
+    - rtsp
+    - sftp
+    - smtp
+    - snmp
+    - ssh
+    - tcp
+    - udp
+    - imap
+    - IMAP
+    - pop3
+    - POP3
+    - secure imap
+    - secure IMAP
+    - secure pop
+    - secure POP
+    - telnet
+    - Telnet
+- lookup: operation
+  examples: |
+    - add
+    - append
+    - include
+    - increase
+    - affix
+    - grant
+    - admit
+    - tolerate
+    - cut off
+    - deter
+    - halt
+    - intercept
+    - impede
+    - stall
+    - thwart
+    - hinder
+    - hold up
+    - close
+    - close off
+    - bar
+    - barred
+    - do not allow
+    - must not be allowed
+    - cut out
+    - delete
+    - remove
+    - abolish
+    - extract
+    - clear away
+    - discard
+    - get rid of
+    - detach
+    - expel
+    - take out
+    - withdraw
+    - exclude
+    - Define
+    - allocate
+    - fix
+    - provide
+    - set
+    - settle
+    - will have
+    - place
+    - establish
+    - put
+    - dismiss
+    - does not have any
+    - unfix
+    - unset
+    - unsettle
+    - withhold
+- lookup: middlebox
+  examples: |
+    - nat
+    - address translation
+    - translation
+    - network address translation
+    - all
+    - all middleboxes
+    - overuse notification
+    - balancing
+    - load balancing
+    - load balancer
+    - Balance
+    - intrusion prevention
+    - ips
+    - intrusion prevention system
+    - unit firewall
+    - custom unit firewall
+    - traffic shaping
+    - traffic shaper
+    - shaping
+    - prioritize
+    - network border system
+    - network border infrastructure system
+    - copyright
+    - copyright violation
+    - copyright-monitoring
+    - private netwok
+    - vpn
+    - privacy
+    - tunneling
+    - intrusion detection system
+    - ids
+    - intrusion detection
+    - deep packet inspection
+    - inspect
+    - deep inspection
+    - packet inspection
+    - dpi
+    - content control
+    - using notification
+    - system traffic monitor
+    - network traffic monitor
+    - traffic monitor
+    - monitors
+    - network throughput monitor
+- lookup: qos_constraint
+  examples: |
+    - download
+    - downstream
+    - inbound
+    - incoming
+    - capped
+    - capped at
+    - limit
+    - limited
+    - max
+    - maximum
+    - cap
+    - ceiling
+    - at most
+    - peak
+    - min
+    - minimum
+    - lowest amount
+    - minimal
+    - outbound
+    - outgoing
+    - upload
+    - uploading
+    - upstream
+- lookup: qos_metric
+  examples: |
+    - bandwidth
+    - bandwidth consumption
+    - bandwidth rate
+    - cap
+    - capped at
+    - download rate
+    - is rate-limited to
+    - link
+    - rate
+    - rate limits
+    - speed
+    - throughput
+    - data transfer rate
+    - upload rate
+    - data plan
+    - data transfer limit
+    - may use
+    - may use up to
+    - quota
+    - reach
+    - reached
+    - should not use more than
+    - should use more than
+    - usage limit
+    - data
+    - no more than
+    - network usage
+- lookup: qos_unit
+  examples: |
+    - GB a day
+    - GB per 24-hour period
+    - gb/d
+    - gigabytes of bandwidth per day
+    - GB of data in a day
+    - gb daily
+    - gb day
+    - gigabytes daily
+    - gigabytes daily
+    - GB monthly
+    - GB of Free monthly usage
+    - GB per month
+    - Gb per month
+    - gb/mth
+    - GB of data in a month
+    - gigabytes month
+    - gigabytes monthly
+    - gb month
+    - gb monthly
+    - GB of data weekly
+    - gb every week
+    - gb per week
+    - gb/wk
+    - gigabyte every week
+    - gigabyte per week
+    - gigabytes of bandwidth per week
+    - gigabytes per each 7 day period
+    - GB of data in a week
+    - gb per seven days
+    - gigabyte per seven days
+    - gb week
+    - gb a week
+    - gigabyte a week
+    - gigabyte weekly
+    - gb weekly
+    - gbps
+    - gigabit per second
+    - gigabit per seconds
+    - Kbps
+    - kbps
+    - Megabyte per hour
+    - Megabyte/hr
+    - Megabytes per hour
+    - mb/hr
+    - megabyte per hour
+    - megabyte/hr
+    - mb every week
+    - mb per week
+    - mb/wk
+    - megabyte every week
+    - megabyte per week
+    - Mb/s
+    - Mbps
+    - mbps
+    - megabit per second
+    - megabits per seconds
+    - gb/hr
+    - gb per hour
+    - gygabit per hour
+    - GB per hour
+    - GB of data in an hour
+- lookup: qos_value
+  examples: |
+    - 1
+    - 10
+    - 100
+    - 18
+    - 2
+    - 20
+    - 200
+    - 2000
+    - 3
+    - 30
+    - 4
+    - 5
+    - 500
+    - 5000
+    - 6
+    - five
+    - does not enforce
+    - does not have
+    - does not have any
+    - doesn't have
+    - doesn't have any
+    - none

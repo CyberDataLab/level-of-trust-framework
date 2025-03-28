@@ -1,0 +1,53 @@
+{
+    "vnfProvider": "Bcom",
+    "vnfSoftwareVersion": "1.2.1",
+    "serviceType": "cloud",
+    "assets": [
+        {
+            "id": "resource-compute1",
+            "type": "resource",
+            "virtualComputeDesc": [
+                {
+                    "virtualComputeDescId": "VCD_WEF_AAA",
+                    "virtualMemory": {
+                        "virtualMemSize": 8,
+                        "virtualMemSizeUnit": "GB"
+                    },
+                    "virtualCpu": [
+                        {
+                            "numCore": 4
+                        },
+                        {
+                            "processingFrequency": 2.5,
+                            "frequencyUnit": "GHz"
+                        }
+                    ]
+                },
+                {
+                    "health": {
+                        "score": 0,
+                        "status": "green",
+                        "symptoms": [
+                            {
+                                "symptomType": "CPU",
+                                "objectiveIndicators": [
+                                    {
+                                        "indicatorType": "Stability",
+                                        "indicatorValue": 0.99
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "type": "infrastructure",
+            "location": {
+                "country": "Spain",
+                "network": "movistar-subnet1"
+            }
+        }
+    ]
+}

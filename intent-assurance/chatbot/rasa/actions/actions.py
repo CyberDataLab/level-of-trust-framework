@@ -50,8 +50,6 @@ def add_asset_feedback(tracker, value):
 
     return None
 
-
-
 def add_middlebox_feedback(dispatcher, tracker, value):
     build_json = json.loads(tracker.get_slot("service_assets_dict"))
     current_build_message = tracker.get_slot("current_build_message")
@@ -86,7 +84,7 @@ def add_middlebox_feedback(dispatcher, tracker, value):
         elif word in detected_assets:
             desired_assets.append(word)
 
-    # 3) Buscamos en build_json un servicio con middlebox=="Unknown middlebox" que tenga esos assets
+    # 3) Buscamos en build_json un servicio con middlebox=="null" que tenga esos assets
     for service in build_json:
         if service["middlebox"] == None:
             # Comprobamos si coincide la lista de assets
@@ -220,7 +218,6 @@ class ActionBuild(Action):
         final_response = "\n\n".join(response_lines)
         dispatcher.utter_message(final_response)
 
-        # Store these in a slot
         services_json = json.dumps(services)
         return [SlotSet("service_assets_dict", services_json), SlotSet("current_build_message", current_build_message)]
     
