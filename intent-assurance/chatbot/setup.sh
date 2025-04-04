@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-
 # Rasa installation
 if ! command -v python3 >/dev/null 2>&1; then
   echo "Error: Python 3 was not found in the system."
@@ -14,7 +13,7 @@ if echo "$PY_VERSION" | grep -q "Python 3.10"; then
   echo "Se detectó $PY_VERSION. Procediendo con la instalación..."
   
   pip3 install --upgrade pip
-  pip3 install rasa[full]
+  pip3 install rasa[full] rasa-model-report pymongo
 
   #apt install rustc && apt install cargo
 
@@ -30,4 +29,3 @@ if ! command -v docker >/dev/null 2>&1; then
 fi
 
 docker pull mongo:latest
-

@@ -1,24 +1,46 @@
 {
     "vnfProvider": "Bcom",
-    "vnfSoftwareVersion": "1.2.1",
     "serviceType": "cloud",
     "assets": [
         {
             "id": "resource-so1",
             "type": "resource",
             "swImageDesc": {
-                "id": "WEF_AAA_SWID",
                 "containerFormat": "BARE",
                 "diskFormat": "QCOW2",
                 "swImage": "wef_aaa_5gt",
-                "operatingSystem": "ubuntu-server-16.04-amd64"
+                "operatingSystemCodename": "ubuntu server 16.04 Xenial Xerus",
+                "operatingSystemVersion": "ubuntu-server-16.04-amd64"
             }
         },
         {
+            "id": "infrastructure-movistar1",
             "type": "infrastructure",
-            "location": {
-                "country": "Spain",
-                "network": "movistar-subnet1"
+            "infrastructureDesc": {
+                "location": {
+                    "country": "Spain",
+                    "network": "movistar-subnet1",
+                    "adressCompatibility": "IPv4",
+                    "bandWidth": {
+                        "bandwidthValue": 100,
+                        "bandwidthUnit": "Mbps"
+                    }
+                },
+                "health": {
+                    "score": 0,
+                    "status": "green",
+                    "symptoms": [
+                        {
+                            "symptomType": "Networking",
+                            "objectiveIndicators": [
+                                {
+                                    "indicatorType": "Stability",
+                                    "indicatorValue": 0.99
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         }
     ]

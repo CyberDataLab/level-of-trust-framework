@@ -19,6 +19,11 @@ nlu:
     - exit
     - quit
     - forget it
+    - Nevermind
+    - I don't want to do that
+    - I don't want to continue
+    - I don't want to proceed
+    - nvm
 - intent: confirm
   examples: |
     - sure
@@ -28,7 +33,6 @@ nlu:
     - yep that's ok
     - yes that's alright
     - I think so
-    - sg
     - yes I agree
     - I don't mind
     - I agree
@@ -177,6 +181,20 @@ nlu:
     - [Limit](qos_constraint) in [10](qos_value) [Mbps](qos_unit) the [download rate](qos_metric) of [dorms](location) from [internet](location)
     - [install](operation) an [email scanner](middlebox) for the [gateway](location)
     - [Set](operation) to [1](qos_value) [Gbps](qos_unit) [bandwidth](qos_metric) [limit](qos_constraint) for the traffic to [DMZ](location)
+    - I want to [launch](operation) [apache](middlebox) inside a [windows server](operating_system) with [4 processing cores](compute_resource) and [500GB of disk space](storage_resource)
+    - I am looking for a [load balancer](middlebox) on a [linux machine](operating_system) that will support a bandwidth of [10Gbps](qos_value) and runs [bind](service) 
+    - A [dns server](middlebox) on a [windows server](operating_system) with at least [2.5Ghz](compute_resource) and [8GB of RAM](compute_resource)
+    - A [llama chat](service) on a [linux machine](operating_system) with [128GB of VRAM](compute_resource) and [1TB of disk space](storage_resource)
+    - I want to [deploy](operation) a [firewall](middlebox) on a [linux machine](operating_system) with [8 CPU cores](compute_resource) and [500GB of disk space](storage_resource)
+    - Please [provision](operation) a [mysql server](middlebox) on a [windows server](operating_system) with [16GB of RAM](compute_resource) and [2.8Ghz](compute_resource) CPU
+    - I am looking to [instantiate](operation) a [load balancer](middlebox) that runs [haproxy](service) on a [debian server](operating_system) that can handle [5Gbps](qos_value) and runs [redis](service)
+    - Could you [spin up](operation) an [reverse proxy](middlebox) that runs [nginx](service) on a [centos machine](operating_system) with [10GB of RAM](compute_resource) and [1TB of storage](storage_resource)
+    - I need to [create](operation) a [vpn gateway](middlebox) on a [linux server](operating_system) with [4 processing cores](compute_resource) and a bandwidth of [2Gbps](qos_value)
+    - A [proxy](middlebox) on a [windows server](operating_system) with at least [12GB of RAM](compute_resource) and [3.2Ghz](compute_resource) CPU
+    - Deploy a [mariadb cluster](service) on a [linux machine](operating_system) with [8 CPU cores](compute_resource) and [2TB of disk space](storage_resource)
+    - I want to [launch](operation) a [file server](middlebox) and a [dns server](middlebox) in the same [ubuntu machine](operating_system) with [6 CPU cores](compute_resource) and [1Gbps](qos_value) throughput
+    - Please [spin up](operation) a [firewall](middlebox) plus a [load balancer](middlebox) on a [windows server](operating_system) that has [32GB of RAM](compute_resource) and [4TB of storage](storage_resource)
+    - I am looking for a [broker](middlebox) using [kafka](service) on a [linux machine](operating_system) with [3.0Ghz](compute_resource) CPU and also runs [zookeeper](service) for coordination
 
 - intent: feedback
   examples: |

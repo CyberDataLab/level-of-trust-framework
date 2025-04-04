@@ -34,8 +34,10 @@ entities:
   - qos_value
   - qos_constraint
   - location
-  - requirement
   - asset
+  - operating_system
+  - compute_resource
+  - storage_resource
 slots:
   service_assets_dict:
     type: text

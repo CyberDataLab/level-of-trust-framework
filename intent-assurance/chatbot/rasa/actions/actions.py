@@ -3,6 +3,8 @@
 
 from typing import Any, Text, Dict, List
 import json
+import re
+from pymongo import MongoClient
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -13,8 +15,102 @@ ADD_FEEDBACK_ACTION = "add"
 REMOVE_FEEDBACK_ACTION = "remove"
 
 # Global variables
-build_classes = ["middlebox", "asset"]
-tla_classes = ["requirements"]
+build_classes = ["middlebox"]
+asset_classes = ["storage_resource", "compute_resource", "operating_system", "service"]
+tla_classes = ["qos_value", "qos_unit"]
+available_services = ["firewall", "load balancer", "ids", "ips", "proxy", "nat", "vpn", "voip", "dns", "directory"]
+available_services_software = ["snort", "suricata", "pfsense", "openvswitch", "haproxy", "apache", "bind", "openldap", "asterisk"]
+
+# MongoDB connection
+client = MongoClient("mongodb://localhost:27017/")
+db = client["example_database"]
+collection = db["wef_entities"]
+
+# Function to parse compute resources wether they are RAM or CPU
+def parseComputeResource(compute_resource):
+    if "ram" in compute_resource.lower():
+        compute_value = ''.join(filter(str.isdigit, compute_resource))
+        compute_unit
+        unit_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([KkMmGgTt]b)', re.IGNORECASE)
+        match = unit_pattern.search(compute_resource)
+        if match:
+            compute_unit = match.group(0)
+        
+# Function to perform a dynamic query on the MongoDB
+def dynamic_query(storage_resource=None, compute_resource=None,
+                  operating_system=None, service=None):
+    query_filter = {}
+
+    # --- STORAGE FILTER ---
+    if storage_resource:
+        storage_value = ''.join(filter(str.isdigit, storage_resource))
+        storage_unit = ''.join(filter(str.isalpha, storage_resource))
+        
+        query_filter["assets.virtualStorageDesc"] = {
+            "$elemMatch": {
+                "sizeOfStorage": storage_value,
+                "sizeOfStorageUnit": storage_unit
+            }
+        }
+
+    # --- COMPUTE FILTER ---
+    if compute_resource:
+        pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([KkMmGgTt]b)', re.IGNORECASE)
+        match = pattern.search(compute_resource)
+
+        if match:
+            ram_value = match.group(1)
+            ram_unit = match.group(2)
+
+            query_filter["assets.virtualComputeDesc"] = {
+                "$elemMatch": {
+                    "virtualMemory.virtualMemSize": ram_value,
+                    "virtualMemory.virtualMemSizeUnit": ram_unit
+                }
+            }
+        else:
+            cpu_match = {}
+
+            if "core" in compute_resource.lower():
+                core_count = ''.join(filter(str.isdigit, compute_resource))
+                cpu_match["numCore"] = core_count
+            else:
+                freq_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([GM]Hz)', re.IGNORECASE)
+                freq_match = freq_pattern.search(compute_resource)
+                if freq_match:
+                    cpu_match["processingFrequency"] = freq_match.group(1)
+                    cpu_match["frequencyUnit"] = freq_match.group(2)
+
+            if cpu_match:
+                query_filter["assets.virtualComputeDesc"] = {
+                    "$elemMatch": {
+                        "virtualCpu": {
+                            "$elemMatch": cpu_match
+                        }
+                    }
+                }
+
+    # --- SERVICE FILTER ---
+    if service:
+        if service.lower() in available_services:
+            query_filter["assets.subservices.subserviceDesc.type"] = service.lower()
+        elif service.lower() in available_services_software:
+            query_filter["assets.subservices.subserviceDesc.software"] = service.lower()
+
+    # --- OS FILTER ---
+    # TODO: Preguntar en la reunión si es viable pasar esto por una LLM... y de serlo si tengo que hacerlo o puedo comentarlo xd
+    # if operating_system:
+    #     query_filter["assets.swImageDesc.operatingSystem"] = operating_system
+
+    print("\nDynamic query filter:", query_filter)
+    cursor = collection.find(query_filter)
+    results = list(cursor)
+
+    print(f"Number of matches: {len(results)}")
+    for i, doc in enumerate(results, start=1):
+        print(f"--- Document #{i} ---")
+        print(doc)
+        
 
 """ Helper functions """
 
@@ -161,66 +257,91 @@ class ActionBuild(Action):
         return "action_build"
 
     def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        dispatcher.utter_message("Analyzing intent...")
-        current_build_message = tracker.latest_message.get('text')
-        # Get all entities with their positions in the user message
-        all_entities = tracker.latest_message.get("entities", [])
+                tracker: Tracker,
+                domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # 1) Sort entities by their 'start' index to respect user’s text order
-        sorted_entities = sorted(all_entities, key=lambda e: e.get("start", 0))
+            dispatcher.utter_message("Analyzing intent...")
+            current_build_message = tracker.latest_message.get('text')
+            # Get all entities with their positions in the user message
+            all_entities = tracker.latest_message.get("entities", [])
 
-        # 2) Build a structure that groups each middlebox with its associated assets
-        services = []
-        current_service = None
+            # 1) Sort entities by their 'start' index to respect the user’s text order
+            sorted_entities = sorted(all_entities, key=lambda e: e.get("start", 0))
 
-        for ent in sorted_entities:
-            entity_type = ent["entity"]
-            entity_value = ent["value"]
+            # 2) Build a structure that groups each middlebox with its associated assets
+            services = []
+            current_service = None
 
-            if entity_type == "middlebox":
-                # If we were already tracking a service, store it before starting a new one
-                if current_service:
-                    services.append(current_service)
+            for ent in sorted_entities:
+                entity_type = ent["entity"]
+                entity_value = ent["value"]
 
-                # Start a new service entry for this middlebox
-                current_service = {
-                    "middlebox": entity_value,
-                    "assets": []
-                }
+                # If the user message indicates a new middlebox, start a new service
+                if entity_type == "middlebox":
+                    # If we were already tracking a service, store it before starting a new one
+                    if current_service:
+                        services.append(current_service)
 
-            elif entity_type == "asset":
-                # If there's no current service yet, create one implicitly
-                if not current_service:
+                    # Start a fresh service entry for this middlebox
                     current_service = {
-                        "middlebox": None,
+                        "middlebox": entity_value,
                         "assets": []
                     }
-                current_service["assets"].append(entity_value)
 
-        # Don't forget to save the last service
-        if current_service:
-            services.append(current_service)
+                # Otherwise check if the entity is one of the four recognized asset classes
+                elif entity_type in asset_classes:
+                    # If there's no current service yet, create one implicitly
+                    if not current_service:
+                        current_service = {
+                            "middlebox": None,
+                            "assets": []
+                        }
 
-        # 3) Generate a user-facing response
-        response_lines = []
-        for i, service in enumerate(services, start=1):
-            mb = service["middlebox"] or "Unknown middlebox"
-            line = f"Service {i}: {mb}"
-            if service["assets"]:
-                line += "\n  Using assets:"
-                for asset in service["assets"]:
-                    line += f"\n    - {asset}"
-            response_lines.append(line)
+                    # Append an object that holds both the asset type and its raw value
+                    current_service["assets"].append({
+                        "type": entity_type,
+                        "value": entity_value
+                    })
 
-        final_response = "\n\n".join(response_lines)
-        dispatcher.utter_message(final_response)
+            # Don't forget to add the last service if we have one in progress
+            if current_service:
+                services.append(current_service)
 
-        services_json = json.dumps(services)
-        return [SlotSet("service_assets_dict", services_json), SlotSet("current_build_message", current_build_message)]
+            # 3) Generate a user-facing response summarizing what was captured
+            response_lines = []
+            for i, service in enumerate(services, start=1):
+                mb = service["middlebox"] or "Unknown middlebox"
+                line = f"Service {i}: {mb}"
+                if service["assets"]:
+                    line += "\n  Using assets:"
+                    for asset_obj in service["assets"]:
+                        line += f"\n    - {asset_obj['type']}: {asset_obj['value']}"
+                response_lines.append(line)
+
+            final_response = "\n\n".join(response_lines)
+            dispatcher.utter_message(final_response)
+
+            # Store in slots for further usage
+            services_json = json.dumps(services)
+            return [
+                SlotSet("service_assets_dict", services_json),
+                SlotSet("current_build_message", current_build_message)
+            ]
+
+# Action to check the availability of the middleboxes and assets
+class ActionCheckAvailability(Action):
+    def name(self) -> Text:
+        return "action_check_avaibility"
     
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        services = json.loads(tracker.get_slot("service_assets_dict"))
+        response_lines = []
+        
+        
+
 # Action to perform the deployment of the services built
 class ActionDeploy(Action):
 

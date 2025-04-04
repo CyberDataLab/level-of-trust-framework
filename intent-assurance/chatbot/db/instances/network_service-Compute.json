@@ -1,6 +1,5 @@
 {
     "vnfProvider": "Bcom",
-    "vnfSoftwareVersion": "1.2.1",
     "serviceType": "cloud",
     "assets": [
         {
@@ -8,7 +7,6 @@
             "type": "resource",
             "virtualComputeDesc": [
                 {
-                    "virtualComputeDescId": "VCD_WEF_AAA",
                     "virtualMemory": {
                         "virtualMemSize": 8,
                         "virtualMemSizeUnit": "GB"
@@ -43,10 +41,33 @@
             ]
         },
         {
+            "id": "infrastructure-movistar1",
             "type": "infrastructure",
-            "location": {
-                "country": "Spain",
-                "network": "movistar-subnet1"
+            "infrastructureDesc": {
+                "location": {
+                    "country": "Spain",
+                    "network": "movistar-subnet1",
+                    "adressCompatibility": "IPv4",
+                    "bandWidth": {
+                        "bandwidthValue": 100,
+                        "bandwidthUnit": "Mbps"
+                    }
+                },
+                "health": {
+                    "score": 0,
+                    "status": "green",
+                    "symptoms": [
+                        {
+                            "symptomType": "Networking",
+                            "objectiveIndicators": [
+                                {
+                                    "indicatorType": "Stability",
+                                    "indicatorValue": 0.99
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         }
     ]
