@@ -189,6 +189,74 @@ Mirar pluggins de spacy en caso de que sean de ayuda (mirar trello).
 I want to deploy a web server that has minimum 6 CPUs available, with no transmision error neither receive errors from network. Moreover, I don't want the server to have high temperatures and I must be able to access to it with SSH.
 
 
+Para evaluar el modelo entrenado he creado el fichero evaluation.py. Cuando en similarity... se llama a "evaluate" almacena
+las queries con las reglas recomendadas en un csv (evaluation.csv). Entonces, en el fichero evaluation.py comparo las reglas 
+recomendadas con las reglas esperadas e indico el porcentaje de acierto. Como es posible que haya 4 reglas esperadas pero mi recomendador
+haya dado 10 reglas, el porcentaje de acierto puede ser falso (pues aunque haga las 4 bien, habrá 6 que sobren). Por lo tanto,
+en vez de comparar únicamente aciertos / esperados, haré uso de una médida como F1-score, que tiene en cuenta los falsos positivos 
+y muestra un balance entre falsos positivos y lo realmente esperado.
+
+Sí, tienes razón. Si evaluation.csv contiene muchas reglas recomendadas por cada consulta, el porcentaje de acierto podría ser artificialmente alto, incluso si hay muchas reglas irrelevantes (falsos positivos). Esto ocurre porque el cálculo actual solo considera las coincidencias entre las reglas recomendadas y las esperadas, sin penalizar las reglas adicionales que no deberían estar ahí.
+
+Para abordar este problema, puedes ajustar la métrica de evaluación para incluir una penalización por falsos positivos. Una forma de hacerlo es calcular precisión y recall, y luego combinar ambas métricas en una medida como el F1-score.
+Explicación de las métricas:
+Precisión:
+
+Mide qué proporción de las reglas recomendadas son correctas.
+Fórmula: [ \text{Precisión} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}} ]
+Recall:
+
+Mide qué proporción de las reglas esperadas fueron correctamente recomendadas.
+Fórmula: [ \text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}} ]
+F1-score:
+
+Es la media armónica de precisión y recall, y proporciona un balance entre ambas métricas.
+Fórmula: [ \text{F1-score} = 2 \cdot \frac{\text{Precisión} \cdot \text{Recall}}{\text{Precisión} + \text{Recall}} ]
+Beneficios:
+- Precisión penaliza las reglas adicionales que no deberían estar (falsos positivos).
+    / Ejemplo: Si un modelo predice 10 pacientes como enfermos y 8 son correctos, la precisión es 8 / 10 = 0.8.
+- Recall asegura que no se pierdan reglas importantes (falsos negativos).
+    / Ejemplo: Si hay 12 pacientes enfermos en total y el modelo detecta 8, el recall es 8 / 12 ≈ 0.67
+- F1-score combina ambas métricas para proporcionar una visión equilibrada del rendimiento del sistema.
+
+Combined-scores = 0.4 x 0.6
+
+
+THRESHOLD 0.3
+Precisión: 40.62%
+Recall: 52.13%
+F1-score: 45.66%
+
+THRESHOLD 0.25
+Precisión: 40.67%
+Recall: 63.55%
+F1-score: 49.60%
+
+THRESHOLD 0.22
+Precisión: 38.77%
+Recall: 70.47%
+F1-score: 50.02%
+
+THRESHOLD 0.2
+Precisión: 37.49%
+Recall: 77.52%
+F1-score: 50.53%
+
+
+
+PRUEBAS CON DISTINTOS BERTS CON THRESHOLD 0.3
+- Roberta
+Precisión: 20.93%
+Recall: 82.75%
+F1-score: 33.42%
+- Deberta
+Recall: 100.00%
+F1-score: 29.52%
+- Bert
+Precisión: 40.79%
+Recall: 52.49%
+F1-score: 45.91%
+
 CONSIDERACIÓN SOBRE SINONIMOS
 
 Si implemento los sinonimos con un diccionario como el siguiente:
@@ -222,3 +290,5 @@ Tenemos un problema, si aparece el token "processing" no detectará que es sinó
     La conversión de un diccionario normal a invertido tiene una complejidad de O(n), pero esto se realiza solo 1 vez y no por cada token procesado.
 
 He decidido utilizar la segunda opción por razones obvias. Sin embargo, en el fichero "technical_synonyms" se utiliza un diccionario normal para que sea legible y de fácil actualización.
+
+

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import json
+import csv
 import logging
 import joblib
 from pathlib import Path
@@ -43,7 +44,7 @@ RULE_CATEGORIES = load_json('data/rule_categories.json')
 
 TECHNICAL_PHRASES = load_json('data/technical_phrases.json')
 
-CRITICAL_KEYWORDS = {
+"""CRITICAL_KEYWORDS = {
     'critical': 2.0,
     'emergency': 1.8,
     'overload': 1.7,
@@ -51,13 +52,14 @@ CRITICAL_KEYWORDS = {
     'error': 1.5,
     'drop': 1.4,
     'exhausted': 1.3
-}
+}"""
+CRITICAL_KEYWORDS = {}
 
 
 class HybridEncoder:
     def __init__(self):
         self.tfidf = TfidfVectorizer(max_features=5000)
-        self.bert = SentenceTransformer('all-mpnet-base-v2')
+        self.bert = SentenceTransformer("stsb-roberta-large")
         self._cache = {}
         
     def fit_transform(self, texts):
@@ -69,7 +71,7 @@ class HybridEncoder:
         bert_emb = self.bert.encode(
             texts, 
             show_progress_bar=True,
-            batch_size=32,
+            batch_size=64,
             convert_to_numpy=True
         )
         
@@ -92,7 +94,7 @@ class HybridEncoder:
             new_bert = self.bert.encode(
                 to_process,
                 show_progress_bar=False,
-                batch_size=32,
+                batch_size=64,
                 convert_to_numpy=True
             )
             new_embs = np.hstack([new_tfidf, new_bert])
@@ -132,7 +134,7 @@ class RuleRecommender:
 
         model_path = self.model_dir / "trained_model.pkl"
         if model_path.exists():
-            self.load_model(model_path)
+            self._load_model(model_path)
         else:
             self.classifier = Pipeline([
                 ('clf', OneVsRestClassifier(
@@ -245,12 +247,6 @@ class RuleRecommender:
         self.label_encoder = model_data['label_encoder']
         logger.info(f"Model loaded from: {model_path}")
 
-    def _online_learning(self, new_examples):
-        x_new = self.encoder.transform(new_examples['query'].apply(self._normalize_text))
-        y_new = self.label_encoder.transform(new_examples['rule_ids'].str.split(';'))
-        self.classifier.partial_fit(x_new, y_new)
-        logger.info("Online learning completed.")
-
     def _validate_training_data(self, rules_df, train_df):
         all_rules = set(rules_df['id'])
         invalid = set()
@@ -284,23 +280,40 @@ class RuleRecommender:
         processed_query = self._normalize_text(query)
         query_emb = self.encoder.transform([processed_query])
 
+        # Calcular similitudes y aplicar máscara
         similarities = cosine_similarity(query_emb, self.embeddings).flatten()
-        #boosted_scores = similarities * self.rules_df['criticality_score'].values
-        boosted_scores = (similarities * self.rules_df['criticality_score'].values) / 5.0
+        boosted_scores = similarities * self.rules_df['criticality_score'].values
         mask = boosted_scores >= min_score
-        results = self.rules_df[mask]
-        scores = boosted_scores[mask]
+        
+        # Crear DataFrame filtrado con índices originales preservados
+        processed_query = self._normalize_text(query)
+        query_emb = self.encoder.transform([processed_query])
+
+        # Calcular similitudes y aplicar máscara
+        similarities = cosine_similarity(query_emb, self.embeddings).flatten()
+        boosted_scores = similarities * self.rules_df['criticality_score'].values
+        mask = boosted_scores >= min_score
+        
+        # Crear DataFrame filtrado
+        filtered_df = self.rules_df[mask].copy()
+        scores_filtered = boosted_scores[mask]  # Esto ya es un array numpy
 
         if use_ml and self.classifier:
+            # Obtener scores ML solo para las reglas filtradas
             ml_probs = self.classifier.predict_proba(query_emb)
-            ml_scores = pd.Series(ml_probs[0], index=self.rules_df.index)[mask]
-
-            combined_scores = 0.6 * scores + 0.4 * ml_scores
+            ml_scores = pd.Series(ml_probs[0], index=self.rules_df.index)[mask].values  # Convertir a array numpy
+            
+            # Combinar scores
+            combined_scores = 0 * scores_filtered + 1 * ml_scores
+            
+            # Ordenar y retornar
             sorted_indices = np.argsort(combined_scores)[::-1]
-            return results.iloc[sorted_indices], combined_scores[sorted_indices]
+            return filtered_df.iloc[sorted_indices], combined_scores[sorted_indices]
         
-        sorted_indices = np.argsort(scores)[::-1]
-        return results.iloc[sorted_indices], scores[sorted_indices]
+        # Ordenar sin ML
+        sorted_indices = np.argsort(scores_filtered)[::-1]
+        return filtered_df.iloc[sorted_indices], scores_filtered[sorted_indices]
+    
 
     
     def explain_recommendation(self, query, rules, scores, min_score):
@@ -328,23 +341,45 @@ class RuleRecommender:
             
             print("-"*80)
 
+    def evaluate(self, query, recommended_rules):
+
+
+        rules_ids = ';'.join(recommended_rules['id'].astype(str)) if not recommended_rules.empty else 'None'
+
+        evaluation_file = 'data/evaluation_augmented.csv'
+        file_exists = Path(evaluation_file).exists()
+
+        # Escribir en el archivo CSV
+        with open(evaluation_file, mode='a', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            # Escribir encabezados si el archivo no existe
+            if not file_exists:
+                writer.writerow(['query', 'rules_id'])
+            # Escribir la fila con la query y las reglas asociadas
+            writer.writerow([query, rules_ids])
+
 if __name__ == "__main__":
 
     RULES_FILE = 'data/rules.csv'
-    USER_QUERY = "I want to deploy a web server that has minimum 6 CPUs available, with no transmision error neither receive errors from network. Moreover, I don't want the server to have high temperatures and I must be able to access to it with SSH."
-    THRESHOLD = -10000
+    #USER_QUERY = "I want to deploy a web server that has minimum 6 CPUs available, with no transmission or reception errors from network. Moreover, I don't want the server to have high temperatures and I must be able to access to it with SSH."
+    #USER_QUERY = "I want to deploy a web server that has minimum 6CPUs available"
+    USER_QUERY = load_json("data/queries.json")
+    THRESHOLD = 0.3
 
-    TRAINING_DATA = 'data/training_data.csv'
+    TRAINING_DATA = 'data/augmented_training_data_gpt.csv'
     
     try:
         recommender = RuleRecommender(RULES_FILE)
+        
+        #recommended_rules, scores = recommender.recommend(USER_QUERY, THRESHOLD, use_ml=False)
+        
+        #recommender.explain_recommendation(USER_QUERY, recommended_rules, scores, THRESHOLD)
 
-        """if Path(TRAINING_DATA).exists():
-            recommender.train(TRAINING_DATA)""" 
-        
-        recommended_rules, scores = recommender.recommend(USER_QUERY, THRESHOLD, use_ml=False)
-        
-        recommender.explain_recommendation(USER_QUERY, recommended_rules, scores, THRESHOLD)
+        if Path(TRAINING_DATA).exists(): recommender.train(TRAINING_DATA)
+
+        for query in USER_QUERY:
+            recommended_rules, scores = recommender.recommend(query, THRESHOLD, use_ml=True)
+            recommender.evaluate(query, recommended_rules)
 
     except Exception as e:
         logger.error(f"An error occurred: {e}")
