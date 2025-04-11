@@ -69,6 +69,7 @@ responses:
     - text: Should I deploy the services with all this feedback collected?
 actions:
   - action_build
+  - action_check_avaibility
   - action_build_feedback
   - action_deploy
   - action_check_tla

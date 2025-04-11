@@ -9,7 +9,7 @@
                 "containerFormat": "BARE",
                 "diskFormat": "QCOW2",
                 "swImage": "wef_aaa_5gt",
-                "operatingSystemCodename": "ubuntu server 16.04 Xenial Xerus",
+                "operatingSystemCodename": "Xenial Xerus",
                 "operatingSystemVersion": "ubuntu-server-16.04-amd64"
             }
         },

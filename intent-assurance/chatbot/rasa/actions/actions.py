@@ -18,100 +18,337 @@ REMOVE_FEEDBACK_ACTION = "remove"
 build_classes = ["middlebox"]
 asset_classes = ["storage_resource", "compute_resource", "operating_system", "service"]
 tla_classes = ["qos_value", "qos_unit"]
-available_services = ["firewall", "load balancer", "ids", "ips", "proxy", "nat", "vpn", "voip", "dns", "directory"]
-available_services_software = ["snort", "suricata", "pfsense", "openvswitch", "haproxy", "apache", "bind", "openldap", "asterisk"]
+
+# Resource lists
+CODENAME_MAP = {
+    "xenial": "ubuntu",
+    "noble": "ubuntu",
+    "bionic": "ubuntu",
+    "focal": "ubuntu",
+    "jammy": "ubuntu",
+}
+AVAILABLE_DISTROS = ["ubuntu", "centos", "fedora", "windows"]
+AVAILABLE_SERVICES = ["firewall", "load balancer", "ids", "ips", "proxy", "nat", "vpn", "voip", "dns", "directory"]
+AVAILABLE_SERVICES_SOFTWARE = ["snort", "suricata", "pfsense", "openvswitch", "haproxy", "apache", "bind", "openldap", "asterisk"]
 
 # MongoDB connection
 client = MongoClient("mongodb://localhost:27017/")
 db = client["example_database"]
 collection = db["wef_entities"]
 
-# Function to parse compute resources wether they are RAM or CPU
-def parseComputeResource(compute_resource):
-    if "ram" in compute_resource.lower():
-        compute_value = ''.join(filter(str.isdigit, compute_resource))
-        compute_unit
-        unit_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([KkMmGgTt]b)', re.IGNORECASE)
-        match = unit_pattern.search(compute_resource)
+# Function to parse storage resources
+def parse_storage_resource(storage_str: str) -> dict:
+    pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([KMGTP]B)', re.IGNORECASE)
+
+    match = pattern.search(storage_str)
+    if match:
+        size = match.group(1)
+        unit = match.group(2).upper()
+        return {"size": size, "unit": unit}
+    else:
+        return {"size": None, "unit": None}
+    
+# Function to build the MongoDB query filter for storage resources
+def build_storage_filter(storage_info: dict) -> dict:
+    size = storage_info.get("size")
+    unit = storage_info.get("unit")
+    if not size or not unit:
+        return None
+
+    return {
+        "assets.virtualStorageDesc": {
+            "$elemMatch": {
+                "sizeOfStorage": size,
+                "sizeOfStorageUnit": unit
+            }
+        }
+    }
+
+# Function to parse compute resources
+def parse_compute_resource(compute_str: str) -> dict:
+
+    result = {
+        "ram_size": None,
+        "ram_unit": None,
+        "num_cores": None,
+        "freq_value": None,
+        "freq_unit": None
+    }
+
+    lower_str = compute_str.lower()
+
+    ram_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([KkMmGgTt]b)', re.IGNORECASE)
+    ram_match = ram_pattern.search(lower_str)
+    if ram_match:
+        result["ram_size"] = ram_match.group(1)
+        result["ram_unit"] = ram_match.group(2)
+
+    else:
+        if "core" in lower_str:
+            digits = ''.join(filter(str.isdigit, lower_str))
+            if digits:
+                result["num_cores"] = digits
+        else:
+            freq_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([GM]Hz)', re.IGNORECASE)
+            freq_match = freq_pattern.search(lower_str)
+            if freq_match:
+                result["freq_value"] = freq_match.group(1)
+                result["freq_unit"] = freq_match.group(2)
+
+    return result
+
+# Function to build the MongoDB query filter for compute resources
+def build_compute_filter(compute_info: dict) -> dict:
+    conditions = []
+
+    if compute_info["ram_size"] and compute_info["ram_unit"]:
+        conditions.append({
+            "virtualMemory.virtualMemSize": compute_info["ram_size"],
+        })
+        conditions.append({
+            "virtualMemory.virtualMemSizeUnit": compute_info["ram_unit"]
+        })
+
+    # If we have CPU info
+    cpu_subconditions = []
+    if compute_info["num_cores"]:
+        cpu_subconditions.append({"numCore": compute_info["num_cores"]})
+    if compute_info["freq_value"] and compute_info["freq_unit"]:
+        cpu_subconditions.append({
+            "processingFrequency": compute_info["freq_value"]
+        })
+        cpu_subconditions.append({
+            "frequencyUnit": compute_info["freq_unit"]
+        })
+
+    if cpu_subconditions:
+        conditions.append({
+            "virtualCpu": {
+                "$elemMatch": {
+                    "$and": cpu_subconditions
+                }
+            }
+        })
+
+    if not conditions:
+        # No compute info => no filter
+        return None
+
+    return {
+        "assets.virtualComputeDesc": {
+            "$elemMatch": {
+                "$and": conditions
+            }
+        }
+    }
+
+# Function to parse service resources
+def extract_service(service_string: str):
+    service_lower = service_string.lower()
+    result = {
+        "type": None,
+        "software": None,
+        "version": None
+    }
+
+    # Identify a known type
+    for t in AVAILABLE_SERVICES:
+        if t in service_lower:
+            result["type"] = t
+            break
+
+    # Identify known software
+    for sw in AVAILABLE_SERVICES_SOFTWARE:
+        if sw in service_lower:
+            result["software"] = sw
+            break
+
+    # Identify version
+    if result["software"]:
+        match = re.search(r'(\d+(?:\.\d+)?)', service_lower)
         if match:
-            compute_unit = match.group(0)
-        
+            result["version"] = match.group(1)
+
+    return result
+    
+
+#Function to build the MongoDB query for a service resource
+def build_service_filter(service_info: dict) -> dict:
+    conditions = []
+
+    # If we have a type, it must appear in serviceDesc.type OR subservices.subserviceDesc.type
+    if service_info.get("type"):
+        service_type = service_info["type"]
+        condition_type = {
+            "$or": [
+                {"serviceDesc.type": {"$regex": service_type, "$options": "i"}},
+                {"subservices.subserviceDesc.type": {"$regex": service_type, "$options": "i"}}
+            ]
+        }
+        conditions.append(condition_type)
+
+    # If we have software, match serviceSW or subserviceSW
+    if service_info.get("software"):
+        software_value = service_info["software"]
+        condition_sw = {
+            "$or": [
+                {"serviceDesc.serviceSW": {"$regex": software_value, "$options": "i"}},
+                {"subservices.subserviceDesc.subserviceSW": {"$regex": software_value, "$options": "i"}}
+            ]
+        }
+        conditions.append(condition_sw)
+
+    # If we have a version, match serviceVersion or subserviceVersion
+    if service_info.get("version"):
+        version_value = service_info["version"]
+        condition_ver = {
+            "$or": [
+                {"serviceDesc.serviceVersion": {"$regex": version_value, "$options": "i"}},
+                {"subservices.subserviceDesc.subserviceVersion": {"$regex": version_value, "$options": "i"}}
+            ]
+        }
+        conditions.append(condition_ver)
+
+    # If there are no conditions, return empty => no filter
+    if not conditions:
+        return None
+
+    # Combine them with $and, so each field must match in the same asset
+    return {
+        "assets": {
+            "$elemMatch": {
+                "$and": conditions
+            }
+        }
+    }
+
+# Function to parse os resources
+def extract_distro_and_version(os_string: str):
+    os_lower = os_string.lower()
+    result = {
+        "distro": None,
+        "codename": None,
+        "flavor": None,
+        "version": None
+    }
+
+    for codename, mapped_distro in CODENAME_MAP.items():
+        if codename in os_lower:
+            result["codename"] = codename
+            result["distro"] = mapped_distro
+            break 
+
+    if "server" in os_lower:
+        result["flavor"] = "server"
+
+    user_ver_match = re.search(r'(\d+(?:\.\d+)?)', os_lower)
+    if user_ver_match:
+        result["version"] = user_ver_match.group(1)
+
+    return result
+
+# Function to build the MongoDB query for an OS resource
+def build_os_filter(os_info: dict) -> dict:
+    conditions = []
+
+    # distro => operatingSystemVersion
+    if os_info["distro"]:
+        conditions.append({
+            "swImageDesc.operatingSystemVersion": {
+                "$regex": os_info["distro"],
+                "$options": "i"
+            }
+        })
+
+    # codename => operatingSystemCodename
+    if os_info["codename"]:
+        conditions.append({
+            "swImageDesc.operatingSystemCodename": {
+                "$regex": os_info["codename"],
+                "$options": "i"
+            }
+        })
+
+    # flavor => operatingSystemVersion
+    if os_info["flavor"]:
+        conditions.append({
+            "swImageDesc.operatingSystemVersion": {
+                "$regex": os_info["flavor"],
+                "$options": "i"
+            }
+        })
+
+    # version => operatingSystemVersion
+    if os_info["version"]:
+        conditions.append({
+            "swImageDesc.operatingSystemVersion": {
+                "$regex": os_info["version"],
+                "$options": "i"
+            }
+        })
+
+    if not conditions:
+        # No OS info => no filter
+        return None
+
+    return {
+        "assets": {
+            "$elemMatch": {
+                "$and": conditions
+            }
+        }
+    }
+
+# Function to merge two MongoDB query filters
+def merge_filters(filter1: dict, filter2: dict) -> dict:
+    if not filter1:
+        return filter2
+    if not filter2:
+        return filter1
+    return {
+        "$and": [filter1, filter2]
+    }
+   
 # Function to perform a dynamic query on the MongoDB
-def dynamic_query(storage_resource=None, compute_resource=None,
-                  operating_system=None, service=None):
-    query_filter = {}
+def dynamic_query(storage_resource, compute_resource,
+                  os_resource, service_resource) -> str:
+    final_filter = {}
 
     # --- STORAGE FILTER ---
     if storage_resource:
-        storage_value = ''.join(filter(str.isdigit, storage_resource))
-        storage_unit = ''.join(filter(str.isalpha, storage_resource))
-        
-        query_filter["assets.virtualStorageDesc"] = {
-            "$elemMatch": {
-                "sizeOfStorage": storage_value,
-                "sizeOfStorageUnit": storage_unit
-            }
-        }
+        storage_info = parse_storage_resource(storage_resource)
+        storage_filter = build_storage_filter(storage_info)
+        final_filter = merge_filters(final_filter, storage_filter)
 
     # --- COMPUTE FILTER ---
     if compute_resource:
-        pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([KkMmGgTt]b)', re.IGNORECASE)
-        match = pattern.search(compute_resource)
-
-        if match:
-            ram_value = match.group(1)
-            ram_unit = match.group(2)
-
-            query_filter["assets.virtualComputeDesc"] = {
-                "$elemMatch": {
-                    "virtualMemory.virtualMemSize": ram_value,
-                    "virtualMemory.virtualMemSizeUnit": ram_unit
-                }
-            }
-        else:
-            cpu_match = {}
-
-            if "core" in compute_resource.lower():
-                core_count = ''.join(filter(str.isdigit, compute_resource))
-                cpu_match["numCore"] = core_count
-            else:
-                freq_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([GM]Hz)', re.IGNORECASE)
-                freq_match = freq_pattern.search(compute_resource)
-                if freq_match:
-                    cpu_match["processingFrequency"] = freq_match.group(1)
-                    cpu_match["frequencyUnit"] = freq_match.group(2)
-
-            if cpu_match:
-                query_filter["assets.virtualComputeDesc"] = {
-                    "$elemMatch": {
-                        "virtualCpu": {
-                            "$elemMatch": cpu_match
-                        }
-                    }
-                }
+        compute_info = parse_compute_resource(compute_resource)
+        compute_filter = build_compute_filter(compute_info)
+        final_filter = merge_filters(final_filter, compute_filter)
 
     # --- SERVICE FILTER ---
-    if service:
-        if service.lower() in available_services:
-            query_filter["assets.subservices.subserviceDesc.type"] = service.lower()
-        elif service.lower() in available_services_software:
-            query_filter["assets.subservices.subserviceDesc.software"] = service.lower()
+    if service_resource:
+        service_info = extract_service(service_resource)
+        service_filter = build_service_filter(service_info)
+        final_filter = merge_filters(final_filter, service_filter)
 
     # --- OS FILTER ---
-    # TODO: Preguntar en la reunión si es viable pasar esto por una LLM... y de serlo si tengo que hacerlo o puedo comentarlo xd
-    # if operating_system:
-    #     query_filter["assets.swImageDesc.operatingSystem"] = operating_system
+    if os_resource:
+        os_info = extract_distro_and_version(os_resource)
+        os_filter = build_os_filter(os_info)
+        final_filter = merge_filters(final_filter, os_filter)
 
-    print("\nDynamic query filter:", query_filter)
-    cursor = collection.find(query_filter)
+    response_string = "\nDynamic query filter: " + str(final_filter) + "\n"
+    cursor = collection.find(final_filter)
     results = list(cursor)
 
-    print(f"Number of matches: {len(results)}")
+    response_string += f"Number of matches: {len(results)}\n"
     for i, doc in enumerate(results, start=1):
-        print(f"--- Document #{i} ---")
-        print(doc)
-        
+        response_string += f"--- Document #{i} ---\n"
+        response_string += f"{doc}\n"
 
+    return response_string
+        
 """ Helper functions """
 
 def flush_slots():
@@ -297,7 +534,6 @@ class ActionBuild(Action):
                             "assets": []
                         }
 
-                    # Append an object that holds both the asset type and its raw value
                     current_service["assets"].append({
                         "type": entity_type,
                         "value": entity_value
@@ -332,15 +568,52 @@ class ActionBuild(Action):
 class ActionCheckAvailability(Action):
     def name(self) -> Text:
         return "action_check_avaibility"
-    
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        services = json.loads(tracker.get_slot("service_assets_dict"))
-        response_lines = []
-        
-        
+        assets_dict = json.loads(tracker.get_slot("service_assets_dict"))
+
+        storage_example = None
+        service_example = None
+        os_example = None
+        compute_example = None
+
+        for service in assets_dict:
+            for asset in service.get("assets", []):
+                asset_type = asset.get("type")
+                asset_value = asset.get("value")
+
+                if asset_type == "storage_resource" and not storage_example:
+                    storage_example = asset_value
+                elif asset_type == "service" and not service_example:
+                    service_example = asset_value
+                elif asset_type == "operating_system" and not os_example:
+                    os_example = asset_value
+                elif asset_type == "compute_resource" and not compute_example:
+                    compute_example = asset_value
+
+                # Stop early if we have all types
+                if all([storage_example, service_example, os_example, compute_example]):
+                    break
+            if all([storage_example, service_example, os_example, compute_example]):
+                break
+
+        # Safety: fallback message if some are missing
+        if not any([storage_example, service_example, os_example, compute_example]):
+            dispatcher.utter_message("No suitable asset types found to perform the query.")
+            return []
+
+        result = dynamic_query(
+            storage_resource=storage_example,
+            compute_resource=compute_example,
+            os_resource=os_example,
+            service_resource=service_example
+        )
+
+        dispatcher.utter_message(result)
+        return []  
 
 # Action to perform the deployment of the services built
 class ActionDeploy(Action):
