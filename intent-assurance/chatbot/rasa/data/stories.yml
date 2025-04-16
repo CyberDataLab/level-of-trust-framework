@@ -64,6 +64,7 @@ stories:
         - current_build_message: true
       - action: utter_ask_build_after_feedback
       - intent: confirm
+      - action: action_check_avaibility
       - action: action_deploy
       - action: action_restart
   

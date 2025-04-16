@@ -379,41 +379,41 @@ def merge_filters(filter1: dict, filter2: dict) -> dict:
         }
 
 # Function to perform a dynamic query on the MongoDB
-def dynamic_query(storage_resource, compute_resource,
-                  os_resource, service_resource, qos_value) -> str:
+def dynamic_query(storage_resources, compute_resources,
+                  os_resources, service_resources, qos_values) -> str:
     final_filter = {}
 
     # --- STORAGE FILTER ---
-    if storage_resource:
+    for storage_resource in storage_resources:
         storage_info = parse_storage_resource(storage_resource)
         storage_filter = build_storage_filter(storage_info)
         final_filter = merge_filters(final_filter, storage_filter)
 
     # --- COMPUTE FILTER ---
-    if compute_resource:
+    for compute_resource in compute_resources:
         compute_info = parse_compute_resource(compute_resource)
         compute_filter = build_compute_filter(compute_info)
         final_filter = merge_filters(final_filter, compute_filter)
 
     # --- SERVICE FILTER ---
-    if service_resource:
+    for service_resource in service_resources:
         service_info = extract_service(service_resource)
         service_filter = build_service_filter(service_info)
         final_filter = merge_filters(final_filter, service_filter)
 
     # --- OS FILTER ---
-    if os_resource:
+    for os_resource in os_resources:
         os_info = extract_distro_and_version(os_resource)
         os_filter = build_os_filter(os_info)
         final_filter = merge_filters(final_filter, os_filter)
 
-    # --- QOS_FILTER ---
-    if qos_value:
+    # --- QOS FILTER ---
+    for qos_value in qos_values:
         qos_info = parse_qos_value(qos_value)
         qos_filter = build_qos_filter(qos_info)
         final_filter = merge_filters(final_filter, qos_filter)
 
-    response_string = "\nDynamic query filter: " + str(final_filter) + "\n" #json.dumps(final_filter, indent=4) + "\n"
+    response_string = "\nDynamic query filter: " + str(final_filter) + "\n"
     cursor = collection.find(final_filter)
     results = list(cursor)
 

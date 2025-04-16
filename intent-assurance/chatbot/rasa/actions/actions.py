@@ -12,8 +12,8 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
 # Constants
-ADD_FEEDBACK_ACTION = "add"
-REMOVE_FEEDBACK_ACTION = "remove"
+ADD_FEEDBACK_OPERATION = "add"
+REMOVE_FEEDBACK_OPERATION = "remove"
 
 """ Helper functions """
 
@@ -109,20 +109,30 @@ def remove_build_feedback(tracker, value, entity):
     # Convertimos el valor a minúsculas para hacer la comparación
     value_lower = value.lower()
 
+    # Debugging: Log the inputs and current state
+    print(f"Debug: Received value='{value}', entity='{entity}'")
+    print(f"Debug: Current build_json={json.dumps(build_json, indent=4)}")
+
     if entity == "middlebox":
         for service in build_json:
             if service["middlebox"].lower() == value_lower:
+                print(f"Debug: Found matching middlebox='{service['middlebox']}'")
                 build_json.remove(service)
+                # Return the updated build_json after removal
                 return build_json
 
     elif entity == "asset":
         for service in build_json:
             for asset in service["assets"]:
-                if asset.lower() == value_lower:
+                if asset.get("value", "").lower() == value_lower:
+                    print(f"Debug: Found matching asset='{asset}' in service='{service['middlebox']}'")
                     service["assets"].remove(asset)
+                    # Return the updated build_json after removal
                     return build_json
 
-    return None
+    # Debugging: Log if no match was found
+    print(f"Debug: No match found for value='{value_lower}' and entity='{entity}'")
+    return build_json  # Return the original build_json if no match is found
 
 
 def add_tla_feedback(tracker, value):
@@ -141,13 +151,17 @@ def remove_tla_feedback(tracker, value):
         return tla_json
     return None
 
-def process_feedback_output(dispatcher, new_json, action, entity, value):
-    if not new_json:
+def process_feedback_output(dispatcher, tracker, new_json, action, entity, value):
+    print(f"Debug: new_json after {action} operation: {json.dumps(new_json, indent=4) if new_json else 'None'}")
+
+    if not new_json and tracker.get_slot("service_assets_dict") is None:
         dispatcher.utter_message("I couldn't apply the feedback. Please provide a valid entity and value.")
         return []
     else:
-        dispatcher.utter_message(f"{action.capitalize()}ed {entity}: {value}")
-        return [SlotSet("service_assets_dict", json.dumps(new_json))]
+        dispatcher.utter_message(f"{action.capitalize()}d {entity}: {value}")
+        updated_slot = json.dumps(new_json)
+        print(f"Debug: Updating slot 'service_assets_dict' with: {updated_slot}")
+        return [SlotSet("service_assets_dict", updated_slot)]
 
 """ Build actions """
 
@@ -239,49 +253,38 @@ class ActionCheckAvailability(Action):
 
         assets_dict = json.loads(tracker.get_slot("service_assets_dict"))
 
-        storage_example = None
-        service_example = None
-        os_example = None
-        compute_example = None
-        qos_example = None
+        storage_requirements = []
+        service_requirements = []
+        os_requirements = []
+        compute_requirements = []
+        qos_requirements = []
 
         for service in assets_dict:
             for asset in service.get("assets", []):
                 asset_type = asset.get("type")
                 asset_value = asset.get("value")
 
-                if asset_type == "storage_resource" and not storage_example:
-                    storage_example = asset_value
-                elif asset_type == "service" and not service_example:
-                    service_example = asset_value
-                elif asset_type == "operating_system" and not os_example:
-                    os_example = asset_value
-                elif asset_type == "compute_resource" and not compute_example:
-                    compute_example = asset_value
-                elif asset_type == "qos_value" and not qos_example:
-                    qos_example = asset_value
-
-                # Stop early if we have all types
-                if all([storage_example, service_example, os_example, compute_example, qos_example]):
-                    break
-            if all([storage_example, service_example, os_example, compute_example, qos_example]):
-                break
-
-        # Safety: fallback message if some are missing
-        if not any([storage_example, service_example, os_example, compute_example, qos_example]):
-            dispatcher.utter_message("No suitable asset types found to perform the query.")
-            return []
+                if asset_type == "storage_resource":
+                    storage_requirements.append(asset_value)
+                elif asset_type == "service":
+                    service_requirements.append(asset_value)
+                elif asset_type == "operating_system":
+                    os_requirements.append(asset_value)
+                elif asset_type == "compute_resource":
+                    compute_requirements.append(asset_value)
+                elif asset_type == "qos_value":
+                    qos_requirements.append(asset_value)
 
         result = mh.dynamic_query(
-            storage_resource=storage_example,
-            compute_resource=compute_example,
-            os_resource=os_example,
-            service_resource=service_example,
-            qos_value=qos_example
+            storage_resources=storage_requirements,
+            compute_resources=compute_requirements,
+            os_resources=os_requirements,
+            service_resources=service_requirements,
+            qos_values=qos_requirements
         )
 
         dispatcher.utter_message(result)
-        return []  
+        return []
 
 # Action to perform the deployment of the services built
 class ActionDeploy(Action):
@@ -335,25 +338,24 @@ class ActionBuildFeedback(Action):
 
         value = next(tracker.get_latest_entity_values("value"), None)
         entity = next(tracker.get_latest_entity_values("entity"), None)
-        action = next(tracker.get_latest_entity_values("action"), None)
+        operation = next(tracker.get_latest_entity_values("operation"), None)
 
         dispatcher.utter_message(f"Received feedback: {value}-{entity}")
-
-        if not value or not entity:
+        if operation and operation.lower() == REMOVE_FEEDBACK_OPERATION:
+            dispatcher.utter_message(f"\t\tOperation: {operation}")
+            return process_feedback_output(dispatcher, tracker, remove_build_feedback(tracker, value, entity), REMOVE_FEEDBACK_OPERATION, entity, value)
+        elif not value or not entity:
             dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
-            return []
-
-        # Check if the user wants to add an entity
-        if entity == "middlebox":
-            return process_feedback_output(dispatcher, add_middlebox_feedback(dispatcher, tracker, value), ADD_FEEDBACK_ACTION, entity, value)
-        elif entity == "asset":
-            return process_feedback_output(dispatcher, add_asset_feedback(tracker, value), ADD_FEEDBACK_ACTION, entity, value)
+            return []  
         else:
-            dispatcher.utter_message("I'm not sure what you're referring to. Please provide a valid entity.")
-        
-        # Check if the user wants to remove an entity
-        if action.lower == REMOVE_FEEDBACK_ACTION:
-            return process_feedback_output(dispatcher, remove_build_feedback(tracker, value, entity), REMOVE_FEEDBACK_ACTION, entity, value)
+            dispatcher.utter_message(f"\t\tOperation: {ADD_FEEDBACK_OPERATION}")
+            # Check if the user wants to add an entity
+            if entity == "middlebox":
+                return process_feedback_output(dispatcher, tracker, add_middlebox_feedback(dispatcher, tracker, value), ADD_FEEDBACK_OPERATION, entity, value)
+            elif entity == "asset":
+                return process_feedback_output(dispatcher, tracker, add_asset_feedback(tracker, value), ADD_FEEDBACK_OPERATION, entity, value)
+            else:
+                dispatcher.utter_message("I'm not sure what you're referring to. Please provide a valid entity.")
 
         return []
 
