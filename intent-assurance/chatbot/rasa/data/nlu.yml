@@ -195,7 +195,7 @@ nlu:
     - I want to [launch](operation) a [file server](middlebox) and a [dns server](middlebox) in the same [ubuntu machine](operating_system) with [6 CPU cores](compute_resource) and [1Gbps](qos_value) throughput
     - Please [spin up](operation) a [firewall](middlebox) plus a [load balancer](middlebox) on a [windows server](operating_system) that has [32GB of RAM](compute_resource) and [4TB of storage](storage_resource)
     - I am looking for a [broker](middlebox) using [kafka](service) on a [linux machine](operating_system) with [3.0Ghz](compute_resource) CPU and also runs [zookeeper](service) for coordination
-    - I want to [create](operation) a [load balancer](middlebox) with [haproxy](service) inside an [Ubuntu Xenial machine](operating_system) that has [4 cores](compute_resource) and [128Gb of avaible space](storage_resource)
+    - I want to [create](operation) a [load balancer](middlebox) with [haproxy](service) inside an [Ubuntu Xenial machine](operating_system) that has [4 cores](compute_resource) and [128Gb of avaible space](storage_resource), this should have a bandwidth of [10Gbps](qos_value)
 
 - intent: feedback
   examples: |
