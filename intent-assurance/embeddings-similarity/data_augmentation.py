@@ -16,7 +16,7 @@ def get_synonyms(word):
                 synonyms.add(clean_lemma)
     return list(synonyms)
 
-def augment_query(query, num_variants=10):
+def augment_query(query, num_variants=20):
     words = query.split()
     variants = set()
     for _ in range(num_variants * 3):
@@ -38,10 +38,10 @@ df = pd.read_csv("data/training_data.csv")
 augmented = []
 
 for _, row in df.iterrows():
-    variants = augment_query(row["query"], 30)
+    variants = augment_query(row["query"])
     for v in variants:
         augmented.append({"query": v, "rule_ids": row["rule_ids"]})
 
 augmented_df = pd.DataFrame(augmented)
 full_df = pd.concat([df, augmented_df])
-full_df.to_csv("data/augmented_training_data_gpt.csv", index=False)
+full_df.to_csv("data/augmented_data_20_variants.csv", index=False)
