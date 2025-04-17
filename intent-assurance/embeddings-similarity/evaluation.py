@@ -18,7 +18,7 @@ def evaluate_system(training_file, evaluation_file):
         reader = csv.DictReader(file)
         for row in reader:
             query = row['query']
-            recommended_rules = set(row['rules_id'].split(';')) if row['rules_id'] != 'None' else set()
+            recommended_rules = set(row['rule_ids'].split(';')) if row['rule_ids'] != 'None' else set()
 
             # Verificar si la query existe en training_data
             if query in training_data:
@@ -42,8 +42,10 @@ def evaluate_system(training_file, evaluation_file):
     print(f"F1-score: {f1_score:.2f}%")
 
 # Archivos de entrada
-training_file = 'data/evaluate.csv'
-evaluation_file = 'data/evaluation_roberta.csv'
+training_file = 'data/training_data.csv'
+evaluation_file = 'evaluations/03_07/llama_04.csv'
+
+
 
 # Ejecutar la evaluación
 evaluate_system(training_file, evaluation_file)

@@ -11,10 +11,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
 import re
-import requests
 import asyncio
 import aiohttp
-
+import time
 # Logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -29,10 +28,18 @@ def load_json(file_path):
         data = json.load(file)
     return data
 
+def load_queries_from_csv(file_path):
+    queries = []
+    with open(file_path, mode='r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            queries.append(row['query'])
+    return queries
+
 def invert_synonyms(synonyms):
     inverted = {}
     for key, values in synonyms.items():
-        for synonym in [key] + values:  # Incluye la clave y sus sinónimos
+        for synonym in [key] + values:  
             inverted[synonym] = [key] + values
     return inverted
 
@@ -43,16 +50,6 @@ RULE_CATEGORIES = load_json('data/rule_categories.json')
 
 TECHNICAL_PHRASES = load_json('data/technical_phrases.json')
 
-"""CRITICAL_KEYWORDS = {
-    'critical': 2.0,
-    'emergency': 1.8,
-    'overload': 1.7,
-    'depleted': 1.6,
-    'error': 1.5,
-    'drop': 1.4,
-    'exhausted': 1.3
-}"""
-CRITICAL_KEYWORDS = {}
 
 
 class HybridEncoder:
@@ -109,52 +106,8 @@ class HybridEncoder:
 class LlamaRecommender:
     def __init__(self, model):
         self.model = model
-        self.context = ("You are an expert system administrator with a system resource monitoring application. "
-                    "For this, you have the following rules that you can apply. \n"
-                    "id,name,rule\n"
-                    "r1,Bare Metal Memory Underutilized (Free more than 50%),free>50\n"
-                    "r2,Bare Metal CPU Underutilized (Idle more than 90%),idle_time>90\n"
-                    "r3,Virtual Machine CPU Underutilized (Idle more than 90%),idle_time>90\n"
-                    "r4,Bare Metal Swap Usage Active (Swap Used more than 0),swap_used!=0\n"
-                    "r5,Bare Metal Memory Exhausted (Free less than 50%),free<50\n"
-                    "r6,Bare Metal Critical Memory Exhaustion (Free less than 50% for 1 min),1min(free)<50\n"
-                    "r7,Virtual Machine Memory Exhausted (Free less than 50%),free<50\n"
-                    "r8,Virtual Machine Critical Memory Exhaustion (Free less than 50% for 1min),1min(free)<50\n"
-                    "r9,Bare Metal Hugepages Depleted (Pages Free = 0),pages_free==0\n"
-                    "r10,Bare Metal CPU Overloaded (Idle less or equal than 1% for 1min),1min(idle_time)<=1\n"
-                    "r11,Bare Metal CPU Critical Overload (Idle less or equal than 1% for 5min),5min(idle_time)<=1\n"
-                    "r12,Virtual Machine CPU Overloaded (Idle less or equal than 1% for 1min),1min(idle_time)<=1\n"
-                    "r13,Virtual Machine CPU Critical Overload (Idle less or equal than 1% for 5min),5min(idle_time)<=1\n"
-                    "r14,Bare Metal Temperature Limit Reached (Temperature more or equal than Max temperature),input_temp>=max_temp\n"
-                    "r15,Bare Metal Critical Temperature Alert (Temperature more or equal than Critical),input_temp>=critical_temp\n"
-                    "r16,Bare Metal Critical Fan Speed (Speed less than 100 RPM),input_fanspeed<100\n"
-                    "r17,Bare Metal Zombie Processes Active (Count more than 0),zombie_count>0\n"
-                    "r18,Virtual Machine SSH Access Down,ssh==0\n"
-                    "r19,Bare Metal Network Critical: Default Gateway ARP Missing,(state==""up"") and (gw_in_arp==0)\n"
-                    "r20,Bare Metal Network Non-Standard MTU,(mtu!=1500) and (type==ether)\n"
-                    "r21,Bare Metal Network Interface Flapping (Changes more than 6 per min),1min(dynamicity(changes_count))>=6\n"
-                    "r22,Bare Metal Network High Rx Errors (Errors more than 100 per min),1min(dynamicity(rx_error))>100\n"
-                    "r23,Bare Metal Network High Rx Packet Drops (Rx Drops more than 10k per 1min),1min(dynamicity(rx_drop))>10000\n"
-                    "r24,Bare Metal Network High Tx Errors (Errors more than 100 per min),1min(dynamicity(tx_error))>100\n"
-                    "r25,Bare Metal Network High Tx Packet Loss (Tx Drops more than 100 per 1min),1min(dynamicity(tx_drop))>100\n"
-                    "r26,Kernel/DPDK Network GSO Buffer Starvation,dynamicity(gso_no_buffers)>0\n"
-                    "r27,Kernel/DPDK Network Mbuf Depletion (Drops more than 0),dynamicity(rx_no_buffer)>0\n"
-                    "r28,Kernel/DPDK Network IP4 Input Buffer Missing,dynamicity(ip4_input_out_of_buffers)>0\n"
-                    "r29,Kernel/DPDK Network Excessive IP Fragments,dynamicity(ip4_input_fragment_chain_too_long)>0\n"
-                    "r30,Kernel/DPDK Network IP4 Destination Miss,dynamicity(ip4_input_destination_lookup_miss)>0\n"
-                    "r31,Kernel/DPDK Network High Rx Errors,1min(dynamicity(rx_error))>100\n"
-                    "r32,Kernel/DPDK Network High Rx Packet Drops,1min(dynamicity(rx_drop))>10000\n"
-                    "r33,Kernel/DPDK Network High Tx Errors,1min(dynamicity(tx_error))>100\n"
-                    "r34,Kernel/DPDK Network High Tx Packet Loss,1min(dynamicity(tx_drop))>100\n"
-                    "r35,Kernel/DPDK Memory Low Buffers,(buffer_free/buffer_total)<0.1\n"
-                    "r36,Kernel/DPDK Network DPDK Buffer Allocation Errors,dynamicity(dpdk_alloc_errors)>0\n"
-                    "I need you to indicate a score for every rule in the system."
-                 #   "I need you to indicate me for each rule, its percentage of success for the specific query of the user. \n"
-                    "You must mention every rule.\n"
-                    "The format I want you to do is: 'id:(0-1)'.\n"
-                    "For example: r1:0.32 and so on with every rule \n"
-                    "Just indicate the id and the percentage, don't show any more. If there is no rule applicable, show None"
-                    "The query is the following: ")
+        with open('data/ollamaContext.txt', 'r', encoding='utf-8') as file:
+            self.context = file.read()
 
     async def _send_request(self, session, prompt, stream=False):
         url = "http://localhost:11434/api/generate"
@@ -168,35 +121,26 @@ class LlamaRecommender:
             logger.error(f"Error in the request: {e}")
             return None
         
-        """data = {"model": self.model, "prompt": prompt, "stream": stream}
-        response = requests.post(url, json=data)
-        return response.json() if response.status_code == 200 else None"""
     
     def _parse_response(self, response_data):
         if not response_data:
-            return "Error en la respuesta del modelo"
+            logger.error(f"Error in the response.")
+            return None
 
         response = response_data.get('response', 'N/A')
         if response == 'N/A': 
             return np.zeros(36)
         
-        with open('response_llama.txt', 'w') as file:
-                 file.write(str(response))
-        
-        pattern = r"^r(3[0-6]|1[0-9]|2[0-9]|[1-9]):(0\.\d{2}|1\.00)$"
+        pattern = r"^r(3[0-6]|1[0-9]|2[0-9]|[1-9]):(0\.\d{1,2}|1\.00)$"
         matches = re.findall(pattern, response, flags=re.MULTILINE)
 
         scores_dict = {int(rule): float(score) for rule, score in matches}
 
-        llama_scores = np.zeros(36)
+        llama_scores = np.zeros(33)
         for rule_num, score in scores_dict.items():
-            if 1 <= rule_num <= 36:
+            if 1 <= rule_num <= 33:
                 llama_scores[rule_num - 1] = score
-
-        with open('response_parsed.txt', 'w') as file:
-            file.write(str(llama_scores))
-
-
+        
         return llama_scores
         
     
@@ -223,7 +167,7 @@ class RuleRecommender:
 
         self.use_ollama = use_ollama
         if self.use_ollama:
-            self.ollama = LlamaRecommender("gemma3:1b")
+            self.ollama = LlamaRecommender("gemma3:27b-it-q8_0")
 
 
     
@@ -249,7 +193,7 @@ class RuleRecommender:
             synonyms_found = False
             for key, synonyms in TECHNICAL_SYNONYMS.items():
                 if lemma == key or lemma in synonyms:
-                    tokens.extend([key] + synonyms)  # Añade la clave y todos los sinónimos
+                    tokens.extend([key] + synonyms)  
                     synonyms_found = True
                     break
             if not synonyms_found:
@@ -289,16 +233,7 @@ class RuleRecommender:
         main_category = max(scores, key=scores.get)
         return main_category if scores[main_category] > 0 else 'other'
 
-    # Calculate criticality score
-    def _calculate_criticality(self, text):
-        score = 1.0
-        for word, boost in CRITICAL_KEYWORDS.items():
-            if word in text.lower():
-                score *= boost
-        return min(score, 5.0)
-
     def _load_and_prepare_rules(self, file_path):
-        
         logger.info(f"Loading rules from: {file_path}")
         df = pd.read_csv(file_path)
         
@@ -310,9 +245,6 @@ class RuleRecommender:
         logger.info("Categorization of rules...")
         df['category'] = df['name'].apply(self._categorize_rule)
         
-        # Criticality score
-        logger.info("Calculating criticality score...")
-        df['criticality_score'] = df['name'].apply(self._calculate_criticality)
         return df
         
     async def recommend(self, query, min_score=0.3):
@@ -323,35 +255,21 @@ class RuleRecommender:
         processed_query = self._normalize_text(query)
         query_emb = self.encoder.transform([processed_query])
 
-        # Calcular similitudes y aplicar máscara
+        # Calculate similarity
         similarities = cosine_similarity(query_emb, self.embeddings).flatten()
-        boosted_scores = similarities * self.rules_df['criticality_score'].values
-        mask = boosted_scores >= min_score
-        
-        # Crear DataFrame filtrado con índices originales preservados
-        processed_query = self._normalize_text(query)
-        query_emb = self.encoder.transform([processed_query])
 
-        # Calcular similitudes y aplicar máscara
-        similarities = cosine_similarity(query_emb, self.embeddings).flatten()
-        boosted_scores = similarities * self.rules_df['criticality_score'].values
-
-        with open('cosine.txt', 'w') as file:
-            file.write(str(boosted_scores))
-        
         if self.use_ollama:
-
             try:
                 llama_scores = await asyncio.wait_for(ollama_task, timeout=200)
             except asyncio.TimeoutError:
                 logger.warning("Timeout reached. Using base scores")
                 llama_scores = np.zeros(36)
                 
-            if len(llama_scores) != len(boosted_scores):
-                raise ValueError("llama_scores must have the same length than cosine similarity")
-            combined_scores = boosted_scores * 0.5 + llama_scores * 0.5
+            if len(llama_scores) != len(similarities):
+                raise ValueError("llama_scores must have the same length as cosine similarity")
+            combined_scores = similarities * 0.3 + llama_scores * 0.7
         else:
-            combined_scores = boosted_scores
+            combined_scores = similarities
 
         mask = combined_scores >= min_score
         filtered_df = self.rules_df[mask].copy()
@@ -390,37 +308,40 @@ class RuleRecommender:
 
         rules_ids = ';'.join(recommended_rules['id'].astype(str)) if not recommended_rules.empty else 'None'
 
-        evaluation_file = 'data/evaluation_augmented.csv'
+        evaluation_file = 'evaluations/03_07/llama_04.csv'
         file_exists = Path(evaluation_file).exists()
 
-        # Escribir en el archivo CSV
         with open(evaluation_file, mode='a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
-            # Escribir encabezados si el archivo no existe
+            # Initialize the file if it doesn't exist
             if not file_exists:
-                writer.writerow(['query', 'rules_id'])
-            # Escribir la fila con la query y las reglas asociadas
+                writer.writerow(['query', 'rule_ids'])
+            # Write row with query and rules recommended
             writer.writerow([query, rules_ids])
+
+
 
 async def main():
     RULES_FILE = 'data/rules.csv'
-    USER_QUERY = "I need a web server with guaranteed CPU availability and no network packet loss"
-    #USER_QUERY = "I want to deploy a web server that has minimum 6CPUs available"
-    #USER_QUERY = load_json("data/queries.json")
-    THRESHOLD = 0
-
-    TRAINING_DATA = 'data/augmented_training_data_gpt.csv'
+    USER_QUERY = load_queries_from_csv("data/training_data.csv")
+    THRESHOLD = 0.4
     
     try:
-        recommender = RuleRecommender(RULES_FILE, True)
-        
-        recommended_rules, scores = await recommender.recommend(USER_QUERY, THRESHOLD)
-        
-        recommender.explain_recommendation(USER_QUERY, recommended_rules, scores, THRESHOLD)
 
-        """for query in USER_QUERY:
-            recommended_rules, scores = recommender.recommend(query, THRESHOLD)
-            recommender.evaluate(query, recommended_rules)"""
+        start_time = time.time()
+        recommender = RuleRecommender(RULES_FILE, use_ollama=True)
+        
+        """recommended_rules, scores = await recommender.recommend(USER_QUERY, THRESHOLD)
+        
+        recommender.explain_recommendation(USER_QUERY, recommended_rules, scores, THRESHOLD)"""
+
+        for query in USER_QUERY:
+            recommended_rules, scores = await recommender.recommend(query, THRESHOLD)
+            recommender.evaluate(query, recommended_rules)
+        
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        logger.info(f"Execution completed in {elapsed_time:.2f} seconds.")
 
     except Exception as e:
         logger.error(f"An error occurred: {e}")
@@ -428,4 +349,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    

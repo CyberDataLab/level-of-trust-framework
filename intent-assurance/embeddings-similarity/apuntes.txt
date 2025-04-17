@@ -292,3 +292,155 @@ Tenemos un problema, si aparece el token "processing" no detectará que es sinó
 He decidido utilizar la segunda opción por razones obvias. Sin embargo, en el fichero "technical_synonyms" se utiliza un diccionario normal para que sea legible y de fácil actualización.
 
 
+
+
+OLLAMA:
+
+sudo systemctl stop ollama
+Para mapear el puerto 11434 a la máquina con las dos 4080 ejecutar el siguiente comando:
+ssh -N -L 11434:localhost:11434 alfonsosg@IP_MAQUINA
+
+
+Pruebas de rendimiento: gemma3:27b-it-q4_K_M
+
+USANDO OLLAMA CON LAS NUEVAS QUERIES
+
+OLLAMA 100%
+
+THRESHOLD -> 0.6
+Precisión: 71.74%
+Recall: 77.33%
+F1-score: 74.43%
+
+THRESHOLD -> 0.5
+Precisión: 70.42%
+Recall: 86.09%
+F1-score: 77.47%
+
+THRESHOLD -> 0.4
+
+OLLAMA 80%
+
+THRESHOLD -> 0.4
+Precisión: 71.06%
+Recall: 87.76%
+F1-score: 78.53%
+
+THRESHOLD -> 0.5
+Precisión: 74.21%
+Recall: 78.03%
+F1-score: 76.07%
+
+THRESHOLD -> 0.6
+Precisión: 82.05%
+Recall: 63.56%
+F1-score: 71.63%
+
+
+OLLAMA 70%
+
+THRESHOLD -> 0.6
+Precisión: 82.90%
+Recall: 58.00%
+F1-score: 68.25%
+
+
+THRESHOLD -> 0.5
+Precisión: 79.59%
+Recall: 81.36%
+F1-score: 80.47%
+
+THRESHOLD -> 0.4
+Precisión: 69.37%
+Recall: 87.90%
+F1-score: 77.55%
+
+
+
+OLLAMA 60%
+
+
+THRESHOLD -> 0.4
+Precisión: 69.52%
+Recall: 83.73%
+F1-score: 75.96%
+
+THRESHOLD -> 0.5
+Precisión: 76.33%
+Recall: 73.99%
+F1-score: 75.14%
+
+THRESHOLD -> 0.6
+Precisión: 83.63%
+Recall: 46.18%
+F1-score: 59.50%
+
+OLLAMA 50%
+
+THRESHOLD -> 0.4
+Precisión: 69.67%
+Recall: 85.95%
+F1-score: 76.96%
+
+THRESHOLD -> 0.5
+Precisión: 76.88%
+Recall: 69.82%
+F1-score: 73.18%
+
+THRESHOLD -> 0.6
+Precisión: 86.14%
+Recall: 36.30%
+F1-score: 51.08%
+
+
+OLLAMA 0%
+
+THRESHOLD -> 0.4
+Precisión: 45.92%
+Recall: 55.63%
+F1-score: 50.31%
+
+THRESHOLD -> 0.5
+Precisión: 61.60%
+Recall: 29.90%
+F1-score: 40.26%
+
+THRESHOLD -> 0.6
+Precisión: 72.87%
+Recall: 13.07%
+F1-score: 22.17%
+
+
+--------------------------------------------------------------------------------------
+gemma3:27b-it-q8_0
+--------------------------------------------------------------------------------------
+
+OLLAMA 100%
+
+THRESHOLD -> 0.4
+Precisión: 61.33%
+Recall: 88.46%
+F1-score: 72.44%
+
+THRESHOLD -> 0.5
+Precisión: 67.07%
+Recall: 84.42%
+F1-score: 74.75%
+
+THRESHOLD -> 0.6
+Precisión: 74.57%
+Recall: 79.14%
+F1-score: 76.79%
+
+OLLAMA 70%
+
+THRESHOLD -> 0.4
+Precisión: 67.03%
+Recall: 86.23%
+F1-score: 75.43%
+
+
+THRESHOLD -> 0.5
+Precisión: 74.59%
+Recall: 76.77%
+F1-score: 75.67%
