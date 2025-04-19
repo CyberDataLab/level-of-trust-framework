@@ -3,8 +3,6 @@
 
 from typing import Any, Text, Dict, List
 import json
-import re
-from pymongo import MongoClient
 from . import mongo_helper as mh
 
 from rasa_sdk import Action, Tracker
@@ -23,45 +21,86 @@ def flush_slots():
 
 """ Feedback functions """
 
-def add_asset_feedback(tracker, value):
-    build_json = json.loads(tracker.get_slot("service_assets_dict"))
+def add_asset_feedback(tracker, entity, value):
+    # Ensure the slot value is a JSON string before parsing
+    service_assets_slot = tracker.get_slot("service_assets_dict")
+    if isinstance(service_assets_slot, list):
+        build_json = service_assets_slot
+    else:
+        build_json = json.loads(service_assets_slot)
+    print(f"Debug: Initial build_json: {json.dumps(build_json, indent=4)}")
 
-    # Convertimos el mensaje actual y el valor buscado a minúsculas
     current_build_message_lower = tracker.get_slot("current_build_message").lower().split()
-    value_lower = value.lower()
+    print(f"Debug: Current build message: {current_build_message_lower}")
 
-    # Construimos una lista de middleboxes en minúsculas para comparaciones
-    middleboxes_lower = [service["middlebox"].lower() for service in build_json]
+    value_lower = value.lower()
+    middleboxes_lower = [service["middlebox"].lower() for service in build_json if service["middlebox"]]
 
     latest_middlebox = None
 
+    # Identify the latest middlebox mentioned in the current build message
     for word in current_build_message_lower:
         if word in middleboxes_lower:
             idx = middleboxes_lower.index(word)
             latest_middlebox = build_json[idx]["middlebox"]
-            continue
+            print(f"Debug: Latest middlebox identified: {latest_middlebox}")
 
-        if word == value_lower and latest_middlebox is not None:
-            for service in build_json:
-                if service["middlebox"].lower() == latest_middlebox.lower():
-                    service["assets"].append(value)
+    # If a middlebox is identified, add the asset to its service
+    if latest_middlebox:
+        for service in build_json:
+            if service["middlebox"].lower() == latest_middlebox.lower():
+                # Check if the asset already exists
+                asset_exists = any(asset["value"].lower() == value_lower for asset in service["assets"])
+                if not asset_exists:
+                    service["assets"].append({
+                        "type": entity,
+                        "value": value
+                    })
+                    print(f"Debug: Updated build_json after adding asset: {json.dumps(build_json, indent=4)}")
                     return build_json
 
+    # If no middlebox is identified, fallback to adding the asset to the most recent service
+    if build_json:
+        most_recent_service = build_json[-1]
+        print(f"Debug: Fallback to most recent service: {most_recent_service}")
+        asset_exists = any(asset["value"].lower() == value_lower for asset in most_recent_service["assets"])
+        if not asset_exists:
+            most_recent_service["assets"].append({
+                "type": entity,
+                "value": value
+            })
+            print(f"Debug: Updated build_json after fallback: {json.dumps(build_json, indent=4)}")
+            return build_json
+
+    # If no suitable service is found, return None
+    print("Debug: No suitable service found to add the asset.")
     return None
 
 def add_middlebox_feedback(dispatcher, tracker, value):
-    build_json = json.loads(tracker.get_slot("service_assets_dict"))
+    # Ensure the slot value is a JSON string before parsing
+    service_assets_slot = tracker.get_slot("service_assets_dict")
+    if isinstance(service_assets_slot, list):
+        build_json = service_assets_slot
+    else:
+        build_json = json.loads(service_assets_slot)
+    print(f"Debug: Initial build_json: {json.dumps(build_json, indent=4)}")
+
     current_build_message = tracker.get_slot("current_build_message")
 
     detected_middleboxes = [service["middlebox"] for service in build_json]
-    detected_assets = [asset for service in build_json for asset in service["assets"]]
+    detected_assets = [
+        {
+            "type": asset["type"],
+            "value": asset["value"]
+        }
+        for service in build_json for asset in service["assets"]
+    ]
 
     dispatcher.utter_message(f"Current build message: {current_build_message}")
     dispatcher.utter_message(f"build_json: {json.dumps(build_json, indent=4)}")
 
-    # 1) Localizamos la posición del token que se indicó cómo middlebox
+    # 1) Locate the position of the token identified as the middlebox
     new_middlebox_index = None
-    i = 0
     for i, word in enumerate(current_build_message.split()):
         dispatcher.utter_message(f"Word: {word} - Value: {value}")
         if word.lower() == value.lower():
@@ -70,37 +109,38 @@ def add_middlebox_feedback(dispatcher, tracker, value):
             break
 
     if new_middlebox_index is None:
-        dispatcher.utter_message("No se encontró el token en el mensaje")
+        dispatcher.utter_message("The token was not found in the message")
         return None
 
-    # 2) A partir de esa posición, recolectamos las entidades de tipo 'asset' hasta toparte con otro middlebox
+    # 2) Collect 'asset' entities from that position until encountering another middlebox
     desired_assets = []
     for j in range(new_middlebox_index + 1, len(current_build_message.split())):
         word = current_build_message.split()[j]
-        if word in detected_middleboxes:
-            # Si encontramos otro middlebox, paramos
+        if word in [mb.lower() for mb in detected_middleboxes]:
+            # Stop if another middlebox is found
             break
-        elif word in detected_assets:
-            desired_assets.append(word)
+        for asset in detected_assets:
+            if word.lower() == asset["value"].lower():
+                desired_assets.append(asset)
 
-    # 3) Buscamos en build_json un servicio con middlebox=="null" que tenga esos assets
+    # 3) Search for a service with middlebox == None that has these assets
     for service in build_json:
-        if service["middlebox"] == None:
-            # Comprobamos si coincide la lista de assets
-            if service["assets"] == desired_assets:
+        if service["middlebox"] is None:
+            # Check if the list of assets matches
+            if all(asset in service["assets"] for asset in desired_assets):
                 service["middlebox"] = value
                 dispatcher.utter_message("Middlebox updated")
-                dispatcher.utter_message(json.dumps(build_json, indent=4))
+                print(json.dumps(build_json, indent=4))
                 return build_json
 
-    # 4) Si no encontramos un servicio con esos assets, creamos uno nuevo
+    # 4) If no service with these assets is found, create a new one
     new_service = {
         "middlebox": value,
-        "assets": []
+        "assets": desired_assets
     }
     build_json.append(new_service)
     dispatcher.utter_message("New service added")
-    dispatcher.utter_message(json.dumps(build_json, indent=4))
+    print(json.dumps(build_json, indent=4))
     return build_json
 
 def remove_build_feedback(tracker, value, entity):
@@ -113,55 +153,47 @@ def remove_build_feedback(tracker, value, entity):
     print(f"Debug: Received value='{value}', entity='{entity}'")
     print(f"Debug: Current build_json={json.dumps(build_json, indent=4)}")
 
-    if entity == "middlebox":
+    if entity == "middlebox" or entity in mh.BUILD_CLASSES or entity in mh.BUILD_CLASSES:
         for service in build_json:
             if service["middlebox"].lower() == value_lower:
                 print(f"Debug: Found matching middlebox='{service['middlebox']}'")
                 build_json.remove(service)
                 # Return the updated build_json after removal
+                print(json.dumps(build_json, indent=4))
                 return build_json
 
-    elif entity == "asset":
+    elif entity == "asset" or entity in mh.ASSET_CLASSES or entity in mh.TLA_CLASSES:
         for service in build_json:
             for asset in service["assets"]:
                 if asset.get("value", "").lower() == value_lower:
                     print(f"Debug: Found matching asset='{asset}' in service='{service['middlebox']}'")
                     service["assets"].remove(asset)
-                    # Return the updated build_json after removal
+                    print(json.dumps(build_json, indent=4))
                     return build_json
 
     # Debugging: Log if no match was found
     print(f"Debug: No match found for value='{value_lower}' and entity='{entity}'")
     return build_json  # Return the original build_json if no match is found
 
-
-def add_tla_feedback(tracker, value):
-    tla_json = json.loads(tracker.get_slot("tla_dict"))
-    requirements = tla_json["requirements"]
-    if value not in requirements:
-        requirements.append(value)
-        return tla_json
-    return None
-
-def remove_tla_feedback(tracker, value):
-    tla_json = json.loads(tracker.get_slot("tla_dict"))
-    requirements = tla_json["requirements"]
-    if value in requirements:
-        requirements.remove(value)
-        return tla_json
-    return None
+# Added debug messages to track slot updates and ensure JSON is not overridden
 
 def process_feedback_output(dispatcher, tracker, new_json, action, entity, value):
     print(f"Debug: new_json after {action} operation: {json.dumps(new_json, indent=4) if new_json else 'None'}")
 
-    if not new_json and tracker.get_slot("service_assets_dict") is None:
-        dispatcher.utter_message("I couldn't apply the feedback. Please provide a valid entity and value.")
-        return []
-    else:
+    # Ensure the new JSON is valid before updating the slot
+    if new_json:
         dispatcher.utter_message(f"{action.capitalize()}d {entity}: {value}")
-        updated_slot = json.dumps(new_json)
-        print(f"Debug: Updating slot 'service_assets_dict' with: {updated_slot}")
-        return [SlotSet("service_assets_dict", updated_slot)]
+        print(f"Debug: Updating slot 'service_assets_dict' with: {new_json}")
+
+        # Log the current slot value before updating
+        current_slot_value = tracker.get_slot("service_assets_dict")
+        print(f"Debug: Current slot value before update: {current_slot_value}")
+
+        return [SlotSet("service_assets_dict", new_json)]
+    else:
+        dispatcher.utter_message("I couldn't apply the feedback. Please provide a valid entity and value.")
+        print("Debug: Feedback operation failed. No changes made to the slot.")
+        return []
 
 """ Build actions """
 
@@ -344,19 +376,19 @@ class ActionBuildFeedback(Action):
         if operation and operation.lower() == REMOVE_FEEDBACK_OPERATION:
             dispatcher.utter_message(f"\t\tOperation: {operation}")
             return process_feedback_output(dispatcher, tracker, remove_build_feedback(tracker, value, entity), REMOVE_FEEDBACK_OPERATION, entity, value)
-        elif not value or not entity:
-            dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
-            return []  
-        else:
+        elif operation and operation.lower() == ADD_FEEDBACK_OPERATION:
             dispatcher.utter_message(f"\t\tOperation: {ADD_FEEDBACK_OPERATION}")
             # Check if the user wants to add an entity
-            if entity == "middlebox":
+            if entity == "middlebox" or entity in mh.BUILD_CLASSES or entity in mh.AVAILABLE_SERVICES:
+                dispatcher.utter_message(f"\t\tOperation: {operation} another {entity}")
                 return process_feedback_output(dispatcher, tracker, add_middlebox_feedback(dispatcher, tracker, value), ADD_FEEDBACK_OPERATION, entity, value)
-            elif entity == "asset":
-                return process_feedback_output(dispatcher, tracker, add_asset_feedback(tracker, value), ADD_FEEDBACK_OPERATION, entity, value)
+            elif entity == "asset" or entity in mh.ASSET_CLASSES or entity in mh.TLA_CLASSES:
+                dispatcher.utter_message(f"\t\tOperation: {operation} another {entity}")
+                return process_feedback_output(dispatcher, tracker, add_asset_feedback(tracker, entity, value), ADD_FEEDBACK_OPERATION, entity, value)
             else:
                 dispatcher.utter_message("I'm not sure what you're referring to. Please provide a valid entity.")
-
+        else:
+            dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
         return []
 
 """ TLA actions """
