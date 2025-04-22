@@ -13,6 +13,9 @@ from rasa_sdk.events import SlotSet
 ADD_FEEDBACK_OPERATION = "add"
 REMOVE_FEEDBACK_OPERATION = "remove"
 
+# Initialize MongoDB connection
+mh.initialize()
+
 """ Helper functions """
 
 def flush_slots():

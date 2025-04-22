@@ -1,20 +1,6 @@
 from pymongo import MongoClient
 import re
-import json
 
-# Entity classes
-BUILD_CLASSES = ["middlebox"]
-ASSET_CLASSES = ["storage_resource", "compute_resource", "operating_system", "service"]
-TLA_CLASSES = ["qos_value"]
-
-# Resource lists
-CODENAME_MAP = {
-    "xenial": "ubuntu",
-    "noble": "ubuntu",
-    "bionic": "ubuntu",
-    "focal": "ubuntu",
-    "jammy": "ubuntu",
-}
 UNIT_MAPPING = {
     "Bps": "bps",
     "KBps": "Kbps",
@@ -22,18 +8,26 @@ UNIT_MAPPING = {
     "GBps": "Gbps",
     "TBps": "Tbps"
 }
-AVAILABLE_DISTROS = ["ubuntu", "centos", "fedora", "windows"]
-AVAILABLE_SERVICES = ["firewall", "load balancer", "ids", "ips", "proxy", "nat", "vpn", "voip", "dns", "directory"]
-AVAILABLE_SERVICES_SOFTWARE = ["snort", "suricata", "pfsense", "openvswitch", "haproxy", "apache", "bind", "openldap", "asterisk"]
+
+# Entity classes
+BUILD_CLASSES = ["middlebox"]
+ASSET_CLASSES = ["storage_resource", "compute_resource", "operating_system", "service"]
+TLA_CLASSES = ["qos_value"]
+
+# Resource lists
+codename_mapping = {}
+available_flavors = [] #["server", "desktop", "headless", "cloud", "core", "minimal", "kubernetes", "container"]
+available_distros = []
+available_services = [] #"firewall", "load balancer", "ids", "ips", "proxy", "nat", "vpn", "voip", "dns", "directory"]
+available_service_softwares = [] #["snort", "suricata", "pfsense", "openvswitch", "haproxy", "apache", "bind", "openldap", "asterisk"]
 
 # MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
-db = client["example_database"]
-collection = db["wef_entities"]
+client = None
+db = None
+collection = None
 
 # Function to convert from Bps to bps
-def to_bitspersecond(value: str, unit: str) -> dict:
-    
+def _to_bitspersecond(value: str, unit: str) -> dict:
 
     if unit not in UNIT_MAPPING:
         raise ValueError(f"Unsupported unit: {unit}")
@@ -46,6 +40,81 @@ def to_bitspersecond(value: str, unit: str) -> dict:
         }
     except ValueError:
         raise ValueError(f"Invalid value: {value}")
+
+# Function to load the available os from the database
+def _initialize_distros_lists():
+    global available_distros, available_flavors
+    
+    osv_strings = []
+    codenames = []
+    cursor = collection.find({})
+
+    for document in cursor:
+        for asset in document["assets"]:
+            if asset.get("type") == "resource" and "swImageDesc" in asset:
+                osv_strings.append(asset["swImageDesc"]["operatingSystemVersion"].lower())
+                codenames.append(asset["swImageDesc"].get("operatingSystemCodename", "").lower() if "operatingSystemCodename" in asset["swImageDesc"] else None)
+
+    for osv_string, codename in zip(osv_strings, codenames):
+        distro_flavor_pattern = re.compile(r'([a-z]+)(?:-([a-z]+))?', re.IGNORECASE)
+        distro_flavor_match = distro_flavor_pattern.search(osv_string)
+        if distro_flavor_match:
+            available_distros.append(distro_flavor_match.group(1))
+            available_flavors.append(distro_flavor_match.group(2))
+            if codename:
+                codename_mapping[codename] = distro_flavor_match.group(1)
+
+    print("Updated available_distros:", available_distros)
+    print("Updated available_flavors:", available_flavors)
+    print("Updated codename_mapping:", codename_mapping)
+
+# Function to load the available services from the database
+def _initialize_services_lists():
+    global available_services, available_service_softwares
+
+    cursor = collection.find({})
+
+    for document in cursor:
+        for asset in document["assets"]:
+            if asset.get("type") == "service" and "serviceDesc" in asset:
+                service_desc = asset["serviceDesc"]
+
+                service_type = service_desc.get("type")
+                if service_type and service_type not in available_services:
+                    available_services.append(service_type)
+
+                service_software = service_desc.get("serviceSW")
+                if service_software and service_software not in available_service_softwares:
+                    available_service_softwares.append(service_software)
+            
+            # Process subservices
+            if "subservices" in asset:
+                for subservice in asset["subservices"]:
+                    if "subserviceDesc" in subservice:
+                        subservice_desc = subservice["subserviceDesc"]
+
+                        # Extract subservice type
+                        subservice_type = subservice_desc.get("type")
+                        if subservice_type and subservice_type not in available_services:
+                            available_services.append(subservice_type)
+
+                        # Extract subservice software
+                        subservice_software = subservice_desc.get("subserviceSW")
+                        if subservice_software and subservice_software not in available_service_softwares:
+                            available_service_softwares.append(subservice_software)
+
+    print("Updated available_services:", available_services)
+    print("Updated available_service_softwares:", available_service_softwares)
+
+# Initialization function
+def initialize():
+    global client, db, collection
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client["example_database"]
+    collection = db["wef_entities"]
+    _initialize_distros_lists()
+    _initialize_services_lists()
+    print("Initialization complete.")
 
 # Function to parse storage resources
 def parse_storage_resource(storage_str: str) -> dict:
@@ -171,13 +240,13 @@ def extract_service(service_string: str):
     }
 
     # Identify a known type
-    for t in AVAILABLE_SERVICES:
+    for t in available_services:
         if t in service_lower:
             result["type"] = t
             break
 
     # Identify known software
-    for sw in AVAILABLE_SERVICES_SOFTWARE:
+    for sw in available_service_softwares:
         if sw in service_lower:
             result["software"] = sw
             break
@@ -251,14 +320,16 @@ def extract_distro_and_version(os_string: str):
         "version": None
     }
 
-    for codename, mapped_distro in CODENAME_MAP.items():
+    for codename, mapped_distro in codename_mapping.items():
         if codename in os_lower:
             result["codename"] = codename
             result["distro"] = mapped_distro
             break 
 
-    if "server" in os_lower:
-        result["flavor"] = "server"
+    for flavor in available_flavors:
+        if flavor in os_lower:
+            result["flavor"] = flavor
+            break
 
     user_ver_match = re.search(r'(\d+(?:\.\d+)?)', os_lower)
     if user_ver_match:
@@ -336,6 +407,7 @@ def parse_qos_value(qos_str: str) -> dict:
 
 # Function to build the MongoDB filter for qos values
 def build_qos_filter(qos_info: dict) -> dict:
+    qos_info = _to_bitspersecond(qos_info["value"], qos_info["unit"])
     value = qos_info.get("value")
     unit = qos_info.get("unit")
     if not value or not unit:
@@ -361,21 +433,21 @@ def merge_filters(filter1: dict, filter2: dict) -> dict:
     if not filter2:
         return filter1
 
-    if "$and" in filter1 and "$and" in filter2:
+    if "$or" in filter1 and "$or" in filter2:
         return {
-            "$and": filter1["$and"] + filter2["$and"]
+            "$or": filter1["$or"] + filter2["$or"]
         }
-    elif "$and" in filter1:
+    elif "$or" in filter1:
         return {
-            "$and": filter1["$and"] + [filter2]
+            "$or": filter1["$or"] + [filter2]
         }
-    elif "$and" in filter2:
+    elif "$or" in filter2:
         return {
-            "$and": [filter1] + filter2["$and"]
+            "$or": [filter1] + filter2["$or"]
         }
     else:
         return {
-            "$and": [filter1, filter2]
+            "$or": [filter1, filter2]
         }
 
 # Function to perform a dynamic query on the MongoDB

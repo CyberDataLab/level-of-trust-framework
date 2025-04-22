@@ -48,6 +48,29 @@
                             ]
                         }
                     }
+                },
+                {
+                    "subserviceDesc": {
+                        "id": "subservice-vpn1",
+                        "type": "vpn",
+                        "subserviceSW": "openvpn",
+                        "subserviceVersion": "2.5.6",
+                        "health": {
+                            "score": 0,
+                            "status": "green",
+                            "symptoms": [
+                                {
+                                    "symptomType": "Processes",
+                                    "objectiveIndicators": [
+                                        {
+                                            "indicatorType": "Stability",
+                                            "indicatorValue": 0.99
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
                 }
             ]
         },

@@ -20,13 +20,13 @@ execution_arg = sys.argv[1]
 if execution_arg == "query":
     # Query the collection to search for the new document
     query = {
-        '$and': [
+        '$or': [
             {
-                '$and': [
+                '$or': [
                     {
-                        '$and': [
+                        '$or': [
                             {
-                                '$and': [
+                                '$or': [
                                     {
                                         'assets': {
                                             '$elemMatch': {
@@ -127,6 +127,36 @@ elif execution_arg == "list":
     print("Listing all documents in the collection:")
     for doc in cursor:
         print(doc)
+
+elif execution_arg == "add_instances":
+    # Add all JSON documents from the instances directory
+    instances_dir = os.path.join(os.path.dirname(__file__), 'instances')
+    
+    if not os.path.exists(instances_dir):
+        print(f"Directory not found: {instances_dir}")
+        sys.exit(1)
+
+    for file_name in os.listdir(instances_dir):
+        if file_name.endswith('.json'):
+            file_path = os.path.join(instances_dir, file_name)
+            try:
+                with open(file_path, 'r') as file:
+                    new_document = json.load(file)
+                # Insert the document into the collection
+                result = collection.insert_one(new_document)
+                print(f"Document from {file_name} inserted with ID: {result.inserted_id}")
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON in file {file_name}: {e}")
+            except Exception as e:
+                print(f"Error processing file {file_name}: {e}")
+
+elif execution_arg == "flush":
+    # Flush the collection
+    try:
+        collection.delete_many({})
+        print("All documents in the collection have been deleted.")
+    except Exception as e:
+        print(f"Error flushing the collection: {e}")
 
 else:
     print("Invalid argument. Use 'query' or 'list'.")

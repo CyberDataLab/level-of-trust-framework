@@ -115,76 +115,10 @@ nlu:
     - nothing else thanks
 - intent: build
   examples: |
-    - [Add](operation) [DPI](middlebox) middlebox into [all traffic](traffic) from [Internet](location) to the [Labs](location)
-    - [add](operation) [dpi](middlebox) to [labs](location) [network](location)
-    - [add](operation) [DPI](middlebox) to the [labs](location) network
-    - [add](operation) [dpi](middlebox) to [labs](location)
-    - Deploy a [file server](middlebox) on [four Debian VMs](asset)
-    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset)
-    - Install a [proxy server](middlebox) on [two Fedora VMs](asset)
-    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset)
-    - Deploy a [web server](middlebox) on [two Ubuntu Server 20.04 VMs](asset) and [three CentOS VMs](asset)
-    - I want to deploy a [database server](middlebox) on [three CentOS VMs](asset) and [four Debian VMs](asset)
-    - Deploy a [file server](middlebox) on [four Debian VMs](asset) and [five Red Hat VMs](asset)
-    - Set up a [mail server](middlebox) on [five Red Hat VMs](asset) and [six Ubuntu VMs](asset)
-    - Install a [proxy server](middlebox) on [two Fedora VMs](asset) and [three CentOS VMs](asset)
-    - Provision a [DNS server](middlebox) on [six Ubuntu VMs](asset) and [four Debian VMs](asset)
-    - [Add](operation) [monitor](middlebox) for the [university](location)
-    - From [internet](location) to [Labs](location) [add](operation) [DPI](middlebox)
-    - [add](operation) a [firewall](middlebox)
-    - [Add](operation) [inspection](middlebox) for the [university](location)
-    - [Remove](operation) [firewall](middlebox) from the [university](location) to the [datacenter](location)
-    - From [gateway](location) to [network](location) [add](operation) middlebox [firewall](middlebox)
-    - From [university](location) to [internet](location) [add](operation) middlebox [dpi](middlebox)
-    - From [dorms](location) to [internet](location) [add](operation) [nat](middlebox)
-    - From [university](location) to [internet](location) [add](operation) [firewall](middlebox)
-    - Please add [traffic shaper](middlebox) between the [internet](location) and the [dorms](location)
-    - [Add](operation) [inspection](middlebox) for the [university](location)
-    - Add [monitor](middlebox) for the [university](location)
-    - add [shaping](middlebox) for [gateway](location)
-    - [Add](operation) [intrusion detection](middlebox) and [address translation](middlebox) for [servers](location) network
-    - [Remove](operation) [load balancing](middlebox) from [gateway](location) to [database](location).
-    - [Add](operation) [firewall](middlebox) from [gateway](location) to the [lab](location).
-    - Deploy a [web server](middlebox) inside an [Ubuntu-server 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), then deploy a [mail server](middlebox) inside a [windows server machine](asset) with [500GB of disk space](asset) and [4 processing cores](asset).
-    - I want a [firewall](middlebox) running on a [linux machine](asset) with [8GB of RAM](asset) and a IDS(middlebox) on a [windows machine](asset) with [1TB of disk space](asset).
-    - Build a [web server](middlebox) on a [Ubuntu 22.04 VM](asset) with [16GB of RAM](asset) and [4 processing cores](asset), also deploy a [cloud storage](middlebox) with [2TB of disk space](asset).
-    - Deploy a [DNS server](middlebox) on [Debian 10](asset) with [4GB of RAM](asset) and [2 processing cores](asset) and a [firewall](middlebox) on [CentOS 8]. 
-    - Set up a [mail server](middlebox), a [web server](middlebox) and a [database server](middlebox).
-    - build a [web server](middlebox), a [firewall](middlebox) and a [load balancer](middlebox).
-    - [limit](qos_constraint) [servers](location) [bandwidth](qos_metric) to [5](qos_value) [gbps](qos_unit)
-    - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
-    - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
-    - [limit](qos_constraint) the [bandwidth](qos_metric) to [5](qos_value) [Gb](qos_unit) for rack [servers](location)
-    - [limit](qos_constraint) [traffic](traffic) to [5](qos_value) [Gbps](qos_unit)
-    - [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [labs](location)
-    - [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [servers](location)
-    - [Set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) [dorms](location)
-    - [Set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [guest](location)
-    - [Set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [dorms](location)
-    - [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit) at [LAN](location)
-    - [Limit](qos_constraint) [traffic](traffic) to [10](qos_value) [GB per week](qos_unit) at [Dorms](location)
-    - for endpoint [dorms](location) [set](operation) [quota](qos_metric) [download](qos_constraint) [10](qos_value) [gb/wk](qos_unit)
-    - At endpoint [Dorms](location) [set](operation) [quota](qos_metric) to [10](qos_value) [GB per week](qos_unit)
-    - [Limit](qos_constraint) rack [servers](location) to [5](qos_value) [gbps](qos_unit)
-    - [Limit](qos_constraint) [servers](location) to [5](qos_value) [gbps](qos_unit)
-    - [Set](operation) [5](qos_value) [gbps](qos_unit) [limit](qos_constraint) for [servers](location)
-    - [define](operation) [dorms](location) [quota](qos_metric) to [10](qos_value) [gb per week](qos_unit)
-    - please [limit](qos_constraint) [bandwidth](qos_metric) to [5](qos_value) [Gigabits per second](qos_unit) for the [server racks](location)
-    - [limit](qos_constraint) the [bandwidth](qos_metric) in [server racks](location) to [5](qos_value) [gbps](qos_unit)
-    - [set](operation) a [maximum](qos_constraint) of [5](qos_value) [gbps](qos_unit) to the [servers](location)
-    - [limit](qos_constraint) the [bandwidth rate](qos_metric) of the [server racks](location) to [5](qos_value) [gbps](qos_unit)
-    - [limit](qos_constraint) to [100](qos_value) [Mbps](qos_unit) the [bandwidth](qos_metric) [torrent traffic](traffic) can consume
-    - [limit](qos_constraint) [torrent traffic](traffic) to [100](qos_value) [mbps](qos_unit)
-    - [Dorms](location) traffic to [internet](location) [must pass through](operation) a [firewall](middlebox)
-    - [add](operation) [security](middlebox) from [entry](location) to [backend](location)
-    - From [gateway](location) to [my network](location) [remove](operation) [nat](middlebox)
-    - [Limit](qos_constraint) in [10](qos_value) [Mbps](qos_unit) the [download rate](qos_metric) of [dorms](location) from [internet](location)
-    - [install](operation) an [email scanner](middlebox) for the [gateway](location)
-    - [Set](operation) to [1](qos_value) [Gbps](qos_unit) [bandwidth](qos_metric) [limit](qos_constraint) for the traffic to [DMZ](location)
     - I want to [launch](operation) [apache](middlebox) inside a [windows server](operating_system) with [4 processing cores](compute_resource) and [500GB of disk space](storage_resource)
     - I am looking for a [load balancer](middlebox) on a [linux machine](operating_system) that will support a bandwidth of [10Gbps](qos_value) and runs [bind](service) 
     - A [dns server](middlebox) on a [windows server](operating_system) with at least [2.5Ghz](compute_resource) and [8GB of RAM](compute_resource)
-    - A [llama chat](service) on a [linux machine](operating_system) with [128GB of VRAM](compute_resource) and [1TB of disk space](storage_resource)
+    - A [server](middlebox) that runs [llama chat](service) on a [linux machine](operating_system) with [128GB of VRAM](compute_resource) and [1TB of disk space](storage_resource)
     - I want to [deploy](operation) a [firewall](middlebox) on a [linux machine](operating_system) with [8 CPU cores](compute_resource) and [500GB of disk space](storage_resource)
     - Please [provision](operation) a [mysql server](middlebox) on a [windows server](operating_system) with [16GB of RAM](compute_resource) and [2.8Ghz](compute_resource) CPU
     - I am looking to [instantiate](operation) a [load balancer](middlebox) that runs [haproxy](service) on a [debian server](operating_system) that can handle [5Gbps](qos_value) and runs [redis](service)
@@ -196,6 +130,31 @@ nlu:
     - Please [spin up](operation) a [firewall](middlebox) plus a [load balancer](middlebox) on a [windows server](operating_system) that has [32GB of RAM](compute_resource) and [4TB of storage](storage_resource)
     - I am looking for a [broker](middlebox) using [kafka](service) on a [linux machine](operating_system) with [3.0Ghz](compute_resource) CPU and also runs [zookeeper](service) for coordination
     - I want to [create](operation) a [load balancer](middlebox) with [haproxy](service) inside an [Ubuntu Xenial machine](operating_system) that has [4 cores](compute_resource) and [128Gb of avaible space](storage_resource), this should have a bandwidth of [10Gbps](qos_value)
+    - I would like to [instantiate](operation) a [firewall](middlebox) on a [windows server](operating_system) with [8 CPU cores](compute_resource) and [1TB of disk space](storage_resource)
+    - I need a [web server](middlebox) on a [fedora 32](operating_system), [2.5Ghz](compute_resource) CPU and [4GB of RAM](compute_resource)
+    - Give me a [load balancer](middlebox) on a [windows server](operating_system), [6 CPU cores](compute_resource) at [2.5Ghz](compute_resource), [1TB of storage](storage_resource) and a bandwidth of [10Gbps](qos_value), ill run [haproxy](service) on it
+    - Lend me a [firewall](middlebox), a [load balancer](middlebox) and a [proxy](middlebox)
+    - Need a [load balancer](middlebox) on [ubuntu 20.04](operating_system) that candle [10Gbps](qos_value) of bandwith and a [server](middlebox) running [snort](service) with [8gb of ram](compute_resource) and a compute capacity of [2.5Ghz](compute_resource)
+    - [Set up](operation) a [cache server](middlebox) on a [CentOS 8](operating_system) with [6 CPU cores](compute_resource) at [3.4Ghz](compute_resource) and [256GB SSD](storage_resource)
+    - Please [provision](operation) a [database cluster](middlebox) using [postgresql](service) or [mysql](service) on [Debian 10](operating_system) requiring [64GB RAM](compute_resource) and [500Mbps](qos_value) throughput
+    - I need to [deploy](operation) an [IDS](middlebox) with [suricata](service) on [Ubuntu 18.04](operating_system) having [4 vCPUs](compute_resource) and an [storage of 50Gb](storage_resource)
+    - [Give](operation) me a [monitoring server](middlebox) on [RHEL 8](operating_system) with [16GB memory](compute_resource) and [1Gbps](qos_value) network, running [prometheus](service) and [grafana](service)
+    - [Create](operation) a [VPN concentrator](middlebox) on [Windows Server 2019](operating_system) with [8 central processing units](compute_resource) and [24GB Ram](compute_resource) available, and [200GB of disk](storage_resource
+    - I want a [mail server](middlebox) on a [Fedora](operating_system) using [postfix](service), the specifications are [4Ghz CPUs](compute_resource) and [500GB storage](storage_resource)
+    - [Provision](operation) a [container registry](middlebox) on [Alpine Linux](operating_system) with [2 CPU cores](compute_resource), [4GB of ram](compute_resource), and [128GB of storage](storage_resource)
+    - Need a [reverse proxy](middlebox) and a [API gateway](middlebox) on [Ubuntu noble](operating_system) with [3.6ghz](compute_resource), [16gb of Ram](compute_resource), and [200GB HDD](storage_resource)
+    - I want to [deploy](operation) a [logging server](middlebox) with [elasticsearch](service) on [CentOS 7](operating_system), [8 CPU cores](compute_resource), [32GB memory](compute_resource), [2TB HDD](storage_resource)  
+    - I require a [DHCP server](middlebox) on [Windows 2022](operating_system) that has [2.8Ghz](compute_resource) CPU, [4GB RAM](compute_resource), [50GB disk](storage_resource)  
+    - I want to [set up](operation) a [git server](middlebox) running [gitea](service) on [Debian 11](operating_system) with [4 cores](compute_resource) at [3.0Ghz](compute_resource) and [128GB SSD](storage_resource)  
+    - I need to [instantiate](operation) a [message queue](middlebox) using [rabbitmq](service) on [Ubuntu 20.04](operating_system) with [4 vCPUs](compute_resource), [8GB RAM](compute_resource), [100GB storage](storage_resource)  
+    - I want to [launch](operation) a [CI/CD server](middlebox) with [jenkins](service) on [CentOS Stream](operating_system), [8GB RAM](compute_resource), [2.4Ghz](compute_resource), [200GB space](storage_resource)  
+    - I need a [backup server](middlebox) on [OpenSUSE Leap](operating_system) having [12 CPU cores](compute_resource), [64GB RAM](compute_resource), [10TB storage](storage_resource)  
+    - Search for an [authentication server](middlebox) with [FreeIPA](service) on [Fedora 34](operating_system), [4 cores](compute_resource) at [3.2Ghz](compute_resource), [16GB memory](compute_resource)  
+    - I need to [deploy](operation) a [monitoring](middlebox) and [logging](middlebox) stack on [Ubuntu Server](operating_system) with [8 CPUs](compute_resource), [24GB RAM](compute_resource), [1TB storage](storage_resource)  
+    - I need to [spin up](operation) a [content filter](middlebox) on [Windows 10](operating_system) with [2.0Ghz](compute_resource), [8GB RAM](compute_resource), [250GB HDD](storage_resource)  
+    - Please [provision](operation) a [video streaming server](middlebox) using [nginx-rtmp](service) on [Ubuntu 18.04](operating_system), [6 cores](compute_resource) at [3.5Ghz](compute_resource), [32GB RAM](compute_resource), [5TB storage](storage_resource)  
+    - I want to [set up](operation) a [dns resolver](middlebox) with [unbound](service) on [Alpine Linux](operating_system) requiring [2 CPUs](compute_resource), [4GB RAM](compute_resource), [20GB disk](storage_resource)  
+    - I want a [game server](middlebox) hosting [minecraft](service) on [Windows Server 2016](operating_system) with [4.0Ghz](compute_resource), [32GB RAM](compute_resource), [500GB SSD](storage_resource)
 
 - intent: feedback
   examples: |

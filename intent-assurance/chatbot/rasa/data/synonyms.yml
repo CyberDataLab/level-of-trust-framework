@@ -134,28 +134,10 @@ nlu:
       - barred
       - do not allow
       - must not be allowed
-  - synonym: campus
-    examples: |
-      - campus
-      - entire campus
-  - synonym: classrooms
-    examples: |
-      - classroom
-      - classrooms
-      - class
   - synonym: database
     examples: |
       - database
       - base of data
-  - synonym: dorms
-    examples: |
-      - bedrooms
-      - housing
-      - dorms
-      - student housing
-      - domitories
-      - residents
-      - student dorms
   - synonym: download
     examples: |
       - Download
@@ -388,13 +370,6 @@ nlu:
       - doesn't have
       - doesn't have any
       - none
-  - synonym: parental control
-    examples: |
-      - parent inspection
-      - child protection
-      - children protection
-      - parental control
-      - content control
   - synonym: pc
     examples: |
       - my pc
@@ -405,14 +380,6 @@ nlu:
     examples: |
       - popcorn
       - popcorn-time
-  - synonym: professors
-    examples: |
-      - all professors
-      - teachers
-      - professors
-      - all teachers
-      - all prof
-      - prof
   - synonym: quota
     examples: |
       - data
@@ -541,11 +508,6 @@ nlu:
       - upload
       - uploading
       - upstream
-  - synonym: users
-    examples: |
-      - network users
-      - user
-      - users
   - synonym: verizon
     examples: |
       - verizon
@@ -556,7 +518,3 @@ nlu:
       - vpn
       - privacy
       - tunneling
-  - synonym: youtube
-    examples: |
-      - youtube
-      - YouTube

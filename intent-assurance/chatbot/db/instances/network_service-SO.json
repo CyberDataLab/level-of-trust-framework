@@ -6,10 +6,7 @@
             "id": "resource-so1",
             "type": "resource",
             "swImageDesc": {
-                "containerFormat": "BARE",
-                "diskFormat": "QCOW2",
-                "swImage": "wef_aaa_5gt",
-                "operatingSystemCodename": "Xenial Xerus",
+                "operatingSystemCodename": "Xenial",
                 "operatingSystemVersion": "ubuntu-server-16.04-amd64"
             }
         },
