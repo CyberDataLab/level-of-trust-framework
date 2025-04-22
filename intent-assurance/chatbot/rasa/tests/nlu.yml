@@ -1,0 +1,117 @@
+version: "3.1"
+
+nlu:
+- intent: cancel
+  examples: |
+    - Terminate the current process
+    - Halt all ongoing operations
+    - Abandon the current setup
+    - I need to stop this immediately
+    - Discontinue the deployment
+    - Scrap the configuration
+    - Let's drop this task
+    - I've changed my mind, cancel everything
+    - Please abort the entire workflow
+    - Cease all actions
+    - Cancel the pending request
+    - Stop what you're doing
+    - End this session now
+    - I want to exit this setup
+    - Cancel the entire operation
+    - Terminate the session
+    - Discard the current changes
+    - Pause and cancel everything
+    - Abort the current task
+    - I need to quit this process
+
+- intent: confirm
+  examples: |
+    - Affirmative
+    - Proceed as planned
+    - That’s acceptable
+    - Approved
+    - Go right ahead
+    - Proceed without hesitation
+    - Yes, proceed
+    - Definitely proceed
+    - Confirm execution
+    - Authorize the action
+    - Agreed, move forward
+    - All systems go
+    - Acknowledge and proceed
+    - Validate the request
+    - I consent to this
+    - Yes, enable it
+    - Confirm the configuration
+    - Lock it in
+    - Yep, go for it
+    - Finalize the setup
+
+- intent: reject
+  examples: |
+    - Not interested in proceeding
+    - Decline the offer
+    - Refuse the request
+    - Negative, do not proceed
+    - Deny the operation
+    - I oppose this action
+    - Veto the proposal
+    - Reject the changes
+    - Do not approve
+    - Withdraw consent
+    - Block the deployment
+    - I must decline
+    - Not at this time
+    - Deny access
+    - Disallow the action
+    - Override and cancel
+    - Deny the request
+    - Reject the configuration
+    - I forbid this
+    - Dismiss the suggestion
+
+- intent: build
+  examples: |
+    - [Deploy](operation) a [cluster](middlebox) on [Fedora 36](operating_system) with [12 CPU cores](compute_resource) and [250GB NVMe](storage_resource)  
+    - [Provision](operation) an [S3-compatible storage](middlebox) on [FreeBSD](operating_system) with [5TB space](storage_resource) and [10Gbps](qos_value)  
+    - [Instantiate](operation) a [GPU node](middlebox) on [Ubuntu 22.04](operating_system) with [24GB VRAM](compute_resource) and [1TB SSD](storage_resource)  
+    - [Set up](operation) a [logging server](middlebox) on [CentOS 9](operating_system) with [64GB RAM](compute_resource) and [4TB HDD](storage_resource)  
+    - [Launch](operation) a [NoSQL cluster](middlebox) on [Debian 12](operating_system) with [32 vCPUs](compute_resource) and [10Gbps](qos_value)  
+    - [Create](operation) an [compute node](middlebox) on [RHEL 8](operating_system) with [48GB RAM](compute_resource) and [500GB SSD](storage_resource)  
+    - [Spin up](operation) a [broker](middlebox) on [AlmaLinux 9](operating_system) with [8 CPU cores](compute_resource) and [200GB disk](storage_resource)  
+    - [Build](operation) a [server](middlebox) on [OpenSUSE Tumbleweed](operating_system) with [4.0Ghz](compute_resource) CPU and [16GB RAM](compute_resource)  
+    - [Deploy](operation) a [log management](middlebox) on [Rocky Linux](operating_system) with [12GB RAM](compute_resource) and [1TB storage](storage_resource)  
+    - [Provision](operation) a [dashboard](middlebox) on [Ubuntu LTS](operating_system) with [8 vCPUs](compute_resource) and [200GB SSD](storage_resource)  
+    - [Set up](operation) a [HA cluster](middlebox) on [Windows Server 2022](operating_system) with [24 CPU cores](compute_resource) and [2TB storage](storage_resource)  
+    - [Launch](operation) an [Alertmanager](middlebox) on [Fedora CoreOS](operating_system) with [6GB RAM](compute_resource) and [100GB disk](storage_resource)  
+    - [Instantiate](operation) a [object storage](middlebox) on [Arch Linux](operating_system) with [16 vCPUs](compute_resource) and [5TB space](storage_resource)  
+    - [Create](operation) a [secrets manager](middlebox) on [Gentoo](operating_system) with [3.8Ghz](compute_resource) CPU and [32GB RAM](compute_resource)  
+    - [Deploy](operation) a [service mesh](middlebox) on [Kali Linux](operating_system) with [4 cores](compute_resource) and [500GB disk](storage_resource)  
+    - [Provision](operation) a [ingress controller](middlebox) on [Ubuntu Minimal](operating_system) with [2.6Ghz](compute_resource) and [50GB storage](storage_resource)  
+    - [Spin up](operation) a [log server](middlebox) on [Clear Linux](operating_system) with [8GB RAM](compute_resource) and [120GB SSD](storage_resource)  
+    - [Build](operation) a [log aggregator](middlebox) on [Oracle Linux](operating_system) with [6 CPU cores](compute_resource) and [1TB HDD](storage_resource)  
+    - [Set up](operation) a [scheduler](middlebox) on [Slackware](operating_system) with [3.0Ghz](compute_resource) and [16GB RAM](compute_resource)  
+    - [Launch](operation) a [storage cluster](middlebox) on [Fedora Silverblue](operating_system) with [64 vCPUs](compute_resource) and [20TB storage](storage_resource)  
+
+- intent: feedback
+  examples: |
+    - [Add](operation) the [middlebox](entity) [IDS/IPS](value)
+    - [Add](operation) the [asset](entity) [25Gbps throughput](value)
+    - [Add](operation) the [service](entity) [Envoy proxy](value)  
+    - [Remove](operation) the [middlebox](entity) [legacy FTP server](value)  
+    - [Remove](operation) the [asset](entity) [512MB RAM](value) 
+    - [Remove](operation) the [middlebox](entity) [Nginx 1.18](value) 
+    - [Add](operation) the [protocol](entity) [QUIC](value) 
+    - [Remove](operation) the [service](entity) [Apache HTTPd](value)   
+    - [Add](operation) the [security policy](entity) [TLS 1.3](value)   
+    - [Remove](operation) the [middlebox](entity) [Telnet access](value)  
+    - [Add](operation) the [QoS rule](entity) [latency <50ms](value) 
+    - [Remove](operation) the [middlebox](entity) [unencrypted SMB](value)   
+    - [Add](operation) the [middlebox](entity) [OpenSSL](value) 
+    - [Add](operation) the [monitoring](entity) [Zabbix agent](value)   
+    - [Remove](operation) the [asset](entity) [IDE drives](value) 
+    - [Add](operation) the [middlebox](entity) [IPv6 support](value)   
+    - [Add](operation) the [authentication](entity) [OAuth2](value)
+    - [Remove](operation) the [middlebox](entity) [SHA-1 certificates](value)  
+    - [Add](operation) the [storage policy](entity) [RAID 10](value)
+    - [Remove](operation) the [middlebox](entity) [PHP 5.6](value)

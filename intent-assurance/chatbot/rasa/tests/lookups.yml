@@ -1,0 +1,420 @@
+version: "3.1"
+nlu:
+  - lookup: entity
+    examples: |
+      - aggregate
+      - group
+      - grouping
+      - location
+      - place
+      - middlebox
+      - network function
+      - virtual network function
+      - internet application
+      - service
+      - website
+      - flow
+      - traffic
+      - type of traffic
+  - lookup: traffic
+    examples: |
+      - news
+      - all
+      - all traffic
+      - traffic
+      - streaming
+      - video sites
+      - videos
+      - streaming traffic
+      - P2P application
+      - torrent traffic
+      - peer to peer
+      - peer2peer
+      - torrent
+      - peer-to-peer
+  - lookup: location
+    examples: |
+      - video server
+      - verizon
+      - Verizon
+      - university
+      - internal-network
+      - Servers
+      - house
+      - wired/wireless network
+      - system
+      - wired network
+      - wireless
+      - wireless network
+      - my network
+      - network
+      - PUCRS
+      - PUC
+      - database
+      - base of data
+      - data
+      - server
+      - servers
+      - server racks
+      - MITNet
+      - my mac
+      - my macbook
+      - macbook
+      - bedrooms
+      - housing
+      - dorms
+      - student housing
+      - domitories
+      - residents
+      - student dorms
+      - resident
+      - backend servers
+      - backend server
+      - backend
+      - UW network
+      - individual
+      - hosts
+      - host
+      - all hosts
+      - computers
+      - campus
+      - entire campus
+      - meeting room 23
+      - NYURoam wireless networks
+      - NYURoam
+      - RHIT-OPEN wireless network
+      - RHIT-OPEN
+      - att
+      - ATT
+      - at and t
+      - at&t
+      - AT&T
+      - DMZ
+      - demilitarized zone
+      - r&d
+      - development
+      - r&d division
+      - programming divinsion
+      - development division
+      - marketing
+      - marketing department
+      - UIC wireless-connected
+      - my pc
+      - my computer
+      - pc
+      - personal computer
+      - labs
+      - laboratories
+      - students labs
+      - student laboratories
+      - student labs
+      - application
+      - application servers
+      - local area network
+      - LAN
+      - guests
+      - classroom
+      - classrooms
+      - class
+      - entry
+      - network gateway
+      - external
+      - entrypoint
+      - gateway
+      - internet
+  - lookup: service
+    examples: |
+      - AIM Chat
+      - NETBIOS
+      - netbios
+      - MSN video
+      - PC-Telephone
+      - PC Telephone
+      - pc-telephone
+      - IRC
+      - irc
+      - mail server
+      - mail
+      - mail servers
+      - email
+      - file share server
+      - downloading
+      - download server
+      - file server
+      - file sharing
+      - Sorenson Videophone 200
+      - file transfer
+      - file transfering
+      - everquest
+      - Everquest
+      - MSN application sharing
+      - Net2Phone
+      - H323 video conferencing
+      - MSN
+      - MSN chat
+      - MSN audio
+  - lookup: protocol
+    examples: |
+      - dns
+      - ftp
+      - http
+      - https
+      - quic
+      - rtsp
+      - sftp
+      - smtp
+      - snmp
+      - ssh
+      - tcp
+      - udp
+      - imap
+      - IMAP
+      - pop3
+      - POP3
+      - secure imap
+      - secure IMAP
+      - secure pop
+      - secure POP
+      - telnet
+      - Telnet
+  - lookup: operation
+    examples: |
+      - add
+      - append
+      - include
+      - increase
+      - affix
+      - grant
+      - admit
+      - tolerate
+      - cut off
+      - deter
+      - halt
+      - intercept
+      - impede
+      - stall
+      - thwart
+      - hinder
+      - hold up
+      - close
+      - close off
+      - bar
+      - barred
+      - do not allow
+      - must not be allowed
+      - cut out
+      - delete
+      - remove
+      - abolish
+      - extract
+      - clear away
+      - discard
+      - get rid of
+      - detach
+      - expel
+      - take out
+      - withdraw
+      - exclude
+      - Define
+      - allocate
+      - fix
+      - provide
+      - set
+      - settle
+      - will have
+      - place
+      - establish
+      - put
+      - dismiss
+      - does not have any
+      - unfix
+      - unset
+      - unsettle
+      - withhold
+  - lookup: middlebox
+    examples: |
+      - nat
+      - address translation
+      - translation
+      - network address translation
+      - all
+      - all middleboxes
+      - overuse notification
+      - balancing
+      - load balancing
+      - load balancer
+      - Balance
+      - intrusion prevention
+      - ips
+      - intrusion prevention system
+      - unit firewall
+      - custom unit firewall
+      - traffic shaping
+      - traffic shaper
+      - shaping
+      - prioritize
+      - network border system
+      - network border infrastructure system
+      - copyright
+      - copyright violation
+      - copyright-monitoring
+      - private netwok
+      - vpn
+      - privacy
+      - tunneling
+      - intrusion detection system
+      - ids
+      - intrusion detection
+      - deep packet inspection
+      - inspect
+      - deep inspection
+      - packet inspection
+      - dpi
+      - content control
+      - using notification
+      - system traffic monitor
+      - network traffic monitor
+      - traffic monitor
+      - monitors
+      - network throughput monitor
+  - lookup: qos_constraint
+    examples: |
+      - download
+      - downstream
+      - inbound
+      - incoming
+      - capped
+      - capped at
+      - limit
+      - limited
+      - max
+      - maximum
+      - cap
+      - ceiling
+      - at most
+      - peak
+      - min
+      - minimum
+      - lowest amount
+      - minimal
+      - outbound
+      - outgoing
+      - upload
+      - uploading
+      - upstream
+  - lookup: qos_metric
+    examples: |
+      - bandwidth
+      - bandwidth consumption
+      - bandwidth rate
+      - cap
+      - capped at
+      - download rate
+      - is rate-limited to
+      - link
+      - rate
+      - rate limits
+      - speed
+      - throughput
+      - data transfer rate
+      - upload rate
+      - data plan
+      - data transfer limit
+      - may use
+      - may use up to
+      - quota
+      - reach
+      - reached
+      - should not use more than
+      - should use more than
+      - usage limit
+      - data
+      - no more than
+      - network usage
+  - lookup: qos_unit
+    examples: |
+      - GB a day
+      - GB per 24-hour period
+      - gb/d
+      - gigabytes of bandwidth per day
+      - GB of data in a day
+      - gb daily
+      - gb day
+      - gigabytes daily
+      - gigabytes daily
+      - GB monthly
+      - GB of Free monthly usage
+      - GB per month
+      - Gb per month
+      - gb/mth
+      - GB of data in a month
+      - gigabytes month
+      - gigabytes monthly
+      - gb month
+      - gb monthly
+      - GB of data weekly
+      - gb every week
+      - gb per week
+      - gb/wk
+      - gigabyte every week
+      - gigabyte per week
+      - gigabytes of bandwidth per week
+      - gigabytes per each 7 day period
+      - GB of data in a week
+      - gb per seven days
+      - gigabyte per seven days
+      - gb week
+      - gb a week
+      - gigabyte a week
+      - gigabyte weekly
+      - gb weekly
+      - gbps
+      - gigabit per second
+      - gigabit per seconds
+      - Kbps
+      - kbps
+      - Megabyte per hour
+      - Megabyte/hr
+      - Megabytes per hour
+      - mb/hr
+      - megabyte per hour
+      - megabyte/hr
+      - mb every week
+      - mb per week
+      - mb/wk
+      - megabyte every week
+      - megabyte per week
+      - Mb/s
+      - Mbps
+      - mbps
+      - megabit per second
+      - megabits per seconds
+      - gb/hr
+      - gb per hour
+      - gygabit per hour
+      - GB per hour
+      - GB of data in an hour
+  - lookup: qos_value
+    examples: |
+      - 1
+      - 10
+      - 100
+      - 18
+      - 2
+      - 20
+      - 200
+      - 2000
+      - 3
+      - 30
+      - 4
+      - 5
+      - 500
+      - 5000
+      - 6
+      - five
+      - does not enforce
+      - does not have
+      - does not have any
+      - doesn't have
+      - doesn't have any
+      - none

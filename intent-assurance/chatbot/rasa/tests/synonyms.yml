@@ -88,14 +88,11 @@ nlu:
       - backend
   - synonym: bandwidth
     examples: |
-      - capped at
-      - cap
       - bandwidth
       - bandwidth consumption
       - bandwidth rate
       - download rate
       - is rate-limited to
-      - link
       - rate
       - rate limits
       - speed
