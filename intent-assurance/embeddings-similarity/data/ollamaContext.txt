@@ -5,7 +5,7 @@ r1,Bare Metal Swap Usage Active,swap_used!=0
 r2,Bare Metal Memory Exhausted,free<50
 r3,Bare Metal Critical Memory Exhaustion,1min(free)<50
 r4,Virtual Machine Memory Exhausted,free<50
-r5,Bare Metal Critical Memory Exhaustion,1min(free)<50
+r5,Virtual Machine Critical Memory Exhaustion,1min(free)<50
 r6,Bare Metal Hugepages Depleted,pages_free==0
 r7,Bare Metal CPU Overloaded,1min(idle_time)<=1
 r8,Bare Metal CPU Critical Overload,5min(idle_time)<=1

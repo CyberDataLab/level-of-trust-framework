@@ -301,6 +301,12 @@ Para mapear el puerto 11434 a la máquina con las dos 4080 ejecutar el siguiente
 ssh -N -L 11434:localhost:11434 alfonsosg@IP_MAQUINA
 
 
+Consideraciones:
+- Usar un modelo de lenguaje hace que se asocien pesos muy altos a algunas reglas, permitiendo una subida del recall pero una bajada de la precisión.
+- Usar similitud permite bajar este recall, aumentando la precisión de las reglas.
+- Conclusión: Tener un balance entre el modelo y la similitud.
+
+
 Pruebas de rendimiento: gemma3:27b-it-q4_K_M
 
 USANDO OLLAMA CON LAS NUEVAS QUERIES
@@ -444,3 +450,19 @@ THRESHOLD -> 0.5
 Precisión: 74.59%
 Recall: 76.77%
 F1-score: 75.67%
+
+THRESHOLD -> 0.6
+Precisión: 84.40%
+Recall: 53.41%
+F1-score: 65.42%
+
+
+---------------------------------------------
+orca-mini:13b
+---------------------------------------------
+OLLAMA 100%
+
+THRESHOLD -> 0.5
+Precisión: 29.39%
+Recall: 24.20%
+F1-score: 26.54%

@@ -17,5 +17,4 @@ response = ollama.chat(model="gemma3:27b-it-q4_K_M", messages=[
         ])
 
 
-print(prompt + "\n------------------------------------------------\n")
 print(response['message']['content'])

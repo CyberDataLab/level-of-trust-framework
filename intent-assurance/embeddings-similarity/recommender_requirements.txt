@@ -1,0 +1,8 @@
+pandas
+numpy
+scikit-learn
+spacy
+sentence-transformers
+aiohttp
+
+python -m spacy download en_core_web_md

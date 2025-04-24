@@ -14,6 +14,10 @@ import re
 import asyncio
 import aiohttp
 import time
+
+import subprocess
+import os
+
 # Logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -167,7 +171,7 @@ class RuleRecommender:
 
         self.use_ollama = use_ollama
         if self.use_ollama:
-            self.ollama = LlamaRecommender("gemma3:27b-it-q4_K_M")
+            self.ollama = LlamaRecommender("gemma3:27b-it-q8_0")
 
 
     
@@ -267,7 +271,7 @@ class RuleRecommender:
                 
             if len(llama_scores) != len(similarities):
                 raise ValueError("llama_scores must have the same length as cosine similarity")
-            combined_scores = similarities * 0 + llama_scores * 1
+            combined_scores = similarities * 0.3 + llama_scores * 0.7
         else:
             combined_scores = similarities
 
@@ -307,7 +311,7 @@ class RuleRecommender:
 
         rules_ids = ';'.join(recommended_rules['id'].astype(str)) if not recommended_rules.empty else 'None'
 
-        evaluation_file = 'evaluations/llama2.csv'
+        evaluation_file = 'evaluations/llama_06.csv'
         file_exists = Path(evaluation_file).exists()
 
         with open(evaluation_file, mode='a', newline='', encoding='utf-8') as file:
@@ -318,25 +322,49 @@ class RuleRecommender:
             # Write row with query and rules recommended
             writer.writerow([query, rules_ids])
 
+    def save_rules(self, recommended_rules):
+
+        source_file = 'aux/rules.csv'
+        destination_file = 'res/rules.csv'
+        rules = []
+        with open(source_file, 'r') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                if row['id'] in set(recommended_rules['id']):
+                    rules.append(row)
+
+        if rules:
+            with open(destination_file, 'w', newline='') as file:
+                headers = ['name', 'path', 'severity', 'rule']
+                writer = csv.DictWriter(file, fieldnames=headers)
+
+                writer.writeheader()
+                for rule in rules:
+                    writer.writerow({
+                        'name': rule['name'],
+                        'path': rule['path'],
+                        'severity': rule['severity'],
+                        'rule': rule['rule']
+                    })       
+        else:
+            logger.info("RULEs empty")
 
 
 async def main():
     RULES_FILE = 'data/rules.csv'
-    USER_QUERY = load_queries_from_csv("data/training_data.csv")
-    THRESHOLD = 0.5
+    USER_QUERY = input("Query: ")
+    THRESHOLD = 0.4
     
     try:
 
         start_time = time.time()
-        recommender = RuleRecommender(RULES_FILE, use_ollama=True)
+        recommender = RuleRecommender(RULES_FILE, use_ollama=False)
         
-        """recommended_rules, scores = await recommender.recommend(USER_QUERY, THRESHOLD)
+        recommended_rules, scores = await recommender.recommend(USER_QUERY, THRESHOLD)
         
-        recommender.explain_recommendation(USER_QUERY, recommended_rules, scores, THRESHOLD)"""
+        recommender.explain_recommendation(USER_QUERY, recommended_rules, scores, THRESHOLD)
 
-        for query in USER_QUERY:
-            recommended_rules, scores = await recommender.recommend(query, THRESHOLD)
-            recommender.evaluate(query, recommended_rules)
+        recommender.save_rules(recommended_rules)
         
         end_time = time.time()
         elapsed_time = end_time - start_time
@@ -348,3 +376,10 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+    venv_python = os.path.join(os.getcwd(),"venv", "bin", "python3")
+
+    subprocess.run(
+        ["sudo", venv_python, "dxagent", "start"],
+        check=True
+    )
