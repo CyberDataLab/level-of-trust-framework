@@ -6,8 +6,6 @@ session_config:
   session_expiration_time: 120
   carry_over_slots_to_new_session: false
 intents:
-  - cancel:
-      use_entities: false
   - confirm:
       use_entities: false
   - reject:
@@ -15,26 +13,29 @@ intents:
   - build:
       use_entities:
         - middlebox
-        - asset
-        - requirements
+        - operating_system
+        - compute_resource
+        - storage_resource
+        - qos_value
+        - service
+        - operation
   - feedback:
       use_entities:
+        - operation
         - entity
-        - value
+        - qos_value
+        - service
+        - operating_system
+        - compute_resource
+        - storage_resource
+        - middlebox
 entities:
   - entity
   - value
   - operation
-  - protocol
   - service
-  - traffic
-  - middlebox #Service
-  - qos_metric
-  - qos_unit
+  - middlebox #Service in the onthology
   - qos_value
-  - qos_constraint
-  - location
-  - asset
   - operating_system
   - compute_resource
   - storage_resource
@@ -56,7 +57,7 @@ slots:
     - type: custom
   feedback_performed:
     type: bool
-    influence_conversation: false
+    influence_conversation: true
     mappings:
     - type: custom
 responses:

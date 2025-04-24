@@ -113,7 +113,7 @@ stories:
   - action: utter_ask_build_confirmation
   - user: |
       abort
-    intent: cancel
+    intent: reject
   - action: action_restart
 
 - story: Feedback → Partial Confirm → Reject
@@ -128,7 +128,7 @@ stories:
     intent: reject
   - action: utter_ask_build_feedback
   - user: |
-      Add 8GB RAM
+      Add the compute_resource 8GB RAM
     intent: feedback
   - action: action_build_feedback
   - user: |

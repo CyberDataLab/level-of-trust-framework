@@ -4,10 +4,6 @@ nlu:
     examples: |
       - DMZ
       - demilitarized zone
-  - synonym: H323 video conferencing
-    examples: |
-      - H323 video conferencing
-      - video and audio conferencing products that use the H.323
   - synonym: LAN
     examples: |
       - local area network
@@ -20,11 +16,6 @@ nlu:
     examples: |
       - NYURoam wireless networks
       - NYURoam
-  - synonym: PC Telephone
-    examples: |
-      - PC-Telephone
-      - PC Telephone
-      - pc-telephone
   - synonym: PUCRS
     examples: |
       - PUCRS
@@ -47,12 +38,6 @@ nlu:
       - forward
       - forward through
       - affix
-  - synonym: all
-    examples: |
-      - traffic
-      - all
-      - all traffic
-      - all middleboxes
   - synonym: allow
     examples: |
       - allow
@@ -73,14 +58,6 @@ nlu:
     examples: |
       - application
       - application servers
-  - synonym: at&t
-    examples: |
-      - att
-      - ATT
-      - AT and T
-      - at and t
-      - at&t
-      - AT&T
   - synonym: backend
     examples: |
       - backend servers
@@ -148,12 +125,6 @@ nlu:
       - deep inspection
       - packet inspection
       - dpi
-  - synonym: email
-    examples: |
-      - mail server
-      - mail
-      - mail servers
-      - email
   - synonym: file sharing
     examples: |
       - file share server
@@ -172,13 +143,14 @@ nlu:
       - external
       - entrypoint
       - gateway
-      - internet
   - synonym: gb
     examples: |
       - Gigabytes
       - gb
       - gigabyte
       - GB
+      - gigs
+      - gig
   - synonym: gb/d
     examples: |
       - GB a day
@@ -231,81 +203,10 @@ nlu:
       - gbps
       - gigabit per second
       - gigabit per seconds
-  - synonym: group
-    examples: |
-      - aggregate
-      - group
-      - grouping
-  - synonym: guests
-    examples: |
-      - guests
-      - Guests' network
-      - guest users
-  - synonym: hosts
-    examples: |
-      - individual
-      - hosts
-      - host
-      - all hosts
-      - computers
-  - synonym: ids
-    examples: |
-      - intrusion detection system
-      - ids
-      - intrusion detection
-  - synonym: imap
-    examples: |
-      - imap
-      - IMAP
-  - synonym: internal-network
-    examples: |
-      - the internal Rose-Hulman network
-      - internal-network
-  - synonym: ips
-    examples: |
-      - intrusion prevention
-      - ips
-      - intrusion prevention system
-  - synonym: irc
-    examples: |
-      - IRC
-      - irc
   - synonym: kbps
     examples: |
       - Kbps
       - kbps
-  - synonym: labs
-    examples: |
-      - labs
-      - laboratories
-      - students labs
-      - student laboratories
-      - student labs
-  - synonym: load balancer
-    examples: |
-      - balancing
-      - load balancing
-      - load balancer
-      - Balance
-  - synonym: macbook
-    examples: |
-      - my mac
-      - my macbook
-      - macbook
-  - synonym: marketing
-    examples: |
-      - marketing
-      - marketing department
-  - synonym: max
-    examples: |
-      - capped
-      - limit
-      - limited
-      - max
-      - maximum
-      - ceiling
-      - at most
-      - peak
   - synonym: mb/hr
     examples: |
       - Megabyte per hour
@@ -328,6 +229,48 @@ nlu:
       - mbps
       - megabit per second
       - megabits per seconds
+  - synonym: hosts
+    examples: |
+      - hosts
+      - host
+      - computers
+  - synonym: ids
+    examples: |
+      - intrusion detection system
+      - ids
+      - intrusion detection
+  - synonym: imap
+    examples: |
+      - imap
+      - IMAP
+  - synonym: internal-network
+    examples: |
+      - the internal network
+      - internal-network
+  - synonym: ips
+    examples: |
+      - intrusion prevention
+      - ips
+      - intrusion prevention system
+  - synonym: irc
+    examples: |
+      - IRC
+      - irc
+  - synonym: load balancer
+    examples: |
+      - load balancing
+      - load balancer
+      - Balance
+  - synonym: max
+    examples: |
+      - capped
+      - limit
+      - limited
+      - max
+      - maximum
+      - ceiling
+      - at most
+      - peak
   - synonym: middlebox
     examples: |
       - middlebox
@@ -348,7 +291,6 @@ nlu:
   - synonym: network
     examples: |
       - wired/wireless network
-      - system
       - wired network
       - wireless
       - wireless network
@@ -366,16 +308,6 @@ nlu:
       - doesn't have
       - doesn't have any
       - none
-  - synonym: pc
-    examples: |
-      - my pc
-      - my computer
-      - pc
-      - personal computer
-  - synonym: popcorn-time
-    examples: |
-      - popcorn
-      - popcorn-time
   - synonym: quota
     examples: |
       - data
@@ -391,13 +323,6 @@ nlu:
       - usage limit
       - no more than
       - network usage
-  - synonym: r&d
-    examples: |
-      - r&d
-      - development
-      - r&d division
-      - programming divinsion
-      - development division
   - synonym: remove
     examples: |
       - cut out
@@ -440,20 +365,12 @@ nlu:
       - Staff members
       - staff
       - for all staff
-      - faculty
   - synonym: streaming
     examples: |
       - streaming
       - video sites
       - videos
       - streaming traffic
-  - synonym: students
-    examples: |
-      - resident
-      - all students
-      - undergrads
-      - students
-      - scholar
   - synonym: telnet
     examples: |
       - telnet
@@ -482,9 +399,7 @@ nlu:
     examples: |
       - traffic shaping
       - traffic shaper
-      - priority
       - shaping
-      - prioritize
   - synonym: unit firewall
     examples: |
       - unit firewall

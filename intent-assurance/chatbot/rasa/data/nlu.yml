@@ -1,29 +1,6 @@
 version: "3.1"
 
 nlu:
-- intent: cancel
-  examples: |
-    - Start over
-    - Please cancel
-    - Cancel
-    - Cancel that
-    - Abort
-    - Stop
-    - I want to cancel
-    - I want to stop
-    - I want to start over
-    - stop that
-    - cancel that
-    - abort all processes
-    - nevermind
-    - exit
-    - quit
-    - forget it
-    - Nevermind
-    - I don't want to do that
-    - I don't want to continue
-    - I don't want to proceed
-    - nvm
 - intent: confirm
   examples: |
     - sure
@@ -69,7 +46,6 @@ nlu:
     - yep
 - intent: reject
   examples: |
-    - don't
     - nope not really
     - no that's be all
     - not right now
@@ -81,38 +57,40 @@ nlu:
     - nah I'm good
     - definitely not
     - no never
-    - never
     - nah
     - nothing
     - no maybe next time
-    - I don't want that
     - no not really
     - no that's ok
     - no no don't
     - na
     - no way no
-    - I can't
     - no thanks
     - not at all
     - not really
-    - I don't
-    - no I cannot
     - no that's okay
     - nope
-    - I don't think so
+    - nop
+    - no no no
+    - nooooo
+    - NO
     - no it isn't
     - thanks but not this time
     - no that's fine thank you
     - no don't
-    - don't do it
-    - I don't want
     - not today
-    - I'm not
     - no way
     - no
-    - I disagree
     - not this time
-    - nothing else thanks
+    - Please cancel
+    - Cancel
+    - Cancel that
+    - cancel that
+    - stop that
+    - Stop
+    - Abort
+    - abort that
+    - stop it
 - intent: build
   examples: |
     - I want to [launch](operation) [apache](middlebox) inside a [windows server](operating_system) with [4 processing cores](compute_resource) and [500GB of disk space](storage_resource)

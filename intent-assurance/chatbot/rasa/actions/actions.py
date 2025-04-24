@@ -427,7 +427,7 @@ class ActionBuildFeedback(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        value = next(tracker.get_latest_entity_values("value"), None)
+        value = next((tracker.get_latest_entity_values(entity) for entity in (mh.BUILD_CLASSES + mh.ASSET_CLASSES + mh.TLA_CLASSES) if tracker.get_latest_entity_values(entity)), None)
         entity = next(tracker.get_latest_entity_values("entity"), None)
         operation = next(tracker.get_latest_entity_values("operation"), None)
 

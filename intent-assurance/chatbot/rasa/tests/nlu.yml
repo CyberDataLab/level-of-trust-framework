@@ -1,29 +1,6 @@
 version: "3.1"
 
 nlu:
-- intent: cancel
-  examples: |
-    - Terminate the current process
-    - Halt all ongoing operations
-    - Abandon the current setup
-    - I need to stop this immediately
-    - Discontinue the deployment
-    - Scrap the configuration
-    - Let's drop this task
-    - I've changed my mind, cancel everything
-    - Please abort the entire workflow
-    - Cease all actions
-    - Cancel the pending request
-    - Stop what you're doing
-    - End this session now
-    - I want to exit this setup
-    - Cancel the entire operation
-    - Terminate the session
-    - Discard the current changes
-    - Pause and cancel everything
-    - Abort the current task
-    - I need to quit this process
-
 - intent: confirm
   examples: |
     - Affirmative
