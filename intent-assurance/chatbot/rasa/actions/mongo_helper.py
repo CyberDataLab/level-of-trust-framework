@@ -485,7 +485,8 @@ def dynamic_query(storage_resources, compute_resources,
         qos_filter = build_qos_filter(qos_info)
         final_filter = merge_filters(final_filter, qos_filter)
 
-    response_string = "\nDynamic query filter: " + str(final_filter) + "\n"
+    print("\nDynamic query filter:", final_filter)
+    response_string = ""
     cursor = collection.find(final_filter)
     results = list(cursor)
 

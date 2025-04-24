@@ -126,7 +126,7 @@ elif execution_arg == "list":
     cursor = collection.find()
     print("Listing all documents in the collection:")
     for doc in cursor:
-        print(doc)
+        print(json.dumps(doc, indent=4, default=str))
 
 elif execution_arg == "add_instances":
     # Add all JSON documents from the instances directory

@@ -54,6 +54,11 @@ slots:
     influence_conversation: true
     mappings:
     - type: custom
+  feedback_performed:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: custom
 responses:
 #General
   utter_please_rephrase:
