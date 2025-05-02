@@ -9,5 +9,6 @@
 /intent-assurance/chatbot/rasa/models/
 /intent-assurance/chatbot/rasa/results/
 /intent-assurance/chatbot/rasa/model_report.md
+/intent-assurance/chatbot/frontend/__pycache__/
 __pycache__/
 venv/

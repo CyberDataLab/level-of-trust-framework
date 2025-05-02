@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <div>
+        <label for="user-input">Enter your message:</label>
+        <input type="text" id="user-input" placeholder="Type here...">
+        <button id="submit-button" onclick="sendMessage()">Ask</button>
+    </div>
+    <div class="response-box" id="response-box">
+        <!-- Chat responses will appear here -->
+    </div>
+    <div class="filters">
+        <div>
+            <label for="price-filter">Sort by Price:</label>
+            <select id="price-filter">
+                <option value="low-to-high">Low to High</option>
+                <option value="high-to-low">High to Low</option>
+            </select>
+        </div>
+        <div>
+            <label for="resource-filter">Resource Name:</label>
+            <input type="text" id="resource-filter" placeholder="Enter resource name">
+        </div>
+        <div>
+            <label for="provider-filter">Provider:</label>
+            <select id="provider-filter">
+                <option value="">All Providers</option>
+                <option value="Bcom">Bcom</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="network-filter">Network Name:</label>
+            <input type="text" id="network-filter" placeholder="Enter network name">
+        </div>
+        <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Resource</th>
+                    <th>Provider</th>
+                    <th>Network</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will go here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    function sendMessage() {
+        const userInput = document.getElementById('user-input').value;
+        document.getElementById('user-input').value = '';
+        fetch('http://localhost:5005/webhooks/rest/webhook', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: userInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response data:', data); // Debug log to check the response structure
+            const responseBox = document.getElementById('response-box');
+            responseBox.innerHTML = '';
+            const tableBody = document.querySelector('.table-container tbody');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            if (data.length > 1) {
+                data.forEach(item => {
+                    if (item.text) {
+                        const message = document.createElement('p');
+                        message.textContent = item.text;
+                        responseBox.appendChild(message);
+                    }
+                });
+            } else {
+                const messageText = data[0]?.text || 'No data available';
+                try {
+                    const parsedData = JSON.parse(messageText);
+                    if (Array.isArray(parsedData)) {
+                        const tableBody = document.querySelector('.table-container tbody');
+                        parsedData.forEach(row => {
+                            const tableRow = document.createElement('tr');
+                            tableRow.innerHTML = `
+                                <td>${row.resource_id || ''}</td>
+                                <td>${row.vnf_provider || ''}</td>
+                                <td>${row.infrastructure_id || ''}</td>
+                                <td>${row.price_tag || ''}</td>
+                            `;
+                            tableBody.appendChild(tableRow);
+                        });
+                    } else {
+                        const message = document.createElement('p');
+                        message.textContent = messageText;
+                        responseBox.appendChild(message);
+                    }
+                } catch (error) {
+                    const message = document.createElement('p');
+                    message.textContent = messageText;
+                    responseBox.appendChild(message);
+                }
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function applyFilters() {
+        const priceFilter = document.getElementById('price-filter').value;
+        const resourceFilter = document.getElementById('resource-filter').value.toLowerCase();
+        const providerFilter = document.getElementById('provider-filter').value;
+        const networkFilter = document.getElementById('network-filter').value.toLowerCase();
+
+        const rows = document.querySelectorAll('.table-container tbody tr');
+        rows.forEach(row => {
+            const resourceName = row.children[0].textContent.toLowerCase();
+            const providerName = row.children[1].textContent;
+            const networkName = row.children[2].textContent.toLowerCase();
+            const price = parseFloat(row.children[3].textContent.replace('$', ''));
+
+            let showRow = true;
+
+            if (resourceFilter && !resourceName.includes(resourceFilter)) {
+                showRow = false;
+            }
+
+            if (providerFilter && providerName !== providerFilter) {
+                showRow = false;
+            }
+
+            if (networkFilter && !networkName.includes(networkFilter)) {
+                showRow = false;
+            }
+
+            row.style.display = showRow ? '' : 'none';
+        });
+
+        if (priceFilter === 'low-to-high') {
+            sortTable(3, true);
+        } else if (priceFilter === 'high-to-low') {
+            sortTable(3, false);
+        }
+    }
+
+    function sortTable(columnIndex, ascending) {
+        const table = document.querySelector('.table-container tbody');
+        const rows = Array.from(table.rows);
+
+        rows.sort((a, b) => {
+            const aPrice = parseFloat(a.cells[columnIndex].textContent.replace('$', ''));
+            const bPrice = parseFloat(b.cells[columnIndex].textContent.replace('$', ''));
+            return ascending ? aPrice - bPrice : bPrice - aPrice;
+        });
+
+        rows.forEach(row => table.appendChild(row));
+    }
+</script>
+</html>

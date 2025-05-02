@@ -240,7 +240,6 @@ class ActionBuild(Action):
                 tracker: Tracker,
                 domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-            dispatcher.utter_message("Analyzing intent...")
             current_build_message = tracker.latest_message.get('text')
             # Get all entities with their positions in the user message
             all_entities = tracker.latest_message.get("entities", [])
@@ -343,6 +342,9 @@ class ActionCheckAvailability(Action):
         qos_requirements = []
 
         for service in assets_dict:
+            middlebox = service.get("middlebox")
+            if middlebox:
+                service_requirements.append(middlebox)
             for asset in service.get("assets", []):
                 asset_type = asset.get("type")
                 asset_value = asset.get("value")
@@ -427,8 +429,8 @@ class ActionBuildFeedback(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        value = next((tracker.get_latest_entity_values(entity) for entity in (mh.BUILD_CLASSES + mh.ASSET_CLASSES + mh.TLA_CLASSES) if tracker.get_latest_entity_values(entity)), None)
-        entity = next(tracker.get_latest_entity_values("entity"), None)
+        entity = next((entity for entity in (mh.BUILD_CLASSES + mh.ASSET_CLASSES + mh.TLA_CLASSES) if tracker.get_latest_entity_values(entity)), None)
+        value = next(tracker.get_latest_entity_values(entity), None) if entity else None
         operation = next(tracker.get_latest_entity_values("operation"), None)
 
         if not value or not entity:

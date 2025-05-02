@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import re
+import json
 
 UNIT_MAPPING = {
     "Bps": "bps",
@@ -486,13 +487,31 @@ def dynamic_query(storage_resources, compute_resources,
         final_filter = merge_filters(final_filter, qos_filter)
 
     print("\nDynamic query filter:", final_filter)
-    response_string = ""
+    response_list = []
     cursor = collection.find(final_filter)
     results = list(cursor)
 
-    response_string += f"Number of matches: {len(results)}\n"
+    print(f"Number of matches: {len(results)}\n")
     for i, doc in enumerate(results, start=1):
-        response_string += f"--- Document #{i} ---\n"
-        response_string += f"{doc}\n"
+        print(f"--- Document #{i} ---\n")
+        print(f"{doc}\n")
+        
+        resource_id = doc.get("assets", [{}])[0].get("id", "unknown") if doc.get("assets") else "unknown"
+        vnf_provider = doc.get("vnfProvider", "unknown")
+        infrastructure_id = next(
+            (asset.get("id", "unknown") for asset in doc.get("assets", [])
+             if asset.get("type") == "infrastructure" and isinstance(asset.get("id"), str)), 
+            "unknown"
+        )
+        price_tag = f"${round(100 + 900 * i / len(results), 2)}"  # Random price tag
+
+        response_list.append({
+            "resource_id": str(resource_id),
+            "vnf_provider": vnf_provider,
+            "infrastructure_id": infrastructure_id,
+            "price_tag": price_tag
+        })
+
+    response_string = json.dumps(response_list, indent=4)
 
     return response_string

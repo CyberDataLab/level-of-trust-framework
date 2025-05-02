@@ -29,3 +29,4 @@ if ! command -v docker >/dev/null 2>&1; then
 fi
 
 docker pull mongo:latest
+docker pull flask:latest

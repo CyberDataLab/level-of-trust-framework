@@ -2,6 +2,11 @@ version: "3.1"
 
 stories:
 
+  - story: User wants to restart or cancel its actions
+    steps:
+      - intent: reject
+      - action: action_restart
+
   - story: User requests a build
     steps:
       - slot_was_set:

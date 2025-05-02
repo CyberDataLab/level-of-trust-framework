@@ -10,15 +10,14 @@ nlu:
     - yep that's ok
     - yes that's alright
     - I think so
-    - yes I agree
+    - yes I [agree](operation)
     - I don't mind
-    - I agree
-    - yes I do
+    - I [agree](operation)
     - for sure
     - ok
     - yes that't ok
     - that one works
-    - yes you can do it
+    - yes you can [do](operation) it
     - perfect
     - yes
     - why not
@@ -82,15 +81,15 @@ nlu:
     - no way
     - no
     - not this time
-    - Please cancel
-    - Cancel
-    - Cancel that
-    - cancel that
-    - stop that
-    - Stop
-    - Abort
-    - abort that
-    - stop it
+    - Please [cancel](operation)
+    - [Cancel](operation)
+    - [Cancel](operation) that
+    - [cancel](operation) that
+    - [stop](operation) that
+    - [Stop](operation)
+    - [Abort](operation)
+    - [abort](operation) that
+    - [stop](operation) it
 - intent: build
   examples: |
     - I want to [launch](operation) [apache](middlebox) inside a [windows server](operating_system) with [4 processing cores](compute_resource) and [500GB of disk space](storage_resource)
@@ -136,26 +135,24 @@ nlu:
 
 - intent: feedback
   examples: |
-    - [Add](operation) the [middlebox](entity) [firewall](value)
-    - [Add](operation) the [middlebox](entity) [dpi](value)
-    - [Add](operation) the [middlebox](entity) [load balancer](value)
-    - [Add](operation) the [middlebox](entity) [proxy](value)
-    - [Add](operation) the [middlebox](entity) [nat](value)
-    - [Add](operation) the [middlebox](entity) [monitor](value)
-    - [Add](operation) the [asset](entity) [6Gb of RAM](value)
-    - [Add](operation) the [asset](entity) [8Gb of RAM](value)
-    - [Add](operation) the [asset](entity) [4ghz](value)
-    - [Add](operation) the [asset](entity) [2.5Ghz](value)
-    - [Add](operation) the [asset](entity) [2TB of disk space](value)
-    - [Add](operation) the [asset](entity) [1TB of disk space](value)
-    - [Remove](operation) the [asset](entity) [my network](value)
-    - [Remove](operation) the [asset](entity) [internet](value)
-    - [Remove](operation) the [asset](entity) [file server](value)
-    - [Remove](operation) the [asset](entity) [mail server](value)
-    - [Remove](operation) the [asset](entity) [cloud](value)
-    - [Remove](operation) the [asset](entity) [dns server](value)
-    - [Remove](operation) the [middlebox](entity) [10Gb](value)
-    - [Remove](operation) the [middlebox](entity) [ubuntu server](value)
-    - [Remove](operation) the [middlebox](entity) [windows server](value)
-    - [Remove](operation) the [middlebox](entity) [4 processing cores](value)
-    - [Remove](operation) the [middlebox](entity) [500GB of disk space](value)
+    - [Add](operation) the [middlebox](entity) [firewall](middlebox)
+    - [Add](operation) the [middlebox](entity) [dpi](middlebox)
+    - [Add](operation) the [middlebox](entity) [load balancer](middlebox)
+    - [Add](operation) the [middlebox](entity) [proxy](middlebox)
+    - [Add](operation) the [middlebox](entity) [nat](middlebox)
+    - [Add](operation) the [middlebox](entity) [monitor](middlebox)
+    - [Add](operation) the [compute_resource](entity) [6Gb of RAM](compute_resource)
+    - [Add](operation) the [asset](entity) [8Gb of RAM](compute_resource)
+    - [Add](operation) the [compute_resource](entity) [4ghz](compute_resource)
+    - [Add](operation) the [compute_resource](entity) [2.5Ghz](compute_resource)
+    - [Add](operation) the [storage_resource](entity) [2TB of disk space](storage_resource)
+    - [Add](operation) the [storage_resource](entity) [1TB of disk space](storage_resource)
+    - [Remove](operation) the [asset](entity) [nginx](service)
+    - [Remove](operation) the [service](entity) [redis](service)
+    - [Remove](operation) the [service](entity) [apache](service)
+    - [Remove](operation) the [service](entity) [bind](service)
+    - [Remove](operation) the [qos_value](entity) [10Gbps](qos_value)
+    - [Remove](operation) the [operating_system](entity) [ubuntu xenial](operating_system)
+    - [Remove](operation) the [operating_system](entity) [windows server 2019](operating_system)
+    - [Remove](operation) the [asset](entity) [CentOS](operating_system)
+    - [Remove](operation) the [operating_system](entity) [Ubuntu 23.04](operating_system)

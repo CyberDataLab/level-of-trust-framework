@@ -1,0 +1,158 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Input and button styles */
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Response box styles */
+.response-box {
+    margin-top: 40px; /* Add space between the response box and filters */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    min-height: 100px;
+    overflow-y: auto;
+}
+
+.response-box p {
+    margin: 0;
+    padding: 5px 0;
+    color: #333;
+}
+
+/* Table styles */
+.table-container {
+    margin-top: 30px;
+    width: 90%; /* Increased width to make the table wider */
+    max-width: 1200px; /* Optional: Set a maximum width */
+    overflow-x: auto;
+}
+
+table {
+    width: 100%; /* Ensure the table takes up the full width of the container */
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #007BFF;
+    color: white;
+}
+
+thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Compact filter styles */
+.filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Increase space between filter items */
+    margin-top: 30px; /* Add more space above the filters */
+    padding: 20px;
+    background-color: #f4f4f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 80%; /* Match the table width */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filters > div {
+    display: flex;
+    flex-direction: column; /* Stack label and input/select vertically */
+    align-items: flex-start; /* Align content to the left */
+    gap: 5px; /* Add slight spacing between label and input */
+}
+
+.filters > div > label {
+    font-size: 14px;
+    margin-bottom: 5px; /* Add space between label and input/select */
+}
+
+/* Adjust filter input sizes to prevent overlap */
+.filters > div > *:not(label) {
+    flex: 1 1 120px; /* Reduce the default size of inputs and selects */
+    max-width: 140px; /* Reduce max width to prevent overlap */
+    height: auto; /* Reset height to default */
+    padding: 4px; /* Further reduce padding for compactness */
+    font-size: 13px; /* Slightly smaller font size */
+}
+
+.filters button {
+    grid-column: span 2; /* Make the button span across two columns */
+    justify-self: center; /* Center the button */
+    padding: 6px 12px; /* Reduce button padding for compactness */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px; /* Match font size with inputs */
+}
+
+.filters button:hover {
+    background-color: #0056b3;
+}
