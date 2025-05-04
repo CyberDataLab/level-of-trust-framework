@@ -159,4 +159,6 @@ elif execution_arg == "flush":
         print(f"Error flushing the collection: {e}")
 
 else:
-    print("Invalid argument. Use 'query' or 'list'.")
+    print("Invalid argument.")
+    print("Usage: python mongo_debug.py <query|list|add_instances|flush>")
+    sys.exit(1)

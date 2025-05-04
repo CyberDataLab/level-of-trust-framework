@@ -46,6 +46,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Select</th>
                     <th>Resource</th>
                     <th>Provider</th>
                     <th>Network</th>
@@ -56,6 +57,7 @@
                 <!-- Table rows will go here -->
             </tbody>
         </table>
+        <button id="deploy-button" style="margin-top: 16px;">Deploy</button>
     </div>
 </body>
 <script>
@@ -91,9 +93,11 @@
                     const parsedData = JSON.parse(messageText);
                     if (Array.isArray(parsedData)) {
                         const tableBody = document.querySelector('.table-container tbody');
+                        tableBody.innerHTML = '';
                         parsedData.forEach(row => {
                             const tableRow = document.createElement('tr');
                             tableRow.innerHTML = `
+                                <td><input type="checkbox" class="row-checkbox" data-id="${row.resource_id || ''}"></td>
                                 <td>${row.resource_id || ''}</td>
                                 <td>${row.vnf_provider || ''}</td>
                                 <td>${row.infrastructure_id || ''}</td>
@@ -124,10 +128,10 @@
 
         const rows = document.querySelectorAll('.table-container tbody tr');
         rows.forEach(row => {
-            const resourceName = row.children[0].textContent.toLowerCase();
-            const providerName = row.children[1].textContent;
-            const networkName = row.children[2].textContent.toLowerCase();
-            const price = parseFloat(row.children[3].textContent.replace('$', ''));
+            const resourceName = row.children[1].textContent.toLowerCase();
+            const providerName = row.children[2].textContent;
+            const networkName = row.children[3].textContent.toLowerCase();
+            const price = parseFloat(row.children[4].textContent.replace('$', ''));
 
             let showRow = true;
 
@@ -147,9 +151,9 @@
         });
 
         if (priceFilter === 'low-to-high') {
-            sortTable(3, true);
+            sortTable(4, true);
         } else if (priceFilter === 'high-to-low') {
-            sortTable(3, false);
+            sortTable(4, false);
         }
     }
 
@@ -165,5 +169,29 @@
 
         rows.forEach(row => table.appendChild(row));
     }
+
+    document.getElementById('deploy-button').addEventListener('click', function() {
+        const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+        const ids = Array.from(checkedBoxes).map(cb => cb.getAttribute('data-id'));
+        fetch('http://localhost:80', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ids })
+        })
+        .then(response => {
+            response.json().then(data => {
+            if (response.ok) {
+                alert('Deploy request sent for IDs: ' + ids.join(', ') + '. Response: ' + JSON.stringify(data));
+            } else {
+                alert('Failed to deploy for IDs: ' + ids.join(', ') + '. Response: ' + JSON.stringify(data));
+            }
+            }).catch(() => {
+            alert('Failed to parse response JSON for IDs: ' + ids.join(', ') + '.');
+            });
+        })
+        .catch(() => alert('Failed to deploy for IDs: ' + ids.join(', ') + '.'));
+    });
 </script>
 </html>
