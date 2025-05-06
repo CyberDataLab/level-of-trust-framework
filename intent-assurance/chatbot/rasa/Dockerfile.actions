@@ -1,0 +1,15 @@
+FROM tfg/rasa:latest
+
+RUN pip install pymongo
+
+WORKDIR /app
+ENV HOME=/app
+COPY .  .
+
+USER 1001
+
+EXPOSE 5055
+
+ENTRYPOINT ["rasa"]
+
+CMD ["run", "actions"]

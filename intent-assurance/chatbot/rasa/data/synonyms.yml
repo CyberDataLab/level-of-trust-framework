@@ -427,5 +427,4 @@ nlu:
     examples: |
       - private netwok
       - vpn
-      - privacy
       - tunneling

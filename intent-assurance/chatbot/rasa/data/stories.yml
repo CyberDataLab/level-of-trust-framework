@@ -28,7 +28,6 @@ stories:
       - action: utter_ask_build_confirmation
       - intent: confirm
       - action: action_check_avaibility
-      - action: action_deploy
 
   - story: User rejects the build requested
     steps:
@@ -76,7 +75,6 @@ stories:
       - action: utter_ask_build_after_feedback
       - intent: confirm
       - action: action_check_avaibility
-      - action: action_deploy
       - action: action_restart
   
   - story: User rejects the build after feedback

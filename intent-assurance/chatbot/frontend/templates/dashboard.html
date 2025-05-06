@@ -17,29 +17,25 @@
         <!-- Chat responses will appear here -->
     </div>
     <div class="filters">
-        <div>
-            <label for="price-filter">Sort by Price:</label>
-            <select id="price-filter">
-                <option value="low-to-high">Low to High</option>
-                <option value="high-to-low">High to Low</option>
-            </select>
-        </div>
-        <div>
-            <label for="resource-filter">Resource Name:</label>
-            <input type="text" id="resource-filter" placeholder="Enter resource name">
-        </div>
-        <div>
-            <label for="provider-filter">Provider:</label>
-            <select id="provider-filter">
-                <option value="">All Providers</option>
-                <option value="Bcom">Bcom</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-        <div>
-            <label for="network-filter">Network Name:</label>
-            <input type="text" id="network-filter" placeholder="Enter network name">
-        </div>
+        <label for="price-filter">Sort by Price:</label>
+        <select id="price-filter">
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+        </select>
+
+        <label for="resource-filter">Filter by Resource Name:</label>
+        <input type="text" id="resource-filter" placeholder="Enter resource name">
+
+        <label for="provider-filter">Filter by Provider:</label>
+        <select id="provider-filter">
+            <option value="">All Providers</option>
+            <option value="Bcom">Bcom</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="network-filter">Filter by Network Name:</label>
+        <input type="text" id="network-filter" placeholder="Enter network name">
+
         <button onclick="applyFilters()">Apply Filters</button>
     </div>
     <div class="table-container">

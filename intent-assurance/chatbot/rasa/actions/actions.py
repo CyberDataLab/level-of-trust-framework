@@ -373,7 +373,7 @@ class ActionCheckAvailability(Action):
             return [SlotSet("feedback_performed", False)]
 
         dispatcher.utter_message(result)
-        return [SlotSet("feedback_performed", False)]
+        return _flush_slots()
 
 # Action to perform the deployment of the services built
 class ActionDeploy(Action):

@@ -132,7 +132,6 @@ nlu:
     - Please [provision](operation) a [video streaming server](middlebox) using [nginx-rtmp](service) on [Ubuntu 18.04](operating_system), [6 cores](compute_resource) at [3.5Ghz](compute_resource), [32GB RAM](compute_resource), [5TB storage](storage_resource)  
     - I want to [set up](operation) a [dns resolver](middlebox) with [unbound](service) on [Alpine Linux](operating_system) requiring [2 CPUs](compute_resource), [4GB RAM](compute_resource), [20GB disk](storage_resource)  
     - I want a [game server](middlebox) hosting [minecraft](service) on [Windows Server 2016](operating_system) with [4.0Ghz](compute_resource), [32GB RAM](compute_resource), [500GB SSD](storage_resource)
-
 - intent: feedback
   examples: |
     - [Add](operation) the [middlebox](entity) [firewall](middlebox)

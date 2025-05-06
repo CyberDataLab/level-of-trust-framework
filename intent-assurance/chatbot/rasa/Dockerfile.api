@@ -1,0 +1,17 @@
+FROM python:3.10.17-slim
+
+RUN python -m pip install --upgrade pip
+RUN pip install rasa["full"]
+
+WORKDIR /app
+ENV HOME=/app
+COPY .  .
+COPY models/ /app/models/
+
+USER 1001
+
+EXPOSE 5005
+
+ENTRYPOINT ["rasa"]
+
+CMD [ "run", "--enable-api", "--port", "5005", "--cors", "*"]

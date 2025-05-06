@@ -110,7 +110,7 @@ def _initialize_services_lists():
 # Initialization function
 def initialize():
     global client, db, collection
-    client = MongoClient("mongodb://localhost:27017/")
+    client = MongoClient("mongodb://my_mongo:27017/")
     db = client["example_database"]
     collection = db["wef_entities"]
     _initialize_distros_lists()
