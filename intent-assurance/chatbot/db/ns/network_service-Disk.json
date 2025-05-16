@@ -1,6 +1,9 @@
 {
-    "vnfProvider": "Bcom",
+    "provider": "Bcom",
     "serviceType": "cloud",
+    "id": "network-service-storage",
+    "priceTag": 500,
+    "levelOfTrust": 0.4,
     "assets": [
         {
             "id": "resource-disk1",

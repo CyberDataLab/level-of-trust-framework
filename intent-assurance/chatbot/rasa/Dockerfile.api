@@ -5,8 +5,6 @@ RUN pip install rasa["full"]
 
 WORKDIR /app
 ENV HOME=/app
-COPY .  .
-COPY models/ /app/models/
 
 USER 1001
 

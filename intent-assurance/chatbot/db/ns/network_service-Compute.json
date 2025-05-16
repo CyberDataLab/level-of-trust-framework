@@ -1,6 +1,9 @@
 {
-    "vnfProvider": "Bcom",
+    "provider": "Bcom",
     "serviceType": "cloud",
+    "id": "network-service-compute",
+    "priceTag": 600,
+    "levelOfTrust": 0.7,
     "assets": [
         {
             "id": "resource-compute1",

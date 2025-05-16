@@ -1,0 +1,13 @@
+{
+    "id": "user-consumer",
+    "levelOfTrust": 0.4,
+    "tlas": [
+        {
+            "id": "1",
+            "related-ns": [
+                "network-service-storage",
+                "network-service-compute"
+            ]
+        }
+    ]
+}

@@ -4,7 +4,6 @@ RUN pip install pymongo
 
 WORKDIR /app
 ENV HOME=/app
-COPY .  .
 
 USER 1001
 

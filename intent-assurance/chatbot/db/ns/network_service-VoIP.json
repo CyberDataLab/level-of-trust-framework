@@ -1,6 +1,9 @@
 {
-    "vnfProvider": "Bcom",
+    "provider": "Bcom",
     "serviceType": "cloud",
+    "id": "network-service-voip",
+    "priceTag": 300,
+    "levelOfTrust": 0.65,
     "assets": [
         {
             "id": "resource-voip1",

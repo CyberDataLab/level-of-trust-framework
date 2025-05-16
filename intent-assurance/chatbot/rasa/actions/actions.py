@@ -7,7 +7,7 @@ from . import mongo_helper as mh
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, FollowupAction
 
 # Constants
 ADD_FEEDBACK_OPERATION = "add"
@@ -34,40 +34,46 @@ def _save_feedback(tracker):
             print("Error: Unable to parse service_assets_slot.")
             return
 
-    build_message_words = build_message.split()
-    updated_message = []
+    # Prepare list of (phrase, label) for all middleboxes and assets
+    phrase_label_pairs = []
+    for service in service_assets_slot:
+        if service["middlebox"]:
+            phrase_label_pairs.append((service["middlebox"], "middlebox"))
+        for asset in service["assets"]:
+            phrase_label_pairs.append((asset["value"], asset["type"]))
 
-    for word in build_message_words:
-        replaced = False
-        # Check if the word matches a middlebox
-        for service in service_assets_slot:
-            if word.lower() == service["middlebox"].lower():
-                updated_message.append(f"[{word}](middlebox)")
-                replaced = True
+    # Sort by phrase length descending to match longer phrases first
+    phrase_label_pairs.sort(key=lambda x: len(x[0]), reverse=True)
+
+    # Replace phrases in the build_message with entity annotations
+    annotated_message = build_message
+    used_spans = []
+
+    for phrase, label in phrase_label_pairs:
+        # Find all non-overlapping occurrences (case-insensitive)
+        start = 0
+        phrase_lower = phrase.lower()
+        message_lower = annotated_message.lower()
+        while True:
+            idx = message_lower.find(phrase_lower, start)
+            if idx == -1:
                 break
-            for asset in service["assets"]:
-                if word.lower() == asset["value"].lower():
-                    updated_message.append(f"[{word}]({asset['type']})")
-                    replaced = True
-                    break
-        if replaced:
-            continue
+            end = idx + len(phrase)
+            # Check for overlap
+            if any(us <= idx < ue or us < end <= ue for us, ue in used_spans):
+                start = end
+                continue
+            # Replace only if not already annotated
+            original_phrase = annotated_message[idx:end]
+            replacement = f"[{original_phrase}]({label})"
+            annotated_message = annotated_message[:idx] + replacement + annotated_message[end:]
+            # Update used_spans for the new annotation
+            used_spans.append((idx, idx + len(replacement)))
+            # Update message_lower for next search
+            message_lower = annotated_message.lower()
+            start = idx + len(replacement)
 
-        # Check if the word matches an asset
-        for service in service_assets_slot:
-            for asset in service["assets"]:
-                if word.lower() == asset["value"].lower():
-                    updated_message.append(f"[{word}]({asset['type']})")
-                    replaced = True
-                    break
-            if replaced:
-                break
-
-        # If no match, keep the word as is
-        if not replaced:
-            updated_message.append(word)
-
-    feedback_message = "- " + " ".join(updated_message)
+    feedback_message = "- " + annotated_message
     with open("feedback.yml", "a") as feedback_file:
         feedback_file.write(feedback_message + "\n")
     print(f"Debug: Feedback message saved: {feedback_message}")
@@ -146,25 +152,46 @@ def add_middlebox_feedback(dispatcher, tracker, value) -> str:
     dispatcher.utter_message(f"Current build message: {current_build_message}")
     dispatcher.utter_message(f"build_json: {json.dumps(build_json, indent=4)}")
 
-    new_middlebox_index = None
-    for i, word in enumerate(current_build_message.split()):
-        dispatcher.utter_message(f"Word: {word} - Value: {value}")
-        if word.lower() == value.lower():
-            new_middlebox_index = i
-            dispatcher.utter_message(f"Match found at index {new_middlebox_index}")
-            break
+    # Find the index where the value (which may be a string of multiple words) appears in the message
+    current_message = current_build_message
+    value_lower = value.lower()
+    message_lower = current_message.lower()
 
-    if new_middlebox_index is None:
+    print(f"Debug: Searching for value '{value_lower}' in message '{message_lower}'")
+    new_middlebox_index = message_lower.find(value_lower)
+    print(f"Debug: new_middlebox_index = {new_middlebox_index}")
+    if new_middlebox_index == -1:
         dispatcher.utter_message("The token was not found in the message")
         return json.dumps(build_json)
 
+    # Find the word index where the match starts
+    words = current_message.split()
+    char_count = 0
+    start_word_index = None
+    for i, word in enumerate(words):
+        # Find the start index of this word in the original message
+        word_start = current_message.lower().find(word.lower(), char_count)
+        print(f"Debug: Checking word '{word}' at index {i}, word_start={word_start}, char_count={char_count}")
+        if word_start == new_middlebox_index:
+            start_word_index = i
+            print(f"Debug: Found start_word_index = {start_word_index}")
+            break
+        char_count = word_start + len(word)
+
+    if start_word_index is None:
+        dispatcher.utter_message("Could not determine the word index for the matched string")
+        return json.dumps(build_json)
+
     desired_assets = []
-    for j in range(new_middlebox_index + 1, len(current_build_message.split())):
-        word = current_build_message.split()[j]
-        if word in [mb.lower() for mb in detected_middleboxes]:
+    for j in range(start_word_index + 1, len(words)):
+        word = words[j]
+        print(f"Debug: Checking following word '{word}' at index {j}")
+        if word.lower() in [mb.lower() for mb in detected_middleboxes]:
+            print(f"Debug: Encountered another middlebox '{word}', stopping asset search")
             break
         for asset in detected_assets:
             if word.lower() == asset["value"].lower():
+                print(f"Debug: Found asset match '{word}' == '{asset['value']}'")
                 desired_assets.append(asset)
 
     for service in build_json:
@@ -373,7 +400,7 @@ class ActionCheckAvailability(Action):
             return [SlotSet("feedback_performed", False)]
 
         dispatcher.utter_message(result)
-        return _flush_slots()
+        return [FollowupAction(name = "action_restart")]
 
 # Action to perform the deployment of the services built
 class ActionDeploy(Action):
@@ -417,7 +444,7 @@ class ActionDeploy(Action):
 
         #TODO: Add deployment Ollama/LangChain logic here
         
-        return _flush_slots()
+        return [FollowupAction(name = "action_restart")]
 
 # Action to extract the entities from the user intent "feedback"
 class ActionBuildFeedback(Action):
@@ -429,8 +456,25 @@ class ActionBuildFeedback(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        entity = next((entity for entity in (mh.BUILD_CLASSES + mh.ASSET_CLASSES + mh.TLA_CLASSES) if tracker.get_latest_entity_values(entity)), None)
-        value = next(tracker.get_latest_entity_values(entity), None) if entity else None
+        current_feedback_message = tracker.latest_message.get('text')
+
+        entity = None
+        message_entity = next(tracker.get_latest_entity_values("entity"), None)
+        for possible_entity in (mh.BUILD_CLASSES + mh.ASSET_CLASSES + mh.TLA_CLASSES):
+            print(f"Debug: Checking entity: {possible_entity} against {message_entity}")
+            if message_entity == possible_entity:
+                entity = possible_entity
+                break
+        print(f"Debug: Feedback entity identified: {entity}")
+
+        # Extract all words that come after the last ':' character in the feedback message
+        value = None
+        if current_feedback_message and ':' in current_feedback_message:
+            # Find the last ':' and get all words after it (strip spaces, split by whitespace)
+            after_colon = current_feedback_message.rsplit(':', 1)[-1].strip()
+            # Take all words after the colon as a single string (or list if you prefer)
+            value = after_colon if after_colon else None
+            
         operation = next(tracker.get_latest_entity_values("operation"), None)
 
         if not value or not entity:

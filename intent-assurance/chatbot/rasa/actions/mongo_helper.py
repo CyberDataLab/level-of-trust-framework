@@ -110,7 +110,7 @@ def _initialize_services_lists():
 # Initialization function
 def initialize():
     global client, db, collection
-    client = MongoClient("mongodb://my_mongo:27017/")
+    client = MongoClient("mongodb://localhost:27017/") #localhost->debug / rasa_actions->docker
     db = client["example_database"]
     collection = db["wef_entities"]
     _initialize_distros_lists()
@@ -497,18 +497,20 @@ def dynamic_query(storage_resources, compute_resources,
         print(f"{doc}\n")
         
         resource_id = doc.get("assets", [{}])[0].get("id", "unknown") if doc.get("assets") else "unknown"
-        vnf_provider = doc.get("vnfProvider", "unknown")
+        provider = doc.get("provider", "unknown")
         infrastructure_id = next(
             (asset.get("id", "unknown") for asset in doc.get("assets", [])
              if asset.get("type") == "infrastructure" and isinstance(asset.get("id"), str)), 
             "unknown"
         )
-        price_tag = f"${round(100 + 900 * i / len(results), 2)}"  # Random price tag
+        level_of_trust = doc.get("levelOfTrust", "unknown")
+        price_tag = doc.get("priceTag", "unknown")
 
         response_list.append({
             "resource_id": str(resource_id),
-            "vnf_provider": vnf_provider,
+            "provider": provider,
             "infrastructure_id": infrastructure_id,
+            "level_of_trust": level_of_trust,
             "price_tag": price_tag
         })
 

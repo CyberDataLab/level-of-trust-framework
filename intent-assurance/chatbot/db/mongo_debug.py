@@ -6,9 +6,11 @@ from pymongo import MongoClient
 # MongoDB connection setup
 client = MongoClient('mongodb://localhost:27017/')
 db_name = 'example_database'
-collection_name = 'wef_entities'
+ns_collection_name = 'wef_entities'
+users_collection_name = 'users'
 db = client[db_name]
-collection = db[collection_name]
+ns_collection = db[ns_collection_name]
+users_collection = db[users_collection_name]
 
 # Check the execution argument
 if len(sys.argv) < 2:
@@ -112,25 +114,32 @@ if execution_arg == "query":
     }
 
     # Execute the query
-    cursor = collection.find(query)
+    cursor = ns_collection.find(query)
 
-    if collection.count_documents(query) > 0:
-        print("Document matching the filters found in the collection.")
+    if ns_collection.count_documents(query) > 0:
+        print("Document matching the filters found in the ns_collection.")
         for doc in cursor:
             print(doc)
     else:
-        print("No document matching the filters found in the collection.")
+        print("No document matching the filters found in the ns_collection.")
 
-elif execution_arg == "list":
-    # List all documents in the collection
-    cursor = collection.find()
-    print("Listing all documents in the collection:")
+elif execution_arg == "list-ns":
+    # List all documents in the ns_collection
+    cursor = ns_collection.find()
+    print("Listing all documents in the ns_collection:")
     for doc in cursor:
         print(json.dumps(doc, indent=4, default=str))
 
-elif execution_arg == "add_instances":
-    # Add all JSON documents from the instances directory
-    instances_dir = os.path.join(os.path.dirname(__file__), 'instances')
+elif execution_arg == "list-users":
+    # List all documents in the users_collection
+    cursor = users_collection.find()
+    print("Listing all documents in the users_collection:")
+    for doc in cursor:
+        print(json.dumps(doc, indent=4, default=str))
+
+elif execution_arg == "add-ns":
+    # Add all JSON documents from the ns directory
+    instances_dir = os.path.join(os.path.dirname(__file__), 'ns')
     
     if not os.path.exists(instances_dir):
         print(f"Directory not found: {instances_dir}")
@@ -142,23 +151,44 @@ elif execution_arg == "add_instances":
             try:
                 with open(file_path, 'r') as file:
                     new_document = json.load(file)
-                # Insert the document into the collection
-                result = collection.insert_one(new_document)
+                # Insert the document into the ns_collection
+                result = ns_collection.insert_one(new_document)
                 print(f"Document from {file_name} inserted with ID: {result.inserted_id}")
             except json.JSONDecodeError as e:
                 print(f"Error decoding JSON in file {file_name}: {e}")
             except Exception as e:
                 print(f"Error processing file {file_name}: {e}")
+elif execution_arg == "add-users":
+    # Add all JSON documents from the users directory
+    instances_dir = os.path.join(os.path.dirname(__file__), 'users')
+    
+    if not os.path.exists(instances_dir):
+        print(f"Directory not found: {instances_dir}")
+        sys.exit(1)
 
+    for file_name in os.listdir(instances_dir):
+        if file_name.endswith('.json'):
+            file_path = os.path.join(instances_dir, file_name)
+            try:
+                with open(file_path, 'r') as file:
+                    new_document = json.load(file)
+                # Insert the document into the users_collection
+                result = users_collection.insert_one(new_document)
+                print(f"Document from {file_name} inserted with ID: {result.inserted_id}")
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON in file {file_name}: {e}")
+            except Exception as e:
+                print(f"Error processing file {file_name}: {e}")
 elif execution_arg == "flush":
-    # Flush the collection
+    # Flush the collections
     try:
-        collection.delete_many({})
-        print("All documents in the collection have been deleted.")
+        ns_collection.delete_many({})
+        users_collection.delete_many({})
+        print("All documents in the db have been deleted.")
     except Exception as e:
-        print(f"Error flushing the collection: {e}")
+        print(f"Error flushing the db: {e}")
 
 else:
     print("Invalid argument.")
-    print("Usage: python mongo_debug.py <query|list|add_instances|flush>")
+    print("Usage: python mongo_debug.py <query|list-[ns/users]|add-[ns/users]|flush>")
     sys.exit(1)

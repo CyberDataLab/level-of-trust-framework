@@ -36,6 +36,12 @@
         <label for="network-filter">Filter by Network Name:</label>
         <input type="text" id="network-filter" placeholder="Enter network name">
 
+        <label for="leveloftrust-filter">Sort by LevelOfTrust:</label>
+        <select id="leveloftrust-filter">
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+        </select>
+
         <button onclick="applyFilters()">Apply Filters</button>
     </div>
     <div class="table-container">
@@ -47,13 +53,14 @@
                     <th>Provider</th>
                     <th>Network</th>
                     <th>Price</th>
+                    <th>LevelOfTrust</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Table rows will go here -->
             </tbody>
         </table>
-        <button id="deploy-button" style="margin-top: 16px;">Deploy</button>
+        <button id="sign-button" style="margin-top: 16px;">Sign</button>
     </div>
 </body>
 <script>
@@ -84,7 +91,7 @@
                     }
                 });
             } else {
-                const messageText = data[0]?.text || 'No data available';
+                const messageText = data[0]?.text || 'No network services available';
                 try {
                     const parsedData = JSON.parse(messageText);
                     if (Array.isArray(parsedData)) {
@@ -95,9 +102,10 @@
                             tableRow.innerHTML = `
                                 <td><input type="checkbox" class="row-checkbox" data-id="${row.resource_id || ''}"></td>
                                 <td>${row.resource_id || ''}</td>
-                                <td>${row.vnf_provider || ''}</td>
+                                <td>${row.provider || ''}</td>
                                 <td>${row.infrastructure_id || ''}</td>
                                 <td>${row.price_tag || ''}</td>
+                                <td>${row.level_of_trust || ''}</td>
                             `;
                             tableBody.appendChild(tableRow);
                         });
@@ -111,6 +119,18 @@
                     message.textContent = messageText;
                     responseBox.appendChild(message);
                 }
+                fetch('http://localhost:5005/webhooks/rest/webhook', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: "Cancel" })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Cancel response:', data);
+                })
+                .catch(error => console.error('Error:', error));
             }
         })
         .catch(error => console.error('Error:', error));
@@ -121,6 +141,7 @@
         const resourceFilter = document.getElementById('resource-filter').value.toLowerCase();
         const providerFilter = document.getElementById('provider-filter').value;
         const networkFilter = document.getElementById('network-filter').value.toLowerCase();
+        const levelOfTrustFilter = document.getElementById('leveloftrust-filter').value;
 
         const rows = document.querySelectorAll('.table-container tbody tr');
         rows.forEach(row => {
@@ -128,6 +149,7 @@
             const providerName = row.children[2].textContent;
             const networkName = row.children[3].textContent.toLowerCase();
             const price = parseFloat(row.children[4].textContent.replace('$', ''));
+            const levelOfTrust = parseFloat(row.children[5].textContent);
 
             let showRow = true;
 
@@ -151,6 +173,11 @@
         } else if (priceFilter === 'high-to-low') {
             sortTable(4, false);
         }
+        if (levelOfTrustFilter === 'low-to-high') {
+            sortTable(5, true);
+        } else if (levelOfTrustFilter === 'high-to-low') {
+            sortTable(5, false);
+        }
     }
 
     function sortTable(columnIndex, ascending) {
@@ -158,36 +185,50 @@
         const rows = Array.from(table.rows);
 
         rows.sort((a, b) => {
-            const aPrice = parseFloat(a.cells[columnIndex].textContent.replace('$', ''));
-            const bPrice = parseFloat(b.cells[columnIndex].textContent.replace('$', ''));
-            return ascending ? aPrice - bPrice : bPrice - aPrice;
+            const aValue = parseFloat(a.cells[columnIndex].textContent.replace('$', ''));
+            const bValue = parseFloat(b.cells[columnIndex].textContent.replace('$', ''));
+            return ascending ? aValue - bValue : bValue - aValue;
         });
 
         rows.forEach(row => table.appendChild(row));
     }
 
-    document.getElementById('deploy-button').addEventListener('click', function() {
+    document.getElementById('sign-button').addEventListener('click', function() {
         const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
         const ids = Array.from(checkedBoxes).map(cb => cb.getAttribute('data-id'));
-        fetch('http://localhost:80', {
+        const tableRows = document.querySelectorAll('.table-container tbody tr');
+        const data = Array.from(tableRows).map(row => ({
+            resource: row.children[1].textContent,
+            provider: row.children[2].textContent,
+            network: row.children[3].textContent,
+            price: row.children[4].textContent,
+            levelOfTrust: row.children[5].textContent
+        }));
+        const jsonStr = JSON.stringify(data, null, 2);
+
+        // Send JSON to backend first
+        fetch('http://localhost:5000/signTLA', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ids })
+            body: jsonStr
         })
-        .then(response => {
-            response.json().then(data => {
-            if (response.ok) {
-                alert('Deploy request sent for IDs: ' + ids.join(', ') + '. Response: ' + JSON.stringify(data));
-            } else {
-                alert('Failed to deploy for IDs: ' + ids.join(', ') + '. Response: ' + JSON.stringify(data));
-            }
-            }).catch(() => {
-            alert('Failed to parse response JSON for IDs: ' + ids.join(', ') + '.');
-            });
+        .then(response => response.json())
+        .then(data => {
+            // Create a blob from the JSON data
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            // Create a link and trigger download
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'signed_tla.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         })
-        .catch(() => alert('Failed to deploy for IDs: ' + ids.join(', ') + '.'));
+        
     });
 </script>
 </html>
