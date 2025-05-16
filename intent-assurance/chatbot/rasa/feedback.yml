@@ -5,8 +5,3 @@ nlu:
   examples: |
 - I want a vpn server with 1gb of storage and a file server with 6 cpus
 - I want to deploy a vpn with 4 cpus
-- I want a [dick](middlebox) in my head
-- I want a dick in my head
-- I want a [dick in my head](middlebox)
-- I [want](middlebox) a [dick](service)
-- I want a dick

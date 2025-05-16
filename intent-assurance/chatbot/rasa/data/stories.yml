@@ -41,7 +41,7 @@ stories:
       - action: utter_ask_build_feedback
       - checkpoint: build_feedback_loop
   
-  - story: continue build feedback loop
+  - story: continue build feedback loop adding more entities
     steps:
       - slot_was_set:
         - tla_dict: null
@@ -49,7 +49,20 @@ stories:
         - current_build_message: true
         - feedback_performed: true
       - checkpoint: build_feedback_loop
-      - intent: feedback
+      - intent: addition_feedback
+      - action: action_build_feedback
+      - action: utter_ask_more_build_feedback
+      - checkpoint: build_feedback_loop
+
+  - story: continue build feedback loop removing entities
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: true
+      - checkpoint: build_feedback_loop
+      - intent: removal_feedback
       - action: action_build_feedback
       - action: utter_ask_more_build_feedback
       - checkpoint: build_feedback_loop

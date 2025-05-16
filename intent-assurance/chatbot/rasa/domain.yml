@@ -19,7 +19,17 @@ intents:
         - qos_value
         - service
         - operation
-  - feedback:
+  - addition_feedback:
+      use_entities:
+        - operation
+        - entity
+        - qos_value
+        - service
+        - operating_system
+        - compute_resource
+        - storage_resource
+        - middlebox
+  - removal_feedback:
       use_entities:
         - operation
         - entity
