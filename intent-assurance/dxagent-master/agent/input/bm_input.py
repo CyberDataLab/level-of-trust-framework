@@ -18,8 +18,6 @@ import ethtool
 import logging
 import pyroute2
 
-import glob
-
 from pyroute2.netlink.rtnl import rt_type
 from pyroute2.netlink.rtnl import rt_scope
 from pyroute2.netlink.rtnl import rt_proto
@@ -323,110 +321,165 @@ class BMWatcher():
          self._input_gnmi()
 
    def _process_sensors(self):
-    dev_cooling_path = "/sys/class/thermal/"
-    attr_names = ["type", "temperature"]
-    attr_types = [str, float]
-    attr_units = ["", "C°"]
-    category = "sensors/thermal"
+      dev_cooling_path = "/sys/class/thermal/"
+      attr_names = ["type", "temperature"]
+      attr_types = [str, float]
+      attr_units = ["", "C°"]
+      category = "sensors/thermal"
 
-    for d in os.listdir(dev_cooling_path):
-        if not d.startswith("thermal_zone"):
+      for d in next(os.walk(dev_cooling_path))[1]:
+         if "thermal" not in d:
             continue
 
-        path = os.path.join(dev_cooling_path, d)
-        self._data[category].setdefault(d, init_rb_dict(
-            attr_names, types=attr_types, units=attr_units))
+         path = dev_cooling_path+d+"/"
+         self._data[category].setdefault(d, init_rb_dict(
+                    attr_names, types=attr_types, units=attr_units))  
 
-        with open(os.path.join(path, "type"), 'r') as f:
-            sensor_type = f.read().strip()
-            self._data[category][d]["type"].append(sensor_type)
-        
-        with open(os.path.join(path, "temp"), 'r') as f:
-            temp = int(f.read().strip())
-            self._data[category][d]["temperature"].append(temp / 1000)
+         with open(path+"type", 'r') as f:
+            type = f.readlines()[0].rstrip()
+            self._data[category][d]["type"].append(type)
+         with open(path+"temp", 'r') as f:
+            temp = f.readlines()[0].rstrip()
+            self._data[category][d]["temperature"].append(int(temp)/1000)
+      
+      # List of possible CPU sensor paths
+      cpu_sensor_paths = [
+         "/sys/devices/platform/coretemp.0/hwmon/",
+         "/sys/class/hwmon/",
+         "/sys/devices/platform/coretemp.0/hwmon/hwmon*/",
+         "/sys/class/thermal/"
+      ]
 
-    cpu_sensor_path = "/sys/class/hwmon/"
-    attr_names = ["label", "input", "max", "critical"]
-    attr_types = [str, float, float, float]
-    attr_units = ["", "C°", "C°", "C°"]
-    category = "sensors/coretemp"
+      category = "sensors/coretemp"
+      attr_names = ["label", "input", "max", "critical"]
+      attr_types = [str, float, float, float]
+      attr_units = ["", "C°", "C°", "C°"]
 
-    for hwmon_dir in glob.glob(os.path.join(cpu_sensor_path, "hwmon*")):
-        sensor_id = os.path.basename(hwmon_dir)  # Ej: hwmon0
-        base_path = os.path.join(hwmon_dir, "")
+      # Try each possible sensor path
+      sensor_found = False
+      for cpu_sensor_path in cpu_sensor_paths:
+         try:
+               # Check if path exists
+               if not os.path.exists(cpu_sensor_path):
+                  continue
 
-        n = 1
-        while True:
-            temp_input = os.path.join(base_path, f"temp{n}_input")
-            if not os.path.exists(temp_input):
-                break
+               # Get directory listing
+               dirs = []
+               try:
+                  dirs = next(os.walk(cpu_sensor_path))[1]
+               except StopIteration:
+                  continue
 
-            label = f"temp{n}"
-            label_file = os.path.join(base_path, f"temp{n}_label")
-            if os.path.exists(label_file):
-                with open(label_file, 'r') as f:
-                    label = f.read().strip()
+               for d in dirs:
+                  if "hwmon" not in d and "thermal" not in d:
+                     continue
 
-            input_temp = 0.0
-            with open(temp_input, 'r') as f:
-                input_temp = int(f.read().strip()) / 1000
+                  path = os.path.join(cpu_sensor_path, d) + "/"
+                  
+                  # Try different temperature file patterns
+                  temp_patterns = range(1, 512)  # Original range
+                  
+                  for n in temp_patterns:
+                     name = f"temp{n}"
+                     label_file = os.path.join(path, f"{name}_label")
+                     input_file = os.path.join(path, f"{name}_input")
+                     
+                     # Check if required files exist
+                     if not os.path.exists(label_file) or not os.path.exists(input_file):
+                           continue
 
-            max_temp = 0.0
-            max_file = os.path.join(base_path, f"temp{n}_max")
-            if os.path.exists(max_file):
-                with open(max_file, 'r') as f:
-                    max_temp = int(f.read().strip()) / 1000
+                     # Initialize data structure if needed
+                     if name not in self._data[category]:
+                           self._data[category][name] = init_rb_dict(
+                              attr_names, types=attr_types, units=attr_units)
 
-            crit_temp = 0.0
-            crit_file = os.path.join(base_path, f"temp{n}_crit")
-            if os.path.exists(crit_file):
-                with open(crit_file, 'r') as f:
-                    crit_temp = int(f.read().strip()) / 1000
+                     try:
+                           # Read label
+                           with open(label_file) as f:
+                              label = f.readline().strip()
+                              self._data[category][name]["label"].append(label)
 
-            entry_name = f"{sensor_id}_temp{n}"
-            self._data[category].setdefault(entry_name, init_rb_dict(
-                attr_names, types=attr_types, units=attr_units))
+                           # Read input temperature
+                           with open(input_file) as f:
+                              input_temp = int(f.readline().strip())
+                              self._data[category][name]["input"].append(input_temp/1000.0)
 
-            self._data[category][entry_name]["label"].append(label)
-            self._data[category][entry_name]["input"].append(input_temp)
-            self._data[category][entry_name]["max"].append(max_temp)
-            self._data[category][entry_name]["critical"].append(crit_temp)
+                           # Try to read max temperature
+                           try:
+                              with open(os.path.join(path, f"{name}_max")) as f:
+                                 max_temp = int(f.readline().strip())
+                                 self._data[category][name]["max"].append(max_temp/1000.0)
+                           except (IOError, ValueError):
+                              self._data[category][name]["max"].append(0.0)
 
-            n += 1
+                           # Try to read critical temperature
+                           try:
+                              with open(os.path.join(path, f"{name}_crit")) as f:
+                                 crit_temp = int(f.readline().strip())
+                                 self._data[category][name]["critical"].append(crit_temp/1000.0)
+                           except (IOError, ValueError):
+                              self._data[category][name]["critical"].append(0.0)
 
-    fan_sensor_path = "/sys/class/hwmon/"
-    category = "sensors/fans"
-    attr_names = ["label", "input"]
-    attr_types = [str, int]
-    attr_units = ["", "RPM"]
+                           sensor_found = True
+                     except (IOError, ValueError) as e:
+                           self.info(f"Error reading sensor {name}: {e}")
+                           continue
 
-    for hwmon_dir in glob.glob(os.path.join(fan_sensor_path, "hwmon*")):
-        base_path = os.path.join(hwmon_dir, "")
-        
-        n = 1
-        while True:
-            fan_input = os.path.join(base_path, f"fan{n}_input")
-            if not os.path.exists(fan_input):
-                break
+               if sensor_found:
+                  break
 
-            # Leer valores del ventilador
-            label = f"fan{n}"
-            label_file = os.path.join(base_path, f"fan{n}_label")
-            if os.path.exists(label_file):
-                with open(label_file, 'r') as f:
-                    label = f.read().strip()
+         except Exception as e:
+               self.info(f"Error processing sensor path {cpu_sensor_path}: {e}")
+               continue
 
-            with open(fan_input, 'r') as f:
-                rpm = int(f.read().strip())
+      if not sensor_found:
+         self.info("No CPU temperature sensors found in any of the standard locations")
 
-            entry_name = f"{os.path.basename(hwmon_dir)}_fan{n}"
-            self._data[category].setdefault(entry_name, init_rb_dict(
-                attr_names, types=attr_types, units=attr_units))
+      fan_sensor_path="/sys/devices/platform/"
+      attr_names = ["label", "input", "temperature"]
+      attr_types = [str, int, float]
+      attr_units = ["", "RPM", "C°"]
+      category = "sensors/fans"
 
-            self._data[category][entry_name]["label"].append(label)
-            self._data[category][entry_name]["input"].append(rpm)
+      # find directories that monitor fans
+      fan_directories=[]
+      for d in next(os.walk(fan_sensor_path))[1]:
+         path=fan_sensor_path+d+"/hwmon/"
+         if os.path.exists(path) and "coretemp" not in d:
+            fan_directories.append(path)
 
-            n += 1                 
+      for p in fan_directories:
+         for d in next(os.walk(p))[1]:
+            if "hwmon" not in d:
+               continue
+            
+            path = p+d+"/"
+            with open(path+"name") as f:
+               name = f.readlines()[0].rstrip()
+
+            for n in range(1,512):
+               
+               prefix = "fan{}".format(n)
+               if not os.path.exists(path+prefix+"_label"):
+                  break
+
+               # create entry if needed
+               name += "-"+prefix
+               self._data[category].setdefault(name, init_rb_dict(
+                       attr_names, types=attr_types, units=attr_units))
+
+               with open(path+prefix+"_label") as f:
+                  label = f.readlines()[0].rstrip()
+                  self._data[category][name]["label"].append(label)
+               with open(path+prefix+"_input") as f:
+                  input = f.readlines()[0].rstrip()
+                  self._data[category][name]["input"].append(int(input))
+
+               prefix = "temp{}".format(n)
+               if os.path.exists(path+prefix+"_input"):
+                  with open(path+prefix+"_input") as f:
+                     temp = f.readlines()[0].rstrip()
+                     self._data[category][name]["temperature"].append(int(temp)/1000.0)                 
 
 
    def _process_proc_meminfo(self):

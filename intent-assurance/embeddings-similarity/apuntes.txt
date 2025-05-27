@@ -466,3 +466,97 @@ THRESHOLD -> 0.5
 Precisión: 29.39%
 Recall: 24.20%
 F1-score: 26.54%
+
+
+
+Run gemma_training.py
+
+Save model:
+python3 llama.cpp/convert_hf_to_gguf.py FOLDER --outfile OUTPUT --outtype f16
+
+--outtype (choose from 'f32', 'f16', 'bf16', 'q8_0', 'tq1_0', 'tq2_0', 'auto')
+
+
+
+
+
+
+
+
+
+
+
+
+
+Prueba de concepto:
+
+- Tiene que mostrar el funcionamiento al completo de dxagent.
+- Se dicen las reglas que se activan.
+- Se muestran los mensajes de Kafka con los valores de confianza.
+- Mostrar una gr'afica para ver que los valores son estables con el paso del tiempo si no hay estr'es, que decrecen bajo un ataque...
+- Hay que contar c'omo afectan esas reglas al Network Assurance.
+
+- Deploy a database server that must maintain memory above 50% free at all times
+
+
+
+================================================================================
+Recommendations above 0.50 for: 'Deploy a database server that must maintain memory above 50% free at all times'
+================================================================================
+
+[Score: 0.86] No free memory available
+  Category: MEMORY
+  Rule Code: free<50
+  Matching Terms:
+   - buffers
+   - memory
+   - free
+   - allocation
+   - swap
+   - ram
+   - storage
+--------------------------------------------------------------------------------
+
+[Score: 0.86] No free memory available
+  Category: MEMORY
+  Rule Code: free<50
+  Matching Terms:
+   - buffers
+   - memory
+   - free
+   - allocation
+   - swap
+   - ram
+   - storage
+--------------------------------------------------------------------------------
+
+[Score: 0.79] No free memory available for 1 min
+  Category: MEMORY
+  Rule Code: 1min(free)<50
+  Matching Terms:
+   - buffers
+   - memory
+   - free
+   - allocation
+   - swap
+   - ram
+   - storage
+--------------------------------------------------------------------------------
+
+[Score: 0.79] No free memory available for 1 min
+  Category: MEMORY
+  Rule Code: 1min(free)<50
+  Matching Terms:
+   - buffers
+   - memory
+   - free
+   - allocation
+   - swap
+   - ram
+   - storage
+--------------------------------------------------------------------------------
+
+[Score: 0.57] Low Buffer Availability
+  Category: MEMORY
+  Rule Code: (buffer_free/buffer_total)<0.1
+--------------------------------------------------------------------------------

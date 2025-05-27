@@ -38,7 +38,8 @@ fi
 
 # Uninstall system dependencies
 echo_info "Uninstalling system dependencies"
-apt-get remove -y python3-dev libnl-3-dev libnl-route-3-dev
+apt-get remove -y python3-dev libnl-3-dev libnl-route-3-dev > /dev/null
+
 
 if [ $? -eq 0 ]; then
     echo_success "System dependencies uninstalled successfully"
@@ -66,7 +67,7 @@ if [[ "$CREATE_VENV" == "y" || "$CREATE_VENV" == "Y" ]]; then
 else
     # Uninstall Python packages globally
     echo_info "Uninstalling Python packages globally"
-    pip3 uninstall -y -r "$SCRIPT_DIR/requirements.txt"
+    pip3 uninstall -y -r "$SCRIPT_DIR/requirements.txt" > /dev/null
 
     if [ $? -eq 0 ]; then
         echo_success "Python packages uninstalled successfully"
@@ -105,8 +106,14 @@ fi
 
 # Cleanup
 echo_info "Cleaning up APT cache"
-apt-get autoremove -y
-apt-get clean
+apt-get autoremove -y > /dev/null
+apt-get clean > /dev/null
+if [ $? -eq 0 ]; then
+    echo_success "APT cache cleaned successfully"
+else
+    echo_error "Failed to clean APT cache"
+    exit 1
+fi
 
 echo_success "DX Agent uninstallation completed successfully"
 

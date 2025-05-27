@@ -43,7 +43,7 @@ def evaluate_system(training_file, evaluation_file):
 
 # Archivos de entrada
 training_file = 'data/training_data.csv'
-evaluation_file = 'evaluations/llama2.csv'
+evaluation_file = 'evaluations/deberta-01.csv'
 
 
 

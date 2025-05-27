@@ -68,7 +68,13 @@ echo_info "Script directory: $SCRIPT_DIR"
 
 # Update the package list
 echo_info "Updating package list"
-apt-get update -y
+apt-get update -y > /dev/null
+if [ $? -eq 0 ]; then
+    echo_success "Package list updated successfully"
+else
+    echo_error "Failed to update package list"
+    exit 1
+fi
 
 
 # Function to check if a command exists
@@ -86,21 +92,21 @@ if [[ "$SET_CERTS" == "y" || "$SET_CERTS" == "Y" ]]; then
     echo_info "Which is the server IP for the gNMI exporter?"
     read -r SERVER_IP
     cd certs/
-    ./gen_certs.sh "$SERVER_HOSTNAME" "$SERVER_IP"
-    cd ..
+    ./gen_certs.sh "$SERVER_HOSTNAME" "$SERVER_IP" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo_success "Certificates for gNMI exporter generated successfully"
     else
         echo_error "Failed to generate certificates for gNMI exporter"
         exit 1
     fi
+    cd ..
 else
     echo_info "Skipping setting up certificates for gNMI exporter"
 fi
 
 # 1. Install Python3
 echo_info "Installing Python3"
-apt-get install -y python3 python3-pip python3-venv
+apt-get install -y python3 python3-pip python3-venv > /dev/null
 if command_exists python3; then
     echo_success "Python3 installed successfully"
 else
@@ -113,7 +119,7 @@ if command_exists pip3; then
     echo_success "pip is already installed"
 else
     echo_info "Installing pip"
-    apt-get install -y python3-pip
+    apt-get install -y python3-pip > /dev/null
     if command_exists pip3; then
         echo_success "pip installed successfully"
     else
@@ -153,12 +159,12 @@ if [[ "$CREATE_VENV" == "y" || "$CREATE_VENV" == "Y" ]]; then
     fi
 
     echo_info "Updating pip in the virtual environment..."
-    sudo -u "$USER_NAME" "$VENV_DIR/bin/python" -m pip install --upgrade pip
+    sudo -u "$USER_NAME" "$VENV_DIR/bin/python" -m pip install --upgrade pip > /dev/null
 
     # 5. Install the dependencies in the virtual environment
     echo_info "Installing the dependencies in the virtual environment"
-    apt-get install -y python3-dev libnl-3-dev libnl-route-3-dev libnl-genl-3-dev pkg-config build-essential
-    sudo -u "$USER_NAME" "$VENV_DIR/bin/python" -m pip install -r "$SCRIPT_DIR/requirements.txt"
+    apt-get install -y python3-dev libnl-3-dev libnl-route-3-dev libnl-genl-3-dev pkg-config build-essential > /dev/null
+    sudo -u "$USER_NAME" "$VENV_DIR/bin/python" -m pip install -r "$SCRIPT_DIR/requirements.txt" > /dev/null
 
     if [ $? -eq 0 ]; then
         echo_success "Dependencies installed successfully in the virtual environment"
@@ -169,7 +175,7 @@ if [[ "$CREATE_VENV" == "y" || "$CREATE_VENV" == "Y" ]]; then
 
     # 6. Cleanup
     echo_info "Cleaning up APT cache"
-    apt-get clean
+    apt-get clean > /dev/null
 
     echo_success "DX Agent setup completed successfully"
 
@@ -178,17 +184,13 @@ if [[ "$CREATE_VENV" == "y" || "$CREATE_VENV" == "Y" ]]; then
 
     echo_info "To activate the virtual environment, run: source $VENV_DIR/bin/activate"
     echo_info "To deactivate the virtual environment, run: deactivate"
-
-    echo
-    echo
-
     echo_info "To start the DX Agent, run: sudo $VENV_DIR/bin/python dxagent (start|stop|status)"
 
 else
     # Install dependencies globally
     echo_info "Installing the dependencies globally"
-    apt-get install -y python3-dev libnl-3-dev libnl-route-3-dev libnl-genl-3-dev pkg-config build-essential
-    pip3 install -r "$SCRIPT_DIR/requirements.txt"
+    apt-get install -y python3-dev libnl-3-dev libnl-route-3-dev libnl-genl-3-dev pkg-config build-essential > /dev/null
+    pip3 install -r "$SCRIPT_DIR/requirements.txt" > /dev/null
 
     if [ $? -eq 0 ]; then
         echo_success "Dependencies installed successfully globally"
@@ -199,7 +201,7 @@ else
 
     # Cleanup
     echo_info "Cleaning up APT cache"
-    apt-get clean
+    apt-get clean > /dev/null
 
     echo_success "DX Agent setup completed successfully"
 

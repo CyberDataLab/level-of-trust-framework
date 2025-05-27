@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:ns1="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:healthScore>100</ns1:healthScore>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fproc">
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <dcterms:identifier>/node/bm/proc</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm">
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <dcterms:identifier>/node/bm</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fsensors%2Fsensor">
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <dcterms:identifier>/node/bm/sensors/sensor</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fnet%2Fif">
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <dcterms:identifier>/node/bm/net/if</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fsensors">
+    <dcterms:identifier>/node/bm/sensors</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fdisks%2Fdisk">
+    <dcterms:identifier>/node/bm/disks/disk</dcterms:identifier>
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode">
+    <dcterms:identifier>/node</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fnet">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <dcterms:identifier>/node/bm/net</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fdisks">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <dcterms:identifier>/node/bm/disks</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fmem">
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+    <dcterms:identifier>/node/bm/mem</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fcpus">
+    <dcterms:identifier>/node/bm/cpus</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Asset/%2Fnode%2Fbm%2Fcpus%2Fcpu">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <dcterms:identifier>/node/bm/cpus/cpu</dcterms:identifier>
+    <ns1:exposes rdf:resource="https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/100"/>
+  </rdf:Description>
+</rdf:RDF>

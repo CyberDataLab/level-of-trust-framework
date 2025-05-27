@@ -18,6 +18,9 @@ import time
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+MODEL = "Modelfile:latest"
+BERT = "microsoft/deberta-base"
+
 
 def load_json(file_path):
     """
@@ -55,7 +58,7 @@ TECHNICAL_PHRASES = load_json('data/technical_phrases.json')
 class HybridEncoder:
     def __init__(self):
         self.tfidf = TfidfVectorizer(max_features=5000)
-        self.bert = SentenceTransformer("stsb-roberta-large")
+        self.bert = SentenceTransformer(BERT)
         self._cache = {}
         
     def fit_transform(self, texts):
@@ -167,7 +170,7 @@ class RuleRecommender:
 
         self.use_ollama = use_ollama
         if self.use_ollama:
-            self.ollama = LlamaRecommender("gemma3:27b-it-q4_K_M")
+            self.ollama = LlamaRecommender(MODEL)
 
 
     
@@ -267,7 +270,7 @@ class RuleRecommender:
                 
             if len(llama_scores) != len(similarities):
                 raise ValueError("llama_scores must have the same length as cosine similarity")
-            combined_scores = similarities * 0 + llama_scores * 1
+            combined_scores = similarities * 1 + llama_scores * 0
         else:
             combined_scores = similarities
 
@@ -307,7 +310,7 @@ class RuleRecommender:
 
         rules_ids = ';'.join(recommended_rules['id'].astype(str)) if not recommended_rules.empty else 'None'
 
-        evaluation_file = 'evaluations/llama2.csv'
+        evaluation_file = 'evaluations/deberta-01.csv'
         file_exists = Path(evaluation_file).exists()
 
         with open(evaluation_file, mode='a', newline='', encoding='utf-8') as file:
@@ -323,12 +326,12 @@ class RuleRecommender:
 async def main():
     RULES_FILE = 'data/rules.csv'
     USER_QUERY = load_queries_from_csv("data/training_data.csv")
-    THRESHOLD = 0.5
+    THRESHOLD = 0.9
     
     try:
 
         start_time = time.time()
-        recommender = RuleRecommender(RULES_FILE, use_ollama=True)
+        recommender = RuleRecommender(RULES_FILE, use_ollama=False)
         
         """recommended_rules, scores = await recommender.recommend(USER_QUERY, THRESHOLD)
         

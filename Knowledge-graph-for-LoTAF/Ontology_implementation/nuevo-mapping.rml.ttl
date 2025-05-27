@@ -590,7 +590,8 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:exposes ;
-        rr:objectMap [ rml:reference "exposes" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/{exposes}" ] ;
     ] .
 
 # Instances of AssetType
@@ -752,5 +753,6 @@
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:evaluates ;
-        rr:objectMap [ rml:reference "evaluates" ] ;
+        rr:objectMap [ 
+            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom/{evaluates}" ] ;
     ] .

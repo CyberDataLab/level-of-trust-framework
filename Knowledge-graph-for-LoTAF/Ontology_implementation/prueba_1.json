@@ -1,0 +1,79 @@
+[
+    {
+        "TrustLevelAgreement": {
+            "identifier": "tla1",
+            "customerID": "cID",
+            "providerID": "pID",
+            "requirement": "req",
+            "violationDescription": "vd",
+            "includes": "trustor_trustee"
+        }
+    },
+    {
+        "NetworkService": {
+            "identifier": "service1",
+            "description": "desc1",
+            "characteristics": "characteristics1",
+            "networkStatus": "ScalingNetworkService",
+            "networkServiceType": "Cloud",
+            "composedBy": "as1",
+            "delivers": "trustor_trustee"
+        }
+    },
+    {
+        "Intent": {
+            "identifier": "i1",
+            "scope": "sc",
+            "contains": "ir",
+            "deploys": "service1",
+            "guaranteedBy": "tla1"
+        }
+    },
+    {
+        "Asset": {
+            "identifier": "as1",
+            "endpoint": "endpoint1",
+            "capacity": "capacity1",
+            "fulfills": "trustor_trustee",
+            "exposes": "health1",
+            "assetType": "Infrastructure"
+        }
+    },
+    {
+        "LevelOfTrust": {
+            "trustor": "trustor",
+            "trustee": "trustee",
+            "lot": "10",
+            "startTime": "April",
+            "stopTime": "July",
+            "enforces": "20",
+            "applies": "40",
+            "gathers": "ind"
+        }
+    },
+    {
+        "Symptom": {
+            "description": "desc1",
+            "symptomType": "VPP",
+            "pertains": "indicator"
+        }
+    },
+    {
+        "SubjectiveIndicator": {
+            "weightingFactor": "20",
+            "value": "3"
+        }
+    },
+    {
+        "ObjectiveIndicator": {
+            "weightingFactor": "20",
+            "value": "3"
+        }
+    },
+    {
+        "Health": {
+            "healthScore": "20",
+            "evaluates": "symptom"
+        }
+    }
+]

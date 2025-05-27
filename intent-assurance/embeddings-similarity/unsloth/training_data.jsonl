@@ -1,0 +1,87 @@
+{"input": "I need a web server with guaranteed CPU availability and no network packet loss", "response": "r7:1, r8:1, r9:1, r10:1, r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Deploy a database server that must maintain memory above 50% free at all times", "response": "r2:1, r3:1, r4:1, r5:1"}
+{"input": "Create a video streaming VM with protection against overheating and fan failures", "response": "r11:1, r12:1, r13:1"}
+{"input": "Set up a game server with zero network latency spikes and stable SSH access", "response": "r15:1, r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r26:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Provision an e-commerce host with guaranteed CPU headroom below 90% utilization", "response": "r7:1, r8:1, r9:1, r10:1"}
+{"input": "Deploy a critical analytics server with no memory exhaustion risks", "response": "r2:1, r3:1, r4:1, r5:1, r6:1"}
+{"input": "Create a high-security server with MTU 1500 enforcement and gateway monitoring", "response": "r16:1, r17:1"}
+{"input": "Implement a financial trading system with network interface stability guarantees", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Build a IoT edge node with temperature controls and fan speed safeguards", "response": "r11:1, r12:1, r13:1"}
+{"input": "Deploy a machine learning host protected against CPU overload scenarios", "response": "r7:1, r8:1, r9:1, r10:1"}
+{"input": "Setup a reverse proxy with DPDK buffer protection and IP fragment security", "response": "r23:1, r24:1, r25:1, r26:1, r27:1, r32:1, r33:1"}
+{"input": "Create a Kubernetes master node with network error rate monitoring", "response": "r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Setup a blockchain node with DPDK network safeguards and CPU headroom", "response": "r7:1, r8:1, r9:1, r10:1, r23:1, r24:1, r25:1, r26:1, r27:1, r32:1, r33:1"}
+{"input": "Implement a real-time streaming service with RX/TX error prevention", "response": "r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r33:1"}
+{"input": "Deploy a high-frequency trading system with zero packet drops", "response": "r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1"}
+{"input": "Create an AI inference server with memory buffer monitoring", "response": "r2:1, r3:1, r4:1, r5:1, r23:1, r24:1, r25:1, r32:1, r33:1"}
+{"input": "Provision a medical imaging with guaranteed CPU availability", "response": "r7:1, r8:1, r9:1, r10:1"}
+{"input": "Setup a DNS server with ARP consistency and MTU compliance", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "I want to deploy a IoT gateway that has at least 16GB of RAM and no packet loss allowed", "response": "r2:1, r3:1, r4:1, r5:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Implement a backup server with network flap protection", "response": "r16:1, r18:1"}
+{"input": "Deploy a video rendering farm with thermal controls and memory safeguards", "response": "r2:1, r3:1, r4:1, r5:1, r6:1, r11:1, r12:1, r13:1, r32:1"}
+{"input": "Setup a mail server with RX error monitoring and buffer protection", "response": "r19:1, r20:1, r23:1, r24:1, r25:1, r28:1, r29:1, r32:1, r33:1"}
+{"input": "Implement a system with CPU utilization guarantees", "response": "r7:1, r8:1, r9:1, r10:1"}
+{"input": "Deploy a monitoring server with packet integrity safeguards", "response": "r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Create a low-latency database cluster with network stability", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1"}
+{"input": "Provision a node with DPDK optimizations and error detection", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Setup a virtualization host with memory buffer guarantees", "response": "r2:1, r3:1, r4:1, r5:1, r23:1, r24:1, r25:1, r32:1, r33:1"}
+{"input": "Implement a system with temperature fail-safes", "response": "r11:1, r12:1, r13:1"}
+{"input": "Deploy a mobile backend with SSH access monitoring", "response": "r15:1"}
+{"input": "Create a distributed cache system with network drop prevention", "response": "r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r33:1"}
+{"input": "Provision a big data analytics node with CPU thermal protection", "response": "r11:1, r12:1, r13:1"}
+{"input": "Setup a compliance server with memory usage auditing", "response": "r1:1, r2:1, r3:1, r4:1, r5:1, r6:1, r32:1"}
+{"input": "Implement a payment gateway with packet integrity checks", "response": "r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Create a federated learning node with network buffer guarantees", "response": "r19:1, r20:1, r23:1, r24:1, r25:1, r28:1, r29:1, r32:1, r33:1"}
+{"input": "Provision a quantum computing interface with stability monitoring", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Setup a AR/VR rendering farm with memory safeguards", "response": "r2:1, r3:1, r4:1, r5:1, r6:1, r32:1"}
+{"input": "Implement a digital twin system with DPDK protections", "response": "r23:1, r24:1, r25:1, r26:1, r27:1, r32:1, r33:1"}
+{"input": "Deploy a edge computing node with fan speed monitoring", "response": "r13:1, r11:1, r12:1"}
+{"input": "Create a smart city IoT hub with network error detection", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Provision a robotics control server with CPU guarantees", "response": "r7:1, r8:1, r9:1, r10:1"}
+{"input": "Setup a satellite ground station with packet loss prevention", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Implement a weather modeling cluster with thermal controls", "response": "r11:1, r12:1, r13:1"}
+{"input": "Deploy a 5G core network element with DPDK optimizations", "response": "r23:1, r24:1, r25:1, r26:1, r27:1, r32:1, r33:1"}
+{"input": "Deploy a High-Performance Computing (HPC) Cluster with Thermal and Memory safeguards", "response": "r11:1, r12:1, r13:1, r2:1, r3:1, r4:1, r5:1, r6:1, r32:1"}
+{"input": "Provision a Low-Latency Cloud Gaming Platform with Zero Packet Loss", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Implement an Autonomous Vehicle Control System with Real-Time network Stability", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Implement a Real-Time Video Surveillance System with Frame Loss Prevention", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Create a Cloud-Based AI Training Cluster with GPU Utilization Monitoring", "response": "r2:1, r3:1, r4:1, r5:1, r32:1"}
+{"input": "Setup a Global Content Delivery Network (CDN) with Packet integrity Assurance", "response": "r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Implement a Satellite Communication Hub with Signal Integrity Checks", "response": "r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Build a Decentralized Blockchain Network with Consensus Stability", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Setup an Edge AI Inference Node with Thermal and Memory Safeguards", "response": "r2:1, r3:1, r4:1, r5:1, r6:1, r11:1, r12:1, r13:1, r32:1"}
+{"input": "Deploy a Backup Server with SSH Access and Network Stability", "response": "r15:1, r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Create an IoT Temperature Sensor Node with Thermal Thresholds", "response": "r11:1, r12:1, r13:1"}
+{"input": "Deploy a Static Web Server with MTU and Packet Loss Monitoring", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Setup a Digital Signage System with Fan Speed Safeguards", "response": "r11:1, r12:1, r13:1"}
+{"input": "Create a Home Automation Hub with Stable SSH and Low CPU Load", "response": "r15:1, r7:1, r8:1, r9:1, r10:1, r11:1"}
+{"input": "Provision a File Storage Server with Memory and MTU compliance", "response": "r2:1, r3:1, r4:1, r5:1, r17:1, r32:1"}
+{"input": "Setup a Maritime Navigation System with Network Stability", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Provision a Smart Agriculture IoT Node with Thermal Controls", "response": "r11:1, r12:1, r13:1"}
+{"input": "Create a Disaster Recovery Site with Minimal Packet Loss", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Deploy a Public Transit Scheduling System with ARP Checks", "response": "r16:1"}
+{"input": "Build a Digital Twin for Industrial Machinery with buffer Monitoring", "response": "r2:1, r3:1, r4:1, r5:1, r23:1, r24:1, r25:1, r32:1, r33:1"}
+{"input": "Setup a Cryptocurrency Mining Rig with Thermal Safeguards", "response": "r11:1, r12:1, r13:1"}
+{"input": "Create a Wildlife Tracking System with Network Error Detection", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Provision a Voice-over-IP (VoIP) Gateway with Packet Integrity", "response": "r16:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Implement a Smart Metering Hub with Memory Stability", "response": "r2:1, r3:1, r4:1, r5:1, r32:1"}
+{"input": "Deploy a Quantum Computing Interface with Fan Speed Alerts", "response": "r13:1, r11:1, r12:1"}
+{"input": "Build a Satellite IoT Gateway with MTU Compliance", "response": "r17:1"}
+{"input": "Setup a Telemetry Server for Drones with Low Latency", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Create a Biometric Authentication System with SSH access", "response": "r15:1"}
+{"input": "Provision a Genomics Data Processing with CPU Headroom", "response": "r7:1, r8:1, r9:1, r10:1"}
+{"input": "Deploy a Fleet Management System with No Rx Errors", "response": "r19:1, r20:1, r28:1, r29:1"}
+{"input": "Implement a Smart Lighting Controller with Thermal Limits", "response": "r11:1, r12:1, r13:1"}
+{"input": "Build a Hydroponics Monitoring Node with Network Stability", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r23:1, r24:1, r25:1, r26:1, r27:1, r28:1, r29:1, r30:1, r31:1, r32:1, r33:1"}
+{"input": "Setup a E-Commerce API Gateway with MTU Enforcement", "response": "r17:1"}
+{"input": "Create a Robotics Simulation with memory Guarantees", "response": "r2:1, r3:1, r4:1, r5:1, r6:1, r32:1"}
+{"input": "Provision a Spacecraft Telemetry Relay with DPDK Buffers", "response": "r23:1, r24:1, r25:1, r26:1, r27:1, r32:1, r33:1"}
+{"input": "Deploy a Waste Management IoT Sensor with Fan Alerts", "response": "r11:1, r12:1, r13:1"}
+{"input": "Implement a Air Traffic Control Backup System with ARP Checks", "response": "r16:1"}
+{"input": "Build a Nuclear Plant Sensor Network with Zero Packet Loss", "response": "r16:1, r17:1, r18:1, r19:1, r20:1, r21:1, r22:1, r28:1, r29:1, r30:1, r31:1"}
+{"input": "Setup a Railway Signaling System with CPU Stability", "response": "r7:1, r8:1, r9:1, r10:1"}
+{"input": "Create a Augmented Reality Classroom with SSH Access", "response": "r15:1"}
+{"input": "Provision a Wind Turbine Monitoring Node with Thermal Controls", "response": "r11:1, r12:1, r13:1"}
+{"input": "Deploy a Underwater Data Acoustic Link with Buffer Protection", "response": "r23:1, r24:1, r25:1, r26:1, r27:1, r32:1, r33:1"}
+{"input": "Build a Lunar Rover Communication Hub with DPDK Optimizations", "response": "r23:1, r24:1, r25:1, r26:1, r27:1, r32:1, r33:1"}
+{"input": "Deploy a load balancer with 3GHz of processing capabilites", "response": "r7:1, r8:1, r9:1, r10:1"}

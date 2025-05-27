@@ -44,4 +44,4 @@ for _, row in df.iterrows():
 
 augmented_df = pd.DataFrame(augmented)
 full_df = pd.concat([df, augmented_df])
-full_df.to_csv("data/augmented_data_20_variants.csv", index=False)
+full_df.to_csv("data/augmented_data_20.csv", index=False)

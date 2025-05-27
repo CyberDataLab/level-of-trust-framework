@@ -7,7 +7,7 @@ import os
 import uuid
 from pathlib import Path
 from uuid import uuid4
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from google.protobuf import json_format
 from cisco_gnmi import ClientBuilder
 from confluent_kafka import Producer
@@ -21,27 +21,27 @@ KAFKA_BROKER = "localhost:9092"
 KAFKA_TOPIC = "dxagent_gnmi_data"
 
 # Get the base directory
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
-env_path = Path(BASE_DIR).joinpath('intent-assurance', '.env')
+# BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+# env_path = Path(BASE_DIR).joinpath('intent-assurance', '.env')
 
-if not env_path.exists():
-    raise FileNotFoundError(f"Environment file not found at: {env_path}")
+# if not env_path.exists():
+#     raise FileNotFoundError(f"Environment file not found at: {env_path}")
 
-print(f"Loading environment from: {env_path}")
-load_dotenv(env_path)
+# print(f"Loading environment from: {env_path}")
+# load_dotenv(env_path)
 
 # Update the conf dictionary to use Path.joinpath()
-conf = {
-    'bootstrap.servers': os.getenv("BOOTSTRAP_SERVERS_URLS"),
-    "enable.ssl.certificate.verification": "false",
-    "api.version.request": "false",
-    'security.protocol': 'SSL',
-    'ssl.keystore.password': os.getenv("SECRET"),
-    'ssl.key.password': os.getenv("SECRET"),
-    'ssl.keystore.location': str(Path(BASE_DIR).joinpath('intent-assurance', os.getenv("KEYSTORE_LOCATION") or '')),
-    'ssl.ca.location': str(Path(BASE_DIR).joinpath('intent-assurance', os.getenv("CA_CERT_LOCATION") or '')),
-    'ssl.endpoint.identification.algorithm': 'https'
-}
+# conf = {
+#     'bootstrap.servers': os.getenv("BOOTSTRAP_SERVERS_URLS"),
+#     "enable.ssl.certificate.verification": "false",
+#     "api.version.request": "false",
+#     'security.protocol': 'SSL',
+#     'ssl.keystore.password': os.getenv("SECRET"),
+#     'ssl.key.password': os.getenv("SECRET"),
+#     'ssl.keystore.location': str(Path(BASE_DIR).joinpath('intent-assurance', os.getenv("KEYSTORE_LOCATION") or '')),
+#     'ssl.ca.location': str(Path(BASE_DIR).joinpath('intent-assurance', os.getenv("CA_CERT_LOCATION") or '')),
+#     'ssl.endpoint.identification.algorithm': 'https'
+# }
 
 class GNMIDataCollector:
     def __init__(self, output_format, output_file, kafka_enabled):
@@ -53,8 +53,8 @@ class GNMIDataCollector:
         self.kafka_enabled = kafka_enabled
 
         if self.kafka_enabled:
-            #self.producer = Producer({'bootstrap.servers': KAFKA_BROKER})
-            self.producer_TID = Producer(conf)
+            self.producer = Producer({'bootstrap.servers': KAFKA_BROKER})
+            #self.producer_TID = Producer(conf)
 
     def connect_to_gnmi(self):
         """Establishes connection with the gNMI Exporter"""
@@ -138,11 +138,11 @@ class GNMIDataCollector:
 
                     # Send to kafka
                     if self.kafka_enabled:
-                        #self.send_to_kafka(entry)
-                        self.send_to_kafka_TID(entry)
+                        self.send_to_kafka(entry)
+                        #self.send_to_kafka_TID(entry)
 
                 # Time control between samples
-                time.sleep(5)
+                # time.sleep(5)
 
         except KeyboardInterrupt:
             print("\n[INFO] Stopping data collection.")

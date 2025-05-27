@@ -1,0 +1,45 @@
+---- Instalar Neo4j ----
+
+
+# 1. Agregar la clave GPG del repositorio
+wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
+
+# 2. Agregar el repositorio (para Neo4j 5.x)
+echo 'deb https://debian.neo4j.com stable latest' | sudo tee /etc/apt/sources.list.d/neo4j.list
+
+# 3. Actualizar paquetes e instalar Neo4j
+sudo apt update
+sudo apt install neo4j
+
+# 4. Iniciar el servicio
+sudo systemctl enable neo4j.service
+sudo systemctl start neo4j.service
+
+
+---- Instalar neosemantics ----
+
+# 1. Descargar .jar de github
+
+https://github.com/neo4j-labs/neosemantics/releases
+
+# 2. Copiar .jar en /var/lib/neo4j/plugings/
+
+sudo cp *.jar /var/lib/neo4j/plugings/
+
+# 3. Añadir las siguientes líneas al final de /etc/neo4j/neo4j.conf:
+
+dbms.security.procedures.unrestricted=n10s.*
+dbms.security.procedures.allowlist=n10s.*
+server.memory.heap.initial_size=2g
+server.memory.heap.max_size=2g
+dbms.unmanaged_extension_classes=n10s.endpoint=/rdf
+
+# 4. Meter a neo4j en el grupo del usuario que creará los ficheros rdf que se cargarán
+
+sudo usermod -a -G usuario neo4j
+
+# 5. Reiniciar neo4j
+
+sudo systemctl restart neo4j
+
+
