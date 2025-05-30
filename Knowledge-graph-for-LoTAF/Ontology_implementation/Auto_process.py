@@ -25,7 +25,6 @@ app = FastAPI(
     contact={
         "name": "CyberDataLab",
         "url": "https://cyberdatalab.um.es/",
-        "email": "alfonso.s.g@um.es",
     },
 )
 
