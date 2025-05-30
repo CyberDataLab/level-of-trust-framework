@@ -32,3 +32,4 @@ r30,Transmit Errors Peak,/node/kb/net/if,Orange,1min(dynamicity(tx_error))>100
 r31,Transmit Drops Peak,/node/kb/net/if,Orange,1min(dynamicity(tx_drop))>100
 r32,Low Buffer Availability,/node/kb/mem,Orange,(buffer_free/buffer_total)<0.1
 r33,DPDK Buffer Alloc Errors,/node/kb/net/if,Orange,dynamicity(dpdk_alloc_errors)>0
+r34,Average process number greater than expected,/node/bm/proc,Orange,dynamicity(sleep_count)+dynamicity(run_count)>5

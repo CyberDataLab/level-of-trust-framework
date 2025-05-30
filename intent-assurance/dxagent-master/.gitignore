@@ -138,6 +138,9 @@ certs/*srl
 
 # Objects
 *.json
+!**/rule_categories.json
+!**/technical_phrases.json
+!**/technical_synonyms.json
 *.yaml
 
 # KAFKA
