@@ -23,8 +23,8 @@ app = FastAPI(
     description="This API describes a process automation",
     version="1.0.0",
     contact={
-        "name": "Alfonso Serrano Gil",
-        "url": "https://cyberdatalab.um.es/alfonso-serrano-gil/",
+        "name": "CyberDataLab",
+        "url": "https://cyberdatalab.um.es/",
         "email": "alfonso.s.g@um.es",
     },
 )
