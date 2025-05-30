@@ -34,6 +34,59 @@ nlu:
       - apache
       - apache server
       - apache web server
+      - Apache server
+      - Kafka 2.0 server
+      - snort 3.1
+      - Nginx 1.25 server
+      - Wireshark
+      - zeek 4.2
+      - suricata 7.0
+      - Bro
+      - HAProxy 2.6 server
+      - Squid 5.8 server
+      - OpenVPN server
+      - StrongSwan 5.9 server
+      - pfSense 2.7
+      - iptables
+      - Cisco IOS XE 17.6
+      - JunOS 22.2
+      - FortiOS 7.4
+      - MikroTik RouterOS 7
+      - OpenWRT 23.05
+      - OPNsense 24.1
+      - Netcat
+      - Putty
+      - SSH server
+      - FreeRADIUS 3.2 server
+      - BIND 9.18 server
+      - ISC DHCP 4.4 server
+      - Unbound 1.19 server
+      - openSSL 3.0
+      - stunnel 5.70 server
+      - Netdata server
+      - Zabbix 7.0 server
+      - nagios 5.0 server
+      - Prometheus 2.50 server
+      - Grafana 10.0 server
+      - Elasticsearch 8.11 server
+      - Logstash 8.11 server
+      - Filebeat 8.11
+      - Kibana 8.11 server
+      - MISP 2.4 server
+      - Brocade NOS 7.4
+      - VyOS 1.3
+      - Quagga
+      - FRRouting 9.0
+      - Mininet 2.3
+      - GNS3 2.2 server
+      - OpenDaylight server
+      - Floodlight 1.2 server
+      - Ryu 4.34 server
+      - ONOS 2.7 server
+      - Cumulus Linux 5.8
+      - NetXMS 3.12 server
+      - LibreNMS 24.3 server
+
   - lookup: operating_system
     examples: |
       - Fedora 36
@@ -55,6 +108,42 @@ nlu:
       - Windows server
       - Windows 10
       - windows server 2019
+      - Oracle Linux 8
+      - Kali Linux 2023.1
+      - Arch Linux
+      - Linux Mint 21
+      - Manjaro
+      - Pop!_OS 22.04
+      - macOS Sonoma
+      - macOS Ventura
+      - macOS Monterey
+      - Red Hat Linux 9
+      - SUSE Linux Enterprise Server 15
+      - OpenBSD 7.4
+      - NetBSD 10
+      - DragonFly BSD
+      - CentOS Stream 9
+      - Alpine Linux 3.19
+      - Slackware 15.0
+      - Gentoo Linux
+      - Clear Linux
+      - Amazon Linux 2023
+      - Windows 11
+      - Windows server 2022
+      - Ubuntu 18.04 LTS
+      - Ubuntu focal
+      - Ubuntu jammy
+      - Ubuntu trusty
+      - Ubuntu mantic
+      - Ubuntu lunar
+      - Ubuntu groovy
+      - Ubuntu hirsute
+      - Ubuntu kinetic
+      - Ubuntu server 22.04
+      - Ubuntu server 20.04
+      - Ubuntu server 18.04
+      - Ubuntu 16.04
+
   - lookup: compute_resource
     examples: |
       - 12 CPU cores
@@ -63,19 +152,102 @@ nlu:
       - 32 vCPUs
       - 48GB RAM
       - 8 CPU cores
-      - 4.0Ghz CPU
+      - 4.0GHz CPU
+      - 16 CPU cores
+      - 128GB RAM
+      - 64 vCPUs
+      - 2TB SSD
+      - 4TB HDD
+      - 96GB RAM
+      - 2.5GHz CPU
+      - 3.2GHz CPU
+      - 6 CPU cores
+      - 8 vCPUs
+      - 12 vCPUs
+      - 256GB RAM
+      - 16GB VRAM
+      - 24 vCPUs
+      - 500GB NVMe
+      - 1TB NVMe
+      - 8GB VRAM
+      - 4GB VRAM
+      - 32GB RAM
+      - 20 CPU cores
+      - 10 vCPUs
+      - 2GB VRAM
+      - 500GB HDD
+      - 120GB SSD
+      - 240GB SSD
+      - 512GB SSD
+      - 8TB HDD
+      - 1.8GHz CPU
+      - 2.0GHz CPU
+      - 4 CPU cores
+      - 128 vCPUs
+      - 192GB RAM
+      - 96 vCPUs
+      - 384GB RAM
+      - 256 vCPUs
+      - 48 vCPUs
+      - 1GB VRAM
+      - 320GB RAM
+      - 32 CPU cores
+      - 16 vCPUs
+      - 10TB HDD
+      - 32GB VRAM
+      - 64GB VRAM
+
   - lookup: storage_resource
     examples: |
-      - 250GB NVMe
       - 5TB space
       - 1TB SSD
       - 4TB HDD
       - 10Gbps
       - 200GB disk
-      - 16GB RAM
-      - 12GB RAM
+      - 16GB
+      - 12GB
       - 500GB SSD
       - 1TB storage
+      - 5TB space
+      - 1TB SSD
+      - 4TB HDD
+      - 10Gbps
+      - 200GB disk
+      - 16GB of disk
+      - 12GB of storage
+      - 500GB SSD
+      - 1TB storage
+      - 2TB SSD
+      - 8TB HDD
+      - 20TB storage
+      - 100GB disk
+      - 32GB of disk
+      - 24GB 
+      - 250GB SSD
+      - 2TB HDD
+      - 3TB HDD
+      - 750GB SSD
+      - 500GB HDD
+      - 120GB SSD
+      - 480GB SSD
+      - 960GB SSD
+      - 4TB SSD
+      - 8TB SSD
+      - 6TB HDD
+      - 12TB HDD
+      - 32TB storage
+      - 256GB
+      - 512GB
+      - 128GB
+      - 64GB storage
+      - 128GB SSD
+      - 320GB HDD
+      - 640GB HDD
+      - 50TB of disk space
+      - 16TB SSD
+      - 24TB HDD
+      - 32TB HDD
+
   - lookup: operation
     examples: |
       - add
@@ -94,6 +266,8 @@ nlu:
       - configure
       - set
       - run
+      - enable
+      - set
   - lookup: middlebox
     examples: |
       - nat
@@ -159,3 +333,45 @@ nlu:
       - 1534bps
       - 4.4KBps
       - 10Bps
+      - 2Mbps
+      - 512kbps
+      - 5Mbps
+      - 50Mbps
+      - 500Mbps
+      - 2Gbps
+      - 100kbps
+      - 64kbps
+      - 10kbps
+      - 20Mbps
+      - 200ms of max latency
+      - 150 ms of max latency
+      - 50 ms of latency
+      - 10 ms of latency
+      - 5 ms of latency
+      - 2 ms of latency
+      - 500 ms of latency
+      - 1 ms of jitter
+      - 5 ms of jitter
+      - 20 ms of jitter
+      - 100 ms of jitter
+      - 0.1% packet loss
+      - 0.5% packet loss
+      - 5% packet loss
+      - critical priority
+      - urgent priority
+      - normal priority
+      - background priority
+      - expedited forwarding
+      - assured forwarding
+      - minimum 1Mbps
+      - maximum 100Mbps
+      - minimum 10kbps
+      - unlimited bandwidth
+      - capped at 20Mbps
+      - unmetered traffic
+      - lossless transmission
+      - voice-optimized
+      - video-optimized
+      - data-optimized
+      - real-time service
+      - non-real-time service

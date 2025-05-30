@@ -30,17 +30,29 @@ collection = None
 # Function to convert from Bps to bps
 def _to_bitspersecond(value: str, unit: str) -> dict:
 
-    if unit not in UNIT_MAPPING:
-        raise ValueError(f"Unsupported unit: {unit}")
+    print(f"_to_bitspersecond: input value = '{value}', unit = '{unit}'")
+    if unit in UNIT_MAPPING:
+        try:
+            value_in_bps = float(value) * 8
+            print(f"  Converted {value} {unit} to {value_in_bps} {UNIT_MAPPING[unit]}")
+            return {
+                "value": value_in_bps,
+                "unit": UNIT_MAPPING[unit]
+            }
+        except ValueError:
+            print(f"  Error: Invalid value '{value}' for conversion.")
+            raise ValueError(f"Invalid value: {value}")
+        
+    for u in UNIT_MAPPING.values():
+        if unit.lower() == u.lower():
+            print(f"  Matched unit: '{unit}' as '{u}', value unchanged: {value}")
+            return {
+                "value": value,
+                "unit": u
+            }
+    print(f"  No matching unit found for '{unit}', returning original value and unit.")
 
-    try:
-        value_in_bps = float(value) * 8
-        return {
-            "value": value_in_bps,
-            "unit": UNIT_MAPPING[unit]
-        }
-    except ValueError:
-        raise ValueError(f"Invalid value: {value}")
+    
 
 # Function to load the available os from the database
 def _initialize_distros_lists():
@@ -110,7 +122,7 @@ def _initialize_services_lists():
 # Initialization function
 def initialize():
     global client, db, collection
-    client = MongoClient("mongodb://localhost:27017/") #localhost->debug / rasa_actions->docker
+    client = MongoClient("mongodb://localhost:27017/") #localhost->debug / my_mongo->docker
     db = client["example_database"]
     collection = db["wef_entities"]
     _initialize_distros_lists()
@@ -164,22 +176,24 @@ def parse_compute_resource(compute_str: str) -> dict:
 
     ram_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([KkMmGgTt][Bb])', re.IGNORECASE)
     ram_match = ram_pattern.search(lower_str)
+    freq_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([GM]Hz)', re.IGNORECASE)
+    freq_match = freq_pattern.search(lower_str)
     if ram_match:
-        result["ram_size"] = ram_match.group(1)
+        result["ram_size"] = int(float(ram_match.group(1)))
         result["ram_unit"] = ram_match.group(2)
-
+        print(f"parse_compute_resource: Matched RAM - size: {result['ram_size']}, unit: {result['ram_unit']}")
+    elif freq_match:
+        result["freq_value"] = float(freq_match.group(1))
+        result["freq_unit"] = freq_match.group(2)
+        print(f"parse_compute_resource: Matched freq_value: {result['freq_value']}, freq_unit: {result['freq_unit']}")
     else:
-        if "core" in lower_str:
-            digits = ''.join(filter(str.isdigit, lower_str))
-            if digits:
-                result["num_cores"] = digits
-        else:
-            freq_pattern = re.compile(r'(\d+(?:\.\d+)?)\s*([GM]Hz)', re.IGNORECASE)
-            freq_match = freq_pattern.search(lower_str)
-            if freq_match:
-                result["freq_value"] = freq_match.group(1)
-                result["freq_unit"] = freq_match.group(2)
+        digits = ''.join(filter(str.isdigit, lower_str))
+        digits = int(digits) if digits else None
+        if digits:
+            result["num_cores"] = digits
+            print(f"parse_compute_resource: Matched num_cores: {result['num_cores']}")
 
+    print(f"parse_compute_resource: Final result: {result}")
     return result
 
 # Function to build the MongoDB query filter for compute resources
@@ -191,7 +205,10 @@ def build_compute_filter(compute_info: dict) -> dict:
             "virtualMemory.virtualMemSize": compute_info["ram_size"],
         })
         conditions.append({
-            "virtualMemory.virtualMemSizeUnit": compute_info["ram_unit"]
+            "virtualMemory.virtualMemSizeUnit": {
+                "$regex": compute_info["ram_unit"],
+                "$options": "i"
+                }
         })
 
     # If we have CPU info
@@ -203,7 +220,10 @@ def build_compute_filter(compute_info: dict) -> dict:
             "processingFrequency": compute_info["freq_value"]
         })
         cpu_subconditions.append({
-            "frequencyUnit": compute_info["freq_unit"]
+            "frequencyUnit": {
+            "$regex": compute_info["freq_unit"],
+            "$options": "i"
+            }
         })
 
     if cpu_subconditions:
@@ -321,21 +341,35 @@ def extract_distro_and_version(os_string: str):
         "version": None
     }
 
+    print(f"extract_distro_and_version: input = '{os_string}' (lower: '{os_lower}')")
+    print(f"  codename_mapping: {codename_mapping}")
+    print(f"  available_flavors: {available_flavors}")
+
     for codename, mapped_distro in codename_mapping.items():
         if codename in os_lower:
             result["codename"] = codename
             result["distro"] = mapped_distro
+            print(f"  Matched codename: '{codename}' -> distro: '{mapped_distro}'")
             break 
+    if not result["codename"]:
+        for distro in available_distros:
+            if distro in os_lower:
+                result["distro"] = distro
+                print(f"  Matched distro: '{distro}'")
+                break
 
     for flavor in available_flavors:
-        if flavor in os_lower:
+        if flavor and flavor in os_lower:
             result["flavor"] = flavor
+            print(f"  Matched flavor: '{flavor}'")
             break
 
     user_ver_match = re.search(r'(\d+(?:\.\d+)?)', os_lower)
     if user_ver_match:
         result["version"] = user_ver_match.group(1)
+        print(f"  Matched version: '{result['version']}'")
 
+    print(f"  Result: {result}")
     return result
 
 # Function to build the MongoDB query for an OS resource
@@ -403,26 +437,30 @@ def parse_qos_value(qos_str: str) -> dict:
     if qos_unit_match:
         result["value"] = qos_unit_match.group(1)
         result["unit"] = qos_unit_match.group(2)
+    else:
+        result["value"] = qos_str
+
+    print(f"parse_qos_value: input = '{qos_str}' => result = {result}")
     
     return result
 
 # Function to build the MongoDB filter for qos values
 def build_qos_filter(qos_info: dict) -> dict:
-    qos_info = _to_bitspersecond(qos_info["value"], qos_info["unit"])
-    value = qos_info.get("value")
-    unit = qos_info.get("unit")
+    if qos_info["unit"]:
+        qos_info = _to_bitspersecond(qos_info["value"], qos_info["unit"])
+        value = qos_info.get("value")
+        unit = qos_info.get("unit")
+    else:
+        value = qos_info.get("value")
+        unit = None
     if not value or not unit:
         return None
 
     return {
         "assets": {
             "$elemMatch": {
-                "infrastructureDesc.location.bandWidth": {
-                    "$elemMatch": {
-                        "bandwidthValue": int(value),
-                        "bandwidthUnit": {"$regex": unit, "$options": "i"}
-                    }
-                }
+                "infrastructureDesc.location.bandWidth.bandwidthValue": int(value),
+                "infrastructureDesc.location.bandWidth.bandwidthUnit": {"$regex": unit, "$options": "i"}
             }
         }
     }
@@ -455,7 +493,13 @@ def merge_filters(filter1: dict, filter2: dict) -> dict:
 def dynamic_query(storage_resources, compute_resources,
                   os_resources, service_resources, qos_values) -> str:
     final_filter = {}
+    print("Debug: storage_resources =", storage_resources)
+    print("Debug: compute_resources =", compute_resources)
+    print("Debug: os_resources =", os_resources)
+    print("Debug: service_resources =", service_resources)
+    print("Debug: qos_values =", qos_values)
 
+    
     # --- STORAGE FILTER ---
     for storage_resource in storage_resources:
         storage_info = parse_storage_resource(storage_resource)
@@ -480,13 +524,21 @@ def dynamic_query(storage_resources, compute_resources,
         os_filter = build_os_filter(os_info)
         final_filter = merge_filters(final_filter, os_filter)
 
+    qos_filter = None
     # --- QOS FILTER ---
     for qos_value in qos_values:
         qos_info = parse_qos_value(qos_value)
         qos_filter = build_qos_filter(qos_info)
-        final_filter = merge_filters(final_filter, qos_filter)
+    if qos_filter:
+        if final_filter:
+            final_filter = {
+                "$and": [final_filter, qos_filter]
+            }
+        else:
+            final_filter = qos_filter
 
-    print("\nDynamic query filter:", final_filter)
+    print("\nDynamic query filter:")
+    print(json.dumps(final_filter, indent=4))
     response_list = []
     cursor = collection.find(final_filter)
     results = list(cursor)
@@ -511,7 +563,8 @@ def dynamic_query(storage_resources, compute_resources,
             "provider": provider,
             "infrastructure_id": infrastructure_id,
             "level_of_trust": level_of_trust,
-            "price_tag": price_tag
+            "price_tag": price_tag,
+            "info": f"{doc}"
         })
 
     response_string = json.dumps(response_list, indent=4)

@@ -7,9 +7,9 @@ from pymongo import MongoClient
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key_here'
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
-client = MongoClient("mongodb://172.17.0.3:27017/") #Chequear cada vez que se lanza
+client = MongoClient("mongodb://172.17.0.2:27017/") #Chequear cada vez que se lanza 172.17.0.3
 db = client["example_database"]
 users_collection = db["users"]
 ns_collection = db["wef_entities"]
@@ -48,7 +48,9 @@ def signTLA():
         return json.dumps({"error": "No data provided"}), 400, {'Content-Type': 'application/json'}
     
     user_data = users_collection.find_one({"id": current_user})
-    tla_list = user_data.get("tla", []) if user_data else []
+    print("DEBUG: current_user =", current_user)
+    print("DEBUG: user_data =", user_data)
+    tla_list = user_data.get("tlas", []) if user_data else []
     last_id = int(tla_list[-1]["id"]) if tla_list else 0
     related_ns = []
     for entity in data:

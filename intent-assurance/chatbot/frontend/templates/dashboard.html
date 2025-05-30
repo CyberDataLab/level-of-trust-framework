@@ -8,41 +8,47 @@
 </head>
 <body>
     <h1>Dashboard</h1>
-    <div>
+    <div class="mensaje-entrada">
         <label for="user-input">Enter your message:</label>
-        <input type="text" id="user-input" placeholder="Type here...">
+        <input type="text" id="user-input" placeholder="Type here..." onkeydown="if(event.key==='Enter'){sendMessage();}">
         <button id="submit-button" onclick="sendMessage()">Ask</button>
     </div>
     <div class="response-box" id="response-box">
         <!-- Chat responses will appear here -->
     </div>
     <div class="filters">
-        <label for="price-filter">Sort by Price:</label>
-        <select id="price-filter">
-            <option value="low-to-high">Low to High</option>
-            <option value="high-to-low">High to Low</option>
-        </select>
+        <div class="columna-filtro1">
+            <label for="price-filter">Sort by Price:</label>
+            <select id="price-filter">
+                <option value="">None</option>
+                <option value="low-to-high">Low to High</option>
+                <option value="high-to-low">High to Low</option>
+            </select>
 
-        <label for="resource-filter">Filter by Resource Name:</label>
-        <input type="text" id="resource-filter" placeholder="Enter resource name">
+            <label for="resource-filter">Filter by Resource Name:</label>
+            <input type="text" id="resource-filter" placeholder="Enter resource name">
 
-        <label for="provider-filter">Filter by Provider:</label>
-        <select id="provider-filter">
-            <option value="">All Providers</option>
-            <option value="Bcom">Bcom</option>
-            <option value="Other">Other</option>
-        </select>
+            <label for="provider-filter">Filter by Provider:</label>
+            <select id="provider-filter">
+                <option value="">All Providers</option>
+                <option value="Bcom">Bcom</option>
+                <option value="Movistar">Movistar</option>
+                <option value="Vodafone">Vodafone</option>
+            </select>
+        </div>
+        <div class="columna-filtro2">
+            <label for="network-filter">Filter by Network Name:</label>
+            <input type="text" id="network-filter" placeholder="Enter network name">
 
-        <label for="network-filter">Filter by Network Name:</label>
-        <input type="text" id="network-filter" placeholder="Enter network name">
+            <label for="leveloftrust-filter">Sort by LevelOfTrust:</label>
+            <select id="leveloftrust-filter">
+                <option value="">None</option>
+                <option value="low-to-high">Low to High</option>
+                <option value="high-to-low">High to Low</option>
+            </select>
 
-        <label for="leveloftrust-filter">Sort by LevelOfTrust:</label>
-        <select id="leveloftrust-filter">
-            <option value="low-to-high">Low to High</option>
-            <option value="high-to-low">High to Low</option>
-        </select>
-
-        <button onclick="applyFilters()">Apply Filters</button>
+            <button onclick="applyFilters()">Apply Filters</button>
+        </div>
     </div>
     <div class="table-container">
         <table>
@@ -60,7 +66,7 @@
                 <!-- Table rows will go here -->
             </tbody>
         </table>
-        <button id="sign-button" style="margin-top: 16px;">Sign</button>
+        <button id="sign-button" style="margin-top: 16px; margin-bottom:16px">Sign</button>
     </div>
 </body>
 <script>
@@ -86,12 +92,12 @@
                 data.forEach(item => {
                     if (item.text) {
                         const message = document.createElement('p');
-                        message.textContent = item.text;
+                        message.innerHTML = item.text.replace(/\n/g, '<br>');
                         responseBox.appendChild(message);
                     }
                 });
             } else {
-                const messageText = data[0]?.text || 'No network services available';
+                const messageText = data[0]?.text || 'No middleboxes available';
                 try {
                     const parsedData = JSON.parse(messageText);
                     if (Array.isArray(parsedData)) {
@@ -101,7 +107,11 @@
                             const tableRow = document.createElement('tr');
                             tableRow.innerHTML = `
                                 <td><input type="checkbox" class="row-checkbox" data-id="${row.resource_id || ''}"></td>
-                                <td>${row.resource_id || ''}</td>
+                                <td>
+                                    <span style="cursor:pointer; color:blue; text-decoration:underline;" onclick="showInfoPopup('${row.info ? row.info.replace(/'/g, "\\'").replace(/"/g, '&quot;') : ''}')">
+                                        ${row.resource_id || ''}
+                                    </span>
+                                </td>
                                 <td>${row.provider || ''}</td>
                                 <td>${row.infrastructure_id || ''}</td>
                                 <td>${row.price_tag || ''}</td>
@@ -193,17 +203,101 @@
         rows.forEach(row => table.appendChild(row));
     }
 
+    function showInfoPopup(info) {
+        let parsed;
+        try {
+            // Convert Python-style dict string to JSON string
+            let jsonStr = info;
+            if (typeof jsonStr === 'string') {
+                // Remove ObjectId('...') wrappers
+                jsonStr = jsonStr.replace(/ObjectId\('([^']*)'\)/g, '"$1"');
+                // Replace single quotes with double quotes
+                jsonStr = jsonStr.replace(/'/g, '"');
+                // Remove any trailing commas before closing braces/brackets
+                jsonStr = jsonStr.replace(/,\s*([}\]])/g, '$1');
+                // Parse to object
+                parsed = JSON.parse(jsonStr);
+            } else {
+                parsed = info;
+            }
+        } catch (e) {
+            parsed = info;
+        }
+
+        function renderObject(obj, indent = 0) {
+            let html = '';
+            const pad = '&nbsp;'.repeat(indent * 4);
+            if (Array.isArray(obj)) {
+                obj.forEach((item, idx) => {
+                    html += `${pad}<b>[${idx}]</b>:<br>${renderObject(item, indent + 1)}`;
+                });
+            } else if (typeof obj === 'object' && obj !== null) {
+                Object.entries(obj).forEach(([key, value]) => {
+                    if (typeof value === 'object' && value !== null) {
+                        html += `${pad}<b>${key}</b>:<br>${renderObject(value, indent + 1)}`;
+                    } else {
+                        html += `${pad}<b>${key}</b>: ${value}<br>`;
+                    }
+                });
+            } else {
+                html += `${pad}${obj}<br>`;
+            }
+            return html;
+        }
+
+        let popup = document.getElementById('info-popup');
+        if (!popup) {
+            popup = document.createElement('div');
+            popup.id = 'info-popup';
+            popup.style.position = 'fixed';
+            popup.style.top = '30%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%,-50%)';
+            popup.style.background = 'white';
+            popup.style.border = '1px solid #888';
+            popup.style.padding = '20px';
+            popup.style.zIndex = '1000';
+            popup.style.minWidth = '300px';
+            popup.style.maxHeight = '60vh';
+            popup.style.overflowY = 'auto'; // Make popup scrollable
+
+            const closeBtn = document.createElement('span');
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.float = 'right';
+            closeBtn.style.fontSize = '18px';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = function() {
+                popup.style.display = 'none';
+            };
+
+            const contentDiv = document.createElement('div');
+            contentDiv.id = 'info-popup-content';
+            contentDiv.style.marginTop = '10px';
+
+            popup.appendChild(closeBtn);
+            popup.appendChild(contentDiv);
+            document.body.appendChild(popup);
+        }
+        document.getElementById('info-popup-content').innerHTML = renderObject(parsed);
+        popup.style.display = 'block';
+    }
+
     document.getElementById('sign-button').addEventListener('click', function() {
         const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
         const ids = Array.from(checkedBoxes).map(cb => cb.getAttribute('data-id'));
         const tableRows = document.querySelectorAll('.table-container tbody tr');
-        const data = Array.from(tableRows).map(row => ({
-            resource: row.children[1].textContent,
-            provider: row.children[2].textContent,
-            network: row.children[3].textContent,
-            price: row.children[4].textContent,
-            levelOfTrust: row.children[5].textContent
-        }));
+        const data = Array.from(tableRows)
+            .filter(row => {
+                const checkbox = row.querySelector('.row-checkbox');
+                return checkbox && checkbox.checked;
+            })
+            .map(row => ({
+                resource: row.children[1].textContent.trim(),
+                provider: row.children[2].textContent.trim(),
+                network: row.children[3].textContent.trim(),
+                price: row.children[4].textContent.trim(),
+                levelOfTrust: row.children[5].textContent.trim()
+            }));
         const jsonStr = JSON.stringify(data, null, 2);
 
         // Send JSON to backend first
@@ -227,8 +321,64 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+
+            // Show popup with parsed info
+            showSignedTlaPopup(data);
+            const tableBody = document.querySelector('.table-container tbody');
+            tableBody.innerHTML = '';
         })
-        
     });
+
+    function showSignedTlaPopup(data) {
+        let html = `<h3>Signed TLA Info</h3>`;
+        html += `<b>Level of Trust:</b> ${data.levelOfTrust}<br>`;
+        if (Array.isArray(data.data)) {
+            html += `<b>Resources:</b><ul>`;
+            data.data.forEach(item => {
+                html += `<li>
+                    <b>Resource:</b> ${item.resource}<br>
+                    <b>Provider:</b> ${item.provider}<br>
+                    <b>Network:</b> ${item.network}<br>
+                    <b>Price:</b> ${item.price}<br>
+                    <b>Level of Trust:</b> ${item.levelOfTrust}
+                </li>`;
+            });
+            html += `</ul>`;
+        }
+
+        let popup = document.getElementById('signed-tla-popup');
+        if (!popup) {
+            popup = document.createElement('div');
+            popup.id = 'signed-tla-popup';
+            popup.style.position = 'fixed';
+            popup.style.top = '30%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%,-50%)';
+            popup.style.background = 'white';
+            popup.style.border = '1px solid #888';
+            popup.style.padding = '20px';
+            popup.style.zIndex = '1000';
+            popup.style.minWidth = '300px';
+
+            const closeBtn = document.createElement('span');
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.float = 'right';
+            closeBtn.style.fontSize = '18px';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = function() {
+                popup.style.display = 'none';
+            };
+
+            const contentDiv = document.createElement('div');
+            contentDiv.id = 'signed-tla-popup-content';
+            contentDiv.style.marginTop = '10px';
+
+            popup.appendChild(closeBtn);
+            popup.appendChild(contentDiv);
+            document.body.appendChild(popup);
+        }
+        document.getElementById('signed-tla-popup-content').innerHTML = html;
+        popup.style.display = 'block';
+    }
 </script>
 </html>

@@ -1,137 +1,102 @@
-#### This file contains tests to evaluate that your bot behaves as expected.
-#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
-
 version: "3.1"
 
 stories:
-# Basic Build Flows
-- story: Build → Confirm → Deploy
-  steps:
-  - user: |
-      Deploy a firewall on linux with 8 CPU cores
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-       yes
-    intent: confirm
-  - action: action_deploy
 
-- story: Build → Reject → Feedback Loop Exit
-  steps:
-  - user: |
-      Provision a mysql server on windows with 16GB RAM
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      no
-    intent: reject
-  - action: utter_ask_build_feedback
-  - user: |
-      nevermind
-    intent: reject
-  - action: action_restart
+  - story: User wants to restart or cancel its actions
+    steps:
+      - intent: reject
+      - action: action_restart
 
-# Feedback Loop Interactions
-- story: Build → Reject → Feedback → Confirm → Deploy
-  steps:
-  - user: |
-      Spin up a reverse proxy running nginx
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      cancel
-    intent: reject
-  - action: utter_ask_build_feedback
-  - user: |
-      Add the middlebox IDS
-    intent: feedback
-  - action: action_build_feedback
-  - user: |
-      proceed
-    intent: confirm
-  - action: action_deploy
+  - story: User requests a build
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: null
+        - current_build_message: null
+        - feedback_performed: false
+      - intent: build
+      - action: action_build
+      - action: utter_ask_build_confirmation
 
-- story: Build → Reject → Feedback → Reject → Restart
-  steps:
-  - user: |
-      Create a VPN gateway with 2Gbps
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      stop
-    intent: reject
-  - action: utter_ask_build_feedback
-  - user: |
-      Remove the asset mail server
-    intent: feedback
-  - action: action_build_feedback
-  - user: |
-      not now
-    intent: reject
-  - action: action_restart
+  - story: User confirms the build requested
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: false
+      - action: utter_ask_build_confirmation
+      - intent: confirm
+      - action: action_check_avaibility
 
-# Edge Cases
-- story: Double Build Request
-  steps:
-  - user: |
-      Launch a CI/CD server on CentOS
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      Deploy a cluster on Fedora
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      confirm
-    intent: confirm
-  - action: action_deploy
+  - story: User rejects the build requested
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: false
+      - action: utter_ask_build_confirmation
+      - intent: reject
+      - action: utter_ask_build_feedback
+      - checkpoint: build_feedback_loop
+  
+  - story: continue build feedback loop adding more entities
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: true
+      - checkpoint: build_feedback_loop
+      - intent: addition_feedback
+      - action: action_build_feedback
+      - action: utter_ask_more_build_feedback
+      - checkpoint: build_feedback_loop
 
-- story: Build → Confirm → Resource Unavailable → Restart
-  steps:
-  - user: |
-      Provision a database cluster with postgresql
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      absolutely
-    intent: confirm
-  - action: action_check_avaibility
+  - story: continue build feedback loop removing entities
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: true
+      - checkpoint: build_feedback_loop
+      - intent: removal_feedback
+      - action: action_build_removal_feedback
+      - action: utter_ask_more_build_feedback
+      - checkpoint: build_feedback_loop
 
-- story: Immediate Build Abort
-  steps:
-  - user: |
-      Deploy a logging server with elasticsearch
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      abort
-    intent: reject
-  - action: action_restart
+  - story: end build feeback loop
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: true
+      - checkpoint: build_feedback_loop
+      - intent: reject
+      - action: utter_ask_build_after_feedback
 
-- story: Feedback → Partial Confirm → Reject
-  steps:
-  - user: |
-      Build a web server on OpenSUSE
-    intent: build
-  - action: action_build
-  - action: utter_ask_build_confirmation
-  - user: |
-      reject
-    intent: reject
-  - action: utter_ask_build_feedback
-  - user: |
-      Add the compute_resource 8GB RAM
-    intent: feedback
-  - action: action_build_feedback
-  - user: |
-      no
-    intent: reject
-  - action: action_restart
+  - story: User confirms the build after feedback
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: true
+      - action: utter_ask_build_after_feedback
+      - intent: confirm
+      - action: action_check_avaibility
+      - action: action_restart
+  
+  - story: User rejects the build after feedback
+    steps:
+      - slot_was_set:
+        - tla_dict: null
+        - service_assets_dict: true
+        - current_build_message: true
+        - feedback_performed: true
+      - action: utter_ask_build_after_feedback
+      - intent: reject
+      - action: action_restart

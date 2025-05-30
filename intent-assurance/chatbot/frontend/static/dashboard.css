@@ -13,7 +13,15 @@ body {
 
 h1 {
     color: #333;
-    margin-bottom: 20px;
+    margin-top: 1em;
+}
+
+.mensaje-entrada label{
+    font-size: 1.25em;
+}
+
+.mensaje-entrada input::placeholder {
+    font-size: 1.25em;
 }
 
 error-message {
@@ -57,10 +65,12 @@ button:hover {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-    min-height: 100px;
+    /* Cambio sombra*/
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1) inset,
+    10px 10px 6px rgba(0, 0, 0, 0.1);
+    /* Aquí cambiamos el alto y ancho */
+    width:40em;
+    height: 21em;
     overflow-y: auto;
 }
 
@@ -106,30 +116,47 @@ tbody tr:nth-child(even) {
 
 /* Compact filter styles */
 .filters {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
-    gap: 20px; /* Increase space between filter items */
     margin-top: 30px; /* Add more space above the filters */
     padding: 20px;
     background-color: #f4f4f9;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Cambio sombra*/
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1) inset,
+    10px 10px 6px rgba(0, 0, 0, 0.1);
     max-width: 80%; /* Match the table width */
     width: 100%;
     box-sizing: border-box;
 }
 
-.filters > div {
-    display: flex;
-    flex-direction: column; /* Stack label and input/select vertically */
-    align-items: flex-start; /* Align content to the left */
-    gap: 5px; /* Add slight spacing between label and input */
+.filters .columna-filtro1 {
+    display:flex;
+    /* flex-wrap es la propiedad que hace que se agrupen los elementos de una flexbox independientemente del tamaño de la pantalla */
+    flex-wrap: wrap;
+    gap:2em;
+    align-items: center;
+    margin-bottom:2em;
 }
 
-.filters > div > label {
-    font-size: 14px;
-    margin-bottom: 5px; /* Add space between label and input/select */
+.filters .columna-filtro2 {
+    display:flex;
+    /* flex-wrap es la propiedad que hace que se agrupen los elementos de una flexbox independientemente del tamaño de la pantalla */
+    flex-wrap: wrap;
+    gap:2em;
+    align-items: center;
+}
+
+.filters .columna-filtro2 button {
+    margin-left:9em;
+    font-size: 0.9em;
+    padding: 0.5em;
+}
+
+.filters .columna-filtro1 select, .filters .columna-filtro1 input,
+.filters .columna-filtro2 select, .filters .columna-filtro2 input
+ {
+    padding:0.5em;
+    font-size: 0.9em;
 }
 
 /* Adjust filter input sizes to prevent overlap */
@@ -155,4 +182,43 @@ tbody tr:nth-child(even) {
 
 .filters button:hover {
     background-color: #0056b3;
+}
+
+
+/* MEDIA QUERY PARA HACERLO RESPONSIVE */
+@media (max-width:700px) {
+
+    /* Primero le doy padding al mensaje de entrada (he creado una clase con ese nombre al inicio del html, debajo del h1 de Dashboard) 
+    para que en dispositivos pequeños se centre y tenga más espaciado*/
+    .mensaje-entrada{
+        padding:2em;
+    }
+
+    /* Compenso el padding que le he dado a la clase '.mensaje-entrada' dándole un menor margen del bottom al h1 que se 
+    encuentra justo encima */
+    h1 {
+        margin-bottom: -0.25em;
+    }
+
+    /* Cambio el tamaño de la caja */
+    .response-box {
+        width:27.5em;
+        height: 12.5em;
+    }
+
+    /* Ajusto el ancho del contenedor de la clase '.filters' para que se muestren en una columna en dispositivos pequeños */
+    .filters {
+        max-width: 95%; 
+    }
+
+    /* Por último, hago que los títulos y los datos de la tabla ocupen un lugar más pequeño en móviles para que 
+    se pueda ver la totalidad de dichos títulos y los datos, que no se los coma el ancho y no se vea. */
+    thead th {
+        padding: 4px;
+    }
+
+    tbody td {
+        padding: 4px;
+    }
+   
 }

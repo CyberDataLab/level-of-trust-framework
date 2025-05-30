@@ -4,10 +4,6 @@
         {
             "userId": "user-consumer",
             "tlaId": "1"
-        },
-        {
-            "userId": "user-consumer",
-            "tlaId": "2"
         }
     ]
 }

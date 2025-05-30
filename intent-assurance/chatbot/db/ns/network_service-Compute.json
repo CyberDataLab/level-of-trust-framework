@@ -1,12 +1,12 @@
 {
     "provider": "Bcom",
     "serviceType": "cloud",
-    "id": "network-service-compute",
+    "id": "network-service-disk2",
     "priceTag": 600,
     "levelOfTrust": 0.7,
     "assets": [
         {
-            "id": "resource-compute1",
+            "id": "resource-disk2",
             "type": "resource",
             "virtualComputeDesc": [
                 {
@@ -44,7 +44,7 @@
             ]
         },
         {
-            "id": "infrastructure-movistar1",
+            "id": "infrastructure-bcom1",
             "type": "infrastructure",
             "infrastructureDesc": {
                 "location": {

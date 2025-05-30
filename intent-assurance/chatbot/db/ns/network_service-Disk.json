@@ -1,5 +1,5 @@
 {
-    "provider": "Bcom",
+    "provider": "Vodafone",
     "serviceType": "cloud",
     "id": "network-service-storage",
     "priceTag": 500,
@@ -33,7 +33,7 @@
             ]
         },
         {
-            "id": "infrastructure-movistar1",
+            "id": "infrastructure-vodafone1",
             "type": "infrastructure",
             "infrastructureDesc": {
                 "location": {

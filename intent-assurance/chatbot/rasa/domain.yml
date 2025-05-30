@@ -76,17 +76,18 @@ responses:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
 #Build
   utter_ask_build_feedback:
-    - text: Hmm, okay. Tell me an entity I missed, or cancel the feedback loop.
+    - text: Hmm, okay. Tell me an entity I missed, or cancel the feedback loop.\n If you want to remove an entity, tell it to me specifiying the value of the words I confused.\n If you want to add an entity, tell me the type of entity and the value of it.\n Always delimit them by using a ':', for example "You missed a middlebox':' firewall" or "You confused the value':' confusion"
   utter_ask_more_build_feedback:
-    - text: Okay. Tell me another entity I missed, or cancel the feedback loop.
+    - text: Are these changes correct? If not, please provide feedback.
   utter_ask_build_confirmation:
     - text: Are all these build parameters correct?
   utter_ask_build_after_feedback:
-    - text: Should I deploy the services with all this feedback collected?
+    - text: Okay, I will not perform the build. If you want to change the build parameters, please start over.
 actions:
   - action_build
   - action_check_avaibility
   - action_build_feedback
+  - action_build_removal_feedback
   - action_deploy
   - action_check_tla
   - action_pass_tla

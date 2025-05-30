@@ -6,7 +6,7 @@
     "levelOfTrust": 0.65,
     "assets": [
         {
-            "id": "resource-voip1",
+            "id": "resource-vpn1",
             "type": "service",
             "serviceDesc": {
                 "type": "voip",
@@ -78,7 +78,7 @@
             ]
         },
         {
-            "id": "infrastructure-movistar1",
+            "id": "infrastructure-bcom1",
             "type": "infrastructure",
             "infrastructureDesc": {
                 "location": {

@@ -1,6 +1,3 @@
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
 from typing import Any, Text, Dict, List
 import json
 from . import mongo_helper as mh
@@ -17,10 +14,6 @@ REMOVE_FEEDBACK_OPERATION = "remove"
 mh.initialize()
 
 """ Helper functions """
-
-def _flush_slots():
-    return [SlotSet("service_assets_dict", ""), SlotSet("tla_dict", ""),
-             SlotSet("current_build_message", ""), SlotSet("feedback_performed", False)]
 
 def _save_feedback(tracker):
     build_message = tracker.get_slot("current_build_message")
@@ -45,33 +38,33 @@ def _save_feedback(tracker):
     # Sort by phrase length descending to match longer phrases first
     phrase_label_pairs.sort(key=lambda x: len(x[0]), reverse=True)
 
-    # Replace phrases in the build_message with entity annotations
+    # Robust annotation: replace from end to start to avoid index shifting issues
     annotated_message = build_message
-    used_spans = []
+    lower_message = annotated_message.lower()
+    replacements = []
 
     for phrase, label in phrase_label_pairs:
-        # Find all non-overlapping occurrences (case-insensitive)
-        start = 0
         phrase_lower = phrase.lower()
-        message_lower = annotated_message.lower()
+        start = 0
         while True:
-            idx = message_lower.find(phrase_lower, start)
+            idx = lower_message.find(phrase_lower, start)
             if idx == -1:
                 break
             end = idx + len(phrase)
-            # Check for overlap
-            if any(us <= idx < ue or us < end <= ue for us, ue in used_spans):
+            # Check for overlap with already planned replacements
+            if any(rstart < end and idx < rend for rstart, rend, _, _ in replacements):
                 start = end
                 continue
-            # Replace only if not already annotated
-            original_phrase = annotated_message[idx:end]
-            replacement = f"[{original_phrase}]({label})"
-            annotated_message = annotated_message[:idx] + replacement + annotated_message[end:]
-            # Update used_spans for the new annotation
-            used_spans.append((idx, idx + len(replacement)))
-            # Update message_lower for next search
-            message_lower = annotated_message.lower()
-            start = idx + len(replacement)
+            replacements.append((idx, end, phrase, label))
+            start = end
+
+    # Sort replacements from end to start so earlier replacements don't affect indices
+    replacements.sort(reverse=True, key=lambda x: x[0])
+
+    for idx, end, phrase, label in replacements:
+        original_phrase = annotated_message[idx:end]
+        replacement = f"[{original_phrase}]({label})"
+        annotated_message = annotated_message[:idx] + replacement + annotated_message[end:]
 
     feedback_message = "- " + annotated_message
     with open("feedback.yml", "a") as feedback_file:
@@ -211,39 +204,55 @@ def add_middlebox_feedback(dispatcher, tracker, value) -> str:
     print(json.dumps(build_json, indent=4))
     return json.dumps(build_json)
 
-def remove_build_feedback(tracker, value, entity) -> str:
+def remove_build_feedback(tracker, value) -> str:
     build_json = json.loads(tracker.get_slot("service_assets_dict"))
 
     value_lower = value.lower()
 
-    print(f"Debug: Received value='{value}', entity='{entity}'")
+    print(f"Debug: Received value='{value}'")
     print(f"Debug: Current build_json={json.dumps(build_json, indent=4)}")
 
-    if entity == "middlebox" or entity in mh.BUILD_CLASSES:
-        for service in build_json:
-            if service["middlebox"].lower() == value_lower:
-                print(f"Debug: Found matching middlebox='{service['middlebox']}'")
-                build_json.remove(service)
+    for service in build_json:
+        if service["middlebox"].lower() == value_lower:
+            print(f"Debug: Found matching middlebox='{service['middlebox']}'")
+            build_json.remove(service)
+            print(json.dumps(build_json, indent=4))
+            return json.dumps(build_json)
+        for asset in service["assets"]:
+            if asset.get("value", "").lower() == value_lower:
+                print(f"Debug: Found matching asset='{asset}' in service='{service['middlebox']}'")
+                service["assets"].remove(asset)
                 print(json.dumps(build_json, indent=4))
                 return json.dumps(build_json)
 
-    elif entity == "asset" or entity in mh.ASSET_CLASSES or entity in mh.TLA_CLASSES:
-        for service in build_json:
-            for asset in service["assets"]:
-                if asset.get("value", "").lower() == value_lower:
-                    print(f"Debug: Found matching asset='{asset}' in service='{service['middlebox']}'")
-                    service["assets"].remove(asset)
-                    print(json.dumps(build_json, indent=4))
-                    return json.dumps(build_json)
-
-    print(f"Debug: No match found for value='{value_lower}' and entity='{entity}'")
+    print(f"Debug: No match found for value='{value_lower}'")
     return json.dumps(build_json)
 
-def process_feedback_output(dispatcher, tracker, new_json, action, entity, value):
+def _summarize_services_from_slot(service_assets_slot) -> str:
+    if isinstance(service_assets_slot, str):
+        try:
+            services = json.loads(service_assets_slot)
+        except Exception:
+            return "Error: Unable to parse service assets."
+    else:
+        services = service_assets_slot
+
+    response_lines = []
+    for i, service in enumerate(services, start=1):
+        mb = service.get("middlebox") or "Unknown middlebox"
+        line = f"Middlebox {i}: {mb}"
+        if service.get("assets"):
+            line += "\n  Using assets:"
+            for asset_obj in service["assets"]:
+                line += f"\n    - {asset_obj.get('type')}: {asset_obj.get('value')}"
+        response_lines.append(line)
+    return "\n\n".join(response_lines)
+
+def process_feedback_output(dispatcher, tracker, new_json, action):
     print(f"Debug: new_json after {action} operation: {new_json}")
 
     if new_json:
-        dispatcher.utter_message(f"{action.capitalize()}d {entity}: {value}")
+        dispatcher.utter_message("Updated service assets:\n" + _summarize_services_from_slot(new_json))
         print(f"Debug: Updating slot 'service_assets_dict' with: {new_json}")
 
         current_slot_value = tracker.get_slot("service_assets_dict")
@@ -251,9 +260,10 @@ def process_feedback_output(dispatcher, tracker, new_json, action, entity, value
 
         return [SlotSet("service_assets_dict", new_json), SlotSet("feedback_performed", True)]
     else:
-        dispatcher.utter_message("I couldn't apply the feedback. Please provide a valid entity and value.")
+        dispatcher.utter_message("I couldn't apply the feedback. Please provide a valid entity or value.")
         print("Debug: Feedback operation failed. No changes made to the slot.")
         return []
+
 
 """ Build actions """
 
@@ -271,10 +281,10 @@ class ActionBuild(Action):
             # Get all entities with their positions in the user message
             all_entities = tracker.latest_message.get("entities", [])
 
-            # 1) Sort entities by their 'start' index to respect the user’s text order
+            # Sort entities by their 'start' index to respect the user’s text order
             sorted_entities = sorted(all_entities, key=lambda e: e.get("start", 0))
 
-            # 2) Build a structure that groups each middlebox with its associated assets
+            # Build a structure that groups each middlebox with its associated assets
             services = []
             current_service = None
 
@@ -313,11 +323,11 @@ class ActionBuild(Action):
             if current_service:
                 services.append(current_service)
 
-            # 3) Generate a user-facing response summarizing what was captured
+            # Generate a user-facing response summarizing what was captured
             response_lines = []
             for i, service in enumerate(services, start=1):
                 mb = service["middlebox"] or "Unknown middlebox"
-                line = f"Service {i}: {mb}"
+                line = f"Middlebox {i}: {mb}"
                 if service["assets"]:
                     line += "\n  Using assets:"
                     for asset_obj in service["assets"]:
@@ -474,31 +484,50 @@ class ActionBuildFeedback(Action):
             after_colon = current_feedback_message.rsplit(':', 1)[-1].strip()
             # Take all words after the colon as a single string (or list if you prefer)
             value = after_colon if after_colon else None
-            
-        operation = next(tracker.get_latest_entity_values("operation"), None)
-
+    
         if not value or not entity:
             dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
             return []
 
         dispatcher.utter_message(f"Received feedback: {value}-{entity}")
-        if operation and operation.lower() == REMOVE_FEEDBACK_OPERATION:
-            dispatcher.utter_message(f"\t\tOperation: {operation}")
-            return process_feedback_output(dispatcher, tracker, remove_build_feedback(tracker, value, entity), REMOVE_FEEDBACK_OPERATION, entity, value)
-        elif operation and operation.lower() == ADD_FEEDBACK_OPERATION:
-            dispatcher.utter_message(f"\t\tOperation: {ADD_FEEDBACK_OPERATION}")
-            # Check if the user wants to add an entity
-            if entity == "middlebox" or entity in mh.BUILD_CLASSES or entity in mh.available_services:
-                dispatcher.utter_message(f"\t\tOperation: {operation} another {entity}")
-                return process_feedback_output(dispatcher, tracker, add_middlebox_feedback(dispatcher, tracker, value), ADD_FEEDBACK_OPERATION, entity, value)
-            elif entity == "asset" or entity in mh.ASSET_CLASSES or entity in mh.TLA_CLASSES:
-                dispatcher.utter_message(f"\t\tOperation: {operation} another {entity}")
-                return process_feedback_output(dispatcher, tracker, add_asset_feedback(tracker, entity, value), ADD_FEEDBACK_OPERATION, entity, value)
-            else:
-                dispatcher.utter_message("I'm not sure what you're referring to. Please provide a valid entity.")
+        dispatcher.utter_message(f"\t\tOperation: {ADD_FEEDBACK_OPERATION}")
+        # Check if the user wants to add an entity
+        if entity == "middlebox" or entity in mh.BUILD_CLASSES or entity in mh.available_services:
+            dispatcher.utter_message(f"\t\tOperation: {ADD_FEEDBACK_OPERATION} another {entity}")
+            return process_feedback_output(dispatcher, tracker, add_middlebox_feedback(dispatcher, tracker, value), ADD_FEEDBACK_OPERATION)
+        elif entity == "asset" or entity in mh.ASSET_CLASSES or entity in mh.TLA_CLASSES:
+            dispatcher.utter_message(f"\t\tOperation: {ADD_FEEDBACK_OPERATION} another {entity}")
+            return process_feedback_output(dispatcher, tracker, add_asset_feedback(tracker, entity, value), ADD_FEEDBACK_OPERATION)
         else:
-            dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
+            dispatcher.utter_message("I'm not sure what you're referring to. Please provide a valid entity.")
+            
         return [SlotSet("feedback_performed", False)]
+    
+class ActionRemovalFeedback(Action):
+
+    def name(self) -> Text:
+        return "action_build_removal_feedback"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        current_feedback_message = tracker.latest_message.get('text')
+
+        # Extract all words that come after the last ':' character in the feedback message
+        value = None
+        if current_feedback_message and ':' in current_feedback_message:
+            # Find the last ':' and get all words after it (strip spaces, split by whitespace)
+            after_colon = current_feedback_message.rsplit(':', 1)[-1].strip()
+            # Take all words after the colon as a single string (or list if you prefer)
+            value = after_colon if after_colon else None
+            
+        if not value:
+            dispatcher.utter_message("I couldn't understand the feedback. Please provide a valid entity and value.")
+            return []
+
+        dispatcher.utter_message(f"Received removal feedback: {value}")
+        return process_feedback_output(dispatcher, tracker, remove_build_feedback(tracker, value), REMOVE_FEEDBACK_OPERATION)
 
 """ TLA actions """
 
@@ -538,7 +567,7 @@ class ActionPassTLA(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        
         json_data = json.loads(tracker.get_slot("tla_dict"))
         requirements = json_data["requirements"]
         response = "Passing TLA with the following requirements:\n "

@@ -3,5 +3,12 @@ version: "3.1"
 nlu:
 - intent: build
   examples: |
-- I want a vpn server with 1gb of storage and a file server with 6 cpus
-- I want to deploy a vpn with 4 cpus
+- I want a [vpn server](middlebox) and a [file server](middlebox) with [5 gb of ram](compute_resource)
+- I want a [something](middlebox) with many [tales](service)
+- i want [vpn](middlebox) with [100 mbps](qos_value)
+- i want a [vpn](middlebox) with ubuntu
+- I want [vpn](middlebox) with [ubuntu](operating_system)
+- I want to deploy a [vpn](middlebox) with at least [100Mbps](qos_value) of throughput, and I also want a [server](middlebox) that runs NewCloudStorage on [ubuntu](operating_system) with at least [256GB](storage_resource) of disk
+- I want a to deploy a [vpn](middlebox) that has at least [100Mbps](qos_value) and I also want a server that runs [NewCloudStorage](service) on ubuntu with at least [256GB of disk space](storage_resource)
+- i want a [voip](middlebox) with [2.5GHz](compute_resource) of processing
+- i want [voip](middlebox) with [8GB of ram](compute_resource)

@@ -28,6 +28,7 @@ stories:
       - action: utter_ask_build_confirmation
       - intent: confirm
       - action: action_check_avaibility
+      - action: action_restart
 
   - story: User rejects the build requested
     steps:
@@ -63,11 +64,11 @@ stories:
         - feedback_performed: true
       - checkpoint: build_feedback_loop
       - intent: removal_feedback
-      - action: action_build_feedback
+      - action: action_build_removal_feedback
       - action: utter_ask_more_build_feedback
       - checkpoint: build_feedback_loop
 
-  - story: end build feeback loop
+  - story: reject loop and restart
     steps:
       - slot_was_set:
         - tla_dict: null
@@ -76,7 +77,7 @@ stories:
         - feedback_performed: true
       - checkpoint: build_feedback_loop
       - intent: reject
-      - action: utter_ask_build_after_feedback
+      - action: restart
 
   - story: User confirms the build after feedback
     steps:
@@ -85,18 +86,7 @@ stories:
         - service_assets_dict: true
         - current_build_message: true
         - feedback_performed: true
-      - action: utter_ask_build_after_feedback
+      - action: build_feedback_loop
       - intent: confirm
       - action: action_check_avaibility
-      - action: action_restart
-  
-  - story: User rejects the build after feedback
-    steps:
-      - slot_was_set:
-        - tla_dict: null
-        - service_assets_dict: true
-        - current_build_message: true
-        - feedback_performed: true
-      - action: utter_ask_build_after_feedback
-      - intent: reject
       - action: action_restart

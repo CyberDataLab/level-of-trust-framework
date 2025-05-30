@@ -1,97 +1,103 @@
 version: "3.1"
-
 nlu:
-- intent: confirm
+- intent: addition_feedback
   examples: |
-    - Affirmative
-    - Proceed as planned
-    - That’s acceptable
-    - Approved
-    - Go right ahead
-    - Proceed without hesitation
-    - Yes, proceed
-    - Definitely proceed
-    - Confirm execution
-    - Authorize the action
-    - Agreed, move forward
-    - All systems go
-    - Acknowledge and proceed
-    - Validate the request
-    - I consent to this
-    - Yes, enable it
-    - Confirm the configuration
-    - Lock it in
-    - Yep, go for it
-    - Finalize the setup
-
+    - [Add](operation) the [service](entity): [Zabbix](service) 
+    - [Add](operation) the [compute_resource](entity): [2.5Ghz](compute_resource)
+    - [Add](operation) the [middlebox](entity): [monitor](middlebox)
+    - You missed the [service](entity): [nginx](service)
+    - [Add](operation) the [service](entity): [nginx](service)
+    - you didnt add the [operating_system](entity): [ubuntu 20.04](operating_system)
+    - [Add](operation) the [storage_resource](entity): [2TB of disk space](storage_resource)
+    - there is one missing [storage_resource](entity): [1TB of disk space](storage_resource)
+    - [Add](operation) the [operating_system](entity): [debian 10](operating_system)
+    - [Strip](operation) item: broken reference
+    - [Erase](operation) the wrongly tagged service: [Samba 3](service)
 - intent: reject
   examples: |
-    - Not interested in proceeding
-    - Decline the offer
-    - Refuse the request
-    - Negative, do not proceed
-    - Deny the operation
-    - I oppose this action
-    - Veto the proposal
-    - Reject the changes
-    - Do not approve
+    - no that's be all
+    - no that's okay
     - Withdraw consent
-    - Block the deployment
-    - I must decline
+    - no not really
     - Not at this time
-    - Deny access
-    - Disallow the action
-    - Override and cancel
-    - Deny the request
-    - Reject the configuration
-    - I forbid this
-    - Dismiss the suggestion
-
+    - not interested
+    - definitely not
+    - I oppose this action
+    - nothing else
+    - [stop](operation) it
+    - thanks but no
+    - no thanks
+- intent: confirm
+  examples: |
+    - yes that't ok
+    - Definitely proceed
+    - that one works
+    - that works
+    - Agreed, move forward
+    - for sure
+    - carry on
+    - yup
+    - I [agree](operation)
+    - Proceed as planned
+    - yep
+    - all good
+    - yes I [agree](operation)
+    - yes, please go ahead
+- intent: removal_feedback
+  examples: |
+    - [Drop](operation) clause: deprecated part
+    - [Cut](operation) segment: stale data
+    - [Cut](operation) the deprecated service: [Sendmail](service)
+    - [Remove](operation) the [middlebox](entity) [FTP server](middlebox)
+    - [Remove](operation) the [qos_value](entity): [5Gbps](qos_value)
+    - [Clear](operation) item: [video_streaming](service)
+    - [Drop](operation) the misclassified component: [IPv4-only stack](middlebox)
+    - [Cancel](operation) this error: [PCI sound card](compute_resource)
+    - [Remove](operation) the invalid component: [Token Ring](middlebox)
+    - [Dump](operation) item: [latency_critical](qos_value)
+    - [Prune](operation) package: [windows_server](operating_system)
+    - [Strip](operation) clause: unneeded logic
+    - [Scrap](operation) the misinterpreted QoS: [99.9% uptime](qos_value)
+    - [Delete](operation) the [operating_system](entity): [ubuntu xenial](operating_system)
+    - [Cut](operation) option: [centos](operating_system)
+    - [Remove](operation) the invalid spec: [HTTP/1.1](middlebox)
+    - [Cancel](operation) this invalid entry: [NetBIOS](middlebox)
+    - [Add](operation) the [middlebox](entity) [web application firewall](middlebox)
+    - [Add](operation) the [service](entity) [open-ldap](service)
 - intent: build
   examples: |
-    - [Deploy](operation) a [cluster](middlebox) on [Fedora 36](operating_system) with [12 CPU cores](compute_resource) and [250GB NVMe](storage_resource)  
-    - [Provision](operation) an [S3-compatible storage](middlebox) on [FreeBSD](operating_system) with [5TB space](storage_resource) and [10Gbps](qos_value)  
-    - [Instantiate](operation) a [GPU node](middlebox) on [Ubuntu 22.04](operating_system) with [24GB VRAM](compute_resource) and [1TB SSD](storage_resource)  
-    - [Set up](operation) a [logging server](middlebox) on [CentOS 9](operating_system) with [64GB RAM](compute_resource) and [4TB HDD](storage_resource)  
-    - [Launch](operation) a [NoSQL cluster](middlebox) on [Debian 12](operating_system) with [32 vCPUs](compute_resource) and [10Gbps](qos_value)  
-    - [Create](operation) an [compute node](middlebox) on [RHEL 8](operating_system) with [48GB RAM](compute_resource) and [500GB SSD](storage_resource)  
-    - [Spin up](operation) a [broker](middlebox) on [AlmaLinux 9](operating_system) with [8 CPU cores](compute_resource) and [200GB disk](storage_resource)  
-    - [Build](operation) a [server](middlebox) on [OpenSUSE Tumbleweed](operating_system) with [4.0Ghz](compute_resource) CPU and [16GB RAM](compute_resource)  
-    - [Deploy](operation) a [log management](middlebox) on [Rocky Linux](operating_system) with [12GB RAM](compute_resource) and [1TB storage](storage_resource)  
-    - [Provision](operation) a [dashboard](middlebox) on [Ubuntu LTS](operating_system) with [8 vCPUs](compute_resource) and [200GB SSD](storage_resource)  
-    - [Set up](operation) a [HA cluster](middlebox) on [Windows Server 2022](operating_system) with [24 CPU cores](compute_resource) and [2TB storage](storage_resource)  
-    - [Launch](operation) an [Alertmanager](middlebox) on [Fedora CoreOS](operating_system) with [6GB RAM](compute_resource) and [100GB disk](storage_resource)  
-    - [Instantiate](operation) a [object storage](middlebox) on [Arch Linux](operating_system) with [16 vCPUs](compute_resource) and [5TB space](storage_resource)  
-    - [Create](operation) a [secrets manager](middlebox) on [Gentoo](operating_system) with [3.8Ghz](compute_resource) CPU and [32GB RAM](compute_resource)  
-    - [Deploy](operation) a [service mesh](middlebox) on [Kali Linux](operating_system) with [4 cores](compute_resource) and [500GB disk](storage_resource)  
-    - [Provision](operation) a [ingress controller](middlebox) on [Ubuntu Minimal](operating_system) with [2.6Ghz](compute_resource) and [50GB storage](storage_resource)  
-    - [Spin up](operation) a [log server](middlebox) on [Clear Linux](operating_system) with [8GB RAM](compute_resource) and [120GB SSD](storage_resource)  
-    - [Build](operation) a [log aggregator](middlebox) on [Oracle Linux](operating_system) with [6 CPU cores](compute_resource) and [1TB HDD](storage_resource)  
-    - [Set up](operation) a [scheduler](middlebox) on [Slackware](operating_system) with [3.0Ghz](compute_resource) and [16GB RAM](compute_resource)  
-    - [Launch](operation) a [storage cluster](middlebox) on [Fedora Silverblue](operating_system) with [64 vCPUs](compute_resource) and [20TB storage](storage_resource)  
-
-- intent: feedback
-  examples: |
-    - [Add](operation) the [middlebox](entity) [IDS](middlebox)
-    - [Add](operation) the [qos_value](entity) [25Gbps](qos_value)
-    - [Add](operation) the [service](entity) [Envoy](service)  
-    - [Remove](operation) the [middlebox](entity) [FTP server](middlebox)  
-    - [Remove](operation) the [compute_resource](entity) [512MB RAM](compute_resource) 
-    - [Remove](operation) the [service](entity) [Nginx 1.18](service) 
-    - [Add](operation) the [service](entity) [open-ldap](service) 
-    - [Remove](operation) the [service](entity) [Apache](service)   
-    - [Add](operation) the [middlebox](entity) [voip centralite](middlebox)
-    - [Remove](operation) the [middlebox](entity) [Telnet access](middlebox)  
-    - [Add](operation) the [asset](entity) [300kbps](qos_value) 
-    - [Remove](operation) the [middlebox](entity) [unencrypted SMB server](middlebox)   
-    - [Add](operation) the [middlebox](entity) [vpn concentrator](middlebox) 
-    - [Add](operation) the [service](entity) [Zabbix agent](service)   
-    - [Remove](operation) the [asset](entity) [2 cpus](compute_resource) 
-    - [Add](operation) the [middlebox](entity) [IPv6 gateway router](middlebox)   
-    - [Add](operation) the [storage_resource](entity) [300gb storage](storage_resource)
-    - [Remove](operation) the [middlebox](entity) [pki](middlebox)  
-    - [Add](operation) the [storage_resource](entity) [1Tb of disk](storage_resource)
-    - [Remove](operation) the [compute_resource](entity) [4Ghz](compute_resource)
-    - [Add](operation) the [middlebox](entity) [web application firewall](middlebox)
-    - [Remove](operation) the [middlebox](entity) [DHCP server](middlebox)
-    - [Add](operation) the [service](entity) [Kubernetes](service)
+    - I want to [launch](operation) a [CI/CD server](middlebox) with [jenkins](service) on [CentOS Stream](operating_system), [8GB RAM](compute_resource), [2.4Ghz](compute_resource), [200GB space](storage_resource)
+    - [Provision](operation) a [VoIP gateway](middlebox) on [Debian 11](operating_system) requiring [3.6Ghz](compute_resource) CPU and [500Mbps](qos_value) throughput
+    - [Create](operation) a [GPU compute instance](middlebox) on [Ubuntu 20.04](operating_system) with [48GB VRAM](compute_resource) and [2TB SSD](storage_resource)
+    - [Build](operation) a [quantum computing simulator](middlebox) on [Arch Linux](operating_system) with [96 CPU cores](compute_resource) and [10TB storage](storage_resource)
+    - I am looking for a [load balancer](middlebox) on a [linux machine](operating_system) that will support a bandwidth of [10Gbps](qos_value) and runs [bind](service)
+    - [Launch](operation) a [VoD platform](middlebox) using [FFmpeg](service) on [CentOS 8](operating_system) with [32GB RAM](compute_resource) and [10TB HDD](storage_resource)
+    - [Instantiate](operation) a [object storage](middlebox) on [Arch Linux](operating_system) with [16 vCPUs](compute_resource) and [5TB space](storage_resource)
+    - Set up a [cache server](middlebox) on [Ubuntu Noble](operating_system), and add a [rate limiter](middlebox) using [1.5Mbps](qos_value)
+    - Please [provision](operation) a [database cluster](middlebox) using [postgresql](service) or [mysql](service) on [Debian 10](operating_system) requiring [64GB RAM](compute_resource) and [500Mbps](qos_value) throughput
+    - [Set up](operation) a [logging server](middlebox) on [CentOS 9](operating_system) with [64GB RAM](compute_resource) and [4TB HDD](storage_resource)
+    - Deploy a [mariadb cluster](service) on a [linux machine](operating_system) with [8 CPU cores](compute_resource) and [2TB of disk space](storage_resource)
+    - [Spin up](operation) a [FTP mirror](middlebox) using [vsftpd](service) on [CentOS 7](operating_system) with [4 cores](compute_resource) and [800GB HDD](storage_resource)
+    - I want a [mail server](middlebox) on a [Fedora](operating_system) using [postfix](service), the specifications are [4Ghz CPUs](compute_resource) and [500GB storage](storage_resource)
+    - I am looking for a [broker](middlebox) using [kafka](service) on a [linux machine](operating_system) with [3.0Ghz](compute_resource) CPU and also runs [zookeeper](service) for coordination
+    - Please [provision](operation) a [mysql server](middlebox) on a [windows server](operating_system) with [16GB of RAM](compute_resource) and [2.8Ghz](compute_resource) CPU
+    - Bring online a [broker](middlebox) on [Slackware 15.1](operating_system), alongside a [registry](middlebox) with [8 vCPUs](compute_resource)
+    - Initiate a [WAF](middlebox) on [Clear Linux](operating_system), plus a [log aggregator](middlebox) capable of [10Gbps](qos_value)
+    - [Deploy](operation) a [log management](middlebox) on [Rocky Linux](operating_system) with [12GB RAM](compute_resource) and [1TB storage](storage_resource)
+    - Initiate a [HAProxy node](middlebox) on [Debian Sid](operating_system), and set up a [mail gateway](middlebox) with [4.4KBps](qos_value)
+    - [Create](operation) a [secrets manager](middlebox) on [Gentoo](operating_system) with [3.8Ghz](compute_resource) CPU and [32GB RAM](compute_resource)
+    - [Spin up](operation) a [broker](middlebox) on [AlmaLinux 9](operating_system) with [8 CPU cores](compute_resource) and [200GB disk](storage_resource)
+    - [Instantiate](operation) a [DNS sinkhole](middlebox) using [Pi-hole](service) on [Debian 11](operating_system) with [2 cores](compute_resource) and [32GB storage](storage_resource)
+    - Stand up a [web accelerator](middlebox) on [OpenWRT 24.05](operating_system), plus a [reverse proxy](middlebox) sustaining [20Mbps](qos_value)
+    - Please [orchestrate](operation) a [streaming server](middlebox) on [Kali Linux](operating_system), and a [caching proxy](middlebox) with [12GB RAM](compute_resource)
+    - [Launch](operation) a [SMTP relay](middlebox) with [Postfix](service) on [Gentoo](operating_system) using [3.2Ghz](compute_resource) CPU and [50GB disk](storage_resource)
+    - [Create](operation) a [Honeypot](middlebox) on [Kali Linux](operating_system) with [2 CPU cores](compute_resource), [8GB RAM](compute_resource), and [100GB disk](storage_resource)
+    - [Provision](operation) a [dashboard](middlebox) on [Ubuntu LTS](operating_system) with [8 vCPUs](compute_resource) and [200GB SSD](storage_resource)
+    - [Deploy](operation) an [IPv6 gateway](middlebox) on [OpenSUSE Leap](operating_system) with [12 CPU cores](compute_resource) and [1Gbps](qos_value) throughput
+    - [Launch](operation) an [industrial IoT gateway](middlebox) on [Windows IoT](operating_system) with [2.2Ghz](compute_resource), [8GB RAM](compute_resource), and [200ms latency](qos_value)
+    - you failing thisone
+    - and this one
+    - also this one
+    - sorry you have to failing
+        - [Add](operation) the [service](entity) [Envoy](service)
+    - there is one missing [service](entity): [apache](service)

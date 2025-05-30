@@ -1,5 +1,5 @@
 {
-    "provider": "Bcom",
+    "provider": "Movistar",
     "serviceType": "cloud",
     "id": "network-service-os",
     "priceTag": 1000,
