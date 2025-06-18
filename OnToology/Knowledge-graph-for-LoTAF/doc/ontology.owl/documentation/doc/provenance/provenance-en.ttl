@@ -3,7 +3,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <> .
 <..\index-en.html> a prov:Entity;
-	 dc:title "Level of Trust Assessment Ontology for Continuum Computing";
+	 dc:title "Level of Trust Assessment Ontology for Computing Continuum";
 	 prov:wasAttributedTo :agent0;
 	 prov:wasAttributedTo :agent1;
 	 prov:wasAttributedTo :agent2;
@@ -14,6 +14,7 @@
 	 prov:wasAttributedTo :agent7;
 	 prov:wasAttributedTo :agent8;
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+	 prov:specializationOf <https://w3id.org/def/lotaf#>;
 .
 :agent0 a prov:Agent; foaf:name "Alfonso Serrano Gil".
 :agent1 a prov:Agent; foaf:name "Javier Paredes Serrano".
