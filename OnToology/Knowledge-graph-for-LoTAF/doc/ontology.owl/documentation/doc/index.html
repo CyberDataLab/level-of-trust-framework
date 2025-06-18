@@ -1,0 +1,3163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>Level of Trust Assessment Ontology for Computing Continuum</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/def/lotaf#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/def/lotaf#","name":"Level of Trust Assessment Ontology for Computing Continuum", "headline":"Document describing the ontology https://w3id.org/def/lotaf#", "dateReleased":"Tue Dec 17 13:42:17 CET 2024", "version":"1.0.0", "author":[{"@type":"Person","name":"Alfonso Serrano Gil"},{"@type":"Person","name":"Javier Paredes Serrano"},{"@type":"Person","name":"José María Jorquera Valero"}], "contributor":[{"@type":"Person","name":"Diego R. López"},{"@type":"Person","name":"Gregorio Martínez Pérez"},{"@type":"Person","name":"Ignacio Dominguez Martinez-Casanueva"},{"@type":"Person","name":"Lucía Cabanillas Rodríguez"},{"@type":"Person","name":"Manuel Gil Pérez"},{"@type":"Person","name":"Riccardo Nicolicchia"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>Level of Trust Assessment Ontology for Computing Continuum</h1>
+
+
+<dl>
+<dt>Latest version:</dt>
+<dd><a href="https://w3id.org/def/lotaf#">https://w3id.org/def/lotaf#</a></dd>
+<dt>Revision:</dt>
+<dd>1.0.0</dd>
+<dt>Authors:</dt>
+   <dd>José María Jorquera Valero</dd><dd>Javier Paredes Serrano</dd><dd>Alfonso Serrano Gil</dd>
+
+   <dt>Contributors:</dt>
+   <dd>Ignacio Dominguez Martinez-Casanueva</dd><dd>Riccardo Nicolicchia</dd><dd>Lucía Cabanillas Rodríguez</dd><dd>Diego R. López</dd><dd>Manuel Gil Pérez</dd><dd>Gregorio Martínez Pérez</dd>
+
+   <dt>Source:</dt>
+   <dd><a href="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF">https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://insertlicenseURIhere.example.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.example.org" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>José María Jorquera Valero et al. Level of Trust Assessment Ontology for Computing Continuum. Revision: 1.0.0.</dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+This ontology represents the terminology for representing the Level of Trust Assessment Function of Hexa-X-II project. The ontology makes use of existing ontologies like ICM, ODRL, and FOAF.</span></p>
+</div>
+<div id="toc"></div>  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">Level of Trust Assessment Ontology for Computing Continuum: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+       <h4>Classes</h4>
+       <ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           class="hlist">
+          <li>
+             <a href="#AdministrativeDomain" title="https://w3id.org/def/lotaf#AdministrativeDomain">Administrative Domain</a>
+          </li>
+          <li>
+             <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a>
+          </li>
+          <li>
+             <a href="#AssetType" title="https://w3id.org/def/lotaf#AssetType">Asset Type</a>
+          </li>
+          <li>
+             <a href="#DigitalServiceEntity" title="https://w3id.org/def/lotaf#DigitalServiceEntity">Digital Service Entity</a>
+          </li>
+          <li>
+             <a href="#Health" title="https://w3id.org/def/lotaf#Health">Health</a>
+          </li>
+          <li>
+             <a href="#HealthStatus" title="https://w3id.org/def/lotaf#HealthStatus">Health Status</a>
+          </li>
+          <li>
+             <a href="#Indicator" title="https://w3id.org/def/lotaf#Indicator">Indicator</a>
+          </li>
+          <li>
+             <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent"
+                title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a>
+          </li>
+          <li>
+             <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport"
+                title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport">Intent Report</a>
+          </li>
+          <li>
+             <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a>
+          </li>
+          <li>
+             <a href="#http://www.w3.org/ns/org#Membership" title="http://www.w3.org/ns/org#Membership">Membership</a>
+          </li>
+          <li>
+             <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a>
+          </li>
+          <li>
+             <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a>
+          </li>
+          <li>
+             <a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a>
+          </li>
+          <li>
+             <a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a>
+          </li>
+          <li>
+             <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a>
+          </li>
+          <li>
+             <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a>
+          </li>
+          <li>
+             <a href="#http://www.owl-ontologies.com/odrl#Policy" title="http://www.owl-ontologies.com/odrl#Policy">Policy</a>
+          </li>
+          <li>
+             <a href="#Punishment" title="https://w3id.org/def/lotaf#Punishment">Punishment</a>
+          </li>
+          <li>
+             <a href="#PunishmentAction" title="https://w3id.org/def/lotaf#PunishmentAction">Punishment Action</a>
+          </li>
+          <li>
+             <a href="#Reward" title="https://w3id.org/def/lotaf#Reward">Reward</a>
+          </li>
+          <li>
+             <a href="#http://www.w3.org/ns/org#Role" title="http://www.w3.org/ns/org#Role">Role</a>
+          </li>
+          <li>
+             <a href="#http://www.owl-ontologies.com/odrl#Rule" title="http://www.owl-ontologies.com/odrl#Rule">Rule</a>
+          </li>
+          <li>
+             <a href="#SubjectiveIndicator" title="https://w3id.org/def/lotaf#SubjectiveIndicator">Subjective Indicator</a>
+          </li>
+          <li>
+             <a href="#Symptom" title="https://w3id.org/def/lotaf#Symptom">Symptom</a>
+          </li>
+          <li>
+             <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a>
+          </li>
+          <li>
+             <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a>
+          </li>
+          <li>
+             <a href="#User" title="https://w3id.org/def/lotaf#User">User</a>
+          </li>
+       </ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+                                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                          class="hlist">
+          <li>
+             <a href="#applies" title="https://w3id.org/def/lotaf#applies">applies</a>
+          </li>
+          <li>
+             <a href="#assetType" title="https://w3id.org/def/lotaf#assetType">asset type</a>
+          </li>
+          <li>
+             <a href="#belongsTo" title="https://w3id.org/def/lotaf#belongsTo">belongs to</a>
+          </li>
+          <li>
+             <a href="#composedBy" title="https://w3id.org/def/lotaf#composedBy">composed by</a>
+          </li>
+          <li>
+             <a href="#contains" title="https://w3id.org/def/lotaf#contains">contains</a>
+          </li>
+          <li>
+             <a href="#delivers" title="https://w3id.org/def/lotaf#delivers">delivers</a>
+          </li>
+          <li>
+             <a href="#deploys" title="https://w3id.org/def/lotaf#deploys">deploys</a>
+          </li>
+          <li>
+             <a href="#http://www.owl-ontologies.com/odrl#duty" title="http://www.owl-ontologies.com/odrl#duty">duty</a>
+          </li>
+          <li>
+             <a href="#enforces" title="https://w3id.org/def/lotaf#enforces">enforces</a>
+          </li>
+          <li>
+             <a href="#entityType" title="https://w3id.org/def/lotaf#entityType">entity type</a>
+          </li>
+          <li>
+             <a href="#evaluates" title="https://w3id.org/def/lotaf#evaluates">evaluates</a>
+          </li>
+          <li>
+             <a href="#exposes" title="https://w3id.org/def/lotaf#exposes">exposes</a>
+          </li>
+          <li>
+             <a href="#follows" title="https://w3id.org/def/lotaf#follows">follows</a>
+          </li>
+          <li>
+             <a href="#fulfills" title="https://w3id.org/def/lotaf#fulfills">fulfills</a>
+          </li>
+          <li>
+             <a href="#gathers" title="https://w3id.org/def/lotaf#gathers">gathers</a>
+          </li>
+          <li>
+             <a href="#guaranteedBy" title="https://w3id.org/def/lotaf#guaranteedBy">guaranteed by</a>
+          </li>
+          <li>
+             <a href="#healthStatus" title="https://w3id.org/def/lotaf#healthStatus">health status</a>
+          </li>
+          <li>
+             <a href="#includes" title="https://w3id.org/def/lotaf#includes">includes</a>
+          </li>
+          <li>
+             <a href="#informs" title="https://w3id.org/def/lotaf#informs">informs</a>
+          </li>
+          <li>
+             <a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a>
+          </li>
+          <li>
+             <a href="#http://www.w3.org/ns/org#member" title="http://www.w3.org/ns/org#member">member</a>
+          </li>
+          <li>
+             <a href="#monitors" title="https://w3id.org/def/lotaf#monitors">monitors</a>
+          </li>
+          <li>
+             <a href="#networkServiceType" title="https://w3id.org/def/lotaf#networkServiceType">network service type</a>
+          </li>
+          <li>
+             <a href="#networkStatus" title="https://w3id.org/def/lotaf#networkStatus">network status</a>
+          </li>
+          <li>
+             <a href="#http://www.w3.org/ns/org#organization" title="http://www.w3.org/ns/org#organization">organization</a>
+          </li>
+          <li>
+             <a href="#owner" title="https://w3id.org/def/lotaf#owner">owner</a>
+          </li>
+          <li>
+             <a href="#pertains" title="https://w3id.org/def/lotaf#pertains">pertains</a>
+          </li>
+          <li>
+             <a href="#punishmentAction" title="https://w3id.org/def/lotaf#punishmentAction">punishment action</a>
+          </li>
+          <li>
+             <a href="#http://www.w3.org/ns/org#role" title="http://www.w3.org/ns/org#role">role</a>
+          </li>
+          <li>
+             <a href="#signs" title="https://w3id.org/def/lotaf#signs">signs</a>
+          </li>
+          <li>
+             <a href="#symptomType" title="https://w3id.org/def/lotaf#symptomType">symptom type</a>
+          </li>
+          <li>
+             <a href="#http://www.owl-ontologies.com/odrl#target" title="http://www.owl-ontologies.com/odrl#target">target</a>
+          </li>
+          <li>
+             <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a>
+          </li>
+          <li>
+             <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a>
+          </li>
+       </ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                        class="hlist">
+          <li>
+             <a href="#bandwith" title="https://w3id.org/def/lotaf#bandwith">bandwith</a>
+          </li>
+          <li>
+             <a href="#characteristic" title="https://w3id.org/def/lotaf#characteristic">characteristic</a>
+          </li>
+          <li>
+             <a href="#constraint" title="https://w3id.org/def/lotaf#constraint">constraint</a>
+          </li>
+          <li>
+             <a href="#https://w3id.org/aerOS/continuum#cpuCores" title="https://w3id.org/aerOS/continuum#cpuCores">cpu cores</a>
+          </li>
+          <li>
+             <a href="#customerID" title="https://w3id.org/def/lotaf#customerID">customer i d</a>
+          </li>
+          <li>
+             <a href="#http://purl.org/terms/description" title="http://purl.org/terms/description">description</a>
+          </li>
+          <li>
+             <a href="#endpoint" title="https://w3id.org/def/lotaf#endpoint">endpoint</a>
+          </li>
+          <li>
+             <a href="#http://xmlns.com/foaf/0.1/givenName" title="http://xmlns.com/foaf/0.1/givenName">given name</a>
+          </li>
+          <li>
+             <a href="#healthScore" title="https://w3id.org/def/lotaf#healthScore">health score</a>
+          </li>
+          <li>
+             <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a>
+          </li>
+          <li>
+             <a href="#http://xmlns.com/foaf/0.1/lastName" title="http://xmlns.com/foaf/0.1/lastName">last name</a>
+          </li>
+          <li>
+             <a href="#https://w3id.org/ofo#location" title="https://w3id.org/ofo#location">location</a>
+          </li>
+          <li>
+             <a href="#lot" title="https://w3id.org/def/lotaf#lot">lot</a>
+          </li>
+          <li>
+             <a href="#powerConsumption" title="https://w3id.org/def/lotaf#powerConsumption">power consumption</a>
+          </li>
+          <li>
+             <a href="#providerID" title="https://w3id.org/def/lotaf#providerID">provider i d</a>
+          </li>
+          <li>
+             <a href="#https://w3id.org/aerOS/continuum#ramCapacity" title="https://w3id.org/aerOS/continuum#ramCapacity">ram capacity</a>
+          </li>
+          <li>
+             <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated"
+                title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated">report generated</a>
+          </li>
+          <li>
+             <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber"
+                title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber">report number</a>
+          </li>
+          <li>
+             <a href="#request" title="https://w3id.org/def/lotaf#request">request</a>
+          </li>
+          <li>
+             <a href="#requirement" title="https://w3id.org/def/lotaf#requirement">requirement</a>
+          </li>
+          <li>
+             <a href="#scope" title="https://w3id.org/def/lotaf#scope">scope</a>
+          </li>
+          <li>
+             <a href="#startTime" title="https://w3id.org/def/lotaf#startTime">start time</a>
+          </li>
+          <li>
+             <a href="#stopTime" title="https://w3id.org/def/lotaf#stopTime">stop time</a>
+          </li>
+          <li>
+             <a href="#throughput" title="https://w3id.org/def/lotaf#throughput">throughput</a>
+          </li>
+          <li>
+             <a href="#value" title="https://w3id.org/def/lotaf#value">value</a>
+          </li>
+          <li>
+             <a href="#violationDescription" title="https://w3id.org/def/lotaf#violationDescription">violation description</a>
+          </li>
+          <li>
+             <a href="#weightingFactor" title="https://w3id.org/def/lotaf#weightingFactor">weighting factor</a>
+          </li>
+       </ul><h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+                                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                              class="hlist">
+          <li>
+             <a href="#http://purl.org/dc/elements/1.1/contributor" title="http://purl.org/dc/elements/1.1/contributor">
+                <span>contributor</span>
+             </a>
+          </li>
+          <li>
+             <a href="#http://purl.org/dc/elements/1.1/created" title="http://purl.org/dc/elements/1.1/created">
+                <span>created</span>
+             </a>
+          </li>
+          <li>
+             <a href="#https://w3id.org/mod#createdWith" title="https://w3id.org/mod#createdWith">
+                <span>created With</span>
+             </a>
+          </li>
+          <li>
+             <a href="#http://purl.org/dc/elements/1.1/creator" title="http://purl.org/dc/elements/1.1/creator">
+                <span>creator</span>
+             </a>
+          </li>
+          <li>
+             <a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source">
+                <span>source</span>
+             </a>
+          </li>
+          <li>
+             <a href="#http://purl.org/dc/elements/1.1/title" title="http://purl.org/dc/elements/1.1/title">
+                <span>title</span>
+             </a>
+          </li>
+          <li>
+             <a href="#http://www.w3.org/2002/07/owl#versionInfo" title="http://www.w3.org/2002/07/owl#versionInfo">
+                <span>version Info</span>
+             </a>
+          </li>
+       </ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+                                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                          class="hlist">
+          <li>
+             <a href="#AllocatingNetworkService"
+                title="https://w3id.org/def/lotaf#AllocatingNetworkService">
+                <span>Allocating Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#Availability" title="https://w3id.org/def/lotaf#Availability">
+                <span>Availability</span>
+             </a>
+          </li>
+          <li>
+             <a href="#CPUSymptom" title="https://w3id.org/def/lotaf#CPUSymptom">
+                <span>C P U Symptom</span>
+             </a>
+          </li>
+          <li>
+             <a href="#CloudContinuumType" title="https://w3id.org/def/lotaf#CloudContinuumType">
+                <span>Cloud Continuum Type</span>
+             </a>
+          </li>
+          <li>
+             <a href="#CloudEdgeContinuumType"
+                title="https://w3id.org/def/lotaf#CloudEdgeContinuumType">
+                <span>Cloud Edge Continuum Type</span>
+             </a>
+          </li>
+          <li>
+             <a href="#CloudType" title="https://w3id.org/def/lotaf#CloudType">
+                <span>Cloud Type</span>
+             </a>
+          </li>
+          <li>
+             <a href="#Credibility" title="https://w3id.org/def/lotaf#Credibility">
+                <span>Credibility</span>
+             </a>
+          </li>
+          <li>
+             <a href="#CustomerNotificationAction"
+                title="https://w3id.org/def/lotaf#CustomerNotificationAction">
+                <span>Customer Notification Action</span>
+             </a>
+          </li>
+          <li>
+             <a href="#DeployingNetworkService"
+                title="https://w3id.org/def/lotaf#DeployingNetworkService">
+                <span>Deploying Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#DigitalServiceCustomer"
+                title="https://w3id.org/def/lotaf#DigitalServiceCustomer">
+                <span>Digital Service Customer</span>
+             </a>
+          </li>
+          <li>
+             <a href="#DigitalServiceProvider"
+                title="https://w3id.org/def/lotaf#DigitalServiceProvider">
+                <span>Digital Service Provider</span>
+             </a>
+          </li>
+          <li>
+             <a href="#EdgeType" title="https://w3id.org/def/lotaf#EdgeType">
+                <span>Edge Type</span>
+             </a>
+          </li>
+          <li>
+             <a href="#EndingTrustAgreementAction"
+                title="https://w3id.org/def/lotaf#EndingTrustAgreementAction">
+                <span>Ending Trust Agreement Action</span>
+             </a>
+          </li>
+          <li>
+             <a href="#EvaluatingOtherAssesstsAction"
+                title="https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction">
+                <span>Evaluating Other Assessts Action</span>
+             </a>
+          </li>
+          <li>
+             <a href="#FarEdgeType" title="https://w3id.org/def/lotaf#FarEdgeType">
+                <span>Far Edge Type</span>
+             </a>
+          </li>
+          <li>
+             <a href="#Feedback" title="https://w3id.org/def/lotaf#Feedback">
+                <span>Feedback</span>
+             </a>
+          </li>
+          <li>
+             <a href="#FinishedNetworkService"
+                title="https://w3id.org/def/lotaf#FinishedNetworkService">
+                <span>Finished Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#GreenHealthStatus" title="https://w3id.org/def/lotaf#GreenHealthStatus">
+                <span>Green Health Status</span>
+             </a>
+          </li>
+          <li>
+             <a href="#HealthyNetworkService"
+                title="https://w3id.org/def/lotaf#HealthyNetworkService">
+                <span>Healthy Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#InactiveNetworkService"
+                title="https://w3id.org/def/lotaf#InactiveNetworkService">
+                <span>Inactive Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#InfrastructureAsset" title="https://w3id.org/def/lotaf#InfrastructureAsset">
+                <span>Infrastructure Asset</span>
+             </a>
+          </li>
+          <li>
+             <a href="#InitializingNetworkService"
+                title="https://w3id.org/def/lotaf#InitializingNetworkService">
+                <span>Initializing Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#MaintainingNetworkService"
+                title="https://w3id.org/def/lotaf#MaintainingNetworkService">
+                <span>Maintaining Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#MemorySymptom" title="https://w3id.org/def/lotaf#MemorySymptom">
+                <span>Memory Symptom</span>
+             </a>
+          </li>
+          <li>
+             <a href="#MigratingNetworkService"
+                title="https://w3id.org/def/lotaf#MigratingNetworkService">
+                <span>Migrating Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#NetworkingSymptom" title="https://w3id.org/def/lotaf#NetworkingSymptom">
+                <span>Networking Symptom</span>
+             </a>
+          </li>
+          <li>
+             <a href="#OrangeHealthStatus" title="https://w3id.org/def/lotaf#OrangeHealthStatus">
+                <span>Orange Health Status</span>
+             </a>
+          </li>
+          <li>
+             <a href="#OverloadNetworkService"
+                title="https://w3id.org/def/lotaf#OverloadNetworkService">
+                <span>Overload Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#PausedNetworkService" title="https://w3id.org/def/lotaf#PausedNetworkService">
+                <span>Paused Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#ProcessesSymptom" title="https://w3id.org/def/lotaf#ProcessesSymptom">
+                <span>Processes Symptom</span>
+             </a>
+          </li>
+          <li>
+             <a href="#ProviderNotificationAction"
+                title="https://w3id.org/def/lotaf#ProviderNotificationAction">
+                <span>Provider Notification Action</span>
+             </a>
+          </li>
+          <li>
+             <a href="#RedHealthStatus" title="https://w3id.org/def/lotaf#RedHealthStatus">
+                <span>Red Health Status</span>
+             </a>
+          </li>
+          <li>
+             <a href="#Reliability" title="https://w3id.org/def/lotaf#Reliability">
+                <span>Reliability</span>
+             </a>
+          </li>
+          <li>
+             <a href="#ResourceAsset" title="https://w3id.org/def/lotaf#ResourceAsset">
+                <span>Resource Asset</span>
+             </a>
+          </li>
+          <li>
+             <a href="#RunningNetworkService"
+                title="https://w3id.org/def/lotaf#RunningNetworkService">
+                <span>Running Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#Scalability" title="https://w3id.org/def/lotaf#Scalability">
+                <span>Scalability</span>
+             </a>
+          </li>
+          <li>
+             <a href="#ScalingNetworkService"
+                title="https://w3id.org/def/lotaf#ScalingNetworkService">
+                <span>Scaling Network Service</span>
+             </a>
+          </li>
+          <li>
+             <a href="#ServiceAsset" title="https://w3id.org/def/lotaf#ServiceAsset">
+                <span>Service Asset</span>
+             </a>
+          </li>
+          <li>
+             <a href="#Stability" title="https://w3id.org/def/lotaf#Stability">
+                <span>Stability</span>
+             </a>
+          </li>
+          <li>
+             <a href="#SubserviceAsset" title="https://w3id.org/def/lotaf#SubserviceAsset">
+                <span>Subservice Asset</span>
+             </a>
+          </li>
+          <li>
+             <a href="#VPPSymptom" title="https://w3id.org/def/lotaf#VPPSymptom">
+                <span>V P P Symptom</span>
+             </a>
+          </li>
+          <li>
+             <a href="#VirtualMachinesSymptom"
+                title="https://w3id.org/def/lotaf#VirtualMachinesSymptom">
+                <span>Virtual Machines Symptom</span>
+             </a>
+          </li>
+       </ul><iframe src="webvowl/index.html"></iframe>
+    </div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">Level of Trust Assessment Ontology for Computing Continuum: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+       <p>The Level of Trust Assessment Function (LoTAF) designed by the flagship Hexa-X-II project represents a neutral and
+          bi-directional mechanism in charge of evaluating trust aspects in a 6G end-to-end service like the Cloud Continuum. LoTAF is continuously collecting and analysing objective and subjective trust indicators,
+          forming a knowledge graph between the trustor and the trustee, by making use of graph queries to identify relevant patterns or series of changes in the graph that may impact the LoT,
+          keeping track of real-time events and shifts in telemetry values. The Level of Trust (LoT) is considered as a new intent that enables the management and orchestration of intent-based management (IBN) solutions.
+          In this regard, this ontology is released by following the well-known Linked Open Term methodology which is also contemplated in ETSI SAREF standards. The ontology uses a soft-reuse strategy including the URIs of
+          other existing ontologies in order to reduce redundancy and ease interoperability. For example, such an ontology inherits classes and properties from the TR292 TM Forum Intent Ontology. Nevertheless, the core of
+          the ontology is built from scratch as terms like Cloud Continuum, Service Assurance, Trust Level Agreement, or Level of Trust have not been considered in prior solutions.</p>
+       <p>The entities of this ontology are mainly split into two main blocks: (i) level of trust assessment and (ii) intent-based management for cloud scenarios. The former aims at representing the
+          principal concepts, data properties, and object properties related to our trust evaluation systems. In this vein, the ontology tries to represent information from
+          the type of trust indicators (quantitative and qualitative), the business agreement between trustor and trustee(s), key actions to be applied after misbehaviours or desired behaviors and symptoms concerning assets'
+          behaviors. The latter block deals with the intent-based terms of Cloud continuum scenarios where decomposing the intent into the capabilities of multiple digital service providers is envisioned.
+          Managing 6G E2E services requires the involvement of several service providers (e.g., network service providers, cloud service providers) to compose an E2E service and, this block aims to embody the minimum information
+          to contemplate trust as an intent for several types of network services and assets.</p>
+       <p>Note that this ontology is a live process of the Hexa-X-II project, which is active until 30 June 2025 and may undergo changes based on the iterations of the project. In addition, some parts of the IBN or Cloud Continuum
+          representation may not be covered in depth as they fall outside the main objective of LoTAF, which is to assess and report the trust levels of a security service in different Cloud Continuum scenarios based on the input
+          requirements of a Digital Service Consumer.</p>
+       <p>Figure 1 displays the Level of Trust Assessment Ontology for Continuum Computing following the Chowlk notation.</p>
+       <img src="https://raw.githubusercontent.com/CyberDataLab/level-of-trust-framework/refs/heads/main/Knowledge-graph-for-LoTAF/Ontology_implementation/Images/Ontology_LoTAF.png" alt="Level of Trust Assessment Ontology for Continuum Computing" style="width: 80%; height: auto; display: block; margin: 0 auto;" class="embedded-image">
+       <figcaption style="text-align: center;"><b>Figure 1</b>: Level of Trust Assessment Ontology for Continuum Computing.</figcaption></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for Level of Trust Assessment Ontology for Computing Continuum classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by Level of Trust Assessment Ontology for Computing Continuum.
+      <div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+         <h3 id="classes-headline" class="list">Classes</h3>
+         <ul class="hlist">
+            <li><a href="#AdministrativeDomain" title="https://w3id.org/def/lotaf#AdministrativeDomain">Administrative Domain</a></li>
+            <li><a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a></li>
+            <li><a href="#AssetType" title="https://w3id.org/def/lotaf#AssetType">Asset Type</a></li>
+            <li><a href="#DigitalServiceEntity" title="https://w3id.org/def/lotaf#DigitalServiceEntity">Digital Service Entity</a></li>
+            <li><a href="#Health" title="https://w3id.org/def/lotaf#Health">Health</a></li>
+            <li><a href="#HealthStatus" title="https://w3id.org/def/lotaf#HealthStatus">Health Status</a></li>
+            <li><a href="#Indicator" title="https://w3id.org/def/lotaf#Indicator">Indicator</a></li>
+            <li><a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a></li>
+            <li><a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport">Intent Report</a></li>
+            <li><a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a></li>
+            <li><a href="#http://www.w3.org/ns/org#Membership" title="http://www.w3.org/ns/org#Membership">Membership</a></li>
+            <li><a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a></li>
+            <li><a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a></li>
+            <li><a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a></li>
+            <li><a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a></li>
+            <li><a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a></li>
+            <li><a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a></li>
+            <li><a href="#http://www.owl-ontologies.com/odrl#Policy" title="http://www.owl-ontologies.com/odrl#Policy">Policy</a></li>
+            <li><a href="#Punishment" title="https://w3id.org/def/lotaf#Punishment">Punishment</a></li>
+            <li><a href="#PunishmentAction" title="https://w3id.org/def/lotaf#PunishmentAction">Punishment Action</a></li>
+            <li><a href="#Reward" title="https://w3id.org/def/lotaf#Reward">Reward</a></li>
+            <li><a href="#http://www.w3.org/ns/org#Role" title="http://www.w3.org/ns/org#Role">Role</a></li>
+            <li><a href="#http://www.owl-ontologies.com/odrl#Rule" title="http://www.owl-ontologies.com/odrl#Rule">Rule</a></li>
+            <li><a href="#SubjectiveIndicator" title="https://w3id.org/def/lotaf#SubjectiveIndicator">Subjective Indicator</a></li>
+            <li><a href="#Symptom" title="https://w3id.org/def/lotaf#Symptom">Symptom</a></li>
+            <li><a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a></li>
+            <li><a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a></li>
+            <li><a href="#User" title="https://w3id.org/def/lotaf#User">User</a></li>
+         </ul>
+         <div class="entity" id="AdministrativeDomain">
+            <h3>Administrative Domain<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#AdministrativeDomain</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#http://purl.org/terms/description" title="http://purl.org/terms/description">description</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#monitors" title="https://w3id.org/def/lotaf#monitors">monitors</a> <sup class="type-op" title="object property">op</sup>, <a href="#owner" title="https://w3id.org/def/lotaf#owner">owner</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#belongsTo" title="https://w3id.org/def/lotaf#belongsTo">belongs to</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://www.owl-ontologies.com/odrl#Asset">
+            <h3>Asset<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.owl-ontologies.com/odrl#Asset</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#assetType" title="https://w3id.org/def/lotaf#assetType">asset type</a> <sup class="type-op" title="object property">op</sup>, <a href="#bandwith" title="https://w3id.org/def/lotaf#bandwith">bandwith</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/aerOS/continuum#cpuCores" title="https://w3id.org/aerOS/continuum#cpuCores">cpu cores</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#endpoint" title="https://w3id.org/def/lotaf#endpoint">endpoint</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#exposes" title="https://w3id.org/def/lotaf#exposes">exposes</a> <sup class="type-op" title="object property">op</sup>, <a href="#fulfills" title="https://w3id.org/def/lotaf#fulfills">fulfills</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/ofo#location" title="https://w3id.org/ofo#location">location</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#powerConsumption" title="https://w3id.org/def/lotaf#powerConsumption">power consumption</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#https://w3id.org/aerOS/continuum#ramCapacity" title="https://w3id.org/aerOS/continuum#ramCapacity">ram capacity</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#throughput" title="https://w3id.org/def/lotaf#throughput">throughput</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#composedBy" title="https://w3id.org/def/lotaf#composedBy">composed by</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.owl-ontologies.com/odrl#target" title="http://www.owl-ontologies.com/odrl#target">target</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="AssetType">
+            <h3>Asset Type<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#AssetType</p>
+            <dl class="description">
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#assetType" title="https://w3id.org/def/lotaf#assetType">asset type</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#InfrastructureAsset" title="https://w3id.org/def/lotaf#InfrastructureAsset">Infrastructure Asset</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ResourceAsset" title="https://w3id.org/def/lotaf#ResourceAsset">Resource Asset</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ServiceAsset" title="https://w3id.org/def/lotaf#ServiceAsset">Service Asset</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#SubserviceAsset" title="https://w3id.org/def/lotaf#SubserviceAsset">Subservice Asset</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="DigitalServiceEntity">
+            <h3>Digital Service Entity<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#DigitalServiceEntity</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#entityType" title="https://w3id.org/def/lotaf#entityType">entity type</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#DigitalServiceCustomer" title="https://w3id.org/def/lotaf#DigitalServiceCustomer">Digital Service Customer</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#DigitalServiceProvider" title="https://w3id.org/def/lotaf#DigitalServiceProvider">Digital Service Provider</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Health">
+            <h3>Health<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Health</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#evaluates" title="https://w3id.org/def/lotaf#evaluates">evaluates</a> <sup class="type-op" title="object property">op</sup>, <a href="#healthScore" title="https://w3id.org/def/lotaf#healthScore">health score</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#healthStatus" title="https://w3id.org/def/lotaf#healthStatus">health status</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#exposes" title="https://w3id.org/def/lotaf#exposes">exposes</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="HealthStatus">
+            <h3>Health Status<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#HealthStatus</p>
+            <dl class="description">
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#healthStatus" title="https://w3id.org/def/lotaf#healthStatus">health status</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#GreenHealthStatus" title="https://w3id.org/def/lotaf#GreenHealthStatus">Green Health Status</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OrangeHealthStatus" title="https://w3id.org/def/lotaf#OrangeHealthStatus">Orange Health Status</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#RedHealthStatus" title="https://w3id.org/def/lotaf#RedHealthStatus">Red Health Status</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Indicator">
+            <h3>Indicator<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Indicator</p>
+            <dl class="description">
+               <dt>
+                  has sub-classes
+               </dt>
+               <dd>
+                  <a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a> <sup class="type-c" title="class">c</sup>, <a href="#SubjectiveIndicator" title="https://w3id.org/def/lotaf#SubjectiveIndicator">Subjective Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#value" title="https://w3id.org/def/lotaf#value">value</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#weightingFactor" title="https://w3id.org/def/lotaf#weightingFactor">weighting factor</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#gathers" title="https://w3id.org/def/lotaf#gathers">gathers</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">
+            <h3>Intent<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#contains" title="https://w3id.org/def/lotaf#contains">contains</a> <sup class="type-op" title="object property">op</sup>, <a href="#deploys" title="https://w3id.org/def/lotaf#deploys">deploys</a> <sup class="type-op" title="object property">op</sup>, <a href="#guaranteedBy" title="https://w3id.org/def/lotaf#guaranteedBy">guaranteed by</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#scope" title="https://w3id.org/def/lotaf#scope">scope</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport">
+            <h3>Intent Report<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#informs" title="https://w3id.org/def/lotaf#informs">informs</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated">report generated</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber">report number</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#contains" title="https://w3id.org/def/lotaf#contains">contains</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="LevelOfTrust">
+            <h3>Level Of Trust<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#LevelOfTrust</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#applies" title="https://w3id.org/def/lotaf#applies">applies</a> <sup class="type-op" title="object property">op</sup>, <a href="#enforces" title="https://w3id.org/def/lotaf#enforces">enforces</a> <sup class="type-op" title="object property">op</sup>, <a href="#gathers" title="https://w3id.org/def/lotaf#gathers">gathers</a> <sup class="type-op" title="object property">op</sup>, <a href="#lot" title="https://w3id.org/def/lotaf#lot">lot</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#startTime" title="https://w3id.org/def/lotaf#startTime">start time</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#stopTime" title="https://w3id.org/def/lotaf#stopTime">stop time</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#delivers" title="https://w3id.org/def/lotaf#delivers">delivers</a> <sup class="type-op" title="object property">op</sup>, <a href="#fulfills" title="https://w3id.org/def/lotaf#fulfills">fulfills</a> <sup class="type-op" title="object property">op</sup>, <a href="#includes" title="https://w3id.org/def/lotaf#includes">includes</a> <sup class="type-op" title="object property">op</sup>, <a href="#informs" title="https://w3id.org/def/lotaf#informs">informs</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://www.w3.org/ns/org#Membership">
+            <h3>Membership<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.w3.org/ns/org#Membership</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#http://www.w3.org/ns/org#member" title="http://www.w3.org/ns/org#member">member</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/ns/org#organization" title="http://www.w3.org/ns/org#organization">organization</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/ns/org#role" title="http://www.w3.org/ns/org#role">role</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="NetworkService">
+            <h3>Network Service<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#NetworkService</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#characteristic" title="https://w3id.org/def/lotaf#characteristic">characteristic</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#composedBy" title="https://w3id.org/def/lotaf#composedBy">composed by</a> <sup class="type-op" title="object property">op</sup>, <a href="#delivers" title="https://w3id.org/def/lotaf#delivers">delivers</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/description" title="http://purl.org/terms/description">description</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#networkStatus" title="https://w3id.org/def/lotaf#networkStatus">network status</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#deploys" title="https://w3id.org/def/lotaf#deploys">deploys</a> <sup class="type-op" title="object property">op</sup>, <a href="#monitors" title="https://w3id.org/def/lotaf#monitors">monitors</a> <sup class="type-op" title="object property">op</sup>, <a href="#networkServiceType" title="https://w3id.org/def/lotaf#networkServiceType">network service type</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="NetworkServiceStatus">
+            <h3>Network Service Status<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#NetworkServiceStatus</p>
+            <dl class="description">
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#networkStatus" title="https://w3id.org/def/lotaf#networkStatus">network status</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#AllocatingNetworkService" title="https://w3id.org/def/lotaf#AllocatingNetworkService">Allocating Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#DeployingNetworkService" title="https://w3id.org/def/lotaf#DeployingNetworkService">Deploying Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#FinishedNetworkService" title="https://w3id.org/def/lotaf#FinishedNetworkService">Finished Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#HealthyNetworkService" title="https://w3id.org/def/lotaf#HealthyNetworkService">Healthy Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#InactiveNetworkService" title="https://w3id.org/def/lotaf#InactiveNetworkService">Inactive Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#InitializingNetworkService" title="https://w3id.org/def/lotaf#InitializingNetworkService">Initializing Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#MaintainingNetworkService" title="https://w3id.org/def/lotaf#MaintainingNetworkService">Maintaining Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#MigratingNetworkService" title="https://w3id.org/def/lotaf#MigratingNetworkService">Migrating Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OverloadNetworkService" title="https://w3id.org/def/lotaf#OverloadNetworkService">Overload Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#PausedNetworkService" title="https://w3id.org/def/lotaf#PausedNetworkService">Paused Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#RunningNetworkService" title="https://w3id.org/def/lotaf#RunningNetworkService">Running Network Service</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ScalingNetworkService" title="https://w3id.org/def/lotaf#ScalingNetworkService">Scaling Network Service</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="NetworkServiceType">
+            <h3>Network Service Type<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#NetworkServiceType</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#networkServiceType" title="https://w3id.org/def/lotaf#networkServiceType">network service type</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#CloudContinuumType" title="https://w3id.org/def/lotaf#CloudContinuumType">Cloud Continuum Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#CloudEdgeContinuumType" title="https://w3id.org/def/lotaf#CloudEdgeContinuumType">Cloud Edge Continuum Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#CloudType" title="https://w3id.org/def/lotaf#CloudType">Cloud Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EdgeType" title="https://w3id.org/def/lotaf#EdgeType">Edge Type</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#FarEdgeType" title="https://w3id.org/def/lotaf#FarEdgeType">Far Edge Type</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="ObjectiveIndicator">
+            <h3>Objective Indicator<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ObjectiveIndicator</p>
+            <dl class="description">
+               <dt>
+                  has super-classes
+               </dt>
+               <dd>
+                  <a href="#Indicator" title="https://w3id.org/def/lotaf#Indicator">Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#pertains" title="https://w3id.org/def/lotaf#pertains">pertains</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#Availability" title="https://w3id.org/def/lotaf#Availability">Availability</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Reliability" title="https://w3id.org/def/lotaf#Reliability">Reliability</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Scalability" title="https://w3id.org/def/lotaf#Scalability">Scalability</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Stability" title="https://w3id.org/def/lotaf#Stability">Stability</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://www.w3.org/ns/org#Organization">
+            <h3>Organization<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.w3.org/ns/org#Organization</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#http://www.w3.org/ns/org#organization" title="http://www.w3.org/ns/org#organization">organization</a> <sup class="type-op" title="object property">op</sup>, <a href="#owner" title="https://w3id.org/def/lotaf#owner">owner</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://xmlns.com/foaf/0.1/Person">
+            <h3>Person<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://xmlns.com/foaf/0.1/Person</p>
+            <dl class="description">
+               <dt>
+                  has sub-classes
+               </dt>
+               <dd>
+                  <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#http://xmlns.com/foaf/0.1/givenName" title="http://xmlns.com/foaf/0.1/givenName">given name</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://xmlns.com/foaf/0.1/lastName" title="http://xmlns.com/foaf/0.1/lastName">last name</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#http://www.w3.org/ns/org#member" title="http://www.w3.org/ns/org#member">member</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://www.owl-ontologies.com/odrl#Policy">
+            <h3>Policy<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.owl-ontologies.com/odrl#Policy</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#http://www.owl-ontologies.com/odrl#duty" title="http://www.owl-ontologies.com/odrl#duty">duty</a> <sup class="type-op" title="object property">op</sup>, <a href="#request" title="https://w3id.org/def/lotaf#request">request</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#follows" title="https://w3id.org/def/lotaf#follows">follows</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Punishment">
+            <h3>Punishment<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Punishment</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#punishmentAction" title="https://w3id.org/def/lotaf#punishmentAction">punishment action</a> <sup class="type-op" title="object property">op</sup>, <a href="#value" title="https://w3id.org/def/lotaf#value">value</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#enforces" title="https://w3id.org/def/lotaf#enforces">enforces</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="PunishmentAction">
+            <h3>Punishment Action<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#PunishmentAction</p>
+            <dl class="description">
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#punishmentAction" title="https://w3id.org/def/lotaf#punishmentAction">punishment action</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#CustomerNotificationAction" title="https://w3id.org/def/lotaf#CustomerNotificationAction">Customer Notification Action</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EndingTrustAgreementAction" title="https://w3id.org/def/lotaf#EndingTrustAgreementAction">Ending Trust Agreement Action</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EvaluatingOtherAssesstsAction" title="https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction">Evaluating Other Assessts Action</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ProviderNotificationAction" title="https://w3id.org/def/lotaf#ProviderNotificationAction">Provider Notification Action</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Reward">
+            <h3>Reward<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Reward</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#value" title="https://w3id.org/def/lotaf#value">value</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#applies" title="https://w3id.org/def/lotaf#applies">applies</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://www.w3.org/ns/org#Role">
+            <h3>Role<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.w3.org/ns/org#Role</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#follows" title="https://w3id.org/def/lotaf#follows">follows</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#http://www.w3.org/ns/org#role" title="http://www.w3.org/ns/org#role">role</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="http://www.owl-ontologies.com/odrl#Rule">
+            <h3>Rule<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.owl-ontologies.com/odrl#Rule</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#constraint" title="https://w3id.org/def/lotaf#constraint">constraint</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://www.owl-ontologies.com/odrl#target" title="http://www.owl-ontologies.com/odrl#target">target</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#http://www.owl-ontologies.com/odrl#duty" title="http://www.owl-ontologies.com/odrl#duty">duty</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="SubjectiveIndicator">
+            <h3>Subjective Indicator<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#SubjectiveIndicator</p>
+            <dl class="description">
+               <dt>
+                  has super-classes
+               </dt>
+               <dd>
+                  <a href="#Indicator" title="https://w3id.org/def/lotaf#Indicator">Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#Credibility" title="https://w3id.org/def/lotaf#Credibility">Credibility</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Feedback" title="https://w3id.org/def/lotaf#Feedback">Feedback</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Symptom">
+            <h3>Symptom<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Symptom</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#http://purl.org/terms/description" title="http://purl.org/terms/description">description</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#pertains" title="https://w3id.org/def/lotaf#pertains">pertains</a> <sup class="type-op" title="object property">op</sup>, <a href="#symptomType" title="https://w3id.org/def/lotaf#symptomType">symptom type</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#evaluates" title="https://w3id.org/def/lotaf#evaluates">evaluates</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="SymptomType">
+            <h3>Symptom Type<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#SymptomType</p>
+            <dl class="description">
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#symptomType" title="https://w3id.org/def/lotaf#symptomType">symptom type</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  has members
+               </dt>
+               <dd>
+                  <a href="#CPUSymptom" title="https://w3id.org/def/lotaf#CPUSymptom">C P U Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#MemorySymptom" title="https://w3id.org/def/lotaf#MemorySymptom">Memory Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NetworkingSymptom" title="https://w3id.org/def/lotaf#NetworkingSymptom">Networking Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ProcessesSymptom" title="https://w3id.org/def/lotaf#ProcessesSymptom">Processes Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#VPPSymptom" title="https://w3id.org/def/lotaf#VPPSymptom">V P P Symptom</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#VirtualMachinesSymptom" title="https://w3id.org/def/lotaf#VirtualMachinesSymptom">Virtual Machines Symptom</a> <sup class="type-ni" title="named individual">ni</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="TrustLevelAgreement">
+            <h3>Trust Level Agreement<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#TrustLevelAgreement</p>
+            <dl class="description">
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#customerID" title="https://w3id.org/def/lotaf#customerID">customer i d</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#includes" title="https://w3id.org/def/lotaf#includes">includes</a> <sup class="type-op" title="object property">op</sup>, <a href="#providerID" title="https://w3id.org/def/lotaf#providerID">provider i d</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#requirement" title="https://w3id.org/def/lotaf#requirement">requirement</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#violationDescription" title="https://w3id.org/def/lotaf#violationDescription">violation description</a> <sup class="type-dp" title="data property">dp</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#guaranteedBy" title="https://w3id.org/def/lotaf#guaranteedBy">guaranteed by</a> <sup class="type-op" title="object property">op</sup>, <a href="#signs" title="https://w3id.org/def/lotaf#signs">signs</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="User">
+            <h3>User<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#User</p>
+            <dl class="description">
+               <dt>
+                  has super-classes
+               </dt>
+               <dd>
+                  <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+               <dt>
+                  is in domain of
+               </dt>
+               <dd>
+                  <a href="#belongsTo" title="https://w3id.org/def/lotaf#belongsTo">belongs to</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a> <sup class="type-op" title="object property">op</sup>, <a href="#request" title="https://w3id.org/def/lotaf#request">request</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#signs" title="https://w3id.org/def/lotaf#signs">signs</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a> <sup class="type-op" title="object property">op</sup>, <a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+               <dt>
+                  is in range of
+               </dt>
+               <dd>
+                  <a href="#entityType" title="https://w3id.org/def/lotaf#entityType">entity type</a> <sup class="type-op" title="object property">op</sup>
+               </dd>
+            </dl>
+         </div>
+      </div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+         <h3 id="properties" class="list">Object Properties</h3>
+         <ul class="hlist">
+            <li><a href="#applies" title="https://w3id.org/def/lotaf#applies">applies</a></li>
+            <li><a href="#assetType" title="https://w3id.org/def/lotaf#assetType">asset type</a></li>
+            <li><a href="#belongsTo" title="https://w3id.org/def/lotaf#belongsTo">belongs to</a></li>
+            <li><a href="#composedBy" title="https://w3id.org/def/lotaf#composedBy">composed by</a></li>
+            <li><a href="#contains" title="https://w3id.org/def/lotaf#contains">contains</a></li>
+            <li><a href="#delivers" title="https://w3id.org/def/lotaf#delivers">delivers</a></li>
+            <li><a href="#deploys" title="https://w3id.org/def/lotaf#deploys">deploys</a></li>
+            <li><a href="#http://www.owl-ontologies.com/odrl#duty" title="http://www.owl-ontologies.com/odrl#duty">duty</a></li>
+            <li><a href="#enforces" title="https://w3id.org/def/lotaf#enforces">enforces</a></li>
+            <li><a href="#entityType" title="https://w3id.org/def/lotaf#entityType">entity type</a></li>
+            <li><a href="#evaluates" title="https://w3id.org/def/lotaf#evaluates">evaluates</a></li>
+            <li><a href="#exposes" title="https://w3id.org/def/lotaf#exposes">exposes</a></li>
+            <li><a href="#follows" title="https://w3id.org/def/lotaf#follows">follows</a></li>
+            <li><a href="#fulfills" title="https://w3id.org/def/lotaf#fulfills">fulfills</a></li>
+            <li><a href="#gathers" title="https://w3id.org/def/lotaf#gathers">gathers</a></li>
+            <li><a href="#guaranteedBy" title="https://w3id.org/def/lotaf#guaranteedBy">guaranteed by</a></li>
+            <li><a href="#healthStatus" title="https://w3id.org/def/lotaf#healthStatus">health status</a></li>
+            <li><a href="#includes" title="https://w3id.org/def/lotaf#includes">includes</a></li>
+            <li><a href="#informs" title="https://w3id.org/def/lotaf#informs">informs</a></li>
+            <li><a href="#manages" title="https://w3id.org/def/lotaf#manages">manages</a></li>
+            <li><a href="#http://www.w3.org/ns/org#member" title="http://www.w3.org/ns/org#member">member</a></li>
+            <li><a href="#monitors" title="https://w3id.org/def/lotaf#monitors">monitors</a></li>
+            <li><a href="#networkServiceType" title="https://w3id.org/def/lotaf#networkServiceType">network service type</a></li>
+            <li><a href="#networkStatus" title="https://w3id.org/def/lotaf#networkStatus">network status</a></li>
+            <li><a href="#http://www.w3.org/ns/org#organization" title="http://www.w3.org/ns/org#organization">organization</a></li>
+            <li><a href="#owner" title="https://w3id.org/def/lotaf#owner">owner</a></li>
+            <li><a href="#pertains" title="https://w3id.org/def/lotaf#pertains">pertains</a></li>
+            <li><a href="#punishmentAction" title="https://w3id.org/def/lotaf#punishmentAction">punishment action</a></li>
+            <li><a href="#http://www.w3.org/ns/org#role" title="http://www.w3.org/ns/org#role">role</a></li>
+            <li><a href="#signs" title="https://w3id.org/def/lotaf#signs">signs</a></li>
+            <li><a href="#symptomType" title="https://w3id.org/def/lotaf#symptomType">symptom type</a></li>
+            <li><a href="#http://www.owl-ontologies.com/odrl#target" title="http://www.owl-ontologies.com/odrl#target">target</a></li>
+            <li><a href="#trustee" title="https://w3id.org/def/lotaf#trustee">trustee</a></li>
+            <li><a href="#trustor" title="https://w3id.org/def/lotaf#trustor">trustor</a></li>
+         </ul>
+         <div class="entity" id="applies">
+            <h3>applies<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#applies</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#Reward" title="https://w3id.org/def/lotaf#Reward">Reward</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="assetType">
+            <h3>asset type<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#assetType</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#AssetType" title="https://w3id.org/def/lotaf#AssetType">Asset Type</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="belongsTo">
+            <h3>belongs to<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#belongsTo</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#AdministrativeDomain" title="https://w3id.org/def/lotaf#AdministrativeDomain">Administrative Domain</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="composedBy">
+            <h3>composed by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#composedBy</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="contains">
+            <h3>contains<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#contains</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport">Intent Report</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="delivers">
+            <h3>delivers<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#delivers</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="deploys">
+            <h3>deploys<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#deploys</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://www.owl-ontologies.com/odrl#duty">
+            <h3>duty<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.owl-ontologies.com/odrl#duty</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Policy" title="http://www.owl-ontologies.com/odrl#Policy">Policy</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Rule" title="http://www.owl-ontologies.com/odrl#Rule">Rule</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="enforces">
+            <h3>enforces<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#enforces</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#Punishment" title="https://w3id.org/def/lotaf#Punishment">Punishment</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="entityType">
+            <h3>entity type<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#entityType</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#DigitalServiceEntity" title="https://w3id.org/def/lotaf#DigitalServiceEntity">Digital Service Entity</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="evaluates">
+            <h3>evaluates<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#evaluates</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Health" title="https://w3id.org/def/lotaf#Health">Health</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#Symptom" title="https://w3id.org/def/lotaf#Symptom">Symptom</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="exposes">
+            <h3>exposes<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#exposes</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#Health" title="https://w3id.org/def/lotaf#Health">Health</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="follows">
+            <h3>follows<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#follows</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Role" title="http://www.w3.org/ns/org#Role">Role</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Policy" title="http://www.owl-ontologies.com/odrl#Policy">Policy</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="fulfills">
+            <h3>fulfills<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#fulfills</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="gathers">
+            <h3>gathers<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#gathers</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#Indicator" title="https://w3id.org/def/lotaf#Indicator">Indicator</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="guaranteedBy">
+            <h3>guaranteed by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#guaranteedBy</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="healthStatus">
+            <h3>health status<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#healthStatus</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Health" title="https://w3id.org/def/lotaf#Health">Health</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#HealthStatus" title="https://w3id.org/def/lotaf#HealthStatus">Health Status</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="includes">
+            <h3>includes<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#includes</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="informs">
+            <h3>informs<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#informs</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport">Intent Report</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="manages">
+            <h3>manages<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#manages</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://www.w3.org/ns/org#member">
+            <h3>member<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.w3.org/ns/org#member</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Membership" title="http://www.w3.org/ns/org#Membership">Membership</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="monitors">
+            <h3>monitors<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#monitors</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#AdministrativeDomain" title="https://w3id.org/def/lotaf#AdministrativeDomain">Administrative Domain</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="networkServiceType">
+            <h3>network service type<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#networkServiceType</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="networkStatus">
+            <h3>network status<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#networkStatus</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://www.w3.org/ns/org#organization">
+            <h3>organization<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.w3.org/ns/org#organization</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Membership" title="http://www.w3.org/ns/org#Membership">Membership</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="owner">
+            <h3>owner<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#owner</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#AdministrativeDomain" title="https://w3id.org/def/lotaf#AdministrativeDomain">Administrative Domain</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="pertains">
+            <h3>pertains<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#pertains</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Symptom" title="https://w3id.org/def/lotaf#Symptom">Symptom</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="punishmentAction">
+            <h3>punishment action<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#punishmentAction</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Punishment" title="https://w3id.org/def/lotaf#Punishment">Punishment</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#PunishmentAction" title="https://w3id.org/def/lotaf#PunishmentAction">Punishment Action</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://www.w3.org/ns/org#role">
+            <h3>role<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.w3.org/ns/org#role</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Membership" title="http://www.w3.org/ns/org#Membership">Membership</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Role" title="http://www.w3.org/ns/org#Role">Role</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="signs">
+            <h3>signs<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#signs</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="symptomType">
+            <h3>symptom type<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#symptomType</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Symptom" title="https://w3id.org/def/lotaf#Symptom">Symptom</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://www.owl-ontologies.com/odrl#target">
+            <h3>target<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.owl-ontologies.com/odrl#target</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Rule" title="http://www.owl-ontologies.com/odrl#Rule">Rule</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="trustee">
+            <h3>trustee<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#trustee</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="trustor">
+            <h3>trustor<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#trustor</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+      </div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+         <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+         <ul class="hlist">
+            <li><a href="#bandwith" title="https://w3id.org/def/lotaf#bandwith">bandwith</a></li>
+            <li><a href="#characteristic" title="https://w3id.org/def/lotaf#characteristic">characteristic</a></li>
+            <li><a href="#constraint" title="https://w3id.org/def/lotaf#constraint">constraint</a></li>
+            <li><a href="#https://w3id.org/aerOS/continuum#cpuCores" title="https://w3id.org/aerOS/continuum#cpuCores">cpu cores</a></li>
+            <li><a href="#customerID" title="https://w3id.org/def/lotaf#customerID">customer i d</a></li>
+            <li><a href="#http://purl.org/terms/description" title="http://purl.org/terms/description">description</a></li>
+            <li><a href="#endpoint" title="https://w3id.org/def/lotaf#endpoint">endpoint</a></li>
+            <li><a href="#http://xmlns.com/foaf/0.1/givenName" title="http://xmlns.com/foaf/0.1/givenName">given name</a></li>
+            <li><a href="#healthScore" title="https://w3id.org/def/lotaf#healthScore">health score</a></li>
+            <li><a href="#http://purl.org/terms/identifier" title="http://purl.org/terms/identifier">identifier</a></li>
+            <li><a href="#http://xmlns.com/foaf/0.1/lastName" title="http://xmlns.com/foaf/0.1/lastName">last name</a></li>
+            <li><a href="#https://w3id.org/ofo#location" title="https://w3id.org/ofo#location">location</a></li>
+            <li><a href="#lot" title="https://w3id.org/def/lotaf#lot">lot</a></li>
+            <li><a href="#powerConsumption" title="https://w3id.org/def/lotaf#powerConsumption">power consumption</a></li>
+            <li><a href="#providerID" title="https://w3id.org/def/lotaf#providerID">provider i d</a></li>
+            <li><a href="#https://w3id.org/aerOS/continuum#ramCapacity" title="https://w3id.org/aerOS/continuum#ramCapacity">ram capacity</a></li>
+            <li><a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated">report generated</a></li>
+            <li><a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber">report number</a></li>
+            <li><a href="#request" title="https://w3id.org/def/lotaf#request">request</a></li>
+            <li><a href="#requirement" title="https://w3id.org/def/lotaf#requirement">requirement</a></li>
+            <li><a href="#scope" title="https://w3id.org/def/lotaf#scope">scope</a></li>
+            <li><a href="#startTime" title="https://w3id.org/def/lotaf#startTime">start time</a></li>
+            <li><a href="#stopTime" title="https://w3id.org/def/lotaf#stopTime">stop time</a></li>
+            <li><a href="#throughput" title="https://w3id.org/def/lotaf#throughput">throughput</a></li>
+            <li><a href="#value" title="https://w3id.org/def/lotaf#value">value</a></li>
+            <li><a href="#violationDescription" title="https://w3id.org/def/lotaf#violationDescription">violation description</a></li>
+            <li><a href="#weightingFactor" title="https://w3id.org/def/lotaf#weightingFactor">weighting factor</a></li>
+         </ul>
+         <div class="entity" id="bandwith">
+            <h3>bandwith<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#bandwith</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="characteristic">
+            <h3>characteristic<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#characteristic</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="constraint">
+            <h3>constraint<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#constraint</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Rule" title="http://www.owl-ontologies.com/odrl#Rule">Rule</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="https://w3id.org/aerOS/continuum#cpuCores">
+            <h3>cpu cores<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/aerOS/continuum#cpuCores</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="customerID">
+            <h3>customer i d<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#customerID</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://purl.org/terms/description">
+            <h3>description<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/terms/description</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#AdministrativeDomain" title="https://w3id.org/def/lotaf#AdministrativeDomain">Administrative Domain</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#Symptom" title="https://w3id.org/def/lotaf#Symptom">Symptom</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="endpoint">
+            <h3>endpoint<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#endpoint</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#anyURI" target="_blank" title="http://www.w3.org/2001/XMLSchema#anyURI">any U R I</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://xmlns.com/foaf/0.1/givenName">
+            <h3>given name<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://xmlns.com/foaf/0.1/givenName</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="healthScore">
+            <h3>health score<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#healthScore</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Health" title="https://w3id.org/def/lotaf#Health">Health</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://purl.org/terms/identifier">
+            <h3>identifier<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/terms/identifier</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#http://www.w3.org/ns/org#Organization" title="http://www.w3.org/ns/org#Organization">Organization</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#AdministrativeDomain" title="https://w3id.org/def/lotaf#AdministrativeDomain">Administrative Domain</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#NetworkService" title="https://w3id.org/def/lotaf#NetworkService">Network Service</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://xmlns.com/foaf/0.1/lastName">
+            <h3>last name<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://xmlns.com/foaf/0.1/lastName</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://xmlns.com/foaf/0.1/Person" title="http://xmlns.com/foaf/0.1/Person">Person</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="https://w3id.org/ofo#location">
+            <h3>location<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/ofo#location</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="lot">
+            <h3>lot<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#lot</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="powerConsumption">
+            <h3>power consumption<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#powerConsumption</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="providerID">
+            <h3>provider i d<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#providerID</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="https://w3id.org/aerOS/continuum#ramCapacity">
+            <h3>ram capacity<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/aerOS/continuum#ramCapacity</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated">
+            <h3>report generated<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportGenerated</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport">Intent Report</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber">
+            <h3>report number<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/reportNumber</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/IntentReport">Intent Report</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="request">
+            <h3>request<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#request</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Policy" title="http://www.owl-ontologies.com/odrl#Policy">Policy</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#User" title="https://w3id.org/def/lotaf#User">User</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="requirement">
+            <h3>requirement<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#requirement</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="scope">
+            <h3>scope<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#scope</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent" title="http://tio.models.tmforum.org/tio/v3.6.0/IntentCommonModel/Intent">Intent</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="startTime">
+            <h3>start time<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#startTime</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#date" target="_blank" title="http://www.w3.org/2001/XMLSchema#date">date</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="stopTime">
+            <h3>stop time<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#stopTime</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#LevelOfTrust" title="https://w3id.org/def/lotaf#LevelOfTrust">Level Of Trust</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#date" target="_blank" title="http://www.w3.org/2001/XMLSchema#date">date</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="throughput">
+            <h3>throughput<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#throughput</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#http://www.owl-ontologies.com/odrl#Asset" title="http://www.owl-ontologies.com/odrl#Asset">Asset</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="value">
+            <h3>value<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#value</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Indicator" title="https://w3id.org/def/lotaf#Indicator">Indicator</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#Punishment" title="https://w3id.org/def/lotaf#Punishment">Punishment</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dd>
+                     <a href="#Reward" title="https://w3id.org/def/lotaf#Reward">Reward</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="violationDescription">
+            <h3>violation description<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#violationDescription</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#TrustLevelAgreement" title="https://w3id.org/def/lotaf#TrustLevelAgreement">Trust Level Agreement</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+         <div class="entity" id="weightingFactor">
+            <h3>weighting factor<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#weightingFactor</p>
+            <div class="description">
+               <dl>
+                  <dt>
+                     has domain
+                  </dt>
+                  <dd>
+                     <a href="#Indicator" title="https://w3id.org/def/lotaf#Indicator">Indicator</a> <sup class="type-c" title="class">c</sup>
+                  </dd>
+                  <dt>
+                     has range
+                  </dt>
+                  <dd>
+                     <a href="http://www.w3.org/2001/XMLSchema#float" target="_blank" title="http://www.w3.org/2001/XMLSchema#float">float</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+      </div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+         <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+         <ul class="hlist">
+            <li><a href="#http://purl.org/dc/elements/1.1/contributor" title="http://purl.org/dc/elements/1.1/contributor"> <span>contributor</span> </a></li>
+            <li><a href="#http://purl.org/dc/elements/1.1/created" title="http://purl.org/dc/elements/1.1/created"> <span>created</span> </a></li>
+            <li><a href="#https://w3id.org/mod#createdWith" title="https://w3id.org/mod#createdWith"> <span>created With</span> </a></li>
+            <li><a href="#http://purl.org/dc/elements/1.1/creator" title="http://purl.org/dc/elements/1.1/creator"> <span>creator</span> </a></li>
+            <li><a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source"> <span>source</span> </a></li>
+            <li><a href="#http://purl.org/dc/elements/1.1/title" title="http://purl.org/dc/elements/1.1/title"> <span>title</span> </a></li>
+            <li><a href="#http://www.w3.org/2002/07/owl#versionInfo" title="http://www.w3.org/2002/07/owl#versionInfo"> <span>version Info</span> </a></li>
+         </ul>
+         <div class="entity" id="http://purl.org/dc/elements/1.1/contributor">
+            <h3>contributor<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/dc/elements/1.1/contributor</p>
+         </div>
+         <div class="entity" id="http://purl.org/dc/elements/1.1/created">
+            <h3>created<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/dc/elements/1.1/created</p>
+         </div>
+         <div class="entity" id="https://w3id.org/mod#createdWith">
+            <h3>created With<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/mod#createdWith</p>
+         </div>
+         <div class="entity" id="http://purl.org/dc/elements/1.1/creator">
+            <h3>creator<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/dc/elements/1.1/creator</p>
+         </div>
+         <div class="entity" id="http://purl.org/dc/terms/source">
+            <h3>source<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/dc/terms/source</p>
+         </div>
+         <div class="entity" id="http://purl.org/dc/elements/1.1/title">
+            <h3>title<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://purl.org/dc/elements/1.1/title</p>
+         </div>
+         <div class="entity" id="http://www.w3.org/2002/07/owl#versionInfo">
+            <h3>version Info<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+            <p><strong>IRI:</strong> http://www.w3.org/2002/07/owl#versionInfo</p>
+         </div>
+      </div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+         <h3 id="namedindividuals" class="list">Named Individuals</h3>
+         <ul class="hlist">
+            <li><a href="#AllocatingNetworkService" title="https://w3id.org/def/lotaf#AllocatingNetworkService"> <span>Allocating Network Service</span> </a></li>
+            <li><a href="#Availability" title="https://w3id.org/def/lotaf#Availability"> <span>Availability</span> </a></li>
+            <li><a href="#CPUSymptom" title="https://w3id.org/def/lotaf#CPUSymptom"> <span>C P U Symptom</span> </a></li>
+            <li><a href="#CloudContinuumType" title="https://w3id.org/def/lotaf#CloudContinuumType"> <span>Cloud Continuum Type</span> </a></li>
+            <li><a href="#CloudEdgeContinuumType" title="https://w3id.org/def/lotaf#CloudEdgeContinuumType"> <span>Cloud Edge Continuum Type</span> </a></li>
+            <li><a href="#CloudType" title="https://w3id.org/def/lotaf#CloudType"> <span>Cloud Type</span> </a></li>
+            <li><a href="#Credibility" title="https://w3id.org/def/lotaf#Credibility"> <span>Credibility</span> </a></li>
+            <li><a href="#CustomerNotificationAction" title="https://w3id.org/def/lotaf#CustomerNotificationAction"> <span>Customer Notification Action</span> </a></li>
+            <li><a href="#DeployingNetworkService" title="https://w3id.org/def/lotaf#DeployingNetworkService"> <span>Deploying Network Service</span> </a></li>
+            <li><a href="#DigitalServiceCustomer" title="https://w3id.org/def/lotaf#DigitalServiceCustomer"> <span>Digital Service Customer</span> </a></li>
+            <li><a href="#DigitalServiceProvider" title="https://w3id.org/def/lotaf#DigitalServiceProvider"> <span>Digital Service Provider</span> </a></li>
+            <li><a href="#EdgeType" title="https://w3id.org/def/lotaf#EdgeType"> <span>Edge Type</span> </a></li>
+            <li><a href="#EndingTrustAgreementAction" title="https://w3id.org/def/lotaf#EndingTrustAgreementAction"> <span>Ending Trust Agreement Action</span> </a></li>
+            <li><a href="#EvaluatingOtherAssesstsAction" title="https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction"> <span>Evaluating Other Assessts Action</span> </a></li>
+            <li><a href="#FarEdgeType" title="https://w3id.org/def/lotaf#FarEdgeType"> <span>Far Edge Type</span> </a></li>
+            <li><a href="#Feedback" title="https://w3id.org/def/lotaf#Feedback"> <span>Feedback</span> </a></li>
+            <li><a href="#FinishedNetworkService" title="https://w3id.org/def/lotaf#FinishedNetworkService"> <span>Finished Network Service</span> </a></li>
+            <li><a href="#GreenHealthStatus" title="https://w3id.org/def/lotaf#GreenHealthStatus"> <span>Green Health Status</span> </a></li>
+            <li><a href="#HealthyNetworkService" title="https://w3id.org/def/lotaf#HealthyNetworkService"> <span>Healthy Network Service</span> </a></li>
+            <li><a href="#InactiveNetworkService" title="https://w3id.org/def/lotaf#InactiveNetworkService"> <span>Inactive Network Service</span> </a></li>
+            <li><a href="#InfrastructureAsset" title="https://w3id.org/def/lotaf#InfrastructureAsset"> <span>Infrastructure Asset</span> </a></li>
+            <li><a href="#InitializingNetworkService" title="https://w3id.org/def/lotaf#InitializingNetworkService"> <span>Initializing Network Service</span> </a></li>
+            <li><a href="#MaintainingNetworkService" title="https://w3id.org/def/lotaf#MaintainingNetworkService"> <span>Maintaining Network Service</span> </a></li>
+            <li><a href="#MemorySymptom" title="https://w3id.org/def/lotaf#MemorySymptom"> <span>Memory Symptom</span> </a></li>
+            <li><a href="#MigratingNetworkService" title="https://w3id.org/def/lotaf#MigratingNetworkService"> <span>Migrating Network Service</span> </a></li>
+            <li><a href="#NetworkingSymptom" title="https://w3id.org/def/lotaf#NetworkingSymptom"> <span>Networking Symptom</span> </a></li>
+            <li><a href="#OrangeHealthStatus" title="https://w3id.org/def/lotaf#OrangeHealthStatus"> <span>Orange Health Status</span> </a></li>
+            <li><a href="#OverloadNetworkService" title="https://w3id.org/def/lotaf#OverloadNetworkService"> <span>Overload Network Service</span> </a></li>
+            <li><a href="#PausedNetworkService" title="https://w3id.org/def/lotaf#PausedNetworkService"> <span>Paused Network Service</span> </a></li>
+            <li><a href="#ProcessesSymptom" title="https://w3id.org/def/lotaf#ProcessesSymptom"> <span>Processes Symptom</span> </a></li>
+            <li><a href="#ProviderNotificationAction" title="https://w3id.org/def/lotaf#ProviderNotificationAction"> <span>Provider Notification Action</span> </a></li>
+            <li><a href="#RedHealthStatus" title="https://w3id.org/def/lotaf#RedHealthStatus"> <span>Red Health Status</span> </a></li>
+            <li><a href="#Reliability" title="https://w3id.org/def/lotaf#Reliability"> <span>Reliability</span> </a></li>
+            <li><a href="#ResourceAsset" title="https://w3id.org/def/lotaf#ResourceAsset"> <span>Resource Asset</span> </a></li>
+            <li><a href="#RunningNetworkService" title="https://w3id.org/def/lotaf#RunningNetworkService"> <span>Running Network Service</span> </a></li>
+            <li><a href="#Scalability" title="https://w3id.org/def/lotaf#Scalability"> <span>Scalability</span> </a></li>
+            <li><a href="#ScalingNetworkService" title="https://w3id.org/def/lotaf#ScalingNetworkService"> <span>Scaling Network Service</span> </a></li>
+            <li><a href="#ServiceAsset" title="https://w3id.org/def/lotaf#ServiceAsset"> <span>Service Asset</span> </a></li>
+            <li><a href="#Stability" title="https://w3id.org/def/lotaf#Stability"> <span>Stability</span> </a></li>
+            <li><a href="#SubserviceAsset" title="https://w3id.org/def/lotaf#SubserviceAsset"> <span>Subservice Asset</span> </a></li>
+            <li><a href="#VPPSymptom" title="https://w3id.org/def/lotaf#VPPSymptom"> <span>V P P Symptom</span> </a></li>
+            <li><a href="#VirtualMachinesSymptom" title="https://w3id.org/def/lotaf#VirtualMachinesSymptom"> <span>Virtual Machines Symptom</span> </a></li>
+         </ul>
+         <div class="entity" id="AllocatingNetworkService">
+            <h3>Allocating Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#AllocatingNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Availability">
+            <h3>Availability<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Availability</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="CPUSymptom">
+            <h3>C P U Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CPUSymptom</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="CloudContinuumType">
+            <h3>Cloud Continuum Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudContinuumType</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="CloudEdgeContinuumType">
+            <h3>Cloud Edge Continuum Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudEdgeContinuumType</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="CloudType">
+            <h3>Cloud Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CloudType</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Credibility">
+            <h3>Credibility<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Credibility</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SubjectiveIndicator" title="https://w3id.org/def/lotaf#SubjectiveIndicator">Subjective Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="CustomerNotificationAction">
+            <h3>Customer Notification Action<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#CustomerNotificationAction</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#PunishmentAction" title="https://w3id.org/def/lotaf#PunishmentAction">Punishment Action</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="DeployingNetworkService">
+            <h3>Deploying Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#DeployingNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="DigitalServiceCustomer">
+            <h3>Digital Service Customer<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#DigitalServiceCustomer</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#DigitalServiceEntity" title="https://w3id.org/def/lotaf#DigitalServiceEntity">Digital Service Entity</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="DigitalServiceProvider">
+            <h3>Digital Service Provider<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#DigitalServiceProvider</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#DigitalServiceEntity" title="https://w3id.org/def/lotaf#DigitalServiceEntity">Digital Service Entity</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="EdgeType">
+            <h3>Edge Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#EdgeType</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="EndingTrustAgreementAction">
+            <h3>Ending Trust Agreement Action<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#EndingTrustAgreementAction</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#PunishmentAction" title="https://w3id.org/def/lotaf#PunishmentAction">Punishment Action</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="EvaluatingOtherAssesstsAction">
+            <h3>Evaluating Other Assessts Action<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#EvaluatingOtherAssesstsAction</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#PunishmentAction" title="https://w3id.org/def/lotaf#PunishmentAction">Punishment Action</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="FarEdgeType">
+            <h3>Far Edge Type<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#FarEdgeType</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceType" title="https://w3id.org/def/lotaf#NetworkServiceType">Network Service Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Feedback">
+            <h3>Feedback<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Feedback</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SubjectiveIndicator" title="https://w3id.org/def/lotaf#SubjectiveIndicator">Subjective Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="FinishedNetworkService">
+            <h3>Finished Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#FinishedNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="GreenHealthStatus">
+            <h3>Green Health Status<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#GreenHealthStatus</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#HealthStatus" title="https://w3id.org/def/lotaf#HealthStatus">Health Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="HealthyNetworkService">
+            <h3>Healthy Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#HealthyNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="InactiveNetworkService">
+            <h3>Inactive Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#InactiveNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="InfrastructureAsset">
+            <h3>Infrastructure Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#InfrastructureAsset</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#AssetType" title="https://w3id.org/def/lotaf#AssetType">Asset Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="InitializingNetworkService">
+            <h3>Initializing Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#InitializingNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="MaintainingNetworkService">
+            <h3>Maintaining Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#MaintainingNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="MemorySymptom">
+            <h3>Memory Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#MemorySymptom</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="MigratingNetworkService">
+            <h3>Migrating Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#MigratingNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="NetworkingSymptom">
+            <h3>Networking Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#NetworkingSymptom</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="OrangeHealthStatus">
+            <h3>Orange Health Status<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#OrangeHealthStatus</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#HealthStatus" title="https://w3id.org/def/lotaf#HealthStatus">Health Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="OverloadNetworkService">
+            <h3>Overload Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#OverloadNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="PausedNetworkService">
+            <h3>Paused Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#PausedNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="ProcessesSymptom">
+            <h3>Processes Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ProcessesSymptom</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="ProviderNotificationAction">
+            <h3>Provider Notification Action<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ProviderNotificationAction</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#PunishmentAction" title="https://w3id.org/def/lotaf#PunishmentAction">Punishment Action</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="RedHealthStatus">
+            <h3>Red Health Status<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#RedHealthStatus</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#HealthStatus" title="https://w3id.org/def/lotaf#HealthStatus">Health Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Reliability">
+            <h3>Reliability<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Reliability</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="ResourceAsset">
+            <h3>Resource Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ResourceAsset</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#AssetType" title="https://w3id.org/def/lotaf#AssetType">Asset Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="RunningNetworkService">
+            <h3>Running Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#RunningNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Scalability">
+            <h3>Scalability<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Scalability</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="ScalingNetworkService">
+            <h3>Scaling Network Service<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ScalingNetworkService</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#NetworkServiceStatus" title="https://w3id.org/def/lotaf#NetworkServiceStatus">Network Service Status</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="ServiceAsset">
+            <h3>Service Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#ServiceAsset</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#AssetType" title="https://w3id.org/def/lotaf#AssetType">Asset Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="Stability">
+            <h3>Stability<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#Stability</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#ObjectiveIndicator" title="https://w3id.org/def/lotaf#ObjectiveIndicator">Objective Indicator</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="SubserviceAsset">
+            <h3>Subservice Asset<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#SubserviceAsset</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#AssetType" title="https://w3id.org/def/lotaf#AssetType">Asset Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="VPPSymptom">
+            <h3>V P P Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#VPPSymptom</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+         <div class="entity" id="VirtualMachinesSymptom">
+            <h3>Virtual Machines Symptom<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+            <p><strong>IRI:</strong> https://w3id.org/def/lotaf#VirtualMachinesSymptom</p>
+            <dl class="description">
+               <dt>
+                  belongs to
+               </dt>
+               <dd>
+                  <a href="#SymptomType" title="https://w3id.org/def/lotaf#SymptomType">Symptom Type</a> <sup class="type-c" title="class">c</sup>
+               </dd>
+            </dl>
+         </div>
+      </div><div id="legend">
+         <h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+         <div   class="entity">
+            <sup class="type-c" title="Classes">c</sup>: Classes <br/>
+            <sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+            <sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+            <sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+         </div>
+      </div>
+   </div>
+    
+
+<!--REFERENCES SECTION-->
+  <div id="references">
+<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+Add your references here. It is recommended to have them as a list.</span>
+
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>
