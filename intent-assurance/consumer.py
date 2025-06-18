@@ -3,7 +3,9 @@ import os
 import json  
 import uuid  
 import asyncio  
-import httpx  
+import httpx
+import time
+from datetime import datetime  
 from dotenv import load_dotenv
 from trust_score_response import consume_kafka_messages
 from trust_score_response import compute_trust_scores_from_json
@@ -54,6 +56,23 @@ def reset_offset(consumer, partitions):
 def get_machine_uuid():
         return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.getnode())))
 
+# This function to log time measurements
+def log_time_measurement(operation, start_time, end_time):
+    elapsed_ms = (end_time - start_time) * 1000  # Convert to milliseconds
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+    
+    log_file = os.path.join(os.path.dirname(__file__), 'performance_metrics.txt')
+    
+    try:
+        with open(log_file, 'a') as f:
+            f.write(f"[{current_time}] {operation}:\n")
+            f.write(f"  Start time: {datetime.fromtimestamp(start_time).strftime('%H:%M:%S.%f')[:-3]}\n")
+            f.write(f"  End time: {datetime.fromtimestamp(end_time).strftime('%H:%M:%S.%f')[:-3]}\n")
+            f.write(f"  Elapsed time: {elapsed_ms:.2f} ms\n")
+            f.write("-" * 50 + "\n")
+    except Exception as e:
+        print(f"Error logging time measurement: {str(e)}")
+
 # Function to call the trust_management_LoTAF API
 async def call_trust_management_api(uuid):
     url = "http://127.0.0.1:8000/trust_management_LoTAF"
@@ -78,10 +97,15 @@ async def call_trust_management_api(uuid):
         return None
     
 def send_to_kafka_TID(data):
-        message = json.dumps(data)
+        start_time = time.time()
+        operation = "Publishing trust indext to Trust Management Kafka"
 
+        message = json.dumps(data)
         producer_TID.produce(os.getenv("TOPIC_PRODUCE_LOTAF"), value=message)
         producer_TID.flush()
+        end_time = time.time()
+        
+        log_time_measurement(operation, start_time, end_time)
         print(f"[INFO] Data sent to kafka topic", os.getenv("TOPIC_PRODUCE_LOTAF"), "with value", message)
     
 # Function to process message and call API if UUID matches
@@ -104,7 +128,11 @@ def process_message(msg_value):
                         json_file_path = os.path.join(os.path.dirname(__file__), 'dxagent-master', 'datos_exporter.json')
                             
                         #Call the function to compute trust scores from the JSON file
+                        compute_start_time = time.time()
                         trust_scores = compute_trust_scores_from_json(json_file_path)
+                        compute_end_time = time.time()
+                        log_time_measurement("Computing trust index", compute_start_time, compute_end_time)
+
                         send_to_kafka_TID(trust_scores)
                             
                         print(f"Trust scores computed from JSON file: {trust_scores}")
@@ -130,7 +158,10 @@ try:
     max_no_message_count = 10  # Number of empty polls before considering all messages read
 
     while True:
+        process_start_time = time.time()
+        kafka_poll_start = time.time()
         msg = consumer.poll(1.0)  # Poll for messages, timeout set to 1 second
+        kafka_poll_end = time.time()
 
         if msg is None:
             no_message_count += 1
@@ -149,6 +180,9 @@ try:
             else:
                 print(f"Error: {msg.error()}")
         else:
+            # Log successful Kafka poll time
+            log_time_measurement("Kafka message polling", kafka_poll_start, kafka_poll_end)
+
             # Process the received message
             message_count += 1
             no_message_count = 0  # Reset the no-message counter
@@ -161,7 +195,15 @@ try:
             process_message(message_value)
             
             # Manually commit offsets
+            # Measure commit time
+            commit_start = time.time()
             consumer.commit(msg)
+            commit_end = time.time()
+            log_time_measurement("Kafka offset commit", commit_start, commit_end)
+        
+        # Measure total processing time
+        process_end_time = time.time()
+        log_time_measurement("Total message processing", process_start_time, process_end_time)
 
 except KeyboardInterrupt:
     print("Consumer interrupted by user")

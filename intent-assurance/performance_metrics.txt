@@ -1,0 +1,1300 @@
+[2025-03-18 12:28:04.693] Kafka message polling:
+  Start time: 12:28:04.343
+  End time: 12:28:04.693
+  Elapsed time: 349.46 ms
+--------------------------------------------------
+[2025-03-18 12:28:04.695] Computing trust index:
+  Start time: 12:28:04.693
+  End time: 12:28:04.695
+  Elapsed time: 1.26 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.603] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:04.695
+  End time: 12:28:05.603
+  Elapsed time: 908.33 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.604] Total message processing:
+  Start time: 12:28:04.693
+  End time: 12:28:05.604
+  Elapsed time: 910.56 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.604] Kafka offset commit:
+  Start time: 12:28:05.604
+  End time: 12:28:05.604
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.605] Kafka message polling:
+  Start time: 12:28:05.605
+  End time: 12:28:05.605
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.605] Computing trust index:
+  Start time: 12:28:05.605
+  End time: 12:28:05.605
+  Elapsed time: 0.33 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.640] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.606
+  End time: 12:28:05.640
+  Elapsed time: 34.32 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.641] Total message processing:
+  Start time: 12:28:05.605
+  End time: 12:28:05.641
+  Elapsed time: 35.82 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.641] Kafka offset commit:
+  Start time: 12:28:05.641
+  End time: 12:28:05.641
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.641] Kafka message polling:
+  Start time: 12:28:05.641
+  End time: 12:28:05.641
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.643] Computing trust index:
+  Start time: 12:28:05.642
+  End time: 12:28:05.643
+  Elapsed time: 0.68 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.680] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.643
+  End time: 12:28:05.680
+  Elapsed time: 37.32 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.681] Total message processing:
+  Start time: 12:28:05.642
+  End time: 12:28:05.681
+  Elapsed time: 39.51 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.682] Kafka offset commit:
+  Start time: 12:28:05.682
+  End time: 12:28:05.682
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.682] Kafka message polling:
+  Start time: 12:28:05.682
+  End time: 12:28:05.682
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.683] Computing trust index:
+  Start time: 12:28:05.683
+  End time: 12:28:05.683
+  Elapsed time: 0.42 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.728] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.684
+  End time: 12:28:05.728
+  Elapsed time: 44.53 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.729] Total message processing:
+  Start time: 12:28:05.683
+  End time: 12:28:05.729
+  Elapsed time: 46.43 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.730] Kafka offset commit:
+  Start time: 12:28:05.730
+  End time: 12:28:05.730
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.730] Kafka message polling:
+  Start time: 12:28:05.730
+  End time: 12:28:05.730
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.731] Computing trust index:
+  Start time: 12:28:05.730
+  End time: 12:28:05.731
+  Elapsed time: 0.51 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.772] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.731
+  End time: 12:28:05.772
+  Elapsed time: 41.50 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.773] Total message processing:
+  Start time: 12:28:05.730
+  End time: 12:28:05.773
+  Elapsed time: 43.40 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.774] Kafka offset commit:
+  Start time: 12:28:05.774
+  End time: 12:28:05.774
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.774] Kafka message polling:
+  Start time: 12:28:05.774
+  End time: 12:28:05.774
+  Elapsed time: 0.05 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.775] Computing trust index:
+  Start time: 12:28:05.774
+  End time: 12:28:05.775
+  Elapsed time: 0.38 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.814] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.775
+  End time: 12:28:05.814
+  Elapsed time: 39.14 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.815] Total message processing:
+  Start time: 12:28:05.774
+  End time: 12:28:05.815
+  Elapsed time: 40.59 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.815] Kafka offset commit:
+  Start time: 12:28:05.815
+  End time: 12:28:05.815
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.815] Kafka message polling:
+  Start time: 12:28:05.815
+  End time: 12:28:05.815
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.816] Computing trust index:
+  Start time: 12:28:05.816
+  End time: 12:28:05.816
+  Elapsed time: 0.38 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.851] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.816
+  End time: 12:28:05.851
+  Elapsed time: 34.23 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.851] Total message processing:
+  Start time: 12:28:05.816
+  End time: 12:28:05.851
+  Elapsed time: 35.76 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.852] Kafka offset commit:
+  Start time: 12:28:05.852
+  End time: 12:28:05.852
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.852] Kafka message polling:
+  Start time: 12:28:05.852
+  End time: 12:28:05.852
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.853] Computing trust index:
+  Start time: 12:28:05.852
+  End time: 12:28:05.853
+  Elapsed time: 0.47 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.893] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.853
+  End time: 12:28:05.893
+  Elapsed time: 39.51 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.894] Total message processing:
+  Start time: 12:28:05.852
+  End time: 12:28:05.894
+  Elapsed time: 41.31 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.894] Kafka offset commit:
+  Start time: 12:28:05.894
+  End time: 12:28:05.894
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.894] Kafka message polling:
+  Start time: 12:28:05.894
+  End time: 12:28:05.894
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.895] Computing trust index:
+  Start time: 12:28:05.895
+  End time: 12:28:05.895
+  Elapsed time: 0.37 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.937] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.895
+  End time: 12:28:05.937
+  Elapsed time: 41.23 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.938] Total message processing:
+  Start time: 12:28:05.895
+  End time: 12:28:05.938
+  Elapsed time: 42.85 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.938] Kafka offset commit:
+  Start time: 12:28:05.938
+  End time: 12:28:05.938
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.938] Kafka message polling:
+  Start time: 12:28:05.938
+  End time: 12:28:05.938
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.939] Computing trust index:
+  Start time: 12:28:05.938
+  End time: 12:28:05.939
+  Elapsed time: 0.38 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.986] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.939
+  End time: 12:28:05.986
+  Elapsed time: 46.60 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.986] Total message processing:
+  Start time: 12:28:05.938
+  End time: 12:28:05.986
+  Elapsed time: 47.99 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.987] Kafka offset commit:
+  Start time: 12:28:05.987
+  End time: 12:28:05.987
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.987] Kafka message polling:
+  Start time: 12:28:05.987
+  End time: 12:28:05.987
+  Elapsed time: 0.11 ms
+--------------------------------------------------
+[2025-03-18 12:28:05.988] Computing trust index:
+  Start time: 12:28:05.988
+  End time: 12:28:05.988
+  Elapsed time: 0.51 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.032] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:05.988
+  End time: 12:28:06.031
+  Elapsed time: 43.24 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.032] Total message processing:
+  Start time: 12:28:05.987
+  End time: 12:28:06.032
+  Elapsed time: 44.69 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.032] Kafka offset commit:
+  Start time: 12:28:06.032
+  End time: 12:28:06.032
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.033] Kafka message polling:
+  Start time: 12:28:06.033
+  End time: 12:28:06.033
+  Elapsed time: 0.04 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.034] Computing trust index:
+  Start time: 12:28:06.033
+  End time: 12:28:06.034
+  Elapsed time: 0.43 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.080] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.034
+  End time: 12:28:06.080
+  Elapsed time: 45.81 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.080] Total message processing:
+  Start time: 12:28:06.033
+  End time: 12:28:06.080
+  Elapsed time: 47.35 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.081] Kafka offset commit:
+  Start time: 12:28:06.081
+  End time: 12:28:06.081
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.082] Kafka message polling:
+  Start time: 12:28:06.082
+  End time: 12:28:06.082
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.082] Computing trust index:
+  Start time: 12:28:06.082
+  End time: 12:28:06.082
+  Elapsed time: 0.52 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.125] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.083
+  End time: 12:28:06.125
+  Elapsed time: 42.09 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.126] Total message processing:
+  Start time: 12:28:06.082
+  End time: 12:28:06.126
+  Elapsed time: 43.76 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.126] Kafka offset commit:
+  Start time: 12:28:06.126
+  End time: 12:28:06.126
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.126] Kafka message polling:
+  Start time: 12:28:06.126
+  End time: 12:28:06.126
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.127] Computing trust index:
+  Start time: 12:28:06.126
+  End time: 12:28:06.127
+  Elapsed time: 0.37 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.167] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.127
+  End time: 12:28:06.167
+  Elapsed time: 39.53 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.167] Total message processing:
+  Start time: 12:28:06.126
+  End time: 12:28:06.167
+  Elapsed time: 40.97 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.168] Kafka offset commit:
+  Start time: 12:28:06.168
+  End time: 12:28:06.168
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.168] Kafka message polling:
+  Start time: 12:28:06.168
+  End time: 12:28:06.168
+  Elapsed time: 0.05 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.169] Computing trust index:
+  Start time: 12:28:06.168
+  End time: 12:28:06.169
+  Elapsed time: 0.38 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.204] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.169
+  End time: 12:28:06.204
+  Elapsed time: 35.31 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.205] Total message processing:
+  Start time: 12:28:06.168
+  End time: 12:28:06.205
+  Elapsed time: 36.83 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.207] Kafka offset commit:
+  Start time: 12:28:06.207
+  End time: 12:28:06.207
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.208] Kafka message polling:
+  Start time: 12:28:06.208
+  End time: 12:28:06.208
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.208] Computing trust index:
+  Start time: 12:28:06.208
+  End time: 12:28:06.208
+  Elapsed time: 0.47 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.253] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.209
+  End time: 12:28:06.253
+  Elapsed time: 44.30 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.254] Total message processing:
+  Start time: 12:28:06.208
+  End time: 12:28:06.254
+  Elapsed time: 46.05 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.254] Kafka offset commit:
+  Start time: 12:28:06.254
+  End time: 12:28:06.254
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.255] Kafka message polling:
+  Start time: 12:28:06.255
+  End time: 12:28:06.255
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.256] Computing trust index:
+  Start time: 12:28:06.255
+  End time: 12:28:06.256
+  Elapsed time: 0.74 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.306] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.256
+  End time: 12:28:06.306
+  Elapsed time: 49.40 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.307] Total message processing:
+  Start time: 12:28:06.255
+  End time: 12:28:06.307
+  Elapsed time: 52.26 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.308] Kafka offset commit:
+  Start time: 12:28:06.308
+  End time: 12:28:06.308
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.308] Kafka message polling:
+  Start time: 12:28:06.308
+  End time: 12:28:06.308
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.309] Computing trust index:
+  Start time: 12:28:06.308
+  End time: 12:28:06.309
+  Elapsed time: 0.65 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.351] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.309
+  End time: 12:28:06.351
+  Elapsed time: 41.78 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.352] Total message processing:
+  Start time: 12:28:06.308
+  End time: 12:28:06.352
+  Elapsed time: 43.76 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.352] Kafka offset commit:
+  Start time: 12:28:06.352
+  End time: 12:28:06.352
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.353] Kafka message polling:
+  Start time: 12:28:06.353
+  End time: 12:28:06.353
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.353] Computing trust index:
+  Start time: 12:28:06.353
+  End time: 12:28:06.353
+  Elapsed time: 0.19 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.400] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.353
+  End time: 12:28:06.400
+  Elapsed time: 46.95 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.401] Total message processing:
+  Start time: 12:28:06.353
+  End time: 12:28:06.401
+  Elapsed time: 48.41 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.403] Kafka offset commit:
+  Start time: 12:28:06.403
+  End time: 12:28:06.403
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.403] Kafka message polling:
+  Start time: 12:28:06.403
+  End time: 12:28:06.403
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.404] Computing trust index:
+  Start time: 12:28:06.403
+  End time: 12:28:06.404
+  Elapsed time: 0.34 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.455] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.404
+  End time: 12:28:06.455
+  Elapsed time: 50.79 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.455] Total message processing:
+  Start time: 12:28:06.403
+  End time: 12:28:06.455
+  Elapsed time: 52.17 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.456] Kafka offset commit:
+  Start time: 12:28:06.456
+  End time: 12:28:06.456
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.456] Kafka message polling:
+  Start time: 12:28:06.456
+  End time: 12:28:06.456
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.457] Computing trust index:
+  Start time: 12:28:06.456
+  End time: 12:28:06.457
+  Elapsed time: 1.00 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.502] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.458
+  End time: 12:28:06.502
+  Elapsed time: 43.92 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.503] Total message processing:
+  Start time: 12:28:06.456
+  End time: 12:28:06.503
+  Elapsed time: 47.07 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.503] Kafka offset commit:
+  Start time: 12:28:06.503
+  End time: 12:28:06.503
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.504] Kafka message polling:
+  Start time: 12:28:06.504
+  End time: 12:28:06.504
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.505] Computing trust index:
+  Start time: 12:28:06.504
+  End time: 12:28:06.505
+  Elapsed time: 1.18 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.558] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.506
+  End time: 12:28:06.558
+  Elapsed time: 52.41 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.559] Total message processing:
+  Start time: 12:28:06.504
+  End time: 12:28:06.559
+  Elapsed time: 54.82 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.559] Kafka offset commit:
+  Start time: 12:28:06.559
+  End time: 12:28:06.559
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.559] Kafka message polling:
+  Start time: 12:28:06.559
+  End time: 12:28:06.559
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.560] Computing trust index:
+  Start time: 12:28:06.560
+  End time: 12:28:06.560
+  Elapsed time: 0.38 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.604] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.560
+  End time: 12:28:06.604
+  Elapsed time: 44.11 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.605] Total message processing:
+  Start time: 12:28:06.560
+  End time: 12:28:06.605
+  Elapsed time: 45.76 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.606] Kafka offset commit:
+  Start time: 12:28:06.606
+  End time: 12:28:06.606
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.606] Kafka message polling:
+  Start time: 12:28:06.606
+  End time: 12:28:06.606
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.608] Computing trust index:
+  Start time: 12:28:06.606
+  End time: 12:28:06.608
+  Elapsed time: 1.14 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.650] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.608
+  End time: 12:28:06.650
+  Elapsed time: 41.76 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.651] Total message processing:
+  Start time: 12:28:06.606
+  End time: 12:28:06.651
+  Elapsed time: 44.29 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.651] Kafka offset commit:
+  Start time: 12:28:06.651
+  End time: 12:28:06.651
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.652] Kafka message polling:
+  Start time: 12:28:06.652
+  End time: 12:28:06.652
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.653] Computing trust index:
+  Start time: 12:28:06.653
+  End time: 12:28:06.653
+  Elapsed time: 0.54 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.692] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.654
+  End time: 12:28:06.692
+  Elapsed time: 38.39 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.692] Total message processing:
+  Start time: 12:28:06.652
+  End time: 12:28:06.692
+  Elapsed time: 39.98 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.692] Kafka offset commit:
+  Start time: 12:28:06.692
+  End time: 12:28:06.692
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.692] Kafka message polling:
+  Start time: 12:28:06.692
+  End time: 12:28:06.692
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.693] Computing trust index:
+  Start time: 12:28:06.693
+  End time: 12:28:06.693
+  Elapsed time: 0.17 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.734] Publishing trust indext to Trust Management Kafka:
+  Start time: 12:28:06.693
+  End time: 12:28:06.734
+  Elapsed time: 41.22 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.735] Total message processing:
+  Start time: 12:28:06.693
+  End time: 12:28:06.735
+  Elapsed time: 42.42 ms
+--------------------------------------------------
+[2025-03-18 12:28:06.735] Kafka offset commit:
+  Start time: 12:28:06.735
+  End time: 12:28:06.735
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:09.211] Kafka message polling:
+  Start time: 13:24:09.130
+  End time: 13:24:09.211
+  Elapsed time: 81.30 ms
+--------------------------------------------------
+[2025-03-18 13:24:09.214] Computing trust index:
+  Start time: 13:24:09.213
+  End time: 13:24:09.214
+  Elapsed time: 1.14 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.549] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:09.214
+  End time: 13:24:10.549
+  Elapsed time: 1335.20 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.550] Kafka offset commit:
+  Start time: 13:24:10.550
+  End time: 13:24:10.550
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.550] Total message processing:
+  Start time: 13:24:09.130
+  End time: 13:24:10.550
+  Elapsed time: 1420.07 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.550] Kafka message polling:
+  Start time: 13:24:10.550
+  End time: 13:24:10.550
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.550] Computing trust index:
+  Start time: 13:24:10.550
+  End time: 13:24:10.550
+  Elapsed time: 0.16 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.611] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.551
+  End time: 13:24:10.611
+  Elapsed time: 60.05 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.611] Kafka offset commit:
+  Start time: 13:24:10.611
+  End time: 13:24:10.611
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.611] Total message processing:
+  Start time: 13:24:10.550
+  End time: 13:24:10.611
+  Elapsed time: 61.05 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.611] Kafka message polling:
+  Start time: 13:24:10.611
+  End time: 13:24:10.611
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.612] Computing trust index:
+  Start time: 13:24:10.611
+  End time: 13:24:10.612
+  Elapsed time: 0.15 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.667] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.612
+  End time: 13:24:10.667
+  Elapsed time: 55.13 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.667] Kafka offset commit:
+  Start time: 13:24:10.667
+  End time: 13:24:10.667
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.667] Total message processing:
+  Start time: 13:24:10.611
+  End time: 13:24:10.667
+  Elapsed time: 56.10 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.668] Kafka message polling:
+  Start time: 13:24:10.668
+  End time: 13:24:10.668
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.668] Computing trust index:
+  Start time: 13:24:10.668
+  End time: 13:24:10.668
+  Elapsed time: 0.15 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.725] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.668
+  End time: 13:24:10.725
+  Elapsed time: 56.70 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.725] Kafka offset commit:
+  Start time: 13:24:10.725
+  End time: 13:24:10.725
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.725] Total message processing:
+  Start time: 13:24:10.668
+  End time: 13:24:10.725
+  Elapsed time: 57.68 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.725] Kafka message polling:
+  Start time: 13:24:10.725
+  End time: 13:24:10.725
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.726] Computing trust index:
+  Start time: 13:24:10.725
+  End time: 13:24:10.726
+  Elapsed time: 0.15 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.784] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.726
+  End time: 13:24:10.784
+  Elapsed time: 58.13 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.784] Kafka offset commit:
+  Start time: 13:24:10.784
+  End time: 13:24:10.784
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.784] Total message processing:
+  Start time: 13:24:10.725
+  End time: 13:24:10.784
+  Elapsed time: 58.87 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.784] Kafka message polling:
+  Start time: 13:24:10.784
+  End time: 13:24:10.784
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.785] Computing trust index:
+  Start time: 13:24:10.784
+  End time: 13:24:10.785
+  Elapsed time: 0.16 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.849] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.785
+  End time: 13:24:10.849
+  Elapsed time: 64.13 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.850] Kafka offset commit:
+  Start time: 13:24:10.850
+  End time: 13:24:10.850
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.850] Total message processing:
+  Start time: 13:24:10.784
+  End time: 13:24:10.850
+  Elapsed time: 66.04 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.851] Kafka message polling:
+  Start time: 13:24:10.851
+  End time: 13:24:10.851
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.852] Computing trust index:
+  Start time: 13:24:10.852
+  End time: 13:24:10.852
+  Elapsed time: 0.44 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.916] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.852
+  End time: 13:24:10.916
+  Elapsed time: 63.49 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.917] Kafka offset commit:
+  Start time: 13:24:10.917
+  End time: 13:24:10.917
+  Elapsed time: 0.07 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.918] Total message processing:
+  Start time: 13:24:10.851
+  End time: 13:24:10.918
+  Elapsed time: 67.16 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.919] Kafka message polling:
+  Start time: 13:24:10.919
+  End time: 13:24:10.919
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.919] Computing trust index:
+  Start time: 13:24:10.919
+  End time: 13:24:10.919
+  Elapsed time: 0.48 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.985] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.920
+  End time: 13:24:10.985
+  Elapsed time: 65.19 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.986] Kafka offset commit:
+  Start time: 13:24:10.986
+  End time: 13:24:10.986
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.986] Total message processing:
+  Start time: 13:24:10.919
+  End time: 13:24:10.986
+  Elapsed time: 67.93 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.987] Kafka message polling:
+  Start time: 13:24:10.987
+  End time: 13:24:10.987
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 13:24:10.988] Computing trust index:
+  Start time: 13:24:10.988
+  End time: 13:24:10.988
+  Elapsed time: 0.40 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.056] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:10.988
+  End time: 13:24:11.056
+  Elapsed time: 68.26 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.057] Kafka offset commit:
+  Start time: 13:24:11.057
+  End time: 13:24:11.057
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.057] Total message processing:
+  Start time: 13:24:10.987
+  End time: 13:24:11.057
+  Elapsed time: 69.79 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.057] Kafka message polling:
+  Start time: 13:24:11.057
+  End time: 13:24:11.057
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.057] Computing trust index:
+  Start time: 13:24:11.057
+  End time: 13:24:11.057
+  Elapsed time: 0.15 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.126] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.057
+  End time: 13:24:11.126
+  Elapsed time: 68.26 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.126] Kafka offset commit:
+  Start time: 13:24:11.126
+  End time: 13:24:11.126
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.126] Total message processing:
+  Start time: 13:24:11.057
+  End time: 13:24:11.126
+  Elapsed time: 69.25 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.126] Kafka message polling:
+  Start time: 13:24:11.126
+  End time: 13:24:11.126
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.127] Computing trust index:
+  Start time: 13:24:11.126
+  End time: 13:24:11.127
+  Elapsed time: 0.14 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.196] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.127
+  End time: 13:24:11.196
+  Elapsed time: 69.12 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.196] Kafka offset commit:
+  Start time: 13:24:11.196
+  End time: 13:24:11.196
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.196] Total message processing:
+  Start time: 13:24:11.126
+  End time: 13:24:11.196
+  Elapsed time: 70.08 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.197] Kafka message polling:
+  Start time: 13:24:11.197
+  End time: 13:24:11.197
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.197] Computing trust index:
+  Start time: 13:24:11.197
+  End time: 13:24:11.197
+  Elapsed time: 0.15 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.266] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.197
+  End time: 13:24:11.266
+  Elapsed time: 68.93 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.266] Kafka offset commit:
+  Start time: 13:24:11.266
+  End time: 13:24:11.266
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.266] Total message processing:
+  Start time: 13:24:11.197
+  End time: 13:24:11.266
+  Elapsed time: 69.62 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.266] Kafka message polling:
+  Start time: 13:24:11.266
+  End time: 13:24:11.266
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.266] Computing trust index:
+  Start time: 13:24:11.266
+  End time: 13:24:11.266
+  Elapsed time: 0.15 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.334] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.267
+  End time: 13:24:11.334
+  Elapsed time: 67.30 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.334] Kafka offset commit:
+  Start time: 13:24:11.334
+  End time: 13:24:11.334
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.335] Total message processing:
+  Start time: 13:24:11.266
+  End time: 13:24:11.335
+  Elapsed time: 68.30 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.335] Kafka message polling:
+  Start time: 13:24:11.335
+  End time: 13:24:11.335
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.335] Computing trust index:
+  Start time: 13:24:11.335
+  End time: 13:24:11.335
+  Elapsed time: 0.16 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.404] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.335
+  End time: 13:24:11.404
+  Elapsed time: 69.29 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.405] Kafka offset commit:
+  Start time: 13:24:11.405
+  End time: 13:24:11.405
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.405] Total message processing:
+  Start time: 13:24:11.335
+  End time: 13:24:11.405
+  Elapsed time: 70.33 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.405] Kafka message polling:
+  Start time: 13:24:11.405
+  End time: 13:24:11.405
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.405] Computing trust index:
+  Start time: 13:24:11.405
+  End time: 13:24:11.405
+  Elapsed time: 0.15 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.477] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.405
+  End time: 13:24:11.477
+  Elapsed time: 72.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.478] Kafka offset commit:
+  Start time: 13:24:11.478
+  End time: 13:24:11.478
+  Elapsed time: 0.04 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.479] Total message processing:
+  Start time: 13:24:11.405
+  End time: 13:24:11.479
+  Elapsed time: 73.54 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.479] Kafka message polling:
+  Start time: 13:24:11.479
+  End time: 13:24:11.479
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.479] Computing trust index:
+  Start time: 13:24:11.479
+  End time: 13:24:11.479
+  Elapsed time: 0.32 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.551] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.480
+  End time: 13:24:11.551
+  Elapsed time: 71.54 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.552] Kafka offset commit:
+  Start time: 13:24:11.552
+  End time: 13:24:11.552
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.553] Total message processing:
+  Start time: 13:24:11.479
+  End time: 13:24:11.553
+  Elapsed time: 73.69 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.553] Kafka message polling:
+  Start time: 13:24:11.553
+  End time: 13:24:11.553
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.553] Computing trust index:
+  Start time: 13:24:11.553
+  End time: 13:24:11.553
+  Elapsed time: 0.33 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.622] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.553
+  End time: 13:24:11.622
+  Elapsed time: 68.79 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.623] Kafka offset commit:
+  Start time: 13:24:11.623
+  End time: 13:24:11.623
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.624] Total message processing:
+  Start time: 13:24:11.553
+  End time: 13:24:11.624
+  Elapsed time: 70.94 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.624] Kafka message polling:
+  Start time: 13:24:11.624
+  End time: 13:24:11.624
+  Elapsed time: 0.03 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.625] Computing trust index:
+  Start time: 13:24:11.624
+  End time: 13:24:11.625
+  Elapsed time: 0.54 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.693] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.625
+  End time: 13:24:11.693
+  Elapsed time: 67.71 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.694] Kafka offset commit:
+  Start time: 13:24:11.694
+  End time: 13:24:11.694
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.694] Total message processing:
+  Start time: 13:24:11.624
+  End time: 13:24:11.694
+  Elapsed time: 70.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.694] Kafka message polling:
+  Start time: 13:24:11.694
+  End time: 13:24:11.694
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.695] Computing trust index:
+  Start time: 13:24:11.694
+  End time: 13:24:11.695
+  Elapsed time: 0.35 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.761] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.695
+  End time: 13:24:11.761
+  Elapsed time: 66.48 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.762] Kafka offset commit:
+  Start time: 13:24:11.762
+  End time: 13:24:11.762
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.762] Total message processing:
+  Start time: 13:24:11.694
+  End time: 13:24:11.762
+  Elapsed time: 68.14 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.763] Kafka message polling:
+  Start time: 13:24:11.763
+  End time: 13:24:11.763
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.763] Computing trust index:
+  Start time: 13:24:11.763
+  End time: 13:24:11.763
+  Elapsed time: 0.33 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.831] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.763
+  End time: 13:24:11.831
+  Elapsed time: 67.24 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.831] Kafka offset commit:
+  Start time: 13:24:11.831
+  End time: 13:24:11.831
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.832] Total message processing:
+  Start time: 13:24:11.763
+  End time: 13:24:11.832
+  Elapsed time: 69.40 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.832] Kafka message polling:
+  Start time: 13:24:11.832
+  End time: 13:24:11.832
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.833] Computing trust index:
+  Start time: 13:24:11.832
+  End time: 13:24:11.833
+  Elapsed time: 0.33 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.904] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.833
+  End time: 13:24:11.904
+  Elapsed time: 71.03 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.905] Kafka offset commit:
+  Start time: 13:24:11.905
+  End time: 13:24:11.905
+  Elapsed time: 0.06 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.905] Total message processing:
+  Start time: 13:24:11.832
+  End time: 13:24:11.905
+  Elapsed time: 72.67 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.905] Kafka message polling:
+  Start time: 13:24:11.905
+  End time: 13:24:11.905
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.906] Computing trust index:
+  Start time: 13:24:11.905
+  End time: 13:24:11.906
+  Elapsed time: 0.37 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.985] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.906
+  End time: 13:24:11.985
+  Elapsed time: 79.03 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.986] Kafka offset commit:
+  Start time: 13:24:11.986
+  End time: 13:24:11.986
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.987] Total message processing:
+  Start time: 13:24:11.905
+  End time: 13:24:11.987
+  Elapsed time: 81.66 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.987] Kafka message polling:
+  Start time: 13:24:11.987
+  End time: 13:24:11.987
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:11.987] Computing trust index:
+  Start time: 13:24:11.987
+  End time: 13:24:11.987
+  Elapsed time: 0.32 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.051] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:11.988
+  End time: 13:24:12.051
+  Elapsed time: 63.64 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.052] Kafka offset commit:
+  Start time: 13:24:12.052
+  End time: 13:24:12.052
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.052] Total message processing:
+  Start time: 13:24:11.987
+  End time: 13:24:12.052
+  Elapsed time: 65.53 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.053] Kafka message polling:
+  Start time: 13:24:12.053
+  End time: 13:24:12.053
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.054] Computing trust index:
+  Start time: 13:24:12.053
+  End time: 13:24:12.054
+  Elapsed time: 0.46 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.112] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:12.054
+  End time: 13:24:12.112
+  Elapsed time: 58.16 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.114] Kafka offset commit:
+  Start time: 13:24:12.114
+  End time: 13:24:12.114
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.114] Total message processing:
+  Start time: 13:24:12.053
+  End time: 13:24:12.114
+  Elapsed time: 61.16 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.114] Kafka message polling:
+  Start time: 13:24:12.114
+  End time: 13:24:12.114
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.115] Computing trust index:
+  Start time: 13:24:12.115
+  End time: 13:24:12.115
+  Elapsed time: 0.36 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.172] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:12.115
+  End time: 13:24:12.172
+  Elapsed time: 57.22 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.173] Kafka offset commit:
+  Start time: 13:24:12.173
+  End time: 13:24:12.173
+  Elapsed time: 0.01 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.174] Total message processing:
+  Start time: 13:24:12.114
+  End time: 13:24:12.174
+  Elapsed time: 59.57 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.174] Kafka message polling:
+  Start time: 13:24:12.174
+  End time: 13:24:12.174
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.175] Computing trust index:
+  Start time: 13:24:12.174
+  End time: 13:24:12.175
+  Elapsed time: 0.32 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.229] Publishing trust indext to Trust Management Kafka:
+  Start time: 13:24:12.175
+  End time: 13:24:12.229
+  Elapsed time: 53.97 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.230] Kafka offset commit:
+  Start time: 13:24:12.230
+  End time: 13:24:12.230
+  Elapsed time: 0.02 ms
+--------------------------------------------------
+[2025-03-18 13:24:12.230] Total message processing:
+  Start time: 13:24:12.174
+  End time: 13:24:12.230
+  Elapsed time: 56.43 ms
+--------------------------------------------------
