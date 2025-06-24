@@ -11,7 +11,7 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
- url: "http://localhost:5055/webhook" #localhost->debug / rasa_actions->docker 
+ url: "http://rasa_actions:5055/webhook" #localhost->debug / rasa_actions->docker 
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.

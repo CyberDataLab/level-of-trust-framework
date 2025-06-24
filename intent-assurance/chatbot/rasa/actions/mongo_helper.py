@@ -122,7 +122,7 @@ def _initialize_services_lists():
 # Initialization function
 def initialize():
     global client, db, collection
-    client = MongoClient("mongodb://localhost:27017/") #localhost->debug / my_mongo->docker
+    client = MongoClient("mongodb://my_mongo:27017/") #localhost->debug / my_mongo->docker
     db = client["example_database"]
     collection = db["wef_entities"]
     _initialize_distros_lists()
@@ -153,8 +153,8 @@ def build_storage_filter(storage_info: dict) -> dict:
             "$elemMatch": {
                 "virtualStorageDesc": {
                     "$elemMatch": {
-                        "sizeOfStorage": size,
-                        "sizeOfStorageUnit": unit
+                        "sizeOfStorage": int(size),
+                        "sizeOfStorageUnit": {"$regex": unit, "$options": "i"}
                     }
                 }
             }

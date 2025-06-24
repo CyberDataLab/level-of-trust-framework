@@ -9,7 +9,7 @@ app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key_here'
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-client = MongoClient("mongodb://172.17.0.2:27017/") #Chequear cada vez que se lanza 172.17.0.3
+client = MongoClient("mongodb://my_mongo:27017/") #Chequear cada vez que se lanza 172.17.0.3
 db = client["example_database"]
 users_collection = db["users"]
 ns_collection = db["wef_entities"]
