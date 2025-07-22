@@ -97,4 +97,20 @@ The list of requirements are automatically installed during the `sudo ./setup.sh
 
 LoTAF is **open-source** under the **GPL-3.0 license**. See the `LICENSE` file for details.
 
+## 📚 Citation
+If you use LoTAF in a scientific publication, we would appreciate using the following citations:
 
+```
+@inproceedings{valero2024building,
+  title={Building Trust in the Era of 6G: A Level of Trust Assessment Function for Cloud Continuum},
+  author={Jorquera Valero, Jos{\'e} Mar{\'\i}a and Ord{\'o}{\~n}ez Lucena, Jos{\'e} Antonio and Pastor Perales, Antonio Agust{\'\i}n and L{\'o}pez, Diego R and Gil P{\'e}rez, Manuel and Mart{\'\i}nez P{\'e}rez, Gregorio},
+  booktitle={2024 Joint European Conference on Networks and Communications \& 6G Summit (EuCNC/6G Summit)},
+  pages={812--817},
+  year={2024},
+  organization={IEEE}
+}
+
+```
+
+## 🤝 Contact & Support 
+Contact josemaria.jorquera@um.es or mgilperez@um.es for questions and doubts.
