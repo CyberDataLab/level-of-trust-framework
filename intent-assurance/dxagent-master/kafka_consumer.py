@@ -5,7 +5,7 @@ from neo4j import GraphDatabase
 import os
 import csv
 import time
-from colections import deque
+from collections import deque
 
 
 KAFKA_BROKER = "localhost:9092"

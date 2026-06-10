@@ -17,7 +17,7 @@ GNMI_SERVER = os.getenv("GNMI_SERVER", "127.0.0.1:50051")  # Exporter address
 XPATHS = ["/"]  # Root path to fetch all data
 GNMI_MODE = "SAMPLE"  # Subscription mode: SAMPLE, ON_CHANGE, POLL
 # Kafka configuration
-KAFKA_BROKER = os.getenv("KAFKA_BROKER", "kafka:9092")
+KAFKA_BROKER = 192.168.56.1:9092
 KAFKA_TOPIC = "dxagent_gnmi_data"
 
 # Get the base directory
