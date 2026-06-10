@@ -1,0 +1,88 @@
+query,rule_ids
+I need a web server with guaranteed CPU availability and no network packet loss,r5;r7;r8;r9;r10;r16;r19;r20;r21;r22;r28;r29;r30;r31
+Deploy a database server that must maintain memory above 50% free at all times,r2;r3;r4;r5
+Create a video streaming VM with protection against overheating and fan failures,r5;r13
+Set up a game server with zero network latency spikes and stable SSH access,r15;r16;r18;r19;r20;r21;r22;r28;r29;r30;r31
+Provision an e-commerce host with guaranteed CPU headroom below 90% utilization,r3;r5;r7;r8;r9;r10
+Deploy a critical analytics server with no memory exhaustion risks,r1;r2;r3;r4;r5;r7;r8;r9;r10;r32
+Create a high-security server with MTU 1500 enforcement and gateway monitoring,None
+Implement a financial trading system with network interface stability guarantees,r16;r18;r19;r20;r21;r22;r28;r29;r30;r31
+Build a IoT edge node with temperature controls and fan speed safeguards,r11;r12;r13
+Deploy a machine learning host protected against CPU overload scenarios,r3;r4;r5;r7;r8;r9;r10
+Setup a reverse proxy with DPDK buffer protection and IP fragment security,r23;r24;r25;r26;r27;r32;r33
+Create a Kubernetes master node with network error rate monitoring,r16;r17;r18;r19;r20;r21;r22;r23;r24;r25;r26;r27;r28;r29;r30;r31;r33
+Setup a blockchain node with DPDK network safeguards and CPU headroom,r23;r24;r25;r26;r32;r33
+Implement a real-time streaming service with RX/TX error prevention,r28;r30
+Deploy a high-frequency trading system with zero packet drops,r8;r16;r17;r18;r19;r21;r28;r30
+Create an AI inference server with memory buffer monitoring,r2;r3;r4;r5;r24;r32;r33
+Provision a medical imaging with guaranteed CPU availability,r3;r4;r5;r7;r8;r9;r10
+Setup a DNS server with ARP consistency and MTU compliance,None
+I want to deploy a IoT gateway that has at least 16GB of RAM and no packet loss allowed,r2;r3;r4;r5;r19;r20;r21;r22;r28;r29;r30;r31;r32
+Implement a backup server with network flap protection,r16;r18;r28;r29;r30;r31
+Deploy a video rendering farm with thermal controls and memory safeguards,r2;r3;r4;r5;r10;r32
+Setup a mail server with RX error monitoring and buffer protection,None
+Implement a system with CPU utilization guarantees,r3;r5;r7;r8;r9;r10
+Deploy a monitoring server with packet integrity safeguards,r20;r22;r24;r25;r26;r28;r29;r30;r31;r33
+Create a low-latency database cluster with network stability,r16;r18;r19;r20;r21;r22;r28;r29;r30;r31
+Provision a node with DPDK optimizations and error detection,r23;r24;r25;r26;r27;r28;r29;r30;r31;r32;r33
+Setup a virtualization host with memory buffer guarantees,r2;r3;r4;r5;r32
+Implement a system with temperature fail-safes,None
+Deploy a mobile backend with SSH access monitoring,r15
+Create a distributed cache system with network drop prevention,r16;r18;r20;r22;r23;r28;r29;r30;r31;r33
+Provision a big data analytics node with CPU thermal protection,r7;r8;r9;r10;r11;r13
+Setup a compliance server with memory usage auditing,r1;r2;r3;r4;r5;r32
+Implement a payment gateway with packet integrity checks,r23;r24;r25;r26;r27;r28;r29;r30;r31;r33
+Create a federated learning node with network buffer guarantees,r16;r18;r19;r20;r21;r22;r23;r24;r25;r26;r27;r28;r29;r30;r31;r32;r33
+Provision a quantum computing interface with stability monitoring,r5;r18
+Setup a AR/VR rendering farm with memory safeguards,r2;r3;r4;r5;r32
+Implement a digital twin system with DPDK protections,r23;r24;r25;r32;r33
+Deploy a edge computing node with fan speed monitoring,r13
+Create a smart city IoT hub with network error detection,r16;r18;r19;r20;r21;r22;r23;r24;r25;r26;r27;r28;r29;r30;r31;r33
+Provision a robotics control server with CPU guarantees,r3;r4;r5;r7;r8;r9;r10
+Setup a satellite ground station with packet loss prevention,r20;r22;r29;r31
+Implement a weather modeling cluster with thermal controls,r11;r12
+Deploy a 5G core network element with DPDK optimizations,r20;r23;r24;r25;r26;r27;r28;r29;r30;r31;r32;r33
+Deploy a High-Performance Computing (HPC) Cluster with Thermal and Memory safeguards,r2;r3;r4;r5;r7;r8;r9;r10;r13;r32
+Provision a Low-Latency Cloud Gaming Platform with Zero Packet Loss,r16;r17;r18;r19;r20;r21;r22;r23;r24;r25;r27;r28;r29;r30;r31;r33
+Implement an Autonomous Vehicle Control System with Real-Time network Stability,r5;r8;r10;r16;r18;r19;r20;r21;r22;r28;r29;r30;r31
+Implement a Real-Time Video Surveillance System with Frame Loss Prevention,r20;r22;r28;r29;r30;r31
+Create a Cloud-Based AI Training Cluster with GPU Utilization Monitoring,r5
+Setup a Global Content Delivery Network (CDN) with Packet integrity Assurance,r16;r18;r19;r20;r21;r22;r24;r25;r26;r27;r28;r29;r30;r31
+Implement a Satellite Communication Hub with Signal Integrity Checks,r18;r19;r20;r21;r22;r28;r29;r30;r31
+Build a Decentralized Blockchain Network with Consensus Stability,r16;r18;r19;r21;r23;r24;r25;r26;r27;r28;r29;r30;r33
+Setup an Edge AI Inference Node with Thermal and Memory Safeguards,r2;r3;r4;r5;r32
+Deploy a Backup Server with SSH Access and Network Stability,r15
+Create an IoT Temperature Sensor Node with Thermal Thresholds,r11;r13
+Deploy a Static Web Server with MTU and Packet Loss Monitoring,r22;r29;r31
+Setup a Digital Signage System with Fan Speed Safeguards,r13
+Create a Home Automation Hub with Stable SSH and Low CPU Load,r10;r15
+Provision a File Storage Server with Memory and MTU compliance,r2;r3;r4;r5;r32
+Setup a Maritime Navigation System with Network Stability,r16;r18;r19;r20;r21;r28;r29;r30;r31
+Provision a Smart Agriculture IoT Node with Thermal Controls,r11
+Create a Disaster Recovery Site with Minimal Packet Loss,r16;r18;r19;r20;r21;r22;r28;r29;r30;r31
+Deploy a Public Transit Scheduling System with ARP Checks,r16
+Build a Digital Twin for Industrial Machinery with buffer Monitoring,r13
+Setup a Cryptocurrency Mining Rig with Thermal Safeguards,r8;r11
+Create a Wildlife Tracking System with Network Error Detection,r16;r18;r19;r20;r21;r22;r26;r28;r29;r30;r31
+Provision a Voice-over-IP (VoIP) Gateway with Packet Integrity,r15;r18;r19;r20;r21;r22;r23;r24;r25;r26;r27;r28;r29;r30;r31;r33
+Implement a Smart Metering Hub with Memory Stability,r2;r3;r4;r5;r32
+Deploy a Quantum Computing Interface with Fan Speed Alerts,r12;r13
+Build a Satellite IoT Gateway with MTU Compliance,r17
+Setup a Telemetry Server for Drones with Low Latency,r10
+Create a Biometric Authentication System with SSH access,r15
+Provision a Genomics Data Processing with CPU Headroom,r5;r7;r8;r9;r10
+Deploy a Fleet Management System with No Rx Errors,r28;r29;r31
+Implement a Smart Lighting Controller with Thermal Limits,r11;r12
+Build a Hydroponics Monitoring Node with Network Stability,r16;r18;r29
+Setup a E-Commerce API Gateway with MTU Enforcement,r17
+Create a Robotics Simulation with memory Guarantees,r2;r3;r4;r5;r32
+Provision a Spacecraft Telemetry Relay with DPDK Buffers,r23;r24;r25;r26;r32;r33
+Deploy a Waste Management IoT Sensor with Fan Alerts,r12;r13
+Implement a Air Traffic Control Backup System with ARP Checks,None
+Build a Nuclear Plant Sensor Network with Zero Packet Loss,r13;r16;r17;r18;r19;r20;r21;r22;r23;r24;r25;r28;r29;r30;r31;r33
+Setup a Railway Signaling System with CPU Stability,r7;r8;r9;r10
+Create a Augmented Reality Classroom with SSH Access,r15
+Provision a Wind Turbine Monitoring Node with Thermal Controls,r13
+Deploy a Underwater Data Acoustic Link with Buffer Protection,r23;r24;r25;r32;r33
+Build a Lunar Rover Communication Hub with DPDK Optimizations,r19;r20;r21;r22;r23;r24;r25;r26;r27;r28;r29;r30;r31;r32;r33
+Deploy a load balancer with 3GHz of processing capabilites,r4;r5;r7;r8;r9;r10

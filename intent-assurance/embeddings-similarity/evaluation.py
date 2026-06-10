@@ -43,10 +43,9 @@ def evaluate_system(training_file, evaluation_file):
 
 # Archivos de entrada
 training_file = 'data/training_data.csv'
-evaluation_file = 'evaluations/deberta-01.csv'
+evaluation_file = 'evaluations/temp_0/deepseek-r1:1.5b_0.5.csv'
 
 
 
 # Ejecutar la evaluación
 evaluate_system(training_file, evaluation_file)
-

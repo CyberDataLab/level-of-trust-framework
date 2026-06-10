@@ -1,0 +1,176 @@
+Configuración;Modelo Base;Modelo LLM;Peso LLM;Threshold;Precision (%);Recall (%);F1-Score (%)
+Híbrido (40% BM25 + 60% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,60;0,40;80,03;81,36;80,69
+Híbrido (30% BM25 + 70% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,70;0,40;74,69;84,98;79,51
+Híbrido (60% BM25 + 40% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,40;0,30;82,14;76,77;79,37
+Híbrido (30% BM25 + 70% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,70;0,30;70,54;90,26;79,19
+Híbrido (50% BM25 + 50% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,50;0,30;72,15;87,20;78,97
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,70;0,30;71,19;88,32;78,83
+Híbrido (40% BM25 + 60% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,60;0,30;70,15;89,57;78,68
+Híbrido (50% BM25 + 50% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,50;0,40;84,03;73,16;78,22
+Solo LLM (gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;1,00;0,50;71,66;85,81;78,10
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,60;0,30;71,53;85,95;78,08
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,60;0,40;81,90;74,27;77,90
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,70;0,50;76,55;79,00;77,75
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,70;0,40;70,40;86,65;77,68
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,60;0,40;70,57;86,37;77,67
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,50;0,40;71,20;85,26;77,59
+Solo LLM (gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;1,00;0,70;81,65;73,02;77,09
+Híbrido (60% BM25 + 40% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,40;0,30;77,84;76,22;77,02
+Solo LLM (gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;1,00;0,40;66,91;90,54;76,95
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,60;0,50;77,62;76,22;76,91
+Híbrido (50% BM25 + 50% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,50;0,30;69,76;85,67;76,90
+Híbrido (40% BM25 + 60% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,60;0,40;75,17;78,72;76,90
+Híbrido (50% BM25 + 50% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,50;0,40;81,05;73,16;76,90
+Híbrido (30% BM25 + 70% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,70;0,50;85,64;69,68;76,84
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,40;0,40;71,36;83,17;76,81
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,50;0,50;82,43;71,77;76,73
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,50;0,30;74,21;78,86;76,47
+Solo LLM (gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;1,00;0,60;74,24;78,58;76,35
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,70;0,40;74,15;78,58;76,30
+Híbrido (30% BM25 + 70% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,70;0,40;70,41;82,75;76,09
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,60;0,50;76,30;75,24;75,77
+Híbrido (40% BM25 + 60% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,60;0,30;65,74;89,15;75,68
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,70;0,50;73,43;78,03;75,66
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,30;0,40;72,69;78,86;75,65
+Híbrido (30% BM25 + 70% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,70;0,50;82,32;69,96;75,64
+Híbrido (30% BM25 + 70% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,70;0,30;65,58;89,29;75,62
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,60;0,40;78,91;72,32;75,47
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,50;0,40;68,24;84,28;75,42
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,40;0,40;69,19;82,75;75,36
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,60;0,40;67,14;85,54;75,23
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,40;0,30;85,97;66,48;74,98
+Solo LLM (gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;1,00;0,60;71,66;78,44;74,90
+Solo LLM (gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;1,00;0,70;79,84;70,51;74,89
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,70;0,40;71,43;78,58;74,83
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,50;0,30;71,28;78,72;74,82
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,50;0,50;79,43;70,38;74,63
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,70;0,40;65,99;85,54;74,50
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,70;0,30;65,24;86,65;74,43
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,40;0,30;83,16;67,32;74,40
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,70;0,30;62,91;90,82;74,33
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,70;0,50;85,92;65,37;74,25
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,30;0,40;69,65;79,14;74,09
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,60;0,30;62,38;91,10;74,05
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,70;0,50;84,84;65,37;73,84
+Solo LLM (gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;1,00;0,50;65,83;83,59;73,65
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,60;0,30;65,75;83,59;73,61
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,50;0,30;61,48;91,24;73,46
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,70;0,60;85,06;64,12;73,12
+Híbrido (40% BM25 + 60% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,60;0,50;87,94;61,89;72,65
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,40;0,30;59,66;91,93;72,36
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,70;0,60;83,85;63,56;72,31
+Híbrido (40% BM25 + 60% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,60;0,50;89,09;60,22;71,87
+Solo LLM (gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;1,00;0,30;58,87;91,38;71,61
+Híbrido (70% BM25 + 30% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,30;0,30;84,36;60,78;70,65
+Solo LLM (gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;1,00;0,40;58,94;88,04;70,61
+Híbrido (70% BM25 + 30% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,30;0,30;83,56;60,78;70,37
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,40;0,50;82,52;61,06;70,18
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,30;0,30;56,23;92,91;70,06
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,70;0,30;56,63;90,82;69,76
+Híbrido (30% BM25 + 70% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,70;0,60;91,24;56,47;69,76
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,60;0,30;55,86;90,82;69,17
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,50;0,30;55,47;90,96;68,91
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,40;0,30;54,95;91,79;68,75
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,40;0,50;80,91;59,53;68,59
+Solo LLM (gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;1,00;0,30;53,24;91,52;67,31
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,30;0,30;52,45;92,21;66,87
+Híbrido (60% BM25 + 40% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,40;0,40;86,00;54,66;66,84
+Híbrido (60% BM25 + 40% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,40;0,40;85,65;54,80;66,84
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,60;0,60;87,76;53,82;66,72
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,50;0,40;87,93;53,69;66,67
+Híbrido (30% BM25 + 70% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,70;0,60;90,34;52,02;66,02
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,60;0,60;85,46;53,13;65,52
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,50;0,40;84,56;52,57;64,84
+Híbrido (50% BM25 + 50% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,50;0,50;88,83;50,90;64,72
+Híbrido (70% BM25 + 30% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,30;0,40;86,49;50,76;63,98
+Híbrido (50% BM25 + 50% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,50;0,50;89,72;48,54;63,00
+Híbrido (70% BM25 + 30% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,30;0,40;86,49;48,96;62,52
+Híbrido (60% BM25 + 40% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,40;0,50;89,82;47,84;62,43
+Híbrido (60% BM25 + 40% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,40;0,50;89,57;46,59;61,30
+Solo BM25;BM25;gemma3_27b-it-q4_K_M;0,00;0,40;87,37;47,15;61,25
+Híbrido (70% BM25 + 30% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,30;0,50;89,28;46,31;60,99
+Solo BM25;BM25;gemma3_27b-it-q4_K_M;0,00;0,30;84,86;47,57;60,96
+Híbrido (40% BM25 + 60% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,60;0,60;92,88;45,34;60,93
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,60;0,50;92,35;45,34;60,82
+Híbrido (70% BM25 + 30% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,30;0,50;89,22;46,04;60,73
+Híbrido (60% BM25 + 40% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,40;0,60;92,94;43,95;59,68
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,30;0,50;81,95;46,73;59,52
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,60;0,50;92,38;43,81;59,43
+Híbrido (60% BM25 + 40% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,40;0,60;92,11;43,81;59,38
+Híbrido (50% BM25 + 50% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,50;0,60;92,88;43,53;59,28
+Híbrido (40% BM25 + 60% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,60;0,60;93,11;43,25;59,07
+Híbrido (50% BM25 + 50% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,50;0,60;93,11;43,25;59,07
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,30;0,50;79,19;46,04;58,22
+Solo BM25;BM25;gemma3_27b-it-q4_K_M;0,00;0,50;87,75;42,84;57,57
+Híbrido (70% BM25 + 30% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,30;0,60;91,19;41,72;57,25
+Híbrido (70% BM25 + 30% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,30;0,60;91,69;41,45;57,09
+Híbrido (30% BM25 + 70% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,70;0,70;95,74;40,61;57,03
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,50;0,60;90,60;40,19;55,68
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,50;0,60;87,16;40,61;55,41
+Híbrido (40% BM25 + 60% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,60;0,70;94,86;38,53;54,80
+Solo BM25;BM25;gemma3_27b-it-q4_K_M;0,00;0,60;89,27;39,36;54,63
+Híbrido (30% BM25 + 70% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,70;0,70;93,81;37,97;54,06
+Híbrido (40% BM25 + 60% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,60;0,70;93,79;37,83;53,91
+Solo BERT (TF-IDF+BERT);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,00;0,30;39,56;80,95;53,15
+Híbrido (50% BM25 + 50% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,50;0,70;94,60;36,58;52,76
+Solo BM25;BM25;gemma3_27b-it-q4_K_M;0,00;0,70;90,82;37,13;52,71
+Híbrido (70% BM25 + 30% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,30;0,70;93,29;36,72;52,69
+Híbrido (70% BM25 + 30% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,30;0,70;92,63;36,72;52,59
+Híbrido (60% BM25 + 40% gemma3_27b-it-q8_0);BM25;gemma3_27b-it-q8_0;0,40;0,70;94,24;36,44;52,56
+Híbrido (50% BM25 + 50% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,50;0,70;94,22;36,30;52,41
+Híbrido (60% BM25 + 40% gemma3_27b-it-q4_K_M);BM25;gemma3_27b-it-q4_K_M;0,40;0,70;94,55;36,16;52,31
+Solo BERT (TF-IDF+BERT);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,00;0,40;54,44;50,35;52,31
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,70;0,70;90,21;35,88;51,34
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,70;0,60;94,25;34,21;50,20
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,30;0,30;95,31;33,94;50,05
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,30;0,30;95,18;32,96;48,97
+Híbrido (30% BERT (TF-IDF+BERT) + 70% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,70;0,70;90,38;30,04;45,09
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,40;0,60;87,24;29,49;44,07
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,40;0,60;88,29;27,26;41,66
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,70;0,60;95,50;26,56;41,57
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,40;0,40;98,94;26,01;41,19
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,60;0,70;92,35;23,50;37,47
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,30;0,60;86,96;22,25;35,44
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,40;0,40;96,30;21,70;35,41
+Solo BERT (TF-IDF+BERT);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,00;0,50;62,82;24,20;34,94
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,30;0,60;87,57;21,56;34,60
+Híbrido (40% BERT (TF-IDF+BERT) + 60% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,60;0,70;92,72;19,47;32,18
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,50;0,70;95,37;14,33;24,91
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,50;0,50;100,00;13,35;23,56
+Híbrido (50% BERT (TF-IDF+BERT) + 50% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,50;0,70;93,33;11,68;20,77
+Solo BERT (TF-IDF+BERT);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,00;0,60;70,83;11,82;20,26
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,50;0,50;100,00;11,13;20,03
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,40;0,70;97,40;10,43;18,84
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,60;0,60;100,00;8,76;16,11
+Híbrido (60% BERT (TF-IDF+BERT) + 40% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,40;0,70;92,31;8,34;15,31
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q8_0);BERT (TF-IDF+BERT);gemma3_27b-it-q8_0;0,30;0,70;96,15;6,95;12,97
+Híbrido (70% BERT (TF-IDF+BERT) + 30% gemma3_27b-it-q4_K_M);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,30;0,70;89,80;6,12;11,46
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,60;0,60;100,00;5,98;11,29
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,30;0,40;100,00;2,92;5,68
+Solo BERT (TF-IDF+BERT);BERT (TF-IDF+BERT);gemma3_27b-it-q4_K_M;0,00;0,70;75,00;2,92;5,62
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,30;0,40;100,00;2,23;4,35
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,70;0,70;100,00;1,81;3,55
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,40;0,50;100,00;0,83;1,66
+Híbrido (30% Keyword Matching + 70% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,70;0,70;100,00;0,83;1,66
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,40;0,50;100,00;0,83;1,66
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,50;0,60;100,00;0,70;1,38
+Solo Keyword Matching;Keyword Matching;gemma3_27b-it-q4_K_M;0,00;0,30;100,00;0,56;1,11
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,60;0,70;100,00;0,28;0,55
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,30;0,50;100,00;0,28;0,55
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,50;0,60;100,00;0,14;0,28
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,50;0,70;0,00;0,00;0,00
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,40;0,70;0,00;0,00;0,00
+Híbrido (40% Keyword Matching + 60% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,60;0,70;0,00;0,00;0,00
+Solo Keyword Matching;Keyword Matching;gemma3_27b-it-q4_K_M;0,00;0,40;0,00;0,00;0,00
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,30;0,70;0,00;0,00;0,00
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,30;0,60;0,00;0,00;0,00
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,30;0,50;0,00;0,00;0,00
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q4_K_M);Keyword Matching;gemma3_27b-it-q4_K_M;0,40;0,60;0,00;0,00;0,00
+Solo Keyword Matching;Keyword Matching;gemma3_27b-it-q4_K_M;0,00;0,70;0,00;0,00;0,00
+Solo Keyword Matching;Keyword Matching;gemma3_27b-it-q4_K_M;0,00;0,60;0,00;0,00;0,00
+Solo Keyword Matching;Keyword Matching;gemma3_27b-it-q4_K_M;0,00;0,50;0,00;0,00;0,00
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,30;0,60;0,00;0,00;0,00
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,40;0,60;0,00;0,00;0,00
+Híbrido (70% Keyword Matching + 30% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,30;0,70;0,00;0,00;0,00
+Híbrido (50% Keyword Matching + 50% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,50;0,70;0,00;0,00;0,00
+Híbrido (60% Keyword Matching + 40% gemma3_27b-it-q8_0);Keyword Matching;gemma3_27b-it-q8_0;0,40;0,70;0,00;0,00;0,00

@@ -1,0 +1,10 @@
+query,rule_ids
+I need a web server with guaranteed CPU availability and no network packet loss,None
+Deploy a database server that must maintain memory above 50% free at all times,None
+Create a video streaming VM with protection against overheating and fan failures,None
+Set up a game server with zero network latency spikes and stable SSH access,None
+Provision an e-commerce host with guaranteed CPU headroom below 90% utilization,r10
+Deploy a critical analytics server with no memory exhaustion risks,None
+Create a high-security server with MTU 1500 enforcement and gateway monitoring,None
+Implement a financial trading system with network interface stability guarantees,None
+Build a IoT edge node with temperature controls and fan speed safeguards,None

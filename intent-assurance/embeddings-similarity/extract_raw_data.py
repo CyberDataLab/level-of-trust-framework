@@ -14,14 +14,12 @@ import re
 import asyncio
 import aiohttp
 import time
+
 # Logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-MODEL = "gemma3:27b-it-q4_K_M"
 BERT = "stsb-roberta-large"
-LLM_USAGE = 1
-
 
 def load_json(file_path):
     """
@@ -49,12 +47,8 @@ def invert_synonyms(synonyms):
 
 # Technical terms, synonyms, critical keywords and rule categories
 INVERTED_TECHNICAL_SYNONYMS = invert_synonyms(load_json('data/technical_synonyms.json'))
-
 RULE_CATEGORIES = load_json('data/rule_categories.json')
-
 TECHNICAL_PHRASES = load_json('data/technical_phrases.json')
-
-
 
 class HybridEncoder:
     def __init__(self):
@@ -78,14 +72,6 @@ class HybridEncoder:
         return np.hstack([tfidf_emb, bert_emb])
     
     def transform(self, texts):
-        """tfidf_emb = self.tfidf.transform(texts).toarray()
-        bert_emb = self.bert.encode(
-            texts, 
-            show_progress_bar=False,
-            batch_size=32,
-            convert_to_numpy=True
-        )
-        return np.hstack([tfidf_emb, bert_emb])"""
         cached = [self._cache.get(text, None) for text in texts]
         to_process = [text for text, emb in zip(texts, cached) if emb is None]
         
@@ -117,7 +103,6 @@ class LlamaRecommender:
         url = "http://localhost:11434/api/generate"
         try:
             data = {"model": self.model, "prompt": prompt, "stream": stream, "options": { "temperature": 0 }}
-            # data = {"model": self.model, "prompt": prompt, "stream": stream}
             async with session.post(url, json=data) as response:
                 if response.status == 200:
                     return await response.json()
@@ -126,7 +111,6 @@ class LlamaRecommender:
             logger.error(f"Error in the request: {e}")
             return None
         
-    
     def _parse_response(self, response_data):
         if not response_data:
             logger.error(f"Error in the response.")
@@ -134,34 +118,30 @@ class LlamaRecommender:
 
         response = response_data.get('response', 'N/A')
         if response == 'N/A': 
-            return np.zeros(36)
+            return np.zeros(33)
         
         pattern = r"^r(3[0-6]|1[0-9]|2[0-9]|[1-9]):(0\.\d{1,2}|1\.00)$"
         matches = re.findall(pattern, response, flags=re.MULTILINE)
 
         scores_dict = {int(rule): float(score) for rule, score in matches}
 
-        llama_scores = np.zeros(33)
+        # Asegúrate de que el tamaño coincida con la cantidad máxima de reglas (33)
+        llama_scores = np.zeros(33) 
         for rule_num, score in scores_dict.items():
             if 1 <= rule_num <= 33:
                 llama_scores[rule_num - 1] = score
         
         return llama_scores
         
-    
     async def recommend(self, query):
         prompt = (f"{self.context} {query}")
-        # logger.info("Sending query to ollama.")
         async with aiohttp.ClientSession() as session:
             response_data = await self._send_request(session, prompt)
-            logger.debug(response_data)
-            # logger.info("Parsing response from ollama.")
             return self._parse_response(response_data)
 
 
 class RuleRecommender:
-    def __init__(self, rules_file, llm_model, use_ollama = False):
-
+    def __init__(self, rules_file, llm_model, use_ollama=False):
         self.llm_model = llm_model
         self.nlp = spacy.load("en_core_web_md")
         self.matcher = PhraseMatcher(self.nlp.vocab)
@@ -176,8 +156,6 @@ class RuleRecommender:
         if self.use_ollama:
             self.ollama = LlamaRecommender(self.llm_model)
 
-
-    
     def _normalize_text(self, text):
         doc = self.nlp(text.lower())
         tokens = []
@@ -192,31 +170,12 @@ class RuleRecommender:
         for token in doc:
             if token.is_punct:
                 continue
-            # Expand technical synonyms
+            
             lemma = token.lemma_
-
-            """ O(n) every time a token is processed
-                o(1) when creating the dictionary
-            synonyms_found = False
-            for key, synonyms in TECHNICAL_SYNONYMS.items():
-                if lemma == key or lemma in synonyms:
-                    tokens.extend([key] + synonyms)  
-                    synonyms_found = True
-                    break
-            if not synonyms_found:
+            if lemma in INVERTED_TECHNICAL_SYNONYMS:
+                tokens.extend(INVERTED_TECHNICAL_SYNONYMS[lemma])
+            else:
                 tokens.append(lemma)
-            """
-
-            # O(1) every time a token is processed
-            # O(n) when creating invert dictionary
-            for token in doc:
-                if token.is_punct:
-                    continue
-                lemma = token.lemma_
-                if lemma in INVERTED_TECHNICAL_SYNONYMS:
-                    tokens.extend(INVERTED_TECHNICAL_SYNONYMS[lemma])
-                else:
-                    tokens.append(lemma)
 
         # Filter out stopwords, short tokens, and digits
         filtered_tokens = [
@@ -254,8 +213,10 @@ class RuleRecommender:
         
         return df
         
-    async def recommend(self, query, min_score=0.3):
-
+    async def get_raw_scores(self, query):
+        """
+        Calcula y devuelve las puntuaciones en bruto de similitud y de Ollama.
+        """
         if self.use_ollama:
             ollama_task = asyncio.create_task(self.ollama.recommend(query))
 
@@ -269,107 +230,79 @@ class RuleRecommender:
             try:
                 llama_scores = await asyncio.wait_for(ollama_task, timeout=200)
             except asyncio.TimeoutError:
-                logger.warning("Timeout reached. Using base scores")
-                llama_scores = np.zeros(36)
+                logger.warning("Timeout reached. Using base scores of 0.")
+                llama_scores = np.zeros(len(similarities))
                 
-            if len(llama_scores) != len(similarities):
-                raise ValueError("llama_scores must have the same length as cosine similarity")
-            
-
-            combined_scores = similarities * (1 - LLM_USAGE) + llama_scores * LLM_USAGE
+            # Evitar fallos si las dimensiones no coinciden por alguna razón
+            if llama_scores is None:
+                llama_scores = np.zeros(len(similarities))
+            elif len(llama_scores) != len(similarities):
+                logger.warning(f"Dimension mismatch: llama({len(llama_scores)}) vs sim({len(similarities)}). Resizing.")
+                llama_scores = np.resize(llama_scores, len(similarities))
         else:
-            combined_scores = similarities
+            llama_scores = np.zeros(len(similarities))
 
-        mask = combined_scores >= min_score
-        filtered_df = self.rules_df[mask].copy()
-        filtered_scores = combined_scores[mask]
+        return self.rules_df, similarities, llama_scores
 
-        sorted_indices = np.argsort(filtered_scores)[::-1]
-        return filtered_df.iloc[sorted_indices], filtered_scores[sorted_indices]
+    def export_raw_scores(self, query, rules_df, similarities, llama_scores, file_path):
+        """
+        Guarda las puntuaciones sin procesar en un archivo CSV.
+        """
+        file_path = Path(file_path)
+        # Asegurar que el directorio existe
+        file_path.parent.mkdir(parents=True, exist_ok=True)
+        file_exists = file_path.exists()
 
-    def explain_recommendation(self, query, rules, scores, min_score):
-
-        if rules.empty:
-            print(f"No recommendations above score threshold {min_score:.2f} for query: '{query}'")
-            return
-        
-        print(f"\n{'='*80}\nRecommendations above {min_score:.2f} for: '{query}'\n{'='*80}")
-        
-        for idx, (_, rule), score in zip(range(len(rules)), rules.iterrows(), scores):
-            print(f"\n[Score: {score:.2f}] {rule['name']}")
-            print(f"  Category: {rule['category'].upper()}")
-            print(f"  Rule Code: {rule['rule']}")
-            
-            query_terms = set(self._normalize_text(query).split())
-            rule_terms = set(rule['processed'].split())
-            matched_terms = query_terms & rule_terms
-            
-            if matched_terms:
-                print("  Matching Terms:")
-                for term in matched_terms:
-                    print(f"   - {term.replace('_', ' ')}")
-            
-            print("-"*80)
-
-    def evaluate(self, query, recommended_rules, file):
-
-
-        rules_ids = ';'.join(recommended_rules['id'].astype(str)) if not recommended_rules.empty else 'None'
-        file_exists = Path(file).exists()
-
-        with open(file, mode='a', newline='', encoding='utf-8') as f:
+        with open(file_path, mode='a', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
-            # Initialize the file if it doesn't exist
+            # Inicializar cabeceras si el archivo no existe
             if not file_exists:
-                writer.writerow(['query', 'rule_ids'])
-            # Write row with query and rules recommended
-            writer.writerow([query, rules_ids])
-
-
+                writer.writerow(['query', 'rule_id', 'similarity_score', 'ollama_score'])
+            
+            # Escribir una fila por cada regla evaluada
+            for idx, row in rules_df.iterrows():
+                writer.writerow([
+                    query, 
+                    row['id'], 
+                    round(float(similarities[idx]), 4), 
+                    round(float(llama_scores[idx]), 4)
+                ])
 
 MODELS = ["gemma3:27b-it-q4_K_M", "gemma3:27b-it-q8_0"]
-# MODELS = ["deepseek-r1:1.5b", "deepseek-r1:7b", "deepseek-r1:8b", "deepseek-r1:14b", "deepseek-r1:7b", "deepseek-r1:14b"]
 
 async def main():
     RULES_FILE = 'data/rules.csv'
     USER_QUERY = load_queries_from_csv("data/training_data.csv")
-    THRESHOLD = 0.4
     
     try:
-
         for model in MODELS:
+            start_time = time.time()
+            recommender = RuleRecommender(RULES_FILE, llm_model=model, use_ollama=True)
 
-            while THRESHOLD <= 0.6:
-                start_time = time.time()
-                recommender = RuleRecommender(RULES_FILE, llm_model = model, use_ollama=True)
-
-                evaluation_file = "evaluations/llm/" + model + "_" + str(THRESHOLD) + ".csv"
-
-                logger.info(f"Using model -> {model} & Threshold -> {str(THRESHOLD)}. Saving results to: {evaluation_file}")
-                
-                """recommended_rules, scores = await recommender.recommend(USER_QUERY, THRESHOLD)
-                
-                recommender.explain_recommendation(USER_QUERY, recommended_rules, scores, THRESHOLD)"""
-
-                for query in USER_QUERY:
-
-                    recommended_rules, scores = await recommender.recommend(query, THRESHOLD)
-                    recommender.evaluate(query, recommended_rules, evaluation_file)
-                    # end_time = time.time()
-                    # elapsed_time = end_time - start_time
-                    # logger.info(f"QUERY -> {elapsed_time:.2f} seconds.")
-                
-                end_time = time.time()
-                elapsed_time = end_time - start_time
-                logger.info(f"Execution completed in {elapsed_time:.2f} seconds. MODEL = {model}")
-
-                THRESHOLD += 0.1
+            # Archivo maestro para guardar los raw scores
+            sanitized_model_name = model.replace(":", "_")
+            raw_data_file = Path(f"evaluations/raw/{sanitized_model_name}_raw_scores.csv")
             
-            THRESHOLD = 0.4
+            logger.info(f"Using model -> {model}. Saving raw data to: {raw_data_file}")
+            
+            # Eliminar archivo de ejecuciones previas para no duplicar datos
+            if raw_data_file.exists():
+                raw_data_file.unlink()
+
+            for query in USER_QUERY:
+                # 1. Obtener puntuaciones
+                rules_df, similarities, llama_scores = await recommender.get_raw_scores(query)
+                
+                # 2. Guardar puntuaciones
+                recommender.export_raw_scores(query, rules_df, similarities, llama_scores, raw_data_file)
+            
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            logger.info(f"Execution completed in {elapsed_time:.2f} seconds. MODEL = {model}")
 
     except Exception as e:
-            logger.error(f"An error occurred: {e}")
-            raise e
+        logger.error(f"An error occurred: {e}")
+        raise e
 
 if __name__ == "__main__":
     asyncio.run(main())
