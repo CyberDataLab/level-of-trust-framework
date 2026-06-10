@@ -755,4 +755,12 @@
         rr:predicate lotaf:evaluates ;
         rr:objectMap [ 
             rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom/{evaluates}" ] ;
-    ] .
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate lotaf:levelOftrust;
+        rml:reference "levelOfTrust"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate lotaf:historicalAverage;
+        rml:reference "historicalAverage"
+    ].

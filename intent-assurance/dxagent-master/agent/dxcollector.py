@@ -13,11 +13,11 @@ from cisco_gnmi import ClientBuilder
 from confluent_kafka import Producer
 
 # gNMI Server configuration
-GNMI_SERVER = "0.0.0.0:50051"  # Exporter address
-XPATHS = ["/health"]  # Root path to fetch all data
+GNMI_SERVER = os.getenv("GNMI_SERVER", "127.0.0.1:50051")  # Exporter address
+XPATHS = ["/"]  # Root path to fetch all data
 GNMI_MODE = "SAMPLE"  # Subscription mode: SAMPLE, ON_CHANGE, POLL
 # Kafka configuration
-KAFKA_BROKER = "localhost:9092"
+KAFKA_BROKER = os.getenv("KAFKA_BROKER", "kafka:9092")
 KAFKA_TOPIC = "dxagent_gnmi_data"
 
 # Get the base directory
@@ -90,6 +90,9 @@ class GNMIDataCollector:
         print(f"[INFO] Data sent to kafka topic", os.getenv("TOPIC_PRODUCE_LOTAF"))
 
     def get_machine_uuid(self):
+        node_name = os.getenv("NODE_NAME")
+        if node_name:
+            return node_name
         return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.getnode())))
 
     def fetch_data(self):

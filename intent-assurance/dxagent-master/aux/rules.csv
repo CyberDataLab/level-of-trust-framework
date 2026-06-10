@@ -33,3 +33,7 @@ r31,Transmit Drops Peak,/node/kb/net/if,Orange,1min(dynamicity(tx_drop))>100
 r32,Low Buffer Availability,/node/kb/mem,Orange,(buffer_free/buffer_total)<0.1
 r33,DPDK Buffer Alloc Errors,/node/kb/net/if,Orange,dynamicity(dpdk_alloc_errors)>0
 r34,Average process number greater than expected,/node/bm/proc,Orange,dynamicity(sleep_count)+dynamicity(run_count)>5
+r35,Network High Rx bytes,/node/bm/net/if,Orange,1min(rx_bytes)>1073741824
+r36,Network High Rx bytes for 5 min,/node/bm/net/if,Red,5min(rx_bytes)>1073741824
+r37,Network High Tx bytes,/node/bm/net/if,Orange,1min(tx_bytes)>1073741824
+r38,Network High Tx bytes for 5 min,/node/bm/net/if,Orange,5min(tx_bytes)>1073741824

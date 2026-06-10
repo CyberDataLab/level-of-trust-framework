@@ -6,9 +6,7 @@ import logging
 from pathlib import Path
 import spacy
 from spacy.matcher import PhraseMatcher
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
+from rank_bm25 import BM25Okapi
 
 import re
 import asyncio
@@ -21,6 +19,10 @@ import os
 # Logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+NUM_RULES = 38
+LLM_USAGE = 0.6
+THRESHOLD = 0.4
 
 
 def load_json(file_path):
@@ -55,58 +57,6 @@ RULE_CATEGORIES = load_json('aux/rule_categories.json')
 TECHNICAL_PHRASES = load_json('aux/technical_phrases.json')
 
 
-
-class HybridEncoder:
-    def __init__(self):
-        self.tfidf = TfidfVectorizer(max_features=5000)
-        self.bert = SentenceTransformer("stsb-roberta-large")
-        self._cache = {}
-        
-    def fit_transform(self, texts):
-        logger.info("Training model TF-IDF...")
-        self.tfidf.fit(texts)
-
-        logger.info("Generating BERT embeddings...")
-        tfidf_emb = self.tfidf.transform(texts).toarray()
-        bert_emb = self.bert.encode(
-            texts, 
-            show_progress_bar=True,
-            batch_size=64,
-            convert_to_numpy=True
-        )
-        
-        return np.hstack([tfidf_emb, bert_emb])
-    
-    def transform(self, texts):
-        """tfidf_emb = self.tfidf.transform(texts).toarray()
-        bert_emb = self.bert.encode(
-            texts, 
-            show_progress_bar=False,
-            batch_size=32,
-            convert_to_numpy=True
-        )
-        return np.hstack([tfidf_emb, bert_emb])"""
-        cached = [self._cache.get(text, None) for text in texts]
-        to_process = [text for text, emb in zip(texts, cached) if emb is None]
-        
-        if to_process:
-            new_tfidf = self.tfidf.transform(to_process).toarray()
-            new_bert = self.bert.encode(
-                to_process,
-                show_progress_bar=False,
-                batch_size=64,
-                convert_to_numpy=True
-            )
-            new_embs = np.hstack([new_tfidf, new_bert])
-
-            for text,emb in zip(to_process, new_embs):
-                self._cache[text] = emb
-
-        return np.array(
-            [self._cache[text] if emb is None else emb
-             for text, emb in zip(texts, cached)]
-        )
-
 class LlamaRecommender:
     def __init__(self, model):
         self.model = model
@@ -125,7 +75,6 @@ class LlamaRecommender:
             logger.error(f"Error in the request: {e}")
             return None
         
-    
     def _parse_response(self, response_data):
         if not response_data:
             logger.error(f"Error in the response.")
@@ -133,21 +82,22 @@ class LlamaRecommender:
 
         response = response_data.get('response', 'N/A')
         if response == 'N/A': 
-            return np.zeros(36)
+            return np.zeros(NUM_RULES)
         
-        pattern = r"^r(3[0-6]|1[0-9]|2[0-9]|[1-9]):(0\.\d{1,2}|1\.00)$"
+        logger.debug(f"Raw response:\n {response}")
+        
+        pattern = r"^r(3[0-8]|1[0-9]|2[0-9]|[1-9]):(0\.\d{1,2}|1\.00)$"
         matches = re.findall(pattern, response, flags=re.MULTILINE)
 
         scores_dict = {int(rule): float(score) for rule, score in matches}
 
-        llama_scores = np.zeros(33)
+        llama_scores = np.zeros(NUM_RULES)
         for rule_num, score in scores_dict.items():
-            if 1 <= rule_num <= 33:
+            if 1 <= rule_num <= NUM_RULES:
                 llama_scores[rule_num - 1] = score
         
         return llama_scores
         
-    
     async def recommend(self, query):
         prompt = (f"{self.context} {query}")
         logger.info("Sending query to ollama.")
@@ -166,15 +116,15 @@ class RuleRecommender:
         self.matcher.add("TECHNICAL_PHRASES", patterns)
 
         self.rules_df = self._load_and_prepare_rules(rules_file)
-        self.encoder = HybridEncoder()
-        self.embeddings = self.encoder.fit_transform(self.rules_df['processed'].tolist())
+        
+        logger.info("Initializing BM25 corpus...")
+        tokenized_corpus = [doc.split() for doc in self.rules_df['processed'].tolist()]
+        self.bm25 = BM25Okapi(tokenized_corpus)
 
         self.use_ollama = use_ollama
         if self.use_ollama:
             self.ollama = LlamaRecommender("gemma3:27b-it-q4_K_M")
 
-
-    
     def _normalize_text(self, text):
         doc = self.nlp(text.lower())
         tokens = []
@@ -189,31 +139,11 @@ class RuleRecommender:
         for token in doc:
             if token.is_punct:
                 continue
-            # Expand technical synonyms
             lemma = token.lemma_
-
-            """ O(n) every time a token is processed
-                o(1) when creating the dictionary
-            synonyms_found = False
-            for key, synonyms in TECHNICAL_SYNONYMS.items():
-                if lemma == key or lemma in synonyms:
-                    tokens.extend([key] + synonyms)  
-                    synonyms_found = True
-                    break
-            if not synonyms_found:
+            if lemma in INVERTED_TECHNICAL_SYNONYMS:
+                tokens.extend(INVERTED_TECHNICAL_SYNONYMS[lemma])
+            else:
                 tokens.append(lemma)
-            """
-
-            # O(1) every time a token is processed
-            # O(n) when creating invert dictionary
-            for token in doc:
-                if token.is_punct:
-                    continue
-                lemma = token.lemma_
-                if lemma in INVERTED_TECHNICAL_SYNONYMS:
-                    tokens.extend(INVERTED_TECHNICAL_SYNONYMS[lemma])
-                else:
-                    tokens.append(lemma)
 
         # Filter out stopwords, short tokens, and digits
         filtered_tokens = [
@@ -251,29 +181,38 @@ class RuleRecommender:
         
         return df
         
-    async def recommend(self, query, min_score=0.3):
+    async def recommend(self, query, min_score=0.4):
 
         if self.use_ollama:
             ollama_task = asyncio.create_task(self.ollama.recommend(query))
 
         processed_query = self._normalize_text(query)
-        query_emb = self.encoder.transform([processed_query])
+        tokenized_query = processed_query.split()
 
-        # Calculate similarity
-        similarities = cosine_similarity(query_emb, self.embeddings).flatten()
+        raw_bm25_scores = self.bm25.get_scores(tokenized_query)
+        max_bm25_score = np.max(raw_bm25_scores)
+        
+        if max_bm25_score > 0:
+            bm25_scores = raw_bm25_scores / max_bm25_score
+        else:
+            bm25_scores = raw_bm25_scores
 
         if self.use_ollama:
             try:
                 llama_scores = await asyncio.wait_for(ollama_task, timeout=200)
             except asyncio.TimeoutError:
                 logger.warning("Timeout reached. Using base scores")
-                llama_scores = np.zeros(36)
+                llama_scores = np.zeros(NUM_RULES)
                 
-            if len(llama_scores) != len(similarities):
-                raise ValueError("llama_scores must have the same length as cosine similarity")
-            combined_scores = similarities * 0.3 + llama_scores * 0.7
+            logger.info(f"Llama scores length: {len(llama_scores)} | BM25 scores length: {len(bm25_scores)}")
+                
+            if len(llama_scores) != len(bm25_scores):
+                raise ValueError("llama_scores must have the same length as bm25_scores")
+                
+
+            combined_scores = (bm25_scores * (1 - LLM_USAGE)) + (llama_scores * LLM_USAGE)
         else:
-            combined_scores = similarities
+            combined_scores = bm25_scores
 
         mask = combined_scores >= min_score
         filtered_df = self.rules_df[mask].copy()
@@ -307,8 +246,6 @@ class RuleRecommender:
             print("-"*80)
 
     def evaluate(self, query, recommended_rules):
-
-
         rules_ids = ';'.join(recommended_rules['id'].astype(str)) if not recommended_rules.empty else 'None'
 
         evaluation_file = 'evaluations/llama_06.csv'
@@ -316,14 +253,11 @@ class RuleRecommender:
 
         with open(evaluation_file, mode='a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
-            # Initialize the file if it doesn't exist
             if not file_exists:
                 writer.writerow(['query', 'rule_ids'])
-            # Write row with query and rules recommended
             writer.writerow([query, rules_ids])
 
     def save_rules(self, recommended_rules):
-
         source_file = 'aux/rules.csv'
         destination_file = 'res/rules.csv'
         rules = []
@@ -350,13 +284,62 @@ class RuleRecommender:
             logger.info("RULEs empty")
 
 
+def deploy_to_providers(rules_file_path):
+    """
+    Simulates the orchestration and deployment of the recommended rules to multiple provider nodes using Docker containers.
+    """
+    logger.info("Starting deployment to providers...")
+    
+    # List of provider container names
+    providers = ["provider_A", "provider_B", "provider_C"]
+    kafka_address = "kafka:29092"  # Assuming Kafka is running in a container named 'kafka'
+    
+    for provider in providers:
+        try:
+            logger.info(f"[{provider}] Copying rules file to container...")
+            subprocess.run(
+                ["docker", "cp", rules_file_path, f"{provider}:/app/rules.csv"],
+                check=True,
+                capture_output=True
+            )
+            
+            logger.info(f"[{provider}] Starting DxAgent...")
+            
+            subprocess.Popen(
+                ["docker", "exec", "-d", provider, "python3", "dxagent.py", "start"]
+            )
+            
+            logger.info(f"[{provider}] Deployment completed successfully.")
+            
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Error deploying to {provider}: {e.stderr.decode()}")
+        except Exception as e:
+            logger.error(f"Unexpected error in {provider}: {e}")
+
+        logger.info("Waiting 3 seconds for gNMI servers to start properly...")
+        time.sleep(3)  # Wait for gNMI servers to start
+
+        for provider in providers:
+        try:
+            logger.info(f"[{provider}] Initializing DxCollector with Kafka integration...")
+            subprocess.Popen([
+                "docker", "exec", "-d", 
+                "-e", f"NODE_NAME={provider}", 
+                "-e", f"KAFKA_BROKER={kafka_address}",
+                provider, 
+                "python3", "dxcollector.py", "-f", "json", "--kafka"
+            ])
+            logger.info(f"[{provider}] DxCollector started successfully with Kafka integration.")
+            
+        except Exception as e:
+            logger.error(f"Error {provider}: {e}")
+
+
 async def main():
     RULES_FILE = 'aux/rules.csv'
     USER_QUERY = input("Query: ")
-    THRESHOLD = 0.5
-    
-    try:
 
+    try:
         start_time = time.time()
         recommender = RuleRecommender(RULES_FILE, use_ollama=True)
         
@@ -370,6 +353,8 @@ async def main():
         elapsed_time = end_time - start_time
         logger.info(f"Execution completed in {elapsed_time:.2f} seconds.")
 
+        deploy_to_providers('res/rules.csv')
+
     except Exception as e:
         logger.error(f"An error occurred: {e}")
         raise e
@@ -379,7 +364,7 @@ if __name__ == "__main__":
 
     venv_python = os.path.join(os.getcwd(),"venv", "bin", "python3")
 
-    subprocess.run(
-        ["sudo", venv_python, "dxagent", "start"],
-        check=True
-    )
+    # subprocess.run(
+    #     ["sudo", venv_python, "dxagent", "start"],
+    #     check=True
+    # )

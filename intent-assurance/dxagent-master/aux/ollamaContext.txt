@@ -35,6 +35,10 @@ r31,Kernel/DPDK Network High Tx Packet Loss,1min(dynamicity(tx_drop))>100
 r32,Kernel/DPDK Memory Low Buffers,(buffer_free/buffer_total)<0.1
 r33,Kernel/DPDK Network DPDK Buffer Allocation Errors,dynamicity(dpdk_alloc_errors)>0
 r34,Average process number greater than expected,/node/bm/proc,Orange,dynamicity(sleep_count)+dynamicity(run_count)>5
+r35,Network High Rx bytes,/node/bm/net/if,Orange,1min(rx_bytes)>1073741824
+r36,Network High Rx bytes for 5 min,/node/bm/net/if,Red,5min(rx_bytes)>1073741824
+r37,Network High Tx bytes,/node/bm/net/if,Orange,1min(tx_bytes)>1073741824
+r38,Network High Tx bytes for 5 min,/node/bm/net/if,Orange,5min(tx_bytes)>1073741824
 I need you to indicate a score for every rule in the system.
 You must mention every rule.
 Focus on specifications, for example, if a query is "Build a IoT edge node with temperature controls and fan speed safeguards", 
