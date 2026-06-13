@@ -8,7 +8,7 @@
 
 <#AssetMapping>
   rml:logicalSource [
-    rml:source "semantic_data.json" ;
+    rml:source "/home/alfonso/Escritorio/papr/tfg/level-of-trust-framework/intent-assurance/dxagent-master/generated/semantic_host2.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*].Asset"
   ] ;
@@ -39,7 +39,7 @@
 
 <#HealthMapping>
   rml:logicalSource [
-    rml:source "semantic_data.json" ;
+    rml:source "/home/alfonso/Escritorio/papr/tfg/level-of-trust-framework/intent-assurance/dxagent-master/generated/semantic_host2.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*].Health"
   ] ;
@@ -74,7 +74,7 @@
 
 <#SymptomMapping>
   rml:logicalSource [
-    rml:source "semantic_data.json" ;
+    rml:source "/home/alfonso/Escritorio/papr/tfg/level-of-trust-framework/intent-assurance/dxagent-master/generated/semantic_host2.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*].Symptom"
   ] ;
@@ -101,7 +101,7 @@
 
 <#DependencyMapping>
   rml:logicalSource [
-    rml:source "semantic_data.json" ;
+    rml:source "/home/alfonso/Escritorio/papr/tfg/level-of-trust-framework/intent-assurance/dxagent-master/generated/semantic_host2.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$[*].Dependency"
   ] ;

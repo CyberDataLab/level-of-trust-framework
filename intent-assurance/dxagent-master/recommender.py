@@ -18,7 +18,7 @@ import os
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-NUM_RULES = 38
+NUM_RULES = 39
 LLM_USAGE = 0.6
 THRESHOLD = 0.4
 
@@ -366,10 +366,12 @@ def deploy_to_providers(rules_file_path):
 
             remote_cmd = (
                 f"cd {provider['workdir']} && "
-                f"nohup env NODE_NAME={provider['name']} "
-                f"KAFKA_BROKER={KAFKA_ADDRESS} "
-                f"python3 dxcollector -f json --kafka "
-                f"> /tmp/dxcollector.log 2>&1 &"
+                f"setsid bash -c '"
+                f"export NODE_NAME={provider['name']}; "
+                f"export KAFKA_BROKER={KAFKA_ADDRESS}; "
+                f"nohup python3 dxcollector -f json --kafka "
+                f"</dev/null >/tmp/dxcollector.log 2>&1 &"
+                f"'"
             )
 
             run_command(ssh_command(provider, remote_cmd))

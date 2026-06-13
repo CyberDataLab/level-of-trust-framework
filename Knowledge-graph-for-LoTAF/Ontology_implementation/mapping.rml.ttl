@@ -735,13 +735,16 @@
 # Mapping for Health
 <https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health>
     rml:logicalSource [
-        
         rml:referenceFormulation ql:JSONPath ;
         rml:iterator "$[*].Health"
     ] ;
     rr:subjectMap [
-        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/{healthScore}";
+        rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Health/{identifier}";
         rr:class lotaf:Health
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:identifier ;
+        rr:objectMap [ rml:reference "identifier" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:healthScore ;
@@ -752,9 +755,8 @@
         rr:objectMap [ rml:reference "connectionStatus" ] ;
     ] ;
     rr:predicateObjectMap [
-        rr:predicate lotaf:evaluates ;
-        rr:objectMap [ 
-            rr:template "https://github.com/JoseJMJV/Knowledge-graphs-for-LoTAF/tree/Hexa-X-II/Symptom/{evaluates}" ] ;
+        rr:predicate lotaf:levelOfTrust ;
+        rr:objectMap [ rml:reference "levelOfTrust" ] ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate lotaf:levelOftrust;

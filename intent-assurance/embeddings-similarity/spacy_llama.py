@@ -343,7 +343,7 @@ async def main():
                 start_time = time.time()
                 recommender = RuleRecommender(RULES_FILE, llm_model = model, use_ollama=True)
 
-                evaluation_file = "evaluations/llm/" + model + "_" + str(THRESHOLD) + ".csv"
+                evaluation_file = model + "_" + str(THRESHOLD) + ".csv"
 
                 logger.info(f"Using model -> {model} & Threshold -> {str(THRESHOLD)}. Saving results to: {evaluation_file}")
                 

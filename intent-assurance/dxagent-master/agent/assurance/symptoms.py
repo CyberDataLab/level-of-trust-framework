@@ -93,7 +93,8 @@ class Symptom():
       node = ast.parse(self.rule, mode='eval')
       self.tree = ast.fix_missing_locations(RewriteName().visit(node))
       # 3. check()
-      self._o=compile(node, '<string>', 'eval')
+      # self._o=compile(node, '<string>', 'eval')
+      self._o = compile(self.tree, '<string>', 'eval')
          
    def check(self, data):
       """

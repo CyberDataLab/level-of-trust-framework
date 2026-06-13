@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:ns1="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s3%5D">
+    <dcterms:identifier>/node[name=host2]/bm/net/if[name=enp0s3]</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Denp0s3_"/>
+    <rdfs:label>/node[name=host2]/bm/net/if[name=enp0s3]</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dsda2%5D">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dsda2_"/>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=sda2]</dcterms:identifier>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=sda2]</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop3_">
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop3%5D"/>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=loop3_</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu1%5D">
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_cpus_cpu_name%3Dcpu1_"/>
+    <rdfs:label>/node[name=host2]/bm/cpus/cpu[name=cpu1]</rdfs:label>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <dcterms:identifier>/node[name=host2]/bm/cpus/cpu[name=cpu1]</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Dlo%5D">
+    <rdfs:label>/node[name=host2]/bm/net/if[name=lo]</rdfs:label>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Dlo_"/>
+    <dcterms:identifier>/node[name=host2]/bm/net/if[name=lo]</dcterms:identifier>
+    <ns1:assetType>Subservice</ns1:assetType>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks">
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dcgroup2%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop4%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop5%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop1%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop3%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop2%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dsda2%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dsystemd-1%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop0%5D"/>
+    <dcterms:identifier>/node[name=host2]/bm/disks</dcterms:identifier>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdfs:label>/node[name=host2]/bm/disks</rdfs:label>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s9%5D">
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Denp0s9_"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdfs:label>/node[name=host2]/bm/net/if[name=enp0s9]</rdfs:label>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <dcterms:identifier>/node[name=host2]/bm/net/if[name=enp0s9]</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fmem">
+    <ns1:assetType>Subservice</ns1:assetType>
+    <dcterms:identifier>/node[name=host2]/bm/mem</dcterms:identifier>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_mem"/>
+    <rdfs:label>/node[name=host2]/bm/mem</rdfs:label>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D">
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2_"/>
+    <dcterms:identifier>/node[name=host2]</dcterms:identifier>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm"/>
+    <rdfs:label>/node[name=host2]</rdfs:label>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop1%5D">
+    <ns1:endpoint>host2</ns1:endpoint>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=loop1]</dcterms:identifier>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=loop1]</rdfs:label>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop1_"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_cpus">
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <dcterms:identifier>host2___node_name=host2__bm_cpus</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop3%5D">
+    <ns1:assetType>Subservice</ns1:assetType>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=loop3]</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=loop3]</rdfs:label>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop3_"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <dcterms:identifier>host2___node_name=host2__bm_disks</dcterms:identifier>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Ddocker0_">
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Ddocker0%5D"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:healthScore>100</ns1:healthScore>
+    <dcterms:identifier>host2___node_name=host2__bm_net_if_name=docker0_</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dcgroup2_">
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:healthScore>100</ns1:healthScore>
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=cgroup2_</dcterms:identifier>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dcgroup2%5D"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu%5D">
+    <dcterms:identifier>/node[name=host2]/bm/cpus/cpu[name=cpu]</dcterms:identifier>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <rdfs:label>/node[name=host2]/bm/cpus/cpu[name=cpu]</rdfs:label>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_cpus_cpu_name%3Dcpu_"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm">
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fproc"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fmem"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fsensors"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus"/>
+    <dcterms:identifier>/node[name=host2]/bm</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <rdfs:label>/node[name=host2]/bm</rdfs:label>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop2_">
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=loop2_</dcterms:identifier>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop2%5D"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:healthScore>100</ns1:healthScore>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop2%5D">
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop2_"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=loop2]</rdfs:label>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=loop2]</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop0%5D">
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop0_"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=loop0]</rdfs:label>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=loop0]</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_cpus_cpu_name%3Dcpu_">
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu%5D"/>
+    <dcterms:identifier>host2___node_name=host2__bm_cpus_cpu_name=cpu_</dcterms:identifier>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:healthScore>100</ns1:healthScore>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Dbr-858e2815bf25_">
+    <dcterms:identifier>host2___node_name=host2__bm_net_if_name=br-858e2815bf25_</dcterms:identifier>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Dbr-858e2815bf25%5D"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:healthScore>100</ns1:healthScore>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Denp0s9_">
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <dcterms:identifier>host2___node_name=host2__bm_net_if_name=enp0s9_</dcterms:identifier>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s9%5D"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:healthScore>100</ns1:healthScore>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu0%5D">
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <dcterms:identifier>/node[name=host2]/bm/cpus/cpu[name=cpu0]</dcterms:identifier>
+    <rdfs:label>/node[name=host2]/bm/cpus/cpu[name=cpu0]</rdfs:label>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_cpus_cpu_name%3Dcpu0_"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop5%5D">
+    <ns1:assetType>Subservice</ns1:assetType>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=loop5]</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop5_"/>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=loop5]</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus">
+    <dcterms:identifier>/node[name=host2]/bm/cpus</dcterms:identifier>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu1%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu0%5D"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_cpus"/>
+    <rdfs:label>/node[name=host2]/bm/cpus</rdfs:label>
+    <ns1:endpoint>host2</ns1:endpoint>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_proc">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fproc"/>
+    <dcterms:identifier>host2___node_name=host2__bm_proc</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fproc">
+    <ns1:assetType>Subservice</ns1:assetType>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_proc"/>
+    <dcterms:identifier>/node[name=host2]/bm/proc</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <rdfs:label>/node[name=host2]/bm/proc</rdfs:label>
+    <ns1:endpoint>host2</ns1:endpoint>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Dlo%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s3%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Ddocker0%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s8%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Dbr-858e2815bf25%5D"/>
+    <ns1:dependsOn rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s9%5D"/>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_net"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <dcterms:identifier>/node[name=host2]/bm/net</dcterms:identifier>
+    <rdfs:label>/node[name=host2]/bm/net</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Denp0s8_">
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <dcterms:identifier>host2___node_name=host2__bm_net_if_name=enp0s8_</dcterms:identifier>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s8%5D"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_sensors">
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fsensors"/>
+    <dcterms:identifier>host2___node_name=host2__bm_sensors</dcterms:identifier>
+    <ns1:healthScore>100</ns1:healthScore>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm">
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm"/>
+    <dcterms:identifier>host2___node_name=host2__bm</dcterms:identifier>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Dbr-858e2815bf25%5D">
+    <rdfs:label>/node[name=host2]/bm/net/if[name=br-858e2815bf25]</rdfs:label>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Dbr-858e2815bf25_"/>
+    <dcterms:identifier>/node[name=host2]/bm/net/if[name=br-858e2815bf25]</dcterms:identifier>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:assetType>Subservice</ns1:assetType>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_net">
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <dcterms:identifier>host2___node_name=host2__bm_net</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dcgroup2%5D">
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=cgroup2]</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=cgroup2]</rdfs:label>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dcgroup2_"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Ddocker0%5D">
+    <ns1:assetType>Subservice</ns1:assetType>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Ddocker0_"/>
+    <rdfs:label>/node[name=host2]/bm/net/if[name=docker0]</rdfs:label>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <dcterms:identifier>/node[name=host2]/bm/net/if[name=docker0]</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Denp0s3_">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <dcterms:identifier>host2___node_name=host2__bm_net_if_name=enp0s3_</dcterms:identifier>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s3%5D"/>
+    <ns1:healthScore>100</ns1:healthScore>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2_">
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:healthScore>100</ns1:healthScore>
+    <dcterms:identifier>host2___node_name=host2_</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dsystemd-1_">
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dsystemd-1%5D"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=systemd-1_</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fsensors">
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_sensors"/>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <dcterms:identifier>/node[name=host2]/bm/sensors</dcterms:identifier>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdfs:label>/node[name=host2]/bm/sensors</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop4_">
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop4%5D"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=loop4_</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop1_">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=loop1_</dcterms:identifier>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop1%5D"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop5_">
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=loop5_</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop5%5D"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Denp0s8%5D">
+    <ns1:endpoint>host2</ns1:endpoint>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Denp0s8_"/>
+    <rdfs:label>/node[name=host2]/bm/net/if[name=enp0s8]</rdfs:label>
+    <dcterms:identifier>/node[name=host2]/bm/net/if[name=enp0s8]</dcterms:identifier>
+    <ns1:assetType>Subservice</ns1:assetType>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dsda2_">
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dsda2%5D"/>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=sda2_</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_mem">
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fmem"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:healthScore>100</ns1:healthScore>
+    <dcterms:identifier>host2___node_name=host2__bm_mem</dcterms:identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop0_">
+    <dcterms:identifier>host2___node_name=host2__bm_disks_disk_name=loop0_</dcterms:identifier>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop0%5D"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_cpus_cpu_name%3Dcpu0_">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu0%5D"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <dcterms:identifier>host2___node_name=host2__bm_cpus_cpu_name=cpu0_</dcterms:identifier>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dloop4%5D">
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=loop4]</rdfs:label>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=loop4]</dcterms:identifier>
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dloop4_"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_cpus_cpu_name%3Dcpu1_">
+    <ns1:healthScore>100</ns1:healthScore>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fcpus%2Fcpu%5Bname%3Dcpu1%5D"/>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <dcterms:identifier>host2___node_name=host2__bm_cpus_cpu_name=cpu1_</dcterms:identifier>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fdisks%2Fdisk%5Bname%3Dsystemd-1%5D">
+    <ns1:exposes rdf:resource="https://example.org/health/host2___node_name%3Dhost2__bm_disks_disk_name%3Dsystemd-1_"/>
+    <dcterms:identifier>/node[name=host2]/bm/disks/disk[name=systemd-1]</dcterms:identifier>
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Asset"/>
+    <ns1:endpoint>host2</ns1:endpoint>
+    <ns1:assetType>Subservice</ns1:assetType>
+    <rdfs:label>/node[name=host2]/bm/disks/disk[name=systemd-1]</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/health/host2___node_name%3Dhost2__bm_net_if_name%3Dlo_">
+    <rdf:type rdf:resource="https://github.com/CyberDataLab/level-of-trust-framework/tree/main/Knowledge-graph-for-LoTAF/Health"/>
+    <ns1:historicalAverage>100.0</ns1:historicalAverage>
+    <ns1:healthScore>100</ns1:healthScore>
+    <dcterms:identifier>host2___node_name=host2__bm_net_if_name=lo_</dcterms:identifier>
+    <ns1:levelOfTrust>100.0</ns1:levelOfTrust>
+    <ns1:connectionStatus>Healthy</ns1:connectionStatus>
+    <ns1:evaluates rdf:resource="https://example.org/asset/%2Fnode%5Bname%3Dhost2%5D%2Fbm%2Fnet%2Fif%5Bname%3Dlo%5D"/>
+  </rdf:Description>
+</rdf:RDF>
